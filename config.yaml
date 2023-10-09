@@ -14,7 +14,7 @@ carpentry: 'incubator'
 title: 'Git Collaboration' # FIXME
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: ~ 2023-10-09 # FIXME
+created: 2023-10-09 # FIXME
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, lesson, The Carpentries, git, collaboration' # FIXME
