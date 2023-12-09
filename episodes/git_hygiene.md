@@ -1,23 +1,31 @@
 ---
-title: "Git Hygiene"
+title: "Collaborative Git : Git Hygiene"
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-- How do we keep our git history clean?
+- How do we keep our repository and history clean?
+- What are atomic commits?
+- How do I squash commits?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
+- Use `.gitignore` to avoid adding unnecessary files.
 - Understand the concept of Atomic commits.
-- Ammending commits
+- Ammending commits.
 - `git add patch`
+- `git absorb` the magic sponge!
 - Squashing commits
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## `.gitignore`
+
+
 
 ## Atomic Commits
 
@@ -70,14 +78,21 @@ e.g. by providing the answer to a commonly-asked question.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Keeping Development branches up-to-date
+## `git add patch`
 
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
+## `git absorb`
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
 
-Cool, right?
+## Squashing commits
+
+Squashing commits takes advantage of a topic we've already touched on `git rebase` as it uses the same framework but
+rather than moving the `HEAD` forward along each commit on the branch you are rebasing onto it also allows you to
+"squash" commits on the same branch.
+
+We will now make a few commits to our branch and then squash them. This helps keep commits that you will merge into
+`main` atomic since even if you've been using `git ammend` to sequentially update a commits you may still have several
+commits on a branch but be at the stage where you can combine all information into a single informative commit that is
+ready for merging into the `main` branch.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
