@@ -1,0 +1,24 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5
+  hooks:
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-yaml
+    - id: check-added-large-files
+      args: ['--maxkb=2048']
+
+- repo: https://github.com/DavidAnson/markdownlint-cli2
+  rev: v0.11
+  hooks:
+    - id: markdownlint-cli2
+      args: []
+
+ci:
+  autofix_prs: true
+  autofix_commit_msg: '[pre-commit.ci] Fixing issues with pre-commit'
+  autoupdate_schedule: weekly
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit-autoupdate'
+  skip: [] # Optionally list ids of hooks to skip on CI

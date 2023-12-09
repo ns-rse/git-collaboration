@@ -43,7 +43,6 @@ Use Terminal.app
 
 :::::::::::::::::::::::::
 
-
 :::::::::::::::: solution
 
 ### Linux
@@ -51,4 +50,3 @@ Use Terminal.app
 Use Terminal
 
 :::::::::::::::::::::::::
-
