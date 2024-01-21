@@ -25,8 +25,6 @@ exercises: 2
 
 ## `.gitignore`
 
-
-
 ## Atomic Commits
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
@@ -81,7 +79,6 @@ e.g. by providing the answer to a commonly-asked question.
 ## `git add patch`
 
 ## `git absorb`
-
 
 ## Squashing commits
 

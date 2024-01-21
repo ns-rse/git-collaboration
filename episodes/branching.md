@@ -30,8 +30,6 @@ Branches are key to working with version control as they allow the development o
 touching the current working version of code. New features and bug fixes are then merged into the `main` branch to
 update the code base.
 
-
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
 Inline instructor notes can help inform instructors of timing challenges
@@ -68,7 +66,6 @@ You can add a line with at least three colons and a `solution` tag.
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ## Stashing and Restoring
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -86,8 +83,8 @@ e.g. by providing the answer to a commonly-asked question.
 
 Describe how to keep a development branch up-to-date, two strategies
 
-+ `git merge` the `main` branch into development.
-+ `git rebase` development branch on to `main`.
+- `git merge` the `main` branch into development.
+- `git rebase` development branch on to `main`.
 
 Useful resources...
 
@@ -100,7 +97,6 @@ Describe how to track multiple origins
 ## Worktrees
 
 Describe the concept of worktrees and why they might be preferable over branches.
-
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 

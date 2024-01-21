@@ -61,8 +61,6 @@ You can add a line with at least three colons and a `solution` tag.
 
 ## Pre-commit.ci
 
-
-
 ::::::::::::::::::::::::::::::::::::: callout
 
 Callout sections can highlight information.

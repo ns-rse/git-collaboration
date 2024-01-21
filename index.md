@@ -52,13 +52,10 @@ How to make useful and constructive Pull/Merge request reviews
 + Not overwhelming people with lots of comments.
 + Making suggestions when reviewing
 
-
-
 [conventionalCommits]: https://www.conventionalcommits.org/en/v1.0.0/
 [git]: https://git-scm.com
 [github]: https://github.com
 [gitlab]: https://gitlab.com
 [linux]: https://www.kernel.org
 [swCarpentryGit]: https://swcarpentry.github.io/git-novice/
-[workbench]: https://carpentries.github.io/sandpaper-docs
 [zeroHero]: https://srse-git-github-zero2hero.netlify.app

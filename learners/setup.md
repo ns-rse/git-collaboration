@@ -19,7 +19,6 @@ FIXME: place any data you want learners to use in `episodes/data` and then use
 -->
 Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
 
-
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Details
@@ -53,8 +52,8 @@ systems (and potentially add more, e.g. online setup) in the solutions blocks.
 
 ### Windows
 
-You can use the [official binary][gitWin] but we encourage you to use [Git for Windows][git4windows] which includes the Bash
-shell and there are excellent
+You can use the [official binary][gitWin] but we encourage you to use [Git for Windows][git4windows] which includes the
+Bash shell and there are excellent
 [instructions](https://carpentries.github.io/workshop-template/install_instructions/#shell) on how to install this on
 the Carpentries installation instructions for the Bash Shell (**NB** the Git instructions for Windows on this page
 direct the reader to the Bash Shell instructions as they are bundled together).
@@ -65,7 +64,7 @@ direct the reader to the Bash Shell instructions as they are bundled together).
 
 ### MacOS
 
-[Git][git] is not included in the MacOS distribution by default. The [official instructions][gitMac] suggest using
+[Git][git] is not included in the MacOS distribution by default. The [official instructions][gitMac] suggests using
 either [Homebrew](https://brew.sh/), [MacPorts](https://www.macports.org/) or
 [Xcode](https://developer.apple.com/xcode/).
 

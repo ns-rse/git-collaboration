@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 ---
+
 title: "Hooks"
 teaching: 10
 exercises: 2
@@ -89,7 +90,9 @@ Cool, right?
 ::::::::::::::::::::::::::::::::::::::::::::::::
 ||||||| parent of 556214d (Starting to customise and add sections; updates pre-commit hooks)
 =======
+
 ---
+
 title: "Collaborative Git : Hooks"
 teaching: 10
 exercises: 2
@@ -163,11 +166,9 @@ question.
 
 ## Pre-Commit
 
-
 Pre-commit hooks are _really_ useful to the extent that they require special discussion because there is a framework for
 using such hooks, [pre-commit][pre-commit] that makes it incredibly easy to add (and configure) some really useful
 pre-commit hooks to your workflow.
-
 
 ### Why are Pre-Commit hooks so important?
 
@@ -175,7 +176,6 @@ You may be wondering why running hooks prior to commits is so important. The sho
 feedback loop and speeds up the pace of development. The long answer is that it only really becomes apparent after doing
 so we're going to have a go at installing and enabling some `pre-commit` hooks on our code base, making some changes and
 committing them.
-
 
 #### Installation
 
@@ -186,8 +186,6 @@ committing them.
 Which hooks you use will depend largely on the language you are using.
 
 ### Pre-commit.ci
-
-
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
