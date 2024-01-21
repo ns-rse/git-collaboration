@@ -145,7 +145,9 @@ paste("This", "new", "lesson", "looks", "good")
 
 You can add a line with at least three colons and a `solution` tag.
 
-::::::::::::::::::::::::::::::::: ::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Types of Hooks
 
@@ -196,4 +198,3 @@ Which hooks you use will depend largely on the language you are using.
 
 [pre-commit]: https://pre-commit.com
 [python]: https://python.org
->>>>>>> 556214d (Starting to customise and add sections; updates pre-commit hooks)
