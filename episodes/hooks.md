@@ -124,7 +124,7 @@ Inline instructor notes can help inform instructors of timing challenges associa
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 1: Can you do it?
+## Challenge 2: Can you do it?
 
 What is the output of this command?
 
