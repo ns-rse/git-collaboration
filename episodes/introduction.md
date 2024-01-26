@@ -66,7 +66,7 @@ course or if the course is online one of the instructors will pair you up at ran
 Once paired up please add details to the Etherpad along with your GitHub usernames.
 
 Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
-collaboratively on code development. If you aren't already familiar with these basics then this courser isn't for you,
+collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
 yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
 Hero!][zeroHero] or the [Software Carpentry : Version Control with Git][swCarpentryGit]. This course aims to show you
 some of the more involved ways to use Git in a collaborative environment.
@@ -82,12 +82,12 @@ How branches can be used to fix bugs or develop features in isolation.
 - Git Worktrees
 - Tracking multiple Origins
 
-## Git Hygeine
+## Git Hygiene
 
 How to maintain a clean commit history.
 
 - Understand the concept of atomic commits
-- `git ammend`
+- `git commit --amend`
 - `git add patch`
 - Using `git rebase` squash commits.
 - The use of consistent nomenclature such as [Conventional Commits][conventionalCommits].
