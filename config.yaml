@@ -62,7 +62,7 @@ episodes:
 - introduction.md
 - branching.md
 - git_hygiene.md
-- hooks.md
+# - hooks.md
 - continuous_integration.md
 - reviewing.md
 

@@ -1,5 +1,5 @@
 ---
-title: "Branching"
+title: "Collaborative Git : Branching"
 teaching: 10
 exercises: 2
 ---
@@ -7,16 +7,18 @@ exercises: 2
 :::::::::::::::::::::::::::::::::::::: questions
 
 - How do we use branches in git effectively?
+- How can I check out other peoples branches whilst working on my own?
+- How do I keep my development branch up-to-date with `main`?
+-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - How branches can be used to fix bugs or develop features in isolation.
-- How to merge a branch with bug fixes or new features into main.
-- How to keep a development branch up-to-date.
-- Differences between and when to merge and rebase.
 - Switching branches, stashing and restoring.
+- How to keep a development branch up-to-date.
+- Differences between and when to use merge and rebase.
 - Git worktrees instead of branches.
 - Tracking multiple origins
 
@@ -24,7 +26,11 @@ exercises: 2
 
 ## Branches
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+Branches are key to working with version control as they allow the development of new features or fixing of bugs without
+touching the current working version of code. New features and bug fixes are then merged into the `main` branch to
+update the code base.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
 Inline instructor notes can help inform instructors of timing challenges
 associated with the lessons. They appear in the "Instructor View"
@@ -60,7 +66,7 @@ You can add a line with at least three colons and a `solution` tag.
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Merging Branches
+## Stashing and Restoring
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -75,18 +81,28 @@ e.g. by providing the answer to a commonly-asked question.
 
 ## Keeping Development branches up-to-date
 
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
+Describe how to keep a development branch up-to-date, two strategies
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+- `git merge` the `main` branch into development.
+- `git rebase` development branch on to `main`.
 
-Cool, right?
+Useful resources...
+
+## Git Worktrees
+
+## Tracking multiple Origins
+
+Describe how to track multiple origins
+
+## Worktrees
+
+Describe the concept of worktrees and why they might be preferable over branches.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+- First
+- Second
+- Third
+- Fourth
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
