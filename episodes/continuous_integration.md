@@ -1,5 +1,5 @@
 ---
-title: "Continuous Integration"
+title: "Collaborative Git : Continuous Integration"
 teaching: 10
 exercises: 2
 ---
@@ -7,16 +7,21 @@ exercises: 2
 :::::::::::::::::::::::::::::::::::::: questions
 
 - How can I get a computer to do the heavy leg work?
+- GitHub Actions
+- GitLab CI
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Use Continuous Integration to have computers run checks and tests automatically.
+- Pre-commit.ci
+- Building Websites with Actions
+- Running actions locally
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Branches
+## Continuous What?
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -54,7 +59,7 @@ You can add a line with at least three colons and a `solution` tag.
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Merging Branches
+## Pre-commit.ci
 
 ::::::::::::::::::::::::::::::::::::: callout
 

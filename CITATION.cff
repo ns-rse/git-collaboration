@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Git Collaboration
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Neil
+    family-names: Shephard
+    email: n.shephard@sheffield.ac.uk
+    affiliation: University of Sheffield
+    orcid: 'https://orcid.org/0000-0001-8301-6857'
+repository-code: 'https://github.com/ns-rse/git-collaboration'
+url: 'https://ns-rse.github.io/git-collaboration/'
+abstract: >-
+  A Carpentry based, intermediate level course on using Git
+  for effective collaboration.
+keywords:
+  - git
+  - collaboration
+  - carpentries
+license: CC-BY-4.0

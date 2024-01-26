@@ -16,8 +16,8 @@ config:
 
 globs:
 
-- "posts/**/*.qmd"
-- "*.qmd"
+- "**/*.md"
+- "*.md"
 
 # Ignores
 
