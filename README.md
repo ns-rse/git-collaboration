@@ -17,11 +17,20 @@ This course seeks to develop material that focuses on many tasks that make the p
 Contributions are welcome please refer to the [contribution guidelines](CONTRIBUTING) of how to do so and ensure you
 adhere to the [Code of Conduct](CODE_OF_CONDUCT).
 
-## Licensing
+### Building Locally
 
-The material herein is licensed under CC-BY-4.0, for more information please refer to the [license](LICENSE)
+To render these pages locally you need to have [R][r] installed. Instructions are
+[available](https://carpentries.github.io/workbench/#installation) but some additional steps have been taken to make
+sure the environment is reproducible.
 
+Once you have installed the dependencies you can render the pages locally by starting R in the project root and
+running...
 
+``` r
+sandpaper::serve()
+```
+
+This will build the pages and start a local web-server in R and open it in your default browser. These pages are "live"
+and as you edit and save them the web-site will be rebuilt and the pages updated.
 
 [git]: https://git-scm.com
-[workbench]: https://carpentries.github.io/sandpaper-docs/
