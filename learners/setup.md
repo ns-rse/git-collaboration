@@ -8,7 +8,10 @@ Whilst there are many Git clients (porcelains) out there and many Integrated Dev
 actions and facilitate using the bewildering array of options this course teaches the Command Line Interface (CLI) to
 Git as it means we have a consistent interface to teach the _principles_ that you can take away to your own choice of
 Git client. Below there are instructions for installing Git on each of the three most common operating systems as well
-as a link to download s
+as links to download the Git tool GitKraken which includes Git and a Terminal.
+
+Please complete these setup tasks _before_ attending the course. If you have any issues getting setup please either
+contact an instructor in advance or arrive early and seek assistance from an instructor.
 
 ## Data Sets
 
@@ -128,7 +131,10 @@ clicking on the [Terminal button](https://help.gitkraken.com/gitkraken-client/te
 
 :::::::::::::::::::::::::
 
-[git]: https://git-scm.com
+## GitHub
+
+You will also need an account on [GitHub][github. If you do not already have one please register.
+
 [gitkraken]: https://www.gitkraken.com/
 [gitMac]: https://git-scm.com/download/mac
 [gitWin]: https://git-scm.com/download/win
