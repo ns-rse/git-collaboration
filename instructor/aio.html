@@ -301,7 +301,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Collaborative Git : Introduction</a></p>
 <hr>
-<p>Last updated on 2024-01-26 |
+<p>Last updated on 2024-02-02 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -327,9 +327,13 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Find out something interesting about other participants</li>
+<li>Find out something interesting about other participants.</li>
 <li>Understand the way in which you are expected to behave and interact
-with other participants</li>
+with other participants.</li>
+<li>Have an overview of the content and material that will be
+covered.</li>
+<li>Pair up with another participant to collaborate with during this
+workshop.</li>
 </ul>
 </div>
 </div>
@@ -340,8 +344,8 @@ with other participants</li>
 </h2>
 <hr class="half-width">
 <p>To make clear what is expected, everyone participating in The
-Carpentries activities is required to abide by our [Code of
-Conduct][coc]. Any form of behaviour to exclude, intimidate, or cause
+Carpentries activities is required to abide by our <a href="https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html" class="external-link">Code
+of Conduct</a>. Any form of behaviour to exclude, intimidate, or cause
 discomfort is a violation of the Code of Conduct. In order to foster a
 positive and professional learning environment we encourage you to:</p>
 <ul>
@@ -366,11 +370,14 @@ you report it to The Carpentries Code of Conduct Committee by completing
 </h3>
 <div class="callout-content">
 <p>In order to break the ice and find out something about the other
-participants on this course your instructor will pose a question at the
-start of the course, please think about this and provide an answer in
-the collaborative notepad or be prepared to answer it when asked.
-<strong>TODO</strong> Add section for instructor on setting up a
-collaborative notepad and possible ice-breaker questions.</p>
+participants on this course , please think about a situation BVC
+(<strong>B</strong>efore <strong>V</strong>ersion
+<strong>C</strong>ontrol) where you might have had a problem that
+Version Control would have prevented. This might be deleting files by
+mistake, making changes to code that broke your programme. If you are
+participating online please provide an answer in the collaborative
+notepad, if the course is being run in person please describe the
+situation to the person next to you.</p>
 </div>
 </div>
 </div>
@@ -380,20 +387,86 @@ collaborative notepad and possible ice-breaker questions.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
-<p>Before the start of the course</p>
+<p>Before the start of the course you should setup a new <a href="https://pad.carpentries.org/" class="external-link">collaborative pad</a> where
+participants can answer questions and collaborate.</p>
 </div>
 </div>
 </div>
 </div>
+</section><section id="collaboration"><h2 class="section-heading">Collaboration<a class="anchor" aria-label="anchor" href="#collaboration"></a>
+</h2>
+<hr class="half-width">
+<p>Since this course is all about collaboration we would like you now to
+pair up with another participant in order to undertake the exercises
+contained in this course. This could be the person sitting next to you
+if this is an in-person course or if the course is online one of the
+instructors will pair you up at random.</p>
+<p>Once paired up please add details to the Etherpad along with your
+GitHub usernames.</p>
+<p>Its relatively easy to get the <em>basics</em> of working with <a href="https://git-scm.com" class="external-link">Git</a> on your own or with small groups to
+work collaboratively on code development. If you aren’t already familiar
+with these basics then this course isn’t for you, yet, and you would
+benefit from an introductory course such as <a href="https://srse-git-github-zero2hero.netlify.app" class="external-link">Git, GitHub through
+GitKraken : From Zero to Hero!</a> or the <a href="https://swcarpentry.github.io/git-novice/" class="external-link">Software Carpentry :
+Version Control with Git</a>. This course aims to show you some of the
+more involved ways to use Git in a collaborative environment.</p>
+<div class="section level3">
+<h3 id="branches">Branches<a class="anchor" aria-label="anchor" href="#branches"></a>
+</h3>
+<p>How branches can be used to fix bugs or develop features in
+isolation.</p>
+<ul>
+<li>Comfortable creating and switching between multiple branches.</li>
+<li>Keep development branches up-to-date with <code>main</code>
+(i.e. <code>git merge</code> and <code>git rebase</code>).</li>
+<li>Understand and use <code>git stash</code> to save work in
+progress.</li>
+<li>Moving commits made to the wrong branch (<code>git cherrypick</code>
+and <code>git reset</code>).</li>
+<li>Git Worktrees</li>
+<li>Tracking multiple Origins</li>
+</ul>
+</div>
+</section><section id="git-hygiene"><h2 class="section-heading">Git Hygiene<a class="anchor" aria-label="anchor" href="#git-hygiene"></a>
+</h2>
+<hr class="half-width">
+<p>How to maintain a clean commit history.</p>
+<ul>
+<li>Understand the concept of atomic commits</li>
+<li><code>git commit --amend</code></li>
+<li><code>git add patch</code></li>
+<li>Using <code>git rebase</code> squash commits.</li>
+<li>The use of consistent nomenclature such as [Conventional
+Commits][conventionalCommits].</li>
+</ul></section><section id="hooks-and-continuous-integration"><h2 class="section-heading">Hooks and Continuous Integration<a class="anchor" aria-label="anchor" href="#hooks-and-continuous-integration"></a>
+</h2>
+<hr class="half-width">
+<p>Understand what hooks are available and how to leverage Continuous
+Integration on <a href="https://github.com" class="external-link">GitHub</a> and <a href="https://gitlab.com" class="external-link">GitLab</a>.</p>
+<ul>
+<li>How and why to use <a href="https://pre-commit.com" class="external-link">pre-commit</a>/<a href="https://pre-commit.ci" class="external-link">pre-commit.ci</a>.</li>
+<li>Benefits of Continuous Integration, particularly the importance of
+tests (but not covering tests in detail).</li>
+<li>
+<a href="https://github.com" class="external-link">GitHub</a> Actions and Workflows.</li>
+<li>
+<a href="https://gitlab.com" class="external-link">GitLab</a> Continuous Integration.</li>
+</ul></section><section id="effective-reviewing"><h2 class="section-heading">Effective Reviewing<a class="anchor" aria-label="anchor" href="#effective-reviewing"></a>
+</h2>
+<hr class="half-width">
+<p>How to make useful and constructive Pull/Merge request reviews</p>
+<ul>
+<li>Not overwhelming people with lots of comments.</li>
+<li>Making suggestions when reviewing.</li>
+</ul>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-</section></section><section id="aio-branching"><p>Content from <a href="branching.html">Collaborative Git : Branching</a></p>
+ --></section></section><section id="aio-branching"><p>Content from <a href="branching.html">Collaborative Git : Branching</a></p>
 <hr>
-<p>Last updated on 2024-01-26 |
+<p>Last updated on 2024-02-02 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/branching.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -408,13 +481,12 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
+<li>What are branches?</li>
 <li>How do we use branches in git effectively?</li>
 <li>How can I check out other peoples branches whilst working on my
 own?</li>
 <li>How do I keep my development branch up-to-date with
 <code>main</code>?</li>
-<li>
-</li>
 </ul>
 </div>
 </div>
@@ -443,14 +515,47 @@ isolation.</li>
 <p>Branches are key to working with version control as they allow the
 development of new features or fixing of bugs without touching the
 current working version of code. New features and bug fixes are then
-merged into the <code>main</code> branch to update the code base.</p>
+merged into the <code>main</code> branch to update the code base, but
+what is a branch?</p>
+<p>The word suggests an analogy with trees where branches are parts of a
+tree the extend from the “main” trunk or recursively from parent
+“branches”. An intuitive model of this is shown in the figure below.</p>
+<!-- Source for Mermaid diagram : -->
+<!-- https://mermaid.live/edit#pako:eNqlUD1vgzAQ_SvWScgLinBpCvaaRlm6dau8HMYNVmIbOUZqivjvNSC6RR1607v3NbwRlG81CMiy0TgTBRlp7LTVVBDa4E3TnNCziaeAfUdnNfiIUR-8tSa-YaOviY1h0JN0ZLuEpyxbiS38K6sl-uhtAjrVEQkrkPAw12l18UMkFo370_S_PsjB6pCENi01zqKEZSUJIsEWw2UunpJv6Ns0z7E10QcQ8zA54BD9-92p7V89rwbPAS2IT7zeEtuj-_Debqb0ghjhCwR7qncvnLGiKjhnVV3vc7iDKBnb8bJgBX_el2VVVFMO30sBm34AnPOOqQ -->
+<!--
+%%{init: {'theme': 'base', 'gitGraph': {'rotateCommitLabel': true}
+         }
+}%%
+    gitGraph
+       commit id: "0-472f101"
+       commit id: "1-51816d6"
+       commit id: "2-6769ff2 (base)"
+       branch "branch"
+       commit id: "3-8c52dce"
+       checkout main
+       commit id: "4-8ec389a"
+       checkout "branch"
+       commit id: "5-2315fa0"
+       checkout main
+       commit id: "6-93e787c"
+-->
+<p><a href="https://mermaid.live/edit#pako:eNqVkTtrwzAUhf-KuWDcgh30sPVa29KlW7fiRZHkWKS2gitDU-P_XjshJUNKqab7-M65gjOBCdaBgjSdfO-jSqYstq5zmUqyrf5wWZ5kOx-fB31os3U7hKijewhd5-OL3rr3ZRqH0c11n1zeUs9peh5cxD9rc5Im3qqkBlSUnDQY4RpuA7iosMDMst8AUjDOZNOQ5G797_0Vtx10b9qFORe_OdBCmIpY466B1pl9GGPSad_flpWFcIYKqW_J_rpZFYTiqtHofzdZIanjgpsaIIfODQtql_SmFa_hlFwNK2n1sF-954UbD3aJ7Mn6GAZQa1g56DGG12NvLv2ZefR6N-juMjzo_i2E6xbUBJ-gWLXBkmAqCUKIlLLM4QiKSLmhAqFKcsIk54LOOXydDPCmZJRhxEqJkRCC8fkbTTe3dw" class="external-link"><img src="https://mermaid.ink/img/pako:eNqVkTtrwzAUhf-KuWDcgh30sPVa29KlW7fiRZHkWKS2gitDU-P_XjshJUNKqab7-M65gjOBCdaBgjSdfO-jSqYstq5zmUqyrf5wWZ5kOx-fB31os3U7hKijewhd5-OL3rr3ZRqH0c11n1zeUs9peh5cxD9rc5Im3qqkBlSUnDQY4RpuA7iosMDMst8AUjDOZNOQ5G797_0Vtx10b9qFORe_OdBCmIpY466B1pl9GGPSad_flpWFcIYKqW_J_rpZFYTiqtHofzdZIanjgpsaIIfODQtql_SmFa_hlFwNK2n1sF-954UbD3aJ7Mn6GAZQa1g56DGG12NvLv2ZefR6N-juMjzo_i2E6xbUBJ-gWLXBkmAqCUKIlLLM4QiKSLmhAqFKcsIk54LOOXydDPCmZJRhxEqJkRCC8fkbTTe3dw?type=png" alt="Basic GitHub Branches" class="figure"></a></p>
+<p>The <code>branch</code> has two commits on it and stems from the
+parent <code>main</code> at a point referred to as <code>base</code>. A
+branch is <em>not</em> just the two commits that appear to exist on it
+(i.e. <code>3-8c52dce</code> and <code>5-2315fa0</code>) rather it is
+the full commit history of that lineage including the commits in the
+“parent”. That means the <code>branch</code> consists of the commits
+<code>0-472f101</code>, <code>1-98f9a30</code> and
+<code>2-6769ff2</code> as well as <code>3-8c52dce</code> and
+<code>5-2315fa0</code>.</p>
 <div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -459,21 +564,19 @@ View”</p>
 </div>
 </div>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
+<div id="challenge-1-what-is-the-first-and-last-commit-on-branch-divide" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
+<div id="challenge-1-what-is-the-first-and-last-commit-on-branch-divide" class="callout-inner">
+<h3 class="callout-title">Challenge 1: What is the first and last commit
+on branch<code>divide</code>?<a class="anchor" aria-label="anchor" href="#challenge-1-what-is-the-first-and-last-commit-on-branch-divide"></a>
 </h3>
 <div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
-</div>
+<p>Use <code>git log</code> to determine the first and last commit on
+the <code>divide</code> branch. You can use the
+<code>--pretty="%h %ad (%cr) %x09 %an : %s"</code> option and formatting
+to simplify the output to a single line.</p>
 </div>
 </div>
 </div>
@@ -482,46 +585,50 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Output</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] "This new lesson looks good"</code></pre>
+<pre class="output" tabindex="0"><code>git checkout divide
+git log --pretty="%h %ad (%cr) %x09 %an : %s"
+# TODO : Complete solution and add output once sample repository is in place</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
+<div id="challenge-2-what-commit-did-the-multiply-branch-diverge-from-master" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within
-challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do-you-nest-solutions-within-challenge-blocks"></a>
+<div id="challenge-2-what-commit-did-the-multiply-branch-diverge-from-master" class="callout-inner">
+<h3 class="callout-title">Challenge 2: What commit did the<code>multiply</code>branch diverge from<code>master</code>?<a class="anchor" aria-label="anchor" href="#challenge-2-what-commit-did-the-multiply-branch-diverge-from-master"></a>
 </h3>
 <div class="callout-content">
-
+<p>Use <code>git log</code> to determine the commit that
+<code>multiply</code> diverged from <code>master</code>.</p>
 </div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2">Output</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p>You can add a line with at least three colons and a
-<code>solution</code> tag.</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>git checkout multiply
+git log --graph --pretty="%h %ad (%cr) %x09 %an : %s"
+# TODO : Complete solution and add output once sample repository is in place</code></pre>
 </div>
 </div>
 </div>
 </div>
-</section><section id="stashing-and-restoring"><h2 class="section-heading">Stashing and Restoring<a class="anchor" aria-label="anchor" href="#stashing-and-restoring"></a>
-</h2>
-<hr class="half-width">
+</div>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -530,11 +637,12 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 <h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Callout sections can highlight information.</p>
-<p>They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present “asides”: content that is
-not central to the narrative of the lesson, e.g. by providing the answer
-to a commonly-asked question.</p>
+<p>There are a <em>lot</em> of options for formatting the output of
+<code>git log</code> that allow you to restrict output to just the
+information you are interested in and change the display. For this
+course we use the basic
+<code>--pretty="%h %ad (%cr) %x09 %an : %s</code> but the <a href="https://zsh.sourceforge.io/" class="external-link">ZSH</a> framework <a href="https://ohmyz.sh/" class="external-link">Oh My Zsh</a> includes a number of aliases for
+formatting Git log output.</p>
 </div>
 </div>
 </div>
@@ -1165,8 +1273,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/aio.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/aio.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-01-30",
-  "datePublished": "2024-01-30"
+  "dateModified": "2024-02-02",
+  "datePublished": "2024-02-02"
 }
 
   </script><script>
