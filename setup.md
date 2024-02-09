@@ -22,27 +22,9 @@ FIXME: place any data you want learners to use in `episodes/data` and then use
 -->
 Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
 
-::::::::::::::::::::::::::::::::::::::: discussion
-
-### Details
-
-A sample repository has been made available for this course as a GitHub template. To which end you will need a GitHub
-account in order to use it.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-Navigate to [here]() and click on **Use This Template** which will make a copy of the repository to your own GitHub
-account.
-
-:::::::::::::::::::::::::
-
 ## Software Setup
 
 ::::::::::::::::::::::::::::::::::::::: discussion
-
-### Details
 
 Setup for different systems can be presented in dropdown menus via a `solution`
 tag. They will join to this discussion block, so you can give a general overview
@@ -133,9 +115,61 @@ clicking on the [Terminal button](https://help.gitkraken.com/gitkraken-client/te
 
 ## GitHub
 
-You will also need an account on [GitHub][github. If you do not already have one please register.
+You will also need an account on [GitHub][gh]. If you do not already have one please
+[register](https://github.com/signup), if you have an academic email address such as `@<institute>.ac.uk` or
+`@<institute.edu** then registering with this address will give you access to a few more features.
 
+You should generate an SSH key and add the public component to your GitHub account.
+
+**TODO** Link to instructions on generating keys under different OSs.
+
+## Conda Environments
+
+::::::::::::::::::::::::::::::::::::::: discussion
+
+In order to teach this course we need some code that is version controlled and some tasks to complete. [Python][python]
+has been chosen as the language to fulfill that task. You do _not_ need to know Python in order to complete the course,
+the code you need to use is all provided and can be copy and pasted.
+
+However, you _do_ need what is known as a "_Virtual Environment_" setup to be able to install various programmes and run
+the checks that are part of this course. To that end you should install [Miniconda3][miniconda3] on your system prior to
+attending the course.
+
+If you are already familiar with Python and Virtual Environments you can simply create a fresh virtual environment to
+use for the course.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::: solution
+
+### Installing Miniconda
+
+Please follow the instructions at [Installing Miniconda](https://docs.anaconda.com/free/miniconda/miniconda-install/)
+for your Operating System.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::: solution
+
+### Creating A Virtual Environment
+
+You will have to create a virtual environment to undertake the course. If you have installed Miniconda as described
+above you open a terminal (Windows use the Git Bash Shell) and create a Virtual Environment called `git-collaboation`,
+activate it and install the Python Package Manager programme `pip` using the following commands.
+
+``` bash
+conda create --name git-collaboration python=3.11
+conda activate git-collaboration
+conda install pip
+```
+
+:::::::::::::::::::::::::
+
+[gh]: https://github.com
+[git]: https://git-scm.com/
 [gitkraken]: https://www.gitkraken.com/
 [gitMac]: https://git-scm.com/download/mac
 [gitWin]: https://git-scm.com/download/win
 [git4windows]: https://carpentries.github.io/workshop-template/install_instructions/#shell
+[miniconda3]: https://docs.anaconda.com/free/miniconda/
+[python]: https://python.org
