@@ -1,5 +1,5 @@
 ---
-title: "Collaborative Git : Introduction"
+title: "Introduction"
 teaching: 10
 exercises: 2
 ---
@@ -19,6 +19,12 @@ exercises: 2
 - Pair up with another participant to collaborate with during this workshop.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
+collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
+yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
+Hero!][zeroHero] or the [Software Carpentry : Version Control with Git][swCarpentryGit]. This course aims to show you
+some of the more involved ways to use Git in a collaborative environment.
 
 ## Code of Conduct
 
@@ -65,53 +71,77 @@ course or if the course is online one of the instructors will pair you up at ran
 
 Once paired up please add details to the Etherpad along with your GitHub usernames.
 
-Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
-collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
-yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
-Hero!][zeroHero] or the [Software Carpentry : Version Control with Git][swCarpentryGit]. This course aims to show you
-some of the more involved ways to use Git in a collaborative environment.
+Between you please choose one person who will be the repository owner and one who will be a collaborator. The owner
+should
 
-### Branches
+::::::::::::::::::::::::::::::::::::: challenge
 
-How branches can be used to fix bugs or develop features in isolation.
+## Choose Roles, Copy Template Repository and Clone
 
-- Comfortable creating and switching between multiple branches.
-- Keep development branches up-to-date with `main` (i.e. `git merge` and `git rebase`).
-- Understand and use `git stash` to save work in progress.
-- Moving commits made to the wrong branch (`git cherrypick` and `git reset`).
-- Git Worktrees
-- Tracking multiple Origins
+Introduce yourself to the person you have paired up with. You now need to decide who is to take on each of the two
+roles. There isn't much between them in terms of what you will be doing but one person needs to be the **repository
+owner** and one person needs to be a **collaborator**.
 
-## Git Hygiene
+## Repository Owner
 
-How to maintain a clean commit history.
+The Repository Owner should visit the [Python Maths][pythonMaths] repository on GitHub and click on the "_Use This
+Template_" button to make a copy to their own repository.
 
-- Understand the concept of atomic commits
-- `git commit --amend`
-- `git add patch`
-- Using `git rebase` squash commits.
-- The use of consistent nomenclature such as [Conventional Commits][conventionalCommits].
+Once you have made a copy you need to invite your collaborator to work on the repository with you. Navigate to
+_Settings > People_ and add you collaborator to the project.
 
-## Hooks and Continuous Integration
+:::::::::::::::::::::::::::::::::
 
-Understand what hooks are available and how to leverage Continuous Integration on [GitHub][github] and [GitLab][gitlab].
+:::::::::::::::::::::::: solution
 
-- How and why to use [pre-commit](https://pre-commit.com)/[pre-commit.ci](https://pre-commit.ci).
-- Benefits of Continuous Integration, particularly the importance of tests (but not covering tests in detail).
-- [GitHub][github] Actions and Workflows.
-- [GitLab][gitlab] Continuous Integration.
+You should receive an email from GitHub inviting you to collaborate on the repository or had a notification on GitHub
+that you have been invited to collaborate on a repository. Accept this invitation.
 
-## Effective Reviewing
+:::::::::::::::::::::::::::::::::
 
-How to make useful and constructive Pull/Merge request reviews
+:::::::::::::::::::::::: solution
 
-- Not overwhelming people with lots of comments.
-- Making suggestions when reviewing.
+## Clone the repository
+
+Both the repository owner and collaborator should now clone the repository _from the repository owners copy **not** the
+original template_.
+
+Click on the _Code_ button and then the _SSH_ tab. Copy the URL. If you want to clone the work to `~/work/git/` then in
+a terminal
+
+``` bash
+cd ~/work/git
+git clone git@github.com:<owners_id>/python-maths
+cd python-maths
+```
+
+:::::::::::::::::::::::::::::::::
+
+After completing these steps you should both have a copy of the `python-maths` repository on your local computer.
+
+## Install the Package
+
+If you have not already done so activate the `git-collaboration` environment you created as described in the
+
+``` bash
+conda activate git-collaboration
+```
+
+You can now install the package and its test dependencies in an editable format so that as you work on the package the
+changes you make will instantly be available. Make sure you are in the `python-maths` directory (use `pwd` to show where
+you are and `cd` to change directory).
+
+``` bash
+pip install -e .[tests]
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 [carpentryPad]: https://pad.carpentries.org/
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
 [git]: https://git-scm.com
-[github]: https://github.com
-[gitlab]: https://gitlab.com
+[pythonMaths]: https://github.com/ns-rse/python-maths
 [swCarpentryGit]: https://swcarpentry.github.io/git-novice/
 [zeroHero]: https://srse-git-github-zero2hero.netlify.app
