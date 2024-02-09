@@ -14,8 +14,8 @@ This course seeks to develop material that focuses on many tasks that make the p
 
 ## Contributions
 
-Contributions are welcome please refer to the [contribution guidelines](CONTRIBUTING) of how to do so and ensure you
-adhere to the [Code of Conduct](CODE_OF_CONDUCT).
+Contributions are welcome please refer to the [contribution guidelines](CONTRIBUTING.md) of how to do so and ensure you
+adhere to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ### Building Locally
 
@@ -34,3 +34,5 @@ This will build the pages and start a local web-server in R and open it in your 
 and as you edit and save them the web-site will be rebuilt and the pages updated.
 
 [git]: https://git-scm.com
+[r]: https://www.r-project.org/
+[workbench]: https://carpentries.github.io/workbench/

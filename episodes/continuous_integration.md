@@ -1,21 +1,21 @@
 ---
-title: "Collaborative Git : Continuous Integration"
+title: "Continuous Integration"
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-- How can I get a computer to do the heavy leg work?
-- GitHub Actions
-- GitLab CI
+- How can I get a computer to automate tasks?
+- How do I shorten the feedback loop when developing code?
+- How can I use GitHub Actions/GitLab CI?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Use Continuous Integration to have computers run checks and tests automatically.
 - Pre-commit.ci
+- Use Continuous Integration to have computers run checks and tests automatically.
 - Building Websites with Actions
 - Running actions locally
 

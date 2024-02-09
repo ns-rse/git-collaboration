@@ -1,5 +1,5 @@
 ---
-title: "Collaborative Git : Git Hygiene"
+title: "Git Hygiene"
 teaching: 10
 exercises: 2
 ---
