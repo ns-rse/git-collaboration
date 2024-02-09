@@ -155,6 +155,7 @@
 <li><a href="#data-sets">Data Sets</a></li>
 <li><a href="#software-setup">Software Setup</a></li>
 <li><a href="#github">GitHub</a></li>
+<li><a href="#conda-environments">Conda Environments</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -164,7 +165,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Collaborative Git : Introduction</a>
+        <a href="introduction.html">1. Introduction</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -173,7 +174,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Collaborative Git : Branching</a>
+        <a href="branching.html">2. Branching</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -182,7 +183,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Collaborative Git : Git Hygiene</a>
+        <a href="git_hygiene.html">3. Git Hygiene</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -191,7 +192,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="continuous_integration.html">4. Collaborative Git : Continuous Integration</a>
+        <a href="continuous_integration.html">4. Continuous Integration</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -252,30 +253,32 @@
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="introduction.html" rel="next">Next: Collaborative Git :... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="introduction.html" rel="next">Next: Introduction... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Setup</h1>
       
-
+<div class="section level1">
+<h1 id="git-collaboration">Git Collaboration<a class="anchor" aria-label="anchor" href="#git-collaboration"></a></h1>
 <p>Welcome to the <em>Git Collaboration</em> course material.</p>
 <p><a href="https://git-scm.com" class="external-link">Git</a> is, in 2024, the most widely
 used version control system by far. It was developed by Linus Torvalds
 to manage <a href="https://www.kernel.org" class="external-link">Linux kernel</a> development
-and since then has exploded. Websites such as [GitHub][GitHub] and <a href="https://gitlab.com" class="external-link">GitLab</a> make asynchronous collaboration on
+and since then has exploded. Websites such as <a href="https://github.com" class="external-link">GitHub</a> and <a href="https://gitlab.com" class="external-link">GitLab</a> make asynchronous collaboration on
 common code bases possible and underpin many, many software projects
 from enterprise grade tools such as the aforementioned <a href="https://github.com/torvalds/linux" class="external-link">Linux kernel</a>, the
 increasingly popular <a href="https://github.com/rust-lang/rust" class="external-link">Rust</a> through to niche
 products such as <a href="https://mjaggard.github.io/snapcast/" class="external-link">Snapcast</a> or Android apps
 for tracking your exercise such as <a href="https://github.com/OpenTracksApp/OpenTracks" class="external-link">OpenTracks</a>.</p>
 <p>Git and Forges, online repositories for working with version control,
-as GitHub, GitLab and others such as <a href="https://sourcehut.org/" class="external-link">SourceHut</a>, [Codeberg][codeberg] and so
-forth are known are wonderful tools for, but because of the complexities
-of version controlling software in distributed, collaborative
-environments the tool itself has become quite complex. There are many
-different tasks that one may wish to undertake and often several
-different ways of achieving these.</p>
+as <a href="https://github.com" class="external-link">GitHub</a>, [<a href="https://gitlab.com" class="external-link">GitLab</a> and others such as <a href="https://sourcehut.org/" class="external-link">SourceHut</a>, <a href="https://codeberg.org/" class="external-link">Codeberg</a> and so forth are known are
+wonderful tools for, but because of the complexities of version
+controlling software in distributed, collaborative environments the tool
+itself has become quite complex. There are many different tasks that one
+may wish to undertake and often several different ways of achieving
+these.</p>
 <p>This course seeks to help with that by building on a basic
-understanding of Git from courses such as <a href="swCarpentryGit">Software Carpentry: Git Novice</a> and <a href="https://srse-git-github-zero2hero.netlify.app" class="external-link">Git and GitHub
+understanding of Git from courses such as <a href="https://swcarpentry.github.io/git-novice/" class="external-link">Software Carpentry: Git
+Novice</a> and <a href="https://srse-git-github-zero2hero.netlify.app" class="external-link">Git and GitHub
 through GitKraken : From Zero to Hero!</a> and going into a bit more
 depth about the way in which Git works and how it can be effectively
 used for collaboration. The course covers the concepts of branches and
@@ -286,7 +289,7 @@ on undertaking constructive Pull/Merge Reviews.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-
+</div>
 
       <section id="setup"><section id="setup"><h2 class="section-heading">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
@@ -311,42 +314,14 @@ FIXME: place any data you want learners to use in `episodes/data` and then use
        link to it, replacing the example.com link.
 --><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
 and unzip it to your Desktop</p>
-<div id="details" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details<a class="anchor" aria-label="anchor" href="#details"></a>
-</h3>
-<div class="callout-content">
-<p>A sample repository has been made available for this course as a
-GitHub template. To which end you will need a GitHub account in order to
-use it.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<p>Navigate to <a href="">here</a> and click on <strong>Use This
-Template</strong> which will make a copy of the repository to your own
-GitHub account.</p>
-</div>
-</div>
-</div>
-</div>
 </section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
 </h2>
-<hr class="half-width"><div id="details-1" class="callout discussion">
+<hr class="half-width"><div id="discussion1" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="details-1" class="callout-inner">
-<h3 class="callout-title">Details<a class="anchor" aria-label="anchor" href="#details-1"></a>
+<div class="callout-inner">
+<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion1"></a>
 </h3>
 <div class="callout-content">
 <p>Setup for different systems can be presented in dropdown menus via a
@@ -357,12 +332,12 @@ e.g. online setup) in the solutions blocks.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Windows</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Windows</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can use the <a href="https://git-scm.com/download/win" class="external-link">official
 binary</a> but we encourage you to use <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell" class="external-link">Git
@@ -375,15 +350,15 @@ bundled together).</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">MacOS</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>[Git][git] is not included in the MacOS distribution by default. The
-<a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
+<p><a href="https://git-scm.com/" class="external-link">Git</a> is not included in the MacOS
+distribution by default. The <a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
 suggests using either <a href="https://brew.sh/" class="external-link">Homebrew</a>, <a href="https://www.macports.org/" class="external-link">MacPorts</a> or <a href="https://developer.apple.com/xcode/" class="external-link">Xcode</a>.</p>
 <div class="section level4">
 <h4 id="homebrew">Homebrew<a class="anchor" aria-label="anchor" href="#homebrew"></a></h4>
@@ -405,12 +380,12 @@ suggests using either <a href="https://brew.sh/" class="external-link">Homebrew<
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">Linux</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">Linux</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Most GNU/Linux distributions will have Git installed by default. If
 not you can install it using the package manager for your distribution.
@@ -455,19 +430,19 @@ and remove the <code>sudo</code> prefix from the following commands.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">GitKraken</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">GitKraken</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><a href="https://www.gitkraken.com/" class="external-link">GitKraken</a> is a GUI porcelain
-for using Git, but it comes bundled with its own version of [Git][git].
-Whilst it is not open source it uses a Freemium model and the free
-version contains all of the functionality required for this course. It
-is available across all three of the mentioned platforms and once
-installed you can start a Terminal by clicking on the <a href="https://help.gitkraken.com/gitkraken-client/terminal/" class="external-link">Terminal
+for using Git, but it comes bundled with its own version of <a href="https://git-scm.com/" class="external-link">Git</a>. Whilst it is not open source it
+uses a Freemium model and the free version contains all of the
+functionality required for this course. It is available across all three
+of the mentioned platforms and once installed you can start a Terminal
+by clicking on the <a href="https://help.gitkraken.com/gitkraken-client/terminal/" class="external-link">Terminal
 button</a> in the toolbar.</p>
 </div>
 </div>
@@ -475,8 +450,77 @@ button</a> in the toolbar.</p>
 </div>
 </section><section id="github"><h2 class="section-heading">GitHub<a class="anchor" aria-label="anchor" href="#github"></a>
 </h2>
-<hr class="half-width"><p>You will also need an account on <a href="#github">GitHub</a>[github.
-If you do not already have one please register.</p>
+<hr class="half-width"><p>You will also need an account on <a href="https://github.com" class="external-link">GitHub</a>. If you do not already have one
+please <a href="https://github.com/signup" class="external-link">register</a>, if you have an
+academic email address such as <code>@&lt;institute&gt;.ac.uk</code> or
+`@&lt;institute.edu** then registering with this address will give you
+access to a few more features.</p>
+<p>You should generate an SSH key and add the public component to your
+GitHub account.</p>
+<p><strong>TODO</strong> Link to instructions on generating keys under
+different OSs.</p>
+</section><section id="conda-environments"><h2 class="section-heading">Conda Environments<a class="anchor" aria-label="anchor" href="#conda-environments"></a>
+</h2>
+<hr class="half-width"><div id="discussion2" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion2"></a>
+</h3>
+<div class="callout-content">
+<p>In order to teach this course we need some code that is version
+controlled and some tasks to complete. <a href="https://python.org" class="external-link">Python</a> has been chosen as the language to
+fulfill that task. You do <em>not</em> need to know Python in order to
+complete the course, the code you need to use is all provided and can be
+copy and pasted.</p>
+<p>However, you <em>do</em> need what is known as a “<em>Virtual
+Environment</em>” setup to be able to install various programmes and run
+the checks that are part of this course. To that end you should install
+<a href="https://docs.anaconda.com/free/miniconda/" class="external-link">Miniconda3</a> on
+your system prior to attending the course.</p>
+<p>If you are already familiar with Python and Virtual Environments you
+can simply create a fresh virtual environment to use for the course.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5">Installing Miniconda</h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div class="accordion-body">
+<p>Please follow the instructions at <a href="https://docs.anaconda.com/free/miniconda/miniconda-install/" class="external-link">Installing
+Miniconda</a> for your Operating System.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6">Creating A Virtual Environment</h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div class="accordion-body">
+<p>You will have to create a virtual environment to undertake the
+course. If you have installed Miniconda as described above you open a
+terminal (Windows use the Git Bash Shell) and create a Virtual
+Environment called <code>git-collaboation</code>, activate it and
+install the Python Package Manager programme <code>pip</code> using the
+following commands.</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> git-collaboration python=3.11</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pip</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -486,7 +530,7 @@ any links that you are not going to use.
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="introduction.html" rel="next">Next: Collaborative Git :... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="introduction.html" rel="next">Next: Introduction... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
@@ -541,8 +585,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/index.html",
   "identifier": "ns-rse.github.io/git-collaboration/index.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-06",
-  "datePublished": "2024-02-06"
+  "dateModified": "2024-02-09",
+  "datePublished": "2024-02-09"
 }
 
   </script><script>
