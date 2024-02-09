@@ -61,8 +61,6 @@ questions and collaborate.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::
-
 ## Collaboration
 
 Since this course is all about collaboration we would like you now to pair up with another participant in order to
@@ -118,6 +116,8 @@ cd python-maths
 :::::::::::::::::::::::::::::::::
 
 After completing these steps you should both have a copy of the `python-maths` repository on your local computer.
+
+:::::::::::::::::::::::: solution
 
 ## Install the Package
 

@@ -2,8 +2,6 @@
 
 config:
 
-# MD013 - line-length
-
   line_length:
     line_length: 120
     code_blocks: false
@@ -11,6 +9,7 @@ config:
   html:
     allowed_elements:
       - div
+  no-duplicate-heading: false
 
 # Globs
 

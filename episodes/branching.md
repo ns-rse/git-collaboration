@@ -80,6 +80,10 @@ You can change branches by using `git checkout <branchname>`.
 
 ## Challenge 1: What is the first and last commit on branch `divide`?
 
+:::::::::::::::::::::::: solution
+
+## Solution
+
 ``` bash
 git checkout divide
 git log --pretty="%h %ad (%cr) %x09 %an : %s"
@@ -93,6 +97,8 @@ git log --pretty="%h %ad (%cr) %x09 %an : %s"
 Use `git log` to determine the commit that `multiply` diverged from `master`.
 
 :::::::::::::::::::::::: solution
+
+## Solution
 
 ``` bash
 git checkout multiply
@@ -182,6 +188,8 @@ function` and checkout the branch.
 
 :::::::::::::::::::::::: solution
 
+## Solution 1
+
 ``` bash
 git checkout main
 git pull
@@ -194,7 +202,7 @@ git checkout ns-rse/0-divide
 
 :::::::::::::::::::::::: solution
 
-## Method 2 : `git checkout -b`
+## Solution 2
 
 When you use `git branch -c` the branch only gets created for you, you then have to switch branch yourself. A shortcut
 to both create and checkout a branch at the same time is provided by `git checkout -b <new_branch>` so you could instead
@@ -228,7 +236,9 @@ redundant branch.
 
 :::::::::::::::::::::::: solution
 
-## Method 1 : `git branch -d`
+## Solution
+
+You can use the `-d` or `--delete` flat to delete a branch.
 
 ``` bash
 git checkout main
@@ -268,6 +278,8 @@ only one of the tasks includes making a pull request, please do _not_ merge the 
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Diverging Branches
 
 As you and your collaborator(s) work on your repository you may find that changes others have made get merged into the
 `main` before you have finished your work. This has in fact just happened, the work to add a Zero Division exception
@@ -360,7 +372,7 @@ Describe how to keep a development branch up-to-date, two strategies
 
 Useful resources...
 
-## Ooops I Did It Again
+## Ooops! I Did It Again
 
 Nothing to do with Brittney Spears but you are at some stage likely to commit changes to the wrong branch. This can
 easily happen when start work on an issue without first creating a new branch to contain the work and you commit the
@@ -378,7 +390,7 @@ branches you will be told that this would over-write the changes to the files yo
 you don't want to lose your work.
 
 The solution here is to use `git stash` to temporarily store the unstaged changes, switch branches to the target branch
-they should be on, and you can then un-stash them (known as `pop`ing) onto the correct branch.
+they should be on, and you can then un-stash them (known as `pop`ing** onto the correct branch.
 
 ### Cherrypicking
 
@@ -390,12 +402,17 @@ will be over-written.
 
 ## Tracking multiple Origins
 
-Describe how to track multiple origins
+**TODO** Describe how to track multiple origins
 
-- First
-- Second
-- Third
-- Fourth
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Branches and how they relate to each other are fundamental to collaborating using Git.
+- The history of a branch extends all the way back to the very first commit and _not_ the point at which it forked from
+  its parents.
+- Branches can be easily created, merged and deleted.
+- It is possible to move commits between branches, but this gets tricky if the changes have been pushed.
+- Worktrees can help alleviate some of the problems encountered when working with multiple branches.
+- It is possible to track multiple origins.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
