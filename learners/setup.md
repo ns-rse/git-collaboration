@@ -13,23 +13,23 @@ as links to download the Git tool GitKraken which includes Git and a Terminal.
 Please complete these setup tasks _before_ attending the course. If you have any issues getting setup please either
 contact an instructor in advance or arrive early and seek assistance from an instructor.
 
-## Data Sets
+## Example Repository
 
-<!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
--->
-Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
+This course uses a GitHub Template that you will, in small groups, create a copy of and collaborate on.
 
 ## Software Setup
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+As this is a course about using [Git][git] you will need to have it installed on your computer. If you're already using
+Git the chances are you already have it installed or it may be integrated into your Integrated Development Environment
+(IDE).
+
+For consistency across operating systems this course uses the Command Line Interface (CLI) to Git and instructions below
+show how to install this on different Operating Systems.
+
+An alternative option is provided using the [GitKraken][gitkraken] client as many of those attending the course may
+already be using this software, but the Command Line Interface of that client will be used.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -115,13 +115,38 @@ clicking on the [Terminal button](https://help.gitkraken.com/gitkraken-client/te
 
 ## GitHub
 
+::::::::::::::::::::::::::::::::::::::: discussion
+
 You will also need an account on [GitHub][gh]. If you do not already have one please
 [register](https://github.com/signup), if you have an academic email address such as `@<institute>.ac.uk` or
-`@<institute.edu** then registering with this address will give you access to a few more features.
+`@<institute.edu` then registering with this address will give you access to a few more features.
 
 You should generate an SSH key and add the public component to your GitHub account.
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::
+
 **TODO** Link to instructions on generating keys under different OSs.
+
+:::::::::::::::: solution
+
+### Windows
+
+:::::::::::::::::::::::::
+
+
+:::::::::::::::: solution
+
+### OSX
+
+:::::::::::::::::::::::::
+
+:::::::::::::::: solution
+
+### Linux
+
+:::::::::::::::::::::::::
+
+
 
 ## Conda Environments
 
