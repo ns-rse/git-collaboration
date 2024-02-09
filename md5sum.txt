@@ -11,5 +11,5 @@
 "episodes/reviewing.md" "7c1c38db17d4980199198f91d7fd7f6e" "site/built/reviewing.md" "2023-12-09"
 "instructors/instructor-notes.md" "4871b9b5f741f3056571289554d27815" "site/built/instructor-notes.md" "2023-12-09"
 "learners/reference.md" "376f0fef94781c05cf42a1ca28cf48ae" "site/built/reference.md" "2023-12-09"
-"learners/setup.md" "55a1f730b73c16724d98d8fa3a292e5c" "site/built/setup.md" "2024-02-09"
+"learners/setup.md" "ffbcd7c59a96885c19288ae7bbdaded7" "site/built/setup.md" "2024-02-09"
 "profiles/learner-profiles.md" "5fe5bf7537072422b91ed393ada03f9a" "site/built/learner-profiles.md" "2023-12-09"
