@@ -23,7 +23,8 @@ globs:
 
 ignores:
 
-- "_site/**/*.qmd"
+- "site/**/*.md"
+- ".github/**/*.md"
 
 # Fix any fixable errors
 
