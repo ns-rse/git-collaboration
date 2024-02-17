@@ -42,24 +42,22 @@ paste("This", "new", "lesson", "looks", "good")
 
 :::::::::::::::::::::::: solution
 
-## Output
+## GitHub
 
-```output
-[1] "This new lesson looks good"
-```
+GitHub uses `~/.github/workflows/*.yaml` to define different Actions to run/
 
 :::::::::::::::::::::::::::::::::
 
-## Challenge 2: how do you nest solutions within challenge blocks?
-
 :::::::::::::::::::::::: solution
 
-You can add a line with at least three colons and a `solution` tag.
+## GitLab
+
+GitLab uses `.gitlab-cy.yaml` for configuring Continuous Integration
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Pre-commit.ci
+## Runners
 
 ::::::::::::::::::::::::::::::::::::: callout
 

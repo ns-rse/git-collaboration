@@ -133,7 +133,6 @@ You should generate an SSH key and add the public component to your GitHub accou
 
 :::::::::::::::::::::::::
 
-
 :::::::::::::::: solution
 
 ### OSX
@@ -145,8 +144,6 @@ You should generate an SSH key and add the public component to your GitHub accou
 ### Linux
 
 :::::::::::::::::::::::::
-
-
 
 ## Conda Environments
 
