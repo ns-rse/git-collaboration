@@ -91,6 +91,10 @@ We will now make a few commits to our branch and then squash them. This helps ke
 commits on a branch but be at the stage where you can combine all information into a single informative commit that is
 ready for merging into the `main` branch.
 
+## Orphaned commits
+
+## `git maintenance`
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `.md` files for episodes when you want static content
