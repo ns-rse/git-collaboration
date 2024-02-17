@@ -89,11 +89,11 @@
   Git Collaboration
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 50%" class="percentage">
-    50%
+<aside class="col-md-12 lesson-progress"><div style="width: 38%" class="percentage">
+    38%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 50%" aria-valuenow="50" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 38%" aria-valuenow="38" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -150,7 +150,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using Markdown</a>
+        <a href="introduction.html">1. Introduction</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -187,9 +187,9 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#branches">Branches</a></li>
-<li><a href="#merging-branches">Merging Branches</a></li>
-<li><a href="#keeping-development-branches-up-to-date">Keeping Development branches up-to-date</a></li>
+        <ul><li><a href="#what-are-hooks">What are hooks?</a></li>
+<li><a href="#types-of-hooks">Types of Hooks</a></li>
+<li><a href="#pre-commit">Pre-Commit</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -209,6 +209,24 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
         <a href="reviewing.html">6. Reviewing</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="project_management.html">7. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="further_resources.html">8. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -272,7 +290,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hooks</h1>
-        <p>Last updated on 2023-12-09 |
+        <p>Last updated on 2024-02-17 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/hooks.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -294,6 +312,7 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul><li>What the hell are hooks?</li>
+<li>How can hooks improve my development workflow?</li>
 </ul></div>
 </div>
 </div>
@@ -310,7 +329,7 @@ stored.</li>
 </div>
 </div>
 </div>
-<section id="branches"><h2 class="section-heading">Branches<a class="anchor" aria-label="anchor" href="#branches"></a>
+<section id="what-are-hooks"><h2 class="section-heading">What are hooks?<a class="anchor" aria-label="anchor" href="#what-are-hooks"></a>
 </h2>
 <hr class="half-width"><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
@@ -327,12 +346,12 @@ View”</p>
 </div>
 </div>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
+<div id="challenge-2-can-you-do-it" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
+<div id="challenge-2-can-you-do-it" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-2-can-you-do-it"></a>
 </h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
@@ -387,7 +406,7 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 </div>
 </div>
 </div>
-</section><section id="merging-branches"><h2 class="section-heading">Merging Branches<a class="anchor" aria-label="anchor" href="#merging-branches"></a>
+</section><section id="types-of-hooks"><h2 class="section-heading">Types of Hooks<a class="anchor" aria-label="anchor" href="#types-of-hooks"></a>
 </h2>
 <hr class="half-width"><div id="callout1" class="callout callout">
 <div class="callout-square">
@@ -405,13 +424,34 @@ to a commonly-asked question.</p>
 </div>
 </div>
 </div>
-</section><section id="keeping-development-branches-up-to-date"><h2 class="section-heading">Keeping Development branches up-to-date<a class="anchor" aria-label="anchor" href="#keeping-development-branches-up-to-date"></a>
+</section><section id="pre-commit"><h2 class="section-heading">Pre-Commit<a class="anchor" aria-label="anchor" href="#pre-commit"></a>
 </h2>
-<hr class="half-width"><p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
-create dynamic reports with {knitr}, so we now use mathjax to describe
-this:</p>
-<p><code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> becomes: <span class="math inline">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span></p>
-<p>Cool, right?</p>
+<hr class="half-width"><p>Pre-commit hooks are <em>really</em> useful to the extent that they
+require special discussion because there is a framework for using such
+hooks, <a href="https://pre-commit.com" class="external-link">pre-commit</a> that makes it
+incredibly easy to add (and configure) some really useful pre-commit
+hooks to your workflow.</p>
+<div class="section level3">
+<h3 id="why-are-pre-commit-hooks-so-important">Why are Pre-Commit hooks so important?<a class="anchor" aria-label="anchor" href="#why-are-pre-commit-hooks-so-important"></a></h3>
+<p>You may be wondering why running hooks prior to commits is so
+important. The short answer is that it reduces the feedback loop and
+speeds up the pace of development. The long answer is that it only
+really becomes apparent after doing so we’re going to have a go at
+installing and enabling some <code>pre-commit</code> hooks on our code
+base, making some changes and committing them.</p>
+<div class="section level4">
+<h4 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h4>
+<p><a href="https://pre-commit.com" class="external-link">pre-commit</a> is written in <a href="https://python.org" class="external-link">Python</a> and hooks are available that lint,
+check and test many languages other than Python.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="adding-hooks">Adding Hooks<a class="anchor" aria-label="anchor" href="#adding-hooks"></a></h3>
+<p>Which hooks you use will depend largely on the language you are
+using.</p>
+</div>
+<div class="section level3">
+<h3 id="pre-commit-ci">Pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit-ci"></a></h3>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -420,14 +460,8 @@ this:</p>
 <h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
+<ul><li>Use hooks liberally, they save you time.</li>
+<li>Enable hooks in CI so contributions are checked.</li>
 </ul></div>
 </div>
 </div>
@@ -435,6 +469,7 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/git_hygiene.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -504,8 +539,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/hooks.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/hooks.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2023-12-09",
-  "datePublished": "2024-01-23"
+  "dateModified": "2024-02-17",
+  "datePublished": "2024-02-17"
 }
 
   </script><script>

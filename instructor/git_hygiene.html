@@ -89,11 +89,11 @@
   Git Collaboration
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 40%" class="percentage">
-    40%
+<aside class="col-md-12 lesson-progress"><div style="width: 25%" class="percentage">
+    25%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 40%" aria-valuenow="40" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 25%" aria-valuenow="25" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -184,6 +184,8 @@
 <li><a href="#git-add-patch"><code>git add patch</code></a></li>
 <li><a href="#git-absorb"><code>git absorb</code></a></li>
 <li><a href="#squashing-commits">Squashing commits</a></li>
+<li><a href="#orphaned-commits">Orphaned commits</a></li>
+<li><a href="#git-maintenance"><code>git maintenance</code></a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -193,7 +195,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="continuous_integration.html">4. Continuous Integration</a>
+        <a href="hooks.html">4. Hooks</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -202,7 +204,34 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="reviewing.html">5. Reviewing</a>
+        <a href="continuous_integration.html">5. Continuous Integration</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="reviewing.html">6. Reviewing</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="project_management.html">7. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="further_resources.html">8. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -251,7 +280,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/branching.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/continuous_integration.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/hooks.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -259,14 +288,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Branching
         </a>
-        <a class="chapter-link float-end" href="../instructor/continuous_integration.html" rel="next">
-          Next: Continuous... 
+        <a class="chapter-link float-end" href="../instructor/hooks.html" rel="next">
+          Next: Hooks... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Git Hygiene</h1>
-        <p>Last updated on 2024-02-09 |
+        <p>Last updated on 2024-02-17 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/git_hygiene.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -320,7 +349,7 @@
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -352,7 +381,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Output</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -381,7 +410,7 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -427,7 +456,12 @@ sequentially update a commits you may still have several commits on a
 branch but be at the stage where you can combine all information into a
 single informative commit that is ready for merging into the
 <code>main</code> branch.</p>
-<div id="keypoints1" class="callout keypoints">
+</section><section id="orphaned-commits"><h2 class="section-heading">Orphaned commits<a class="anchor" aria-label="anchor" href="#orphaned-commits"></a>
+</h2>
+<hr class="half-width"></section><section id="git-maintenance"><h2 class="section-heading">
+<code>git maintenance</code><a class="anchor" aria-label="anchor" href="#git-maintenance"></a>
+</h2>
+<hr class="half-width"><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -453,7 +487,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/branching.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/continuous_integration.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/hooks.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -461,8 +495,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Branching
         </a>
-        <a class="chapter-link float-end" href="../instructor/continuous_integration.html" rel="next">
-          Next: Continuous... 
+        <a class="chapter-link float-end" href="../instructor/hooks.html" rel="next">
+          Next: Hooks... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -519,8 +553,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/git_hygiene.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/git_hygiene.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-09",
-  "datePublished": "2024-02-13"
+  "dateModified": "2024-02-17",
+  "datePublished": "2024-02-17"
 }
 
   </script><script>

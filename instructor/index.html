@@ -181,7 +181,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="continuous_integration.html">4. Continuous Integration</a>
+        <a href="hooks.html">4. Hooks</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -190,7 +190,34 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="reviewing.html">5. Reviewing</a>
+        <a href="continuous_integration.html">5. Continuous Integration</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="reviewing.html">6. Reviewing</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="project_management.html">7. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="further_resources.html">8. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -316,7 +343,17 @@ commits?<br>How do I squash commits?
 <span class="visually-hidden">Duration: </span>00h 36m
 </td>
 <td>
- 4. <a href="continuous_integration.html">Continuous Integration</a>
+ 4. <a href="hooks.html">Hooks</a>
+</td>
+<td>
+What the hell are hooks?<br>How can hooks improve my development
+workflow?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>00h 48m
+</td>
+<td>
+ 5. <a href="continuous_integration.html">Continuous Integration</a>
 </td>
 <td>
 How can I get a computer to automate tasks?<br>How do I shorten the
@@ -324,16 +361,36 @@ feedback loop when developing code?<br>How can I use GitHub
 Actions/GitLab CI?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 48m
+<span class="visually-hidden">Duration: </span>01h 00m
 </td>
 <td>
- 5. <a href="reviewing.html">Reviewing</a>
+ 6. <a href="reviewing.html">Reviewing</a>
 </td>
 <td>
 How can I make useful and constructive Pull Request reviews?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 00m
+<span class="visually-hidden">Duration: </span>01h 12m
+</td>
+<td>
+ 7. <a href="project_management.html">Project Management</a>
+</td>
+<td>
+How can I use GitHub/GitLab tools to manage my project?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 24m
+</td>
+<td>
+ 8. <a href="further_resources.html">Further Resources</a>
+</td>
+<td>
+Wow there is a lot I’m overwhelmed, will I ever know it all?<br>How can
+I keep on learning more about Git?<br>What material would you
+recommend?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 36m
 </td>
 <td>
 Finish
@@ -393,7 +450,7 @@ Line Interface of that client will be used.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Windows</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can use the <a href="https://git-scm.com/download/win" class="external-link">official
 binary</a> but we encourage you to use <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell" class="external-link">Git
@@ -411,7 +468,7 @@ bundled together).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><a href="https://git-scm.com/" class="external-link">Git</a> is not included in the MacOS
 distribution by default. The <a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
@@ -441,7 +498,7 @@ suggests using either <a href="https://brew.sh/" class="external-link">Homebrew<
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Linux</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Most GNU/Linux distributions will have Git installed by default. If
 not you can install it using the package manager for your distribution.
@@ -491,7 +548,7 @@ and remove the <code>sudo</code> prefix from the following commands.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">GitKraken</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><a href="https://www.gitkraken.com/" class="external-link">GitKraken</a> is a GUI porcelain
 for using Git, but it comes bundled with its own version of <a href="https://git-scm.com/" class="external-link">Git</a>. Whilst it is not open source it
@@ -531,7 +588,7 @@ different OSs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Windows</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 
 </div>
@@ -543,7 +600,7 @@ different OSs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">OSX</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 
 </div>
@@ -555,7 +612,7 @@ different OSs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Linux</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 
 </div>
@@ -592,7 +649,7 @@ can simply create a fresh virtual environment to use for the course.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Installing Miniconda</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>Please follow the instructions at <a href="https://docs.anaconda.com/free/miniconda/miniconda-install/" class="external-link">Installing
 Miniconda</a> for your Operating System.</p>
@@ -605,7 +662,7 @@ Miniconda</a> for your Operating System.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9">Creating A Virtual Environment</h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <p>You will have to create a virtual environment to undertake the
 course. If you have installed Miniconda as described above you open a
@@ -688,8 +745,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/index.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/index.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-13",
-  "datePublished": "2024-02-13"
+  "dateModified": "2024-02-17",
+  "datePublished": "2024-02-17"
 }
 
   </script><script>

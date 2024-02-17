@@ -222,7 +222,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="continuous_integration.html">4. Continuous Integration</a>
+        <a href="hooks.html">4. Hooks</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -234,7 +234,43 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="reviewing.html">5. Reviewing</a>
+        <a href="continuous_integration.html">5. Continuous Integration</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="reviewing.html">6. Reviewing</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="project_management.html">7. Project Management</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="further_resources.html">8. Further Resources</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -303,12 +339,16 @@
 <ul>
 <li>Branches and how they relate to each other are fundamental to
 collaborating using Git.</li>
-<li>The history of a branch extends all the way back to the very first
-commit and <em>not</em> the point at which it forked from its
-parents.</li>
+<li>The history of a branch is a series of commits and extends all the
+way back to the very first commit and <em>not</em> the point at which it
+forked from its parents.</li>
 <li>Branches can be easily created, merged and deleted.</li>
-<li>It is possible to move commits between branches, but this gets
-tricky if the changes have been pushed.</li>
+<li>Commits all have references and Git can move you between these
+references using <code>git commit</code> or compare them using
+<code>git diff</code>.</li>
+<li>Branches can become outdated as work progresses, they can be brought
+up-to-date with either <code>git merge</code> or
+<code>git rebase</code>.</li>
 <li>Worktrees can help alleviate some of the problems encountered when
 working with multiple branches.</li>
 <li>It is possible to track multiple origins.</li>
@@ -323,6 +363,11 @@ output</li>
 with your lesson</li>
 <li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
 locally</li>
+</ul></section><section id="hooks"><h2 class="section-heading"><a href="hooks.html">Hooks</a></h2>
+<hr class="half-width">
+<ul>
+<li>Use hooks liberally, they save you time.</li>
+<li>Enable hooks in CI so contributions are checked.</li>
 </ul></section><section id="continuous_integration"><h2 class="section-heading"><a href="continuous_integration.html">Continuous Integration</a></h2>
 <hr class="half-width">
 <ul>
@@ -345,7 +390,19 @@ output</li>
 with your lesson</li>
 <li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
 locally</li>
-</ul></section>
+</ul></section><section id="project_management"><h2 class="section-heading"><a href="project_management.html">Project Management</a></h2>
+<hr class="half-width">
+<ul>
+<li>Use <code>.md</code> files for episodes when you want static
+content</li>
+<li>Use <code>.Rmd</code> files for episodes when you need to generate
+output</li>
+<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
+with your lesson</li>
+<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
+locally</li>
+</ul></section><section id="further_resources"><h2 class="section-heading"><a href="further_resources.html">Further Resources</a></h2>
+<hr class="half-width"></section>
 </div>
     </main>
 </div>
@@ -404,8 +461,8 @@ locally</li>
   "url": "ns-rse.github.io/git-collaboration/key-points.html",
   "identifier": "ns-rse.github.io/git-collaboration/key-points.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-13",
-  "datePublished": "2024-02-13"
+  "dateModified": "2024-02-17",
+  "datePublished": "2024-02-17"
 }
 
   </script><script>
