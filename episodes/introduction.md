@@ -20,6 +20,19 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+[Git][git] is, in 2024, the most widely used version control system by far. It was developed by Linus Torvalds to manage
+[Linux kernel][linux] development and since then has exploded. Websites such as [GitHub][gh] and [GitLab][gl]
+make asynchronous collaboration on common code bases possible and underpin many, many software projects from enterprise
+grade tools such as the aforementioned [Linux kernel][linuxGithub], the increasingly popular [Rust][rustGitHub] through
+to niche products such as [Snapcast][snapcast] or Android apps for tracking your exercise such as
+[OpenTracks][openTracks].
+
+Git and Forges, online repositories for working with version control, as [GitHub][gh], [[GitLab][gl] and others such as
+[SourceHut][sourcehut], [Codeberg][codeberg] and so forth are known are wonderful tools for, but because of the
+complexities of version controlling software in distributed, collaborative environments the tool itself has become quite
+complex. There are many different tasks that one may wish to undertake and often several different ways of achieving
+these.
+
 Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
 collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
 yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
@@ -38,9 +51,8 @@ Conduct. In order to foster a positive and professional learning environment we 
 - Focus on what is best for the community
 - Show courtesy and respect towards other community members
 
-If you believe someone is violating the Code of Conduct,
-we ask that you report it to The Carpentries Code of Conduct Committee
-by completing [this form](https://goo.gl/forms/KoUfO53Za3apOuOK2).
+If you believe someone is violating the Code of Conduct, we ask that you report it to The Carpentries Code of Conduct
+Committee by completing [this form](https://goo.gl/forms/KoUfO53Za3apOuOK2).
 
 ## Icebreaker
 
@@ -69,8 +81,7 @@ course or if the course is online one of the instructors will pair you up at ran
 
 Once paired up please add details to the Etherpad along with your GitHub usernames.
 
-Between you please choose one person who will be the repository owner and one who will be a collaborator. The owner
-should
+Between you please choose one person who will be the repository owner and one who will be a collaborator.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -92,7 +103,7 @@ _Settings > People_ and add you collaborator to the project.
 
 :::::::::::::::::::::::: solution
 
-You should receive an email from GitHub inviting you to collaborate on the repository or had a notification on GitHub
+The pern You should receive an email from GitHub inviting you to collaborate on the repository or had a notification on GitHub
 that you have been invited to collaborate on a repository. Accept this invitation.
 
 :::::::::::::::::::::::::::::::::
@@ -141,7 +152,16 @@ pip install -e .[tests]
 
 [carpentryPad]: https://pad.carpentries.org/
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
+[codeberg]: https://codeberg.org/
 [git]: https://git-scm.com
+[gh]: https://github.com
+[gl]: https://gitlab.com
+[linux]: https://www.kernel.org
+[linuxGithub]: https://github.com/torvalds/linux
+[openTracks]: https://github.com/OpenTracksApp/OpenTracks
 [pythonMaths]: https://github.com/ns-rse/python-maths
+[rustGithub]: https://github.com/rust-lang/rust
+[snapcast]: https://mjaggard.github.io/snapcast/
+[sourcehut]: https://sourcehut.org/
 [swCarpentryGit]: https://swcarpentry.github.io/git-novice/
 [zeroHero]: https://srse-git-github-zero2hero.netlify.app
