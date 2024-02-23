@@ -289,7 +289,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p>Last updated on 2024-02-09 |
+        <p>Last updated on 2024-02-23 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -331,6 +331,22 @@ workshop.</li>
 </div>
 </div>
 </div>
+<p><a href="https://git-scm.com" class="external-link">Git</a> is, in 2024, the most widely
+used version control system by far. It was developed by Linus Torvalds
+to manage <a href="https://www.kernel.org" class="external-link">Linux kernel</a> development
+and since then has exploded. Websites such as <a href="https://github.com" class="external-link">GitHub</a> and <a href="https://gitlab.com" class="external-link">GitLab</a> make asynchronous collaboration on
+common code bases possible and underpin many, many software projects
+from enterprise grade tools such as the aforementioned <a href="https://github.com/torvalds/linux" class="external-link">Linux kernel</a>, the
+increasingly popular <a href="https://github.com/rust-lang/rust" class="external-link">Rust</a> through to niche
+products such as <a href="https://mjaggard.github.io/snapcast/" class="external-link">Snapcast</a> or Android apps
+for tracking your exercise such as <a href="https://github.com/OpenTracksApp/OpenTracks" class="external-link">OpenTracks</a>.</p>
+<p>Git and Forges, online repositories for working with version control,
+as <a href="https://github.com" class="external-link">GitHub</a>, [<a href="https://gitlab.com" class="external-link">GitLab</a> and others such as <a href="https://sourcehut.org/" class="external-link">SourceHut</a>, <a href="https://codeberg.org/" class="external-link">Codeberg</a> and so forth are known are
+wonderful tools for, but because of the complexities of version
+controlling software in distributed, collaborative environments the tool
+itself has become quite complex. There are many different tasks that one
+may wish to undertake and often several different ways of achieving
+these.</p>
 <p>Its relatively easy to get the <em>basics</em> of working with <a href="https://git-scm.com" class="external-link">Git</a> on your own or with small groups to
 work collaboratively on code development. If you aren’t already familiar
 with these basics then this course isn’t for you, yet, and you would
@@ -381,7 +397,7 @@ situation to the person next to you.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Before the start of the course you should setup a new <a href="https://pad.carpentries.org/" class="external-link">collaborative pad</a> where
 participants can answer questions and collaborate.</p>
@@ -405,7 +421,7 @@ instructors will pair you up at random.</p>
 <p>Once paired up please add details to the Etherpad along with your
 GitHub usernames.</p>
 <p>Between you please choose one person who will be the repository owner
-and one who will be a collaborator. The owner should</p>
+and one who will be a collaborator.</p>
 <div id="choose-roles-copy-template-repository-and-clone" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -440,11 +456,12 @@ People</em> and add you collaborator to the project.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>You should receive an email from GitHub inviting you to collaborate
-on the repository or had a notification on GitHub that you have been
-invited to collaborate on a repository. Accept this invitation.</p>
+<p>The pern You should receive an email from GitHub inviting you to
+collaborate on the repository or had a notification on GitHub that you
+have been invited to collaborate on a repository. Accept this
+invitation.</p>
 </div>
 </div>
 </div>
@@ -454,7 +471,7 @@ invited to collaborate on a repository. Accept this invitation.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Clone the repository</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Both the repository owner and collaborator should now clone the
 repository <em>from the repository owners copy <strong>not</strong> the
@@ -491,7 +508,7 @@ in a terminal</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Install the Package</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>If you have not already done so activate the
 <code>git-collaboration</code> environment you created as described in
@@ -588,8 +605,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/introduction.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/introduction.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-09",
-  "datePublished": "2024-02-20"
+  "dateModified": "2024-02-23",
+  "datePublished": "2024-02-23"
 }
 
   </script><script>

@@ -188,7 +188,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-are-hooks">What are hooks?</a></li>
-<li><a href="#types-of-hooks">Types of Hooks</a></li>
+<li><a href="#pull-before-push">Pull before push</a></li>
 <li><a href="#pre-commit">Pre-Commit</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -290,7 +290,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hooks</h1>
-        <p>Last updated on 2024-02-17 |
+        <p>Last updated on 2024-02-23 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/hooks.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -329,67 +329,184 @@ stored.</li>
 </div>
 <section id="what-are-hooks"><h2 class="section-heading">What are hooks?<a class="anchor" aria-label="anchor" href="#what-are-hooks"></a>
 </h2>
-<hr class="half-width"><div id="challenge-2-can-you-do-it" class="callout challenge">
+<hr class="half-width"><p>Hooks are actions, typically a one or more scripts, that are run in
+response to a particular event. Git has a number of stages at which
+hooks can be run, events such as <code>commit</code>, <code>push</code>,
+<code>pull</code> all have hooks that can run <code>pre</code> (before)
+or <code>post</code> (after) the action and these are <em>really</em>
+useful for helping automate your workflow as they can capture problems
+with linting and tests much earlier in the development cycle than for
+example Continuous Integration failing after pull requests have been
+made.</p>
+<p>In a Git repository hooks live in the <code>.git/hooks</code>
+directory and are short <a href="https://www.gnu.org/software/bash/" class="external-link">Bash</a> scripts that are
+executed at the relevant stage. We can list the contents of this
+directory with <code>ls -lha .git/hooks</code> and you will see there
+are a number of executable files with names that indicate at what stage
+they are run but all have the <code>.sample</code> extension which means
+they are <em>not</em> executed in response to any of the actions.</p>
+
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>❱ mkdir test
+❱ cd test
+❱ git init
+❱ ls -lha .git/hooks
+drwxr-xr-x neil neil 4.0 KB Fri Feb 23 10:40:42 2024 .
+drwxr-xr-x neil neil 4.0 KB Fri Feb 23 10:40:46 2024 ..
+.rwxr-xr-x neil neil 478 B  Fri Feb 23 10:40:42 2024 applypatch-msg.sample
+.rwxr-xr-x neil neil 896 B  Fri Feb 23 10:40:42 2024 commit-msg.sample
+.rwxr-xr-x neil neil 4.6 KB Fri Feb 23 10:40:42 2024 fsmonitor-watchman.sample
+.rwxr-xr-x neil neil 189 B  Fri Feb 23 10:40:42 2024 post-update.sample
+.rwxr-xr-x neil neil 424 B  Fri Feb 23 10:40:42 2024 pre-applypatch.sample
+.rwxr-xr-x neil neil 1.6 KB Fri Feb 23 10:40:42 2024 pre-commit.sample
+.rwxr-xr-x neil neil 416 B  Fri Feb 23 10:40:42 2024 pre-merge-commit.sample
+.rwxr-xr-x neil neil 1.3 KB Fri Feb 23 10:40:42 2024 pre-push.sample
+.rwxr-xr-x neil neil 4.8 KB Fri Feb 23 10:40:42 2024 pre-rebase.sample
+.rwxr-xr-x neil neil 544 B  Fri Feb 23 10:40:42 2024 pre-receive.sample
+.rwxr-xr-x neil neil 1.5 KB Fri Feb 23 10:40:42 2024 prepare-commit-msg.sample
+.rwxr-xr-x neil neil 2.7 KB Fri Feb 23 10:40:42 2024 push-to-checkout.sample
+.rwxr-xr-x neil neil 2.3 KB Fri Feb 23 10:40:42 2024 sendemail-validate.sample
+.rwxr-xr-x neil neil 3.6 KB Fri Feb 23 10:40:42 2024 update.sample
+</code></pre>
+</div>
+<p>If you create a repository on <a href="https://github.com" class="external-link">GitHub</a>, <a href="https://gitlab.com" class="external-link">GitLab</a> or another forge when you clone it
+locally these samples are created on your system. They are <em>not</em>
+part of the repository itself as files under the <code>.git</code>
+directory are not part of the repository.</p>
+<div id="checking-out-sample-hooks" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-2-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-2-can-you-do-it"></a>
+<div id="checking-out-sample-hooks" class="callout-inner">
+<h3 class="callout-title">Checking out sample hooks<a class="anchor" aria-label="anchor" href="#checking-out-sample-hooks"></a>
 </h3>
 <div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
-</div>
+<p>Lets take a look at the hooks in the <a href="https://github.com/ns-rse/python-maths" class="external-link"><code>python-maths</code></a>
+repository you have cloned for this course.</p>
 </div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Output</h4>
+  <h4 class="accordion-header" id="headingSolution1">Challenge 1: What does .git/hooks/pre-push.sample do?</h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>Git will have populated the <code>.git/hooks</code> directory
+automatically when you cloned the <a href="https://github.com/ns-rse/python-maths" class="external-link"><code>python-maths</code></a>.</p>
+<ol style="list-style-type: decimal"><li>Change directory to the clone <code>python-maths</code>
+directory.</li>
+<li>Look at the file <code>.git/hooks/pre-push.sample</code>, what does
+this sample prevent from happening?</li>
+</ol><div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] "This new lesson looks good"</code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> mkdir test</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> cd test</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git init</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> cat .git/hooks/pre-push.sample</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># An example hook script to verify what is about to be pushed.  Called by "git</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># push" after it has checked the remote status, but before anything has been</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pushed.  If this script exits with a non-zero status nothing will be pushed.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This hook is called with the following parameters:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># $1 -- Name of the remote to which the push is being done</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># $2 -- URL to which the push is being done</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># If pushing without using a named remote those arguments will be equal.</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Information about the commits which are being pushed is supplied as lines to</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># the standard input in the form:</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;local ref&gt; &lt;local oid&gt; &lt;remote ref&gt; &lt;remote oid&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># This sample shows how to prevent push of commits where the log message starts</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># with "WIP" (work in progress).</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="va">remote</span><span class="op">=</span><span class="st">"</span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"</span><span class="va">$2</span><span class="st">"</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="va">zero</span><span class="op">=</span><span class="va">$(</span><span class="fu">git</span> hash-object <span class="at">--stdin</span> <span class="op">&lt;</span>/dev/null <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'[0-9a-f]'</span> <span class="st">'0'</span><span class="va">)</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">local_ref</span> <span class="va">local_oid</span> <span class="va">remote_ref</span> <span class="va">remote_oid</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">test</span> <span class="st">"</span><span class="va">$local_oid</span><span class="st">"</span> = <span class="st">"</span><span class="va">$zero</span><span class="st">"</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">then</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Handle delete</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">:</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">test</span> <span class="st">"</span><span class="va">$remote_oid</span><span class="st">"</span> = <span class="st">"</span><span class="va">$zero</span><span class="st">"</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">then</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>            <span class="co"># New branch, examine all commits</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            <span class="va">range</span><span class="op">=</span><span class="st">"</span><span class="va">$local_oid</span><span class="st">"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Update to existing branch, examine new commits</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            <span class="va">range</span><span class="op">=</span><span class="st">"</span><span class="va">$remote_oid</span><span class="st">..</span><span class="va">$local_oid</span><span class="st">"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check for WIP commit</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="va">commit</span><span class="op">=</span><span class="va">$(</span><span class="fu">git</span> rev-list <span class="at">-n</span> 1 <span class="at">--grep</span> <span class="st">'^WIP'</span> <span class="st">"</span><span class="va">$range</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">test</span> <span class="at">-n</span> <span class="st">"</span><span class="va">$commit</span><span class="st">"</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">then</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="op">&gt;&amp;</span><span class="dv">2</span> <span class="st">"Found WIP commit in </span><span class="va">$local_ref</span><span class="st">, not pushing"</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="bu">exit</span> 1</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre>
 </div>
+<p>When enabled this hook will “<em>prevent push of commits where the
+log message starts with ”WIP” (work in progress)</em>”</p>
 </div>
-</div>
-</div>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within
-challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do-you-nest-solutions-within-challenge-blocks"></a>
-</h3>
-<div class="callout-content">
-
 </div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2">Challenge 2: Enable the pre-push hook and test it</h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p>You can add a line with at least three colons and a
-<code>solution</code> tag.</p>
+<p>This sounds like a good idea as it, notionally, prevents people from
+pushing work that is in progress, if they are in the habit of starting
+commit messages with “WIP”.</p>
+<ol style="list-style-type: decimal"><li>Enable the hook.</li>
+<li>Create a new branch <code>&lt;github-user&gt;/test-hook</code> to
+test the hook on.</li>
+<li>Make an empty commit with a message that starts with
+<code>WIP</code>
+e.g. <code>git commit --allow-empty "WIP - testing the    pre-push commit"</code>.
+Was the commit pushed?</li>
+<li>Delete the branch you created.</li>
+</ol><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> cd ~/path/to/python-maths</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> cp .git/hooks/pre-push.sample .git/hooks/pre-push</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git switch <span class="at">-c</span> ns-rse/test-hook</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"WIP - testing the pre-push hook"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git push</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> Permission to ns-rse/python-maths.git denied to slackline.</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> Could not read from remote repository.</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> make sure you have the correct access rights</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">and</span> the repository exists.</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git switch main</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git branch <span class="at">-D</span> ns-rse/test-hook</span></code></pre>
 </div>
 </div>
 </div>
 </div>
-</section><section id="types-of-hooks"><h2 class="section-heading">Types of Hooks<a class="anchor" aria-label="anchor" href="#types-of-hooks"></a>
+</div>
+</section><section id="pull-before-push"><h2 class="section-heading">Pull before push<a class="anchor" aria-label="anchor" href="#pull-before-push"></a>
 </h2>
 <hr class="half-width"><div id="callout1" class="callout callout">
 <div class="callout-square">
@@ -399,11 +516,27 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 <h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Callout sections can highlight information.</p>
-<p>They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present “asides”: content that is
-not central to the narrative of the lesson, e.g. by providing the answer
-to a commonly-asked question.</p>
+<p>You may have encountered the <a href="https://docs.github.com/en/get-started/using-git/dealing-with-non-fast-forward-errors" class="external-link">non-fast-forward
+error</a> when attempting to push your changes to a remote. As the
+message shows this is because there are changes to the remote branch
+that are not in the local branch and you are advised to
+<code>git pull</code> before attempting to <code>git push</code>
+again.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❱</span> git push origin main</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> To <span class="ex">https://github.com/USERNAME/REPOSITORY.git</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>  ! <span class="ex">[rejected]</span>        main <span class="at">-</span><span class="op">&gt;</span> main <span class="er">(</span><span class="ex">non-fast-forward</span><span class="kw">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> error: <span class="ex">failed</span> to push some refs to <span class="st">'https://github.com/USERNAME/REPOSITORY.git'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> To <span class="ex">prevent</span> you from losing history, non-fast-forward updates were rejected</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> Merge <span class="ex">the</span> remote changes <span class="er">(</span><span class="ex">e.g.</span> <span class="st">'git pull'</span><span class="kw">)</span> <span class="ex">before</span> pushing again.  See the</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="st">'Note about fast-forwards'</span> <span class="ex">section</span> of <span class="st">'git push --help'</span> for details.</span></code></pre>
+</div>
+<p>A simple addition you can add to the <code>.git/hooks/pre-push</code>
+script is to have it <code>git pull</code> before attempting to make a
+<code>git push</code> which will mean you are unlikely to see the above
+message in the future.</p>
 </div>
 </div>
 </div>
@@ -522,8 +655,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/hooks.html",
   "identifier": "ns-rse.github.io/git-collaboration/hooks.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-17",
-  "datePublished": "2024-02-20"
+  "dateModified": "2024-02-23",
+  "datePublished": "2024-02-23"
 }
 
   </script><script>
