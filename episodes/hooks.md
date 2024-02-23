@@ -8,14 +8,17 @@ exercises: 2
 
 - What the hell are hooks?
 - How can hooks improve my development workflow?
-
+- What is `pre-commit` and how does it relate to the `pre-commit` hook?
+- Ho
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Understand the concept of a hook.
+- Understand what Git hooks are.
 - Know what the different types of hooks are and where they are stored.
-- Understand how pre-commit fits in to the hooks framework.
+- Understand how `pre-commit` framework is configured and runs.
+- Add new hooks and repos to `pre-commit`.
+- How to keep `pre-commit` tidy.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -80,12 +83,10 @@ Lets take a look at the hooks in the [`python-maths`][pm] repository you have cl
 Git will have populated the `.git/hooks` directory automatically when you cloned the [`python-maths`][pm].
 
 1. Change directory to the clone `python-maths` directory.
-2. Look at the file `.git/hooks/pre-push.sample`, what does this sample prevent from happening?
+2. Look at the file `.git/hooks/pre-push.sample`.
 
 ``` bash
-❱ mkdir test
-❱ cd test
-❱ git init
+❱ cd python-maths
 ❱ cat .git/hooks/pre-push.sample
 #!/bin/sh
 
@@ -160,7 +161,7 @@ the habit of starting commit messages with "WIP".
 4. Delete the branch you created.
 
 ``` bash
-❱ cd ~/path/to/python-maths
+❱ cd python-maths
 ❱ cp .git/hooks/pre-push.sample .git/hooks/pre-push
 ❱ git switch -c ns-rse/test-hook
 ❱ git commit --allow-empty -m "WIP - testing the pre-push hook"
@@ -204,38 +205,757 @@ A simple addition you can add to the `.git/hooks/pre-push` script is to have it 
 
 ## Pre-Commit
 
-Pre-commit hooks are _really_ useful to the extent that they require special discussion because there is a framework for
-using such hooks, [pre-commit][pre-commit] that makes it incredibly easy to add (and configure) some really useful
-pre-commit hooks to your workflow.
+Pre-commit hooks that run before commits are made are _really_ useful to the extent that they require special discussion
+and will be the focus of the remainder of this episode.
+
+There is a framework for `pre-commit` hooks called, unsurprisingly [pre-commit][pc] that makes it incredibly
+easy to add (and configure) some really useful `pre-commit` hooks to your workflow.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+From here on whenever `pre-commit` is mentioned it refers to the Python package [pre-commit][pc] and _not_ the
+hook that resides at `.git/hooks/pre-commit`, although we will look at that file.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Why are Pre-Commit hooks so important?
 
 You may be wondering why running hooks prior to commits is so important. The short answer is that it reduces the
-feedback loop and speeds up the pace of development. The long answer is that it only really becomes apparent after doing
-so we're going to have a go at installing and enabling some `pre-commit` hooks on our code base, making some changes and
-committing them.
+feedback loop and speeds up the pace of development. The long answer is that it only really becomes apparent after using
+them so we're going to have a go at installing and enabling some `pre-commit` hooks on our code base, making some
+changes and committing them.
 
-#### Installation
+### Installation
 
-[pre-commit][pre-commit] is written in [Python][python] and hooks are available that lint, check and test many languages
-other than Python.
+[pre-commit][pc] is written in [Python][python] but hooks are available that lint, check and test many languages
+other than Python. Many Linux systems have [pre-commit][pc] in their package management systems so if you are using
+Linux or OSX you can install these at the system level.
 
-### Adding Hooks
+However, for this course the setup instructions asked you to install [Miniconda][miniconda3] and we can install
+[`pre-commit`][pc] in a Conda environment to leverage it. The steps to do so are
 
-Which hooks you use will depend largely on the language you are using.
+1. Create a Conda environment called `python-maths` with `conda create -n python-maths python=3.11`
+2. Activate the newly created `python-maths` environment.
+3. Install `pre-commit` in the `python-maths` repository.
 
-### Pre-commit.ci
+``` bash
+❱ conda create -n python-maths python=3.11
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/neil/miniconda3/envs/python-maths
+
+  added / updated specs:
+    - python=3.11
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    openssl-3.0.13             |       h7f8727e_0         5.2 MB
+    pip-23.3.1                 |  py311h06a4308_0         3.3 MB
+    python-3.11.7              |       h955ad1f_0        32.8 MB
+    setuptools-68.2.2          |  py311h06a4308_0         1.2 MB
+    tzdata-2023d               |       h04d1e81_0         117 KB
+    ------------------------------------------------------------
+                                           Total:        42.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h7b6447c_0
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2023.12.12-h06a4308_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_0
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
+  openssl            pkgs/main/linux-64::openssl-3.0.13-h7f8727e_0
+  pip                pkgs/main/linux-64::pip-23.3.1-py311h06a4308_0
+  python             pkgs/main/linux-64::python-3.11.7-h955ad1f_0
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
+  setuptools         pkgs/main/linux-64::setuptools-68.2.2-py311h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.41.2-h5eee18b_0
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
+  tzdata             pkgs/main/noarch::tzdata-2023d-h04d1e81_0
+  wheel              pkgs/main/linux-64::wheel-0.41.2-py311h06a4308_0
+  xz                 pkgs/main/linux-64::xz-5.4.5-h5eee18b_0
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate python-maths
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+❱ conda activate python-maths
+(python-maths) ❱ conda install pre-commit
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/neil/miniconda3/envs/python-maths
+
+  added / updated specs:
+    - pre-commit
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    cffi-1.16.0                |  py311h5eee18b_0         314 KB
+    cfgv-3.4.0                 |  py311h06a4308_0          20 KB
+    distlib-0.3.6              |  py311h06a4308_0         456 KB
+    filelock-3.13.1            |  py311h06a4308_0          24 KB
+    identify-2.5.5             |  py311h06a4308_0          89 KB
+    nodeenv-1.7.0              |  py311h06a4308_0          53 KB
+    platformdirs-2.5.2         |  py311h06a4308_0          27 KB
+    pre-commit-3.4.0           |  py311h06a4308_1         288 KB
+    pyyaml-6.0.1               |  py311h5eee18b_0         210 KB
+    virtualenv-20.17.1         |  py311h06a4308_0         6.2 MB
+    yaml-0.2.5                 |       h7b6447c_0          75 KB
+    ------------------------------------------------------------
+                                           Total:         7.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  cffi               pkgs/main/linux-64::cffi-1.16.0-py311h5eee18b_0
+  cfgv               pkgs/main/linux-64::cfgv-3.4.0-py311h06a4308_0
+  distlib            pkgs/main/linux-64::distlib-0.3.6-py311h06a4308_0
+  filelock           pkgs/main/linux-64::filelock-3.13.1-py311h06a4308_0
+  identify           pkgs/main/linux-64::identify-2.5.5-py311h06a4308_0
+  nodeenv            pkgs/main/linux-64::nodeenv-1.7.0-py311h06a4308_0
+  platformdirs       pkgs/main/linux-64::platformdirs-2.5.2-py311h06a4308_0
+  pre-commit         pkgs/main/linux-64::pre-commit-3.4.0-py311h06a4308_1
+  pycparser          pkgs/main/noarch::pycparser-2.21-pyhd3eb1b0_0
+  pyyaml             pkgs/main/linux-64::pyyaml-6.0.1-py311h5eee18b_0
+  ukkonen            pkgs/main/linux-64::ukkonen-1.0.1-py311hdb19cb5_0
+  virtualenv         pkgs/main/linux-64::virtualenv-20.17.1-py311h06a4308_0
+  yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0
+
+
+Proceed ([y]/n)? y
+
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(python-maths) ❱ pre-commit install
+pre-commit installed at .git/hooks/pre-commit
+```
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Examples of installing [pre-commit][pc] at the system level for different Linux systems or OSX. Note you will
+need to have `root` access to install packages on your Linux system.
+
+``` bash
+# Arch Linux
+❱ pacman -Syu pre-commit
+# Gentoo
+❱ emerge -av pre-commit
+# Debin/Ubuntu
+❱ apt-get install pre-commit
+# OSX Homebrew
+❱ brew install pre-commit
+```
+
+The advantage of this is that you will be able to `pre-commit install` in any repository without first having to
+activate a virtual environment.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Checking out the installed `pre-commit` hook
+
+We have just installed `pre-commit` locally in the `python-maths` repository lets see what it has done.
+
+:::::::::::::::::::::::: solution
+
+## Challenge 3: What will the message say if `pre-commit` can not be found by the `pre-commit` hook?
+
+We can look at the `.git/hooks/pre-commit` file that we were told was installed and see that near the end a message is
+`echo` that reads "_`pre-commit`_ not found. Did you forget to activate your virtualenv?".
+
+``` bash
+❱ cat .git/hooks/pre-commit
+#!/usr/bin/env bash
+# File generated by pre-commit: https://pre-commit.com
+# ID: 138fd403232d2ddd5efb44317e38bf03
+
+# start templated
+INSTALL_PYTHON=/home/neil/miniconda3/envs/python-maths/bin/python
+ARGS=(hook-impl --config=.pre-commit-config.yaml --hook-type=pre-commit)
+# end templated
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ARGS+=(--hook-dir "$HERE" -- "$@")
+
+if [ -x "$INSTALL_PYTHON" ]; then
+    exec "$INSTALL_PYTHON" -mpre_commit "${ARGS[@]}"
+elif command -v pre-commit > /dev/null; then
+    exec pre-commit "${ARGS[@]}"
+else
+    echo '`pre-commit` not found.  Did you forget to activate your virtualenv?' 1>&2
+    exit 1
+fi
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Configuring `pre-commit`
+
+`pre-commit` needs configuring and this is done via the `.pre-commit-config.yaml` file that lives at the root
+(top-level) of your repository. The `python-maths` repository already includes such a file so you will have a copy in
+your local clone.
+
+``` bash
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0 # Use the ref you want to point at
+    hooks:
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+        types: [python]
+      - id: fix-byte-order-marker
+      - id: name-tests-test
+        args: ["--pytest-test-first"]
+      - id: no-commit-to-branch # Protects main/master by default
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+        types: [python, yaml, markdown]
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.11.0
+    hooks:
+      - id: markdownlint-cli2
+        args: []
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.1.9
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
+
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.12.1
+    hooks:
+      - id: black
+        types: [python]
+        additional_dependencies: ["click==8.0.4"]
+        args: ["--extend-exclude", "topostats/plotting.py"]
+      - id: black-jupyter
+
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.16.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies:
+          - black==22.12.0
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+
+  - repo: https://github.com/numpy/numpydoc
+    rev: v1.6.0
+    hooks:
+      - id: numpydoc-validation
+        exclude: |
+          (?x)(
+              tests/|
+              docs/
+          )
+
+  - repo: local
+    hooks:
+      - id: pylint
+        args: ["--rcfile=.pylintrc"]
+        name: Pylint
+        entry: python -m pylint
+        language: system
+        files: \.py$
+
+ci:
+  autofix_prs: true
+  autofix_commit_msg: "[pre-commit.ci] Fixing issues with pre-commit"
+  autoupdate_schedule: monthly
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit-autoupdate"
+  skip: [pylint] # Optionally list ids of hooks to skip on CI
+
+```
+
+This [YAML][yaml] file might look quite complex and intimidating if you are not familiar with the format so we'll go
+through it in sections.
+
+### `repos:`
+
+The top-level section `repos:` defines a list of the repositories that are included and each of these is a specific
+`pre-commit` hook that will be used in the repository and run when commits are made. In YAML list entries start with a
+dash (`-`).
+
+### `- repo: https://github.com/<USER_OR_ORG>/<REPOSITORY>`
+
+Each `repo` is then defined, the first line states where the repository is hosted and these are typically, although not
+always on [GitHub][gh]. The first one is for `pre-commit-hooks` that come from the developers of `pre-commit` itself.
+
+### `rev:`
+
+The next line indicates the revision of the repo that you wish to use. These are typically `git tags` that have been
+applied to releases of the hook. In this example the revision is `4.5.0` for the `pre-commit-hooks`.
+
+### `hooks:`
+
+There then follows another entry called `hooks:` which defines a list of `- id:` and each of these is the name of a
+particular hook that will be run. There are hooks enabled for the following and they are fairly explanatory but the
+[hooks][pc-hooks] page often has a one-line explanation of what the hooks enable.
+
+- `check-case-conflict`
+- `check-docstring-first`
+- `check-merge-conflict`
+- `check-toml`
+- `check-yaml`
+- `debug-statements`
+- `end-of-file-fixer`
+- `fix-byte-order-marker`
+- `name-tests-test`
+- `no-commit-to-branch`
+- `requirements-txt-fixer`
+- `trailing-whitespace`
+
+Some of the hooks have additional arguments (`args:`) which are arguments that are passed to that particular hook or
+types (`types`) which restrict the type of files the hook should run on.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+You can add comments to YAML file by pre-fixing them with a `#`. These may be at the start of a line or can be added to
+the end of a line and the text that follows will be treated as a comment and ignored when parsing the file.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+Check that attendees are familiar with `grep` and searching files for strings. If people are unfamiliar explain clearly
+what each solution is doing in terms of the string being searched for, the target file (`.pre-commit-config.yaml`) the
+before (`-B`) and after (`-A`) flags and how the pipe (`|`) command is used to chain expressions together.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Understanding `.pre-commit-config.yaml`
+
+Now that we've gone through the structure of how a `pre-commit` repository is defined and configured lets look at some
+of the others that are defined.
+
+:::::::::::::::::::::::: solution
+
+## Challenge 4: What version of the `numpydoc` repo is configured
+
+``` bash
+❱ grep -A1 numpydoc .pre-commit-config.yaml  | grep -B1 rev
+  - repo: https://github.com/numpy/numpydoc
+    rev: v1.6.0
+```
+
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::: solution
+
+## Challenge 5: What hook(s) is enabled from the `black-pre-commit-mirror` repo?
+
+``` bash
+❱ grep -A10 "black-pre-commit-mirror" .pre-commit-config.yaml | grep "id:"
+      - id: black
+      - id: black-jupyter
+```
+
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::: solution
+
+## Challenge 6: What arguments are listed for the `ruff` hook?
+
+``` bash
+❱ grep -A5 ruff .pre-commit-config.yaml | grep "args:"
+        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Installing `pre-commit` hooks
+
+The `.git/hooks/pre-commit` is a Bash script that runs `pre-commit` but where do the hooks come from? There is a hint in
+the configuration file where each `- repo:` is defined which points to a Git repository which contains the code and
+environment to run the hook.
+
+These need downloading and initialising before they will run on your local system and that is achieved using `pre-commit
+install-hooks`.
+
+The repos that are defined need installing, this is done once and sets up some virtual environments which are reused
+across Git repositories that have `pre-commit` installed. If the `ref:` is changed or updated then it will require
+downloading a new environment.
+
+## Running `pre-commit`
+
+Whilst configured as a hook to run before commits `pre-commit` can be run at any time against the whole repository
+
+``` bash
+❱ pre-commit run --all-files
+```
+
+...or an individual files, in this case `pyproject.toml` and `README.md`
+
+``` bash
+❱ pre-commit run --files pyproject.toml README.md
+```
+
+If there are problems identified with any of the files `pre-commit` will report them and you will have to fix them and
+include the changes in the staging before committing them.
+
+## Adding Hooks
+
+Which hooks you use will depend largely on the language you are using but there are hundreds of hooks available and
+these can be browsed at the [website][pc-hooks]. The `python-maths` repository has a number of
+[pre-commit-hooks][pc-hooks-repo] enabled but lets add some more.
+
+Looking at the [pre-commit-hooks repo][pc-hooks-repo] we can see there are a few hooks that we could enable. We will
+create a new branch to make these changes on and add the `detect-private-keys`, and prevent files larger than 800kb from
+being added using the `check-added-large-files` hook.
+
+``` bash
+❱ cd python-maths
+❱ git switch main
+❱ git pull
+❱ git switch -c ns-rse/add-pre-commit-hooks
+```
+
+Add the following `- id:` to the `hooks:` section defined under the first `- repo:`.
+
+``` yaml
+      - id: check-added-large-files
+        args: ["--maxkb=800"]
+      - id: detect-private-keys
+```
+
+It can help with readability if you order the hooks alphabetically so you may have something that reads like the following.
+
+``` yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0 # Use the ref you want to point at
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=800"]
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: detect-private-keys
+      - id: end-of-file-fixer
+        types: [python]
+      - id: fix-byte-order-marker
+      - id: name-tests-test
+        args: ["--pytest-test-first"]
+      - id: no-commit-to-branch # Protects main/master by default
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+        types: [python, yaml, markdown]
+```
+
+After you have made changes to `.pre-commit-config.yaml` you _have_ to stage them for committing, if you don't the
+`pre-commit` programme will complain about it being unstaged.
+
+``` bash
+❱ cd python-maths
+❱ git commit --allow-empty -m "Trying to commit without staging .pre-commit-config.yaml"
+[ERROR] Your pre-commit configuration is unstaged.
+`git add .pre-commit-config.yaml` to fix this.
+```
+
+Whenever you modify, add or delete content to `.pre-commit-configyu.yaml` you must therefore stage and commit the
+changes (**NB** make sure youre are)
+
+``` bash
+❱ git add .pre-commit-config.yaml
+❱ git commit -m "pre-commit : Exclude large files and detect private keys"
+❱ git push --set-upstream origin ns-rse/add-pre-commit-hooks
+```
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+:::::::::::::::::::::::: solution
+
+## Challenge 7: Add the `forbid-new-submodules` hook id to the `pre-commit-hooks` configuration
+
+The following line should be added under the `hooks:` section of the `- repo:
+https://github.com/pre-commit/pre-commit-hooks` repository configuration.
+
+``` yaml
+      - id: forbid-new-submodules
+```
+
+The file should then be staged, committed and pushed.
+
+``` bash
+❱ git add .pre-commit-config.yaml
+❱ git commit -m "pre-commit : adds the forbid-new-modules hook"
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Adding repos
+
+The definitive [list][pc-hooks] of `pre-commit` repos is maintained on the official website. Each entry links to the
+GitHub repository and most contain in their `README.md` instructions on how to use the hooks.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+The [numpydoc](https://github.com/numpy/numpydoc) repo defines hooks that check the Python docstrings conform to the
+[Numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). Following the instructions add the repo
+to the `.pre-commit-config.yaml` (on a new branch)
+
+:::::::::::::::::::::::: solution
+
+## Challenge 8: Add the `numpydoc` repo, exclude the `tests/` and `doc/` directories and run it against the code base
+
+Create a branch to undertake the work on.
+
+``` bash
+❱ git switch main
+❱ git pull
+❱ git switch -c ns-rse/pre-commit-numpydoc
+```
+
+The following should be added to your `.pre-commit-config.yaml`
+
+``` yaml
+   - repo: https://github.com/numpy/numpydoc
+     rev: v1.6.0
+     hooks:
+       - id: numpydoc-validation
+         exclude: |
+           (?x)(
+               tests/|
+               docs/
+           )
+```
+
+Check that the code base passes the checks, correct any errors that are highlighted.
+
+``` bash
+❱ pre-commit run numpydoc --all-files
+```
+
+The file should then be staged, committed and pushed.
+
+``` bash
+❱ git add .pre-commit-config.yaml
+❱ git commit -m "pre-commit : adds the numpydoc repo/hook"
+❱ git push
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Local repos
+
+Local repo are those that do not use hooks defined by others and are instead defined by the user. This comes in handy
+when you want to run checks which have dependencies that are specific to the code such as running [pylint][pylint] which
+needs to import all the dependencies that are used or run a test suite.
+
+The `python-maths` module already has a section defined that runs `pylint` locally. When running on a repository it will
+therefore be essential that you have a virtual/conda environment activated that has all the dependencies installed.
+
+``` yaml
+   - repo: local
+     hooks:
+       - id: pylint
+         args: ["--rcfile=.pylintrc"]
+         name: Pylint
+         entry: python -m pylint
+         language: system
+         files: \.py$
+```
+
+Several of the configuration options we have already seen such as `id`, `args` and `files` but the `name:` field gives
+the hook a name and the `entry:` defines what is actually run, in this case `python -m pylint` which will take the
+define argument `--rcfile=.pylintrc`, and so what actually gets executed is
+
+``` bash
+python -m pylint --rcfile=.pylintrc
+```
+
+::::::::::::::::::::::::::::::::::::: callout
+
+The `.pylintrc` file is a configuration file for `pylint` that defines what checks are made.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+The `python-maths` repository has a suite of tests that can be run to ensure the code works as expected.
+
+Pytest is run simply with `pytest`.
+
+:::::::::::::::::::::::: solution
+
+## Challenge 9: Define local `pre-commit` repo to run a `pytest` hook
+
+Create a branch to undertake the work on.
+
+``` bash
+❱ git switch main
+❱ git pull
+❱ git switch -c ns-rse/pre-commit-pytest
+```
+
+The following should be added to your `.pre-commit-config.yaml`
+
+``` yaml
+   - repo: local
+     hooks:
+       - id: pytest
+         name: Pytest
+         entry: pytest
+         language: system
+```
+
+Check that the code base passes the checks, correct any errors that are highlighted.
+
+``` bash
+❱ pre-commit run pytest --all-files
+```
+
+The file should then be staged, committed and pushed.
+
+``` bash
+❱ git add .pre-commit-config.yaml
+❱ git commit -m "pre-commit : adds a local pytest repo/hook"
+❱ git push
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Keeping `pre-commit` tidy
+
+`pre-commit` downloads and installs lots of code on your behalf. It stores it in the `~/.cache/pre-commit/` directory
+and you will find a few common files (`.lock`, `db.db` and `README`) along with a bunch of directories with hashed
+names. These directories are the code and environments used to run the different hooks.
+
+Over time and across multiple projects the size of this cache directory can grow so its good practice to periodically
+tidy up and there are two commands for doing so.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Under Linux operating systems you can schedule this job to run periodically (e.g. monthly) using
+[cron](https://en.wikipedia.org/wiki/Cron). To do this monthly you would `fcrontab -e` and add the following line.
+
+Ideally you will have installed `pre-commit` at the system level otherwise you will have to activate the Conda
+environment first.
+
+``` bash
+* * * * * /usr/bin/pre-commit gc
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Going further
+
+Despite the name `pre-commit` actually supports hooks at many different stages
+[stages](https://pre-commit.com/index.html#confining-hooks-to-run-at-certain-stages). Whether these run will depend on
+where they are defined to run in the `.pre-commit-hooks.yaml` of the repo you are using, but they can also be
+over-ridden locally by setting the `stages`.
+
+There are also [top-level](https://pre-commit.com/index.html#pre-commit-configyaml---top-level) configuration options
+where you can set a global file include (`files: "<pattern>"`) and exclude (`exclude: "<pattern>"`) pattern which would
+apply across all configured repositories.
+
+## `ci:`
+
+There is one section of the configuration which we haven't covered yet which is the `ci:` section defined at the
+bottom. This controls how `pre-commit` runs and is used in Continuous Integration which is the topic of our next
+chapter.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
+- Hooks are actions run by Git before or after particular events such as `commit`, `push` and `pull` via scripts.
+- They are defined in Bash scripts in the `.git/hooks` directory.
+- The `pre-commit` framework provides a wealth of hooks that can be enabled to run, by default, before commits are made.
+- Each hook can be configured to run on specific files, or to take additional arguments.
+- Local hooks can be configured to run when dependencies that will only be found on your system/virtual environment are
+  required.
 - Use hooks liberally, they save you time.
-- Enable hooks in CI so contributions are checked.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 [bash]: https://www.gnu.org/software/bash/
 [gh]: https://github.com
 [gl]: https://gitlab.com
-[pre-commit]: https://pre-commit.com
+[miniconda3]: https://docs.anaconda.com/free/miniconda/
+[pc]: https://pre-commit.com
+[pc-hooks]: https://pre-commit.com/hooks
+[pc-hooks-repo]: https://github.com/pre-commit/pre-commit-hooks
+[pylint]: https://pylint.org
 [python]: https://python.org
 [pm]: https://github.com/ns-rse/python-maths
+[yaml]: https://yaml.org
