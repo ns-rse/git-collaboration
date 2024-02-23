@@ -366,8 +366,18 @@ locally</li>
 </ul></section><section id="hooks"><h2 class="section-heading"><a href="hooks.html">Hooks</a></h2>
 <hr class="half-width">
 <ul>
+<li>Hooks are actions run by Git before or after particular events such
+as <code>commit</code>, <code>push</code> and <code>pull</code> via
+scripts.</li>
+<li>They are defined in Bash scripts in the <code>.git/hooks</code>
+directory.</li>
+<li>The <code>pre-commit</code> framework provides a wealth of hooks
+that can be enabled to run, by default, before commits are made.</li>
+<li>Each hook can be configured to run on specific files, or to take
+additional arguments.</li>
+<li>Local hooks can be configured to run when dependencies that will
+only be found on your system/virtual environment are required.</li>
 <li>Use hooks liberally, they save you time.</li>
-<li>Enable hooks in CI so contributions are checked.</li>
 </ul></section><section id="continuous_integration"><h2 class="section-heading"><a href="continuous_integration.html">Continuous Integration</a></h2>
 <hr class="half-width">
 <ul>
