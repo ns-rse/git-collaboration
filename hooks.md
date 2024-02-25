@@ -656,7 +656,7 @@ Whilst configured as a hook to run before commits `pre-commit` can be run at any
 ❱ pre-commit run --all-files
 ```
 
-...or an individual files, in this case `pyproject.toml` and `README.md`
+...or on individual files, in this case `pyproject.toml` and `README.md`
 
 ``` bash
 ❱ pre-commit run --files pyproject.toml README.md
@@ -727,7 +727,7 @@ After you have made changes to `.pre-commit-config.yaml` you _have_ to stage the
 `git add .pre-commit-config.yaml` to fix this.
 ```
 
-Whenever you modify, add or delete content to `.pre-commit-configyu.yaml` you must therefore stage and commit the
+Whenever you modify, add or delete content to `.pre-commit-configy.yaml` you must therefore stage and commit the
 changes (**NB** make sure youre are)
 
 ``` bash
