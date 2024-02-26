@@ -602,17 +602,25 @@ of the others that are defined.
 
 ## Challenge 4: What version of the `numpydoc` repo is configured
 
+Using [grep][grep] to search for the `numpydoc` string in the `.pre-commit-config.yaml` we can hone in on the `repo` and
+its associated `rev`.
+
 ``` bash
 ❱ grep -A1 numpydoc .pre-commit-config.yaml  | grep -B1 rev
   - repo: https://github.com/numpy/numpydoc
     rev: v1.6.0
 ```
 
+We see that it is `v1.6.0` that is currently configured for `numpydoc`.
+
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
-## Challenge 5: What hook(s) is enabled from the `black-pre-commit-mirror` repo?
+## Challenge 5: What hook(s) is/are enabled from the `black-pre-commit-mirror` repo?
+
+Searching for the `black-pre-commit-mirror` in the configuration and then looking for the `id` shows us what hooks are
+configured for this `repi`.
 
 ``` bash
 ❱ grep -A10 "black-pre-commit-mirror" .pre-commit-config.yaml | grep "id:"
@@ -620,16 +628,24 @@ of the others that are defined.
       - id: black-jupyter
 ```
 
+The `black` and `black-jupyter` hooks are enabled. These will apply [black][black] formatting to Python files and
+Jupyter Notebooks.
+
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
 ## Challenge 6: What arguments are listed for the `ruff` hook?
 
+Finally searching for `ruff` in `.pre-commit-config.yaml` and then looking for the `args` field we can find out what
+arguments are passed to the [ruff][ruff] linter.
+
 ``` bash
 ❱ grep -A5 ruff .pre-commit-config.yaml | grep "args:"
         args: [--fix, --exit-non-zero-on-fix, --show-fixes]
 ```
+
+The `--fix`, `--exit-non-zero-on-fix` and `--show-fixes` options are enabled.
 
 :::::::::::::::::::::::::::::::::
 
@@ -949,8 +965,10 @@ chapter.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 [bash]: https://www.gnu.org/software/bash/
+[black]: https://black.readthedocs.io/en/stable/index.html
 [gh]: https://github.com
 [gl]: https://gitlab.com
+[grep]: https://en.wikipedia.org/wiki/Grep
 [miniconda3]: https://docs.anaconda.com/free/miniconda/
 [pc]: https://pre-commit.com
 [pc-hooks]: https://pre-commit.com/hooks
@@ -958,4 +976,5 @@ chapter.
 [pylint]: https://pylint.org
 [python]: https://python.org
 [pm]: https://github.com/ns-rse/python-maths
+[ruff]: https://astral.sh/ruff
 [yaml]: https://yaml.org
