@@ -9,8 +9,16 @@ using Git effectively for collaboration.
 powerful tool the amount of different options and ways of using it are many resulting in an often bewildering or
 overwhelming experience for those trying to learn how to use it.
 
-This course seeks to develop material that focuses on many tasks that make the process of _collaborating_ using
-[Git][git] easier to understand.
+This course seeks to develop material that focuses on some of the more advanced topics and tasks involved with using Git
+and many of the tasks that make the process of _collaborating_ using [Git][git] easier to understand.
+
++ Consolidate concepts of branches and working with them.
++ Introduce some simple practices for Git hygeine that keep the repository, issues and pull requests tidy and easier to
+  understand.
++ The power and uses of Git Hooks.
++ Leveraging Continuous Integration in work flows.
++ Effective Reviewing
++ Project Management tools
 
 ## Contributions
 
