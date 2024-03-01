@@ -29,7 +29,16 @@ adhere to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 To render these pages locally you need to have [R][r] installed. Instructions are
 [available](https://carpentries.github.io/workbench/#installation) but some additional steps have been taken to make
-sure the environment is reproducible.
+sure the environment is reproducible using the [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) package and
+an `renv.lockfile` is included which allows the environment to be recreated along with dependencies, including the
+
+After cloning the repository you can setup the `renv` and install all packages with
+
+``` r
+renv::restore()
+# Optionally update packages
+renv::update()
+```
 
 Once you have installed the dependencies you can render the pages locally by starting R in the project root and
 running...
