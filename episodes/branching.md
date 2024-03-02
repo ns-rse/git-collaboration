@@ -884,7 +884,7 @@ git init --initial-branch=main
 git commit --allow-empty -m "Initial commit"
 ```
 
-#### 2. Create `brnach1`, add a `README.md` and commit it
+#### 2. Create `branch1`, add a `README.md` and commit it
 
 ``` bash
 git switch -c branch1
@@ -1336,6 +1336,15 @@ git config --local rerere.enabled true
 ```
 
 You can of course enable globally and disable locally as local configuration variables take precedence over global.
+
+### Not Breaking Things
+
+As you rebase your branch you can make sure that you don't break any of your code by running tests at each step. This is
+achieved using the `-x` switch which will execute the command that follows.
+
+``` bash
+git rebase -x "pytest" <reference>
+```
 
 ## Switching Branches during Work in Progress
 
