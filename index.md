@@ -5,12 +5,12 @@ site: sandpaper::sandpaper_site
 
 Welcome to the _Git Collaboration_ course material.
 
-This course seeks to help with that by building on a basic understanding of Git from courses such as
-[Software Carpentry: Git Novice][swCarpentryGit] and
-[Git and GitHub through GitKraken : From Zero to Hero!][zeroHero] and going into
-  a bit more depth about the way in which Git works and how it can be effectively used for collaboration. The course
-  covers the concepts of branches and working with them, effective Git hygiene that helps you write informative commit
-  messages and keep branches tidy and provides advice on undertaking constructive Pull/Merge Reviews.
+In order to use Git effectively to collaborate with others it helps to understand how the tool you are using works. This
+course builds on foundational Git courses such as [Software Carpentry: Git Novice][swCarpentryGit] and
+[Git and GitHub through GitKraken : From Zero to Hero!][zeroHero] and is structured in two halves. The first goes into
+greater detail solidifying the concepts around branches and how to use Git in a structured manner, termed "git hygiene",
+and how to use Git hooks effectively to make sure your work is "clean". These concepts serve as a basis for the second
+half of the course which covers Continuous Integration, effective reviewing and project management.
 
 [swCarpentryGit]: https://swcarpentry.github.io/git-novice/
 [zeroHero]: https://srse-git-github-zero2hero.netlify.app
