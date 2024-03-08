@@ -127,7 +127,7 @@ git log --graph --pretty="%h %ad (%cr) %x09 %an : %s"
 ::::::::::::::::::::::::::::::::::::: callout
 
 There are a _lot_ of options for formatting the output of `git log` that allow you to restrict output to just the
-information you are interested in and change the display. For this course we use the basic
+information you are interested in and change the display. For this course we use `--graph` and the basic
 `--pretty="%h %ad (%cr) %x09 %an : %s`.
 
 For convenience you can save this as an alias using the following.

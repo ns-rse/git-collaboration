@@ -13,6 +13,10 @@ authors:
     email: n.shephard@sheffield.ac.uk
     affiliation: University of Sheffield
     orcid: 'https://orcid.org/0000-0001-8301-6857'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.107
+    description: Git Collaboration
 repository-code: 'https://github.com/ns-rse/git-collaboration'
 url: 'https://ns-rse.github.io/git-collaboration/'
 abstract: >-
