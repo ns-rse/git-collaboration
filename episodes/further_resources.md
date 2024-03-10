@@ -51,9 +51,6 @@ finding out more about Git, GitHub and so forth.
 
 ### Blogs
 
-Blogs are an excellent way to find out about new features.
-
-::::::::::::::::::::::::::::::::::::: callout
 
 [Really Simply Syndication](http://rssboard.org/rss-specification) is a much under appreciated/used technology that
 makes it really simple to syndicate blog posts from a range of sources to give yourself a customised reading list rather
@@ -91,6 +88,7 @@ Various tutorials and tools that help explain how Git works.
 - [Organizing multiple Git identities | Garrit's
   Notes](https://garrit.xyz/posts/2023-10-13-organizing-multiple-git-identities)
 
+#### Julia Evans (aka b0rk)
 
 [Julia Evans (aka b0rk) Git Posts](https://jvns.ca/#git) writes useful and insightful posts on different aspects of Git
 that help tackle fundamental but often misunderstood concepts.
@@ -115,7 +113,8 @@ that help tackle fundamental but often misunderstood concepts.
   Optimisation](https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/#praise-people)
 - [Modern Git Commands and Features You Should Be Using](https://martinheinz.dev/blog/109)
 - [Advanced Git Features You Didn’t Know You Needed](https://martinheinz.dev/blog/43)
-- [Git Tips and Tricks](https://blog.gitbutler.com/git-tips-and-tricks/) blog post/talk from Scott Chacon (one of the founders of GitHub)
+- [Git Tips and Tricks](https://blog.gitbutler.com/git-tips-and-tricks/) blog post/talk from Scott Chacon (one of the
+  founders of GitHub)
 - [unixorn/git-extra-commands: A collection of git utilities, useful extra git scripts, tutorials and other useful
   articles.](https://github.com/unixorn/git-extra-commands)
 

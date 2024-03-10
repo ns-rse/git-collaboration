@@ -1513,6 +1513,7 @@ This was a revelation that came to me as I wrote the material for this Episode a
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<<<<<<< HEAD
 ## Links
 
 - [The Case for Pull Rebase](https://megakemp.com/2019/03/20/the-case-for-pull-rebase/)
@@ -1522,6 +1523,20 @@ This was a revelation that came to me as I wrote the material for this Episode a
 - [Getting solid at Git rebase
   vs. merge](https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa)
 
+||||||| parent of 42e9e8b (Bunch of links added)
+[bash]: https://www.gnu.org/software/bash/
+=======
+## Links
+
+- [The Case for Pull Rebase](https://megakemp.com/2019/03/20/the-case-for-pull-rebase/)
+- [Dealing with diverged git branches](https://jvns.ca/blog/2024/02/01/dealing-with-diverged-git-branches/)
+- [git branches: intuition & reality](https://jvns.ca/blog/2023/11/23/branches-intuition-reality/)
+- [git rebase: what can go wrong?](https://jvns.ca/blog/2023/11/06/rebasing-what-can-go-wrong-/)
+- [Getting solid at Git rebase
+  vs. merge](https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa)
+
+[bash]: https://www.gnu.org/software/bash/
+>>>>>>> 42e9e8b (Bunch of links added)
 [nano]: https://www.nano-editor.org/
 [ohmyzsh]: https://ohmyz.sh/
 [rerere]: https://git-scm.com/book/en/v2/Git-Tools-Rerere
