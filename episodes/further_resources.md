@@ -51,8 +51,11 @@ finding out more about Git, GitHub and so forth.
 
 ### Blogs
 
+::::::::::::::::::::::::::::::::::::: callout
 
-[Really Simply Syndication](http://rssboard.org/rss-specification) is a much under appreciated/used technology that
+### RSS
+
+[Really Simply Syndication](https://rssboard.org/rss-specification) is a much under appreciated/used technology that
 makes it really simple to syndicate blog posts from a range of sources to give yourself a customised reading list rather
 than being at the whim of whatever is in your social media feeds when you happen to take a look at them.
 
@@ -157,6 +160,7 @@ that help tackle fundamental but often misunderstood concepts.
 - [GitLab Blogs](https://about.gitlab.com/blog/) various categories of blogs from GitLab.
 
 ### Mastodon
+
 other. There are a lot of technical users who post their articles, ask questions and help each other out about all sorts
 of languages and tools. Join an instance and follow the `#git` to keep abreast of things and find out what others
 struggle with and how they can be solved.
@@ -165,5 +169,3 @@ struggle with and how they can be solved.
 useful to use the [Advanced Web
 Interface](https://fedi.tips/how-to-activate-mastodons-tweetdeck-style-advanced-web-interface/) and add a column for the
 `#git` tag. A good Android client is [Fedilab](https://fedilab.app/).
-
-[mastodon]: https://joinmastodon.org/
