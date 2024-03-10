@@ -836,6 +836,6 @@ founders of GitHub and co-author of [Pro Git][progit] book on useful tips for us
 [magit]: https://magit.vc/
 [nano]: https://www.nano-editor.org/dist/latest/cheatsheet.html
 [progit]: https://git-scm.com/book/en/v2
-[r]: http://www.r-project.org
+[r]: https://www.r-project.org
 [regex]: https://regexr.com/
 [rstudio]: https://posit.co/products/open-source/rstudio/
