@@ -1477,7 +1477,7 @@ There are a lot of useful things `git stash` can be used for. Refer to the help 
 information as well as the Further Resources
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Worktrees instead of Branches
+## Worktrees instead of Branches
 
 Sometimes you will want to switch between branches that are all in development in the middle of work. If you've made
 changes to files that you have not saved and committed Git is likely to tell you that the changes made to your files
@@ -1512,6 +1512,15 @@ This was a revelation that came to me as I wrote the material for this Episode a
 - It is possible to track multiple origins.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Links
+
+- [The Case for Pull Rebase](https://megakemp.com/2019/03/20/the-case-for-pull-rebase/)
+- [Dealing with diverged git branches](https://jvns.ca/blog/2024/02/01/dealing-with-diverged-git-branches/)
+- [git branches: intuition & reality](https://jvns.ca/blog/2023/11/23/branches-intuition-reality/)
+- [git rebase: what can go wrong?](https://jvns.ca/blog/2023/11/06/rebasing-what-can-go-wrong-/)
+- [Getting solid at Git rebase
+  vs. merge](https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa)
 
 [bash]: https://www.gnu.org/software/bash/
 [nano]: https://www.nano-editor.org/
