@@ -1522,8 +1522,6 @@ This was a revelation that came to me as I wrote the material for this Episode a
 - [Getting solid at Git rebase
   vs. merge](https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa)
 
-
-[bash]: https://www.gnu.org/software/bash/
 [nano]: https://www.nano-editor.org/
 [ohmyzsh]: https://ohmyz.sh/
 [rerere]: https://git-scm.com/book/en/v2/Git-Tools-Rerere

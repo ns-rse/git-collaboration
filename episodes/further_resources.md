@@ -92,8 +92,6 @@ Various tutorials and tools that help explain how Git works.
   Notes](https://garrit.xyz/posts/2023-10-13-organizing-multiple-git-identities)
 
 
-#### Julia Evans (aka b0rk)
-
 [Julia Evans (aka b0rk) Git Posts](https://jvns.ca/#git) writes useful and insightful posts on different aspects of Git
 that help tackle fundamental but often misunderstood concepts.
 
@@ -159,11 +157,7 @@ that help tackle fundamental but often misunderstood concepts.
 - [The GitHub Blog](https://github.blog/) updates, ideas, and inspiration from GitHub.
 - [GitLab Blogs](https://about.gitlab.com/blog/) various categories of blogs from GitLab.
 
-
-
 ### Mastodon
-
-[Mastodon][mastodon] is a federated social network consisting of multiple servers that communicate with each
 other. There are a lot of technical users who post their articles, ask questions and help each other out about all sorts
 of languages and tools. Join an instance and follow the `#git` to keep abreast of things and find out what others
 struggle with and how they can be solved.
