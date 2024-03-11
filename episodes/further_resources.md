@@ -162,7 +162,7 @@ that help tackle fundamental but often misunderstood concepts.
 ### Mastodon
 
 There are a lot of technical users who post their articles, ask questions and help each other out about all sorts
-of languages and tools on Mastodon. Join an instance and follow `#git` to keep abreast of things and find out what 
+of languages and tools on Mastodon. Join an instance and follow `#git` to keep abreast of things and find out what
 others struggle with and how they can be solved.
 
 [Fedi.Tips](https://fedi.tips/) is a useful guide to getting started with Mastodon and once you're setup it can be

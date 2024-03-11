@@ -914,24 +914,34 @@ The file should then be staged, committed and pushed.
 
 ## Keeping `pre-commit` tidy
 
-`pre-commit` downloads and installs lots of code on your behalf. It stores it in the `~/.cache/pre-commit/` directory
-and you will find a few common files (`.lock`, `db.db` and `README`) along with a bunch of directories with hashed
-names. These directories are the code and environments used to run the different hooks.
+`pre-commit` downloads and installs lots of code on your behalf, including virtual environments that are activated to
+run the tests. It stores these in the `~/.cache/pre-commit/` directory and you will find a few common files (`.lock`,
+`db.db` and `README`) along with a bunch of directories with hashed names. These directories are the code and
+environments used to run the different hooks.
 
 Over time and across multiple projects the size of this cache directory can grow so its good practice to periodically
-tidy up and there are two commands for doing so.
+tidy up and there are two commands for doing so, which you should run periodically.
+
+### Cleaning and Garbage Collection
+
+The `pre-commit clean` command will clean out files that have been left around periodically, these tend not to be too
+large so are less of a problem.
+
+Cached virtual environments can grow to be quite large though, but they can be easily tidied up using the `pre-commit
+gc` command (`gc` stands for Garbage Collection.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
 Under Linux operating systems you can schedule this job to run periodically (e.g. monthly) using
-[cron](https://en.wikipedia.org/wiki/Cron). To do this monthly you would `fcrontab -e` and add the following line.
+[cron](https://en.wikipedia.org/wiki/Cron). To do this monthly you could `fcrontab -e` and add the following line to run
+`pre-commit gc` at mid-day on the first day of every month.
+
+``` bash
+0 12 1 * * /usr/bin/pre-commit gc
+```
 
 Ideally you will have installed `pre-commit` at the system level otherwise you will have to activate the Conda
 environment first.
-
-``` bash
-* * * * * /usr/bin/pre-commit gc
-```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -948,9 +958,8 @@ apply across all configured repositories.
 
 ## `ci:`
 
-There is one section of the configuration which we haven't covered yet which is the `ci:` section defined at the
-bottom. This controls how `pre-commit` runs and is used in Continuous Integration which is the topic of our next
-chapter.
+There is one section of the configuration which we haven't covered yet, the `ci:` section defined at the bottom. This
+controls how `pre-commit` runs and is used in Continuous Integration which is the topic of our next chapter.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
