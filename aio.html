@@ -485,7 +485,7 @@ People</em> and add you collaborator to the project.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The pern You should receive an email from GitHub inviting you to
 collaborate on the repository or had a notification on GitHub that you
@@ -500,7 +500,7 @@ invitation.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Clone the repository</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Both the repository owner and collaborator should now clone the
 repository <em>from the repository owners copy <strong>not</strong> the
@@ -537,7 +537,7 @@ in a terminal</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Install the Package</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>If you have not already done so activate the
 <code>git-collaboration</code> environment you created as described in
@@ -3638,7 +3638,7 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></section></section><section id="aio-hooks"><p>Content from <a href="hooks.html">Hooks</a></p>
 <hr>
-<p>Last updated on 2024-02-26 |
+<p>Last updated on 2024-03-11 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/hooks.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4770,14 +4770,25 @@ are highlighted.</p>
 </h2>
 <hr class="half-width">
 <p><code>pre-commit</code> downloads and installs lots of code on your
-behalf. It stores it in the <code>~/.cache/pre-commit/</code> directory
-and you will find a few common files (<code>.lock</code>,
+behalf, including virtual environments that are activated to run the
+tests. It stores these in the <code>~/.cache/pre-commit/</code>
+directory and you will find a few common files (<code>.lock</code>,
 <code>db.db</code> and <code>README</code>) along with a bunch of
 directories with hashed names. These directories are the code and
 environments used to run the different hooks.</p>
 <p>Over time and across multiple projects the size of this cache
 directory can grow so its good practice to periodically tidy up and
-there are two commands for doing so.</p>
+there are two commands for doing so, which you should run
+periodically.</p>
+<div class="section level3">
+<h3 id="cleaning-and-garbage-collection">Cleaning and Garbage Collection<a class="anchor" aria-label="anchor" href="#cleaning-and-garbage-collection"></a>
+</h3>
+<p>The <code>pre-commit clean</code> command will clean out files that
+have been left around periodically, these tend not to be too large so
+are less of a problem.</p>
+<p>Cached virtual environments can grow to be quite large though, but
+they can be easily tidied up using the <code>pre-commit gc</code>
+command (<code>gc</code> stands for Garbage Collection.</p>
 <div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -4787,14 +4798,17 @@ there are two commands for doing so.</p>
 <div class="callout-content">
 <p>Under Linux operating systems you can schedule this job to run
 periodically (e.g. monthly) using <a href="https://en.wikipedia.org/wiki/Cron" class="external-link">cron</a>. To do this monthly
-you would <code>fcrontab -e</code> and add the following line.</p>
-<p>Ideally you will have installed <code>pre-commit</code> at the system
-level otherwise you will have to activate the Conda environment
-first.</p>
+you could <code>fcrontab -e</code> and add the following line to run
+<code>pre-commit gc</code> at mid-day on the first day of every
+month.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> /usr/bin/pre-commit gc</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">0</span> 12 1 <span class="pp">*</span> <span class="pp">*</span> /usr/bin/pre-commit gc</span></code></pre>
+</div>
+<p>Ideally you will have installed <code>pre-commit</code> at the system
+level otherwise you will have to activate the Conda environment
+first.</p>
 </div>
 </div>
 </div>
@@ -4817,9 +4831,9 @@ across all configured repositories.</p>
 </h2>
 <hr class="half-width">
 <p>There is one section of the configuration which we haven’t covered
-yet which is the <code>ci:</code> section defined at the bottom. This
-controls how <code>pre-commit</code> runs and is used in Continuous
-Integration which is the topic of our next chapter.</p>
+yet, the <code>ci:</code> section defined at the bottom. This controls
+how <code>pre-commit</code> runs and is used in Continuous Integration
+which is the topic of our next chapter.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -4914,7 +4928,7 @@ automatically.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">GitHub</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>GitHub uses <code>~/.github/workflows/*.yaml</code> to define
 different Actions to run/</p>
@@ -4927,7 +4941,7 @@ different Actions to run/</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">GitLab</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>GitLab uses <code>.gitlab-cy.yaml</code> for configuring Continuous
 Integration</p>
@@ -5226,7 +5240,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-further_resources"><p>Content from <a href="further_resources.html">Further Resources</a></p>
 <hr>
-<p>Last updated on 2024-03-10 |
+<p>Last updated on 2024-03-11 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/further_resources.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -5576,8 +5590,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/aio.html",
   "identifier": "ns-rse.github.io/git-collaboration/aio.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-03-10",
-  "datePublished": "2024-03-10"
+  "dateModified": "2024-03-11",
+  "datePublished": "2024-03-11"
 }
 
   </script><script>

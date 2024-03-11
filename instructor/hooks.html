@@ -296,7 +296,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hooks</h1>
-        <p>Last updated on 2024-02-26 |
+        <p>Last updated on 2024-03-11 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/hooks.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -1436,14 +1436,24 @@ are highlighted.</p>
 </section><section id="keeping-pre-commit-tidy"><h2 class="section-heading">Keeping <code>pre-commit</code> tidy<a class="anchor" aria-label="anchor" href="#keeping-pre-commit-tidy"></a>
 </h2>
 <hr class="half-width"><p><code>pre-commit</code> downloads and installs lots of code on your
-behalf. It stores it in the <code>~/.cache/pre-commit/</code> directory
-and you will find a few common files (<code>.lock</code>,
+behalf, including virtual environments that are activated to run the
+tests. It stores these in the <code>~/.cache/pre-commit/</code>
+directory and you will find a few common files (<code>.lock</code>,
 <code>db.db</code> and <code>README</code>) along with a bunch of
 directories with hashed names. These directories are the code and
 environments used to run the different hooks.</p>
 <p>Over time and across multiple projects the size of this cache
 directory can grow so its good practice to periodically tidy up and
-there are two commands for doing so.</p>
+there are two commands for doing so, which you should run
+periodically.</p>
+<div class="section level3">
+<h3 id="cleaning-and-garbage-collection">Cleaning and Garbage Collection<a class="anchor" aria-label="anchor" href="#cleaning-and-garbage-collection"></a></h3>
+<p>The <code>pre-commit clean</code> command will clean out files that
+have been left around periodically, these tend not to be too large so
+are less of a problem.</p>
+<p>Cached virtual environments can grow to be quite large though, but
+they can be easily tidied up using the <code>pre-commit gc</code>
+command (<code>gc</code> stands for Garbage Collection.</p>
 <div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1453,14 +1463,17 @@ there are two commands for doing so.</p>
 <div class="callout-content">
 <p>Under Linux operating systems you can schedule this job to run
 periodically (e.g. monthly) using <a href="https://en.wikipedia.org/wiki/Cron" class="external-link">cron</a>. To do this monthly
-you would <code>fcrontab -e</code> and add the following line.</p>
-<p>Ideally you will have installed <code>pre-commit</code> at the system
-level otherwise you will have to activate the Conda environment
-first.</p>
+you could <code>fcrontab -e</code> and add the following line to run
+<code>pre-commit gc</code> at mid-day on the first day of every
+month.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> /usr/bin/pre-commit gc</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">0</span> 12 1 <span class="pp">*</span> <span class="pp">*</span> /usr/bin/pre-commit gc</span></code></pre>
+</div>
+<p>Ideally you will have installed <code>pre-commit</code> at the system
+level otherwise you will have to activate the Conda environment
+first.</p>
 </div>
 </div>
 </div>
@@ -1481,9 +1494,9 @@ across all configured repositories.</p>
 <code>ci:</code><a class="anchor" aria-label="anchor" href="#ci"></a>
 </h2>
 <hr class="half-width"><p>There is one section of the configuration which we haven’t covered
-yet which is the <code>ci:</code> section defined at the bottom. This
-controls how <code>pre-commit</code> runs and is used in Continuous
-Integration which is the topic of our next chapter.</p>
+yet, the <code>ci:</code> section defined at the bottom. This controls
+how <code>pre-commit</code> runs and is used in Continuous Integration
+which is the topic of our next chapter.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1569,8 +1582,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/hooks.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/hooks.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-02-26",
-  "datePublished": "2024-03-10"
+  "dateModified": "2024-03-11",
+  "datePublished": "2024-03-11"
 }
 
   </script><script>
