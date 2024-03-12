@@ -32,15 +32,13 @@ What follows are the descriptions of the workflow files:
 This is the main driver that will only act on the main branch of the repository.
 This workflow does the following:
 
-1. checks out the lesson
-2. provisions the following resources
-
-- R
-- pandoc
-- lesson infrastructure (stored in a cache)
-- lesson dependencies if needed (stored in a cache)
-
-3. builds the lesson via `sandpaper:::ci_deploy()`
+ 1. checks out the lesson
+ 2. provisions the following resources
+   - R
+   - pandoc
+   - lesson infrastructure (stored in a cache)
+   - lesson dependencies if needed (stored in a cache)
+ 3. builds the lesson via `sandpaper:::ci_deploy()`
 
 #### Caching
 
