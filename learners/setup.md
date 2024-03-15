@@ -4,9 +4,9 @@ title: Setup
 
 ## Setup
 
-Whilst there are many Git clients (porcelains) out there and many Integrated Development Environments (IDEs) support Git
-actions and facilitate using the bewildering array of options this course teaches the Command Line Interface (CLI) to
-Git as it means we have a consistent interface to teach the _principles_ that you can take away to your own choice of
+There are many Git clients (porcelains) out there and many Integrated Development Environments (IDEs) support Git
+actions and facilitate using the bewildering array of options, but this course teaches the Command Line Interface (CLI)
+to Git as it means we have a consistent interface to teach the _principles_ that you can take away to your own choice of
 Git client. Below there are instructions for installing Git on each of the three most common operating systems as well
 as links to download the Git tool GitKraken which includes Git and a Terminal.
 
@@ -26,10 +26,10 @@ Git the chances are you already have it installed or it may be integrated into y
 (IDE).
 
 For consistency across operating systems this course uses the Command Line Interface (CLI) to Git and instructions below
-show how to install this on different Operating Systems.
+will guide you through installation on different Operating Systems.
 
 An alternative option is provided using the [GitKraken][gitkraken] client as many of those attending the course may
-already be using this software, but the Command Line Interface of that client will be used.
+already be using this software, but the Command Line Interface (Terminal) of that client will be used.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
