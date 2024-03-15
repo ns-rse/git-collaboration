@@ -961,6 +961,14 @@ apply across all configured repositories.
 There is one section of the configuration which we haven't covered yet, the `ci:` section defined at the bottom. This
 controls how `pre-commit` runs and is used in Continuous Integration which is the topic of our next chapter.
 
+We've seen how hooks and in particular the [pre-commit][pc] suite can be used to automate
+many tasks such as running linting checks on your code base prior to commits. A short coming of this approach is that
+whilst the configuration file (`.pre-commit-config.yaml`) may live in your repository it means that every person
+contributing to the code has to install the hooks and ensure they run locally.
+
+This won't always be the case but this is where [pre-commit.ci][pc-ci] comes in handy as it runs the Pre-commit hooks as
+part of the Continuous Integration on GitHub which is the focus of the next episode.
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Hooks are actions run by Git before or after particular events such as `commit`, `push` and `pull` via scripts.
@@ -969,7 +977,7 @@ controls how `pre-commit` runs and is used in Continuous Integration which is th
 - Each hook can be configured to run on specific files, or to take additional arguments.
 - Local hooks can be configured to run when dependencies that will only be found on your system/virtual environment are
   required.
-- Use hooks liberally, they save you time.
+- Use hooks liberally as you develop your code locally, they save you time.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -980,6 +988,7 @@ controls how `pre-commit` runs and is used in Continuous Integration which is th
 [grep]: https://en.wikipedia.org/wiki/Grep
 [miniconda3]: https://docs.anaconda.com/free/miniconda/
 [pc]: https://pre-commit.com
+[pc-ci]: https://pre-commit.ci
 [pc-hooks]: https://pre-commit.com/hooks
 [pc-hooks-repo]: https://github.com/pre-commit/pre-commit-hooks
 [pylint]: https://pylint.org
