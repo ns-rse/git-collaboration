@@ -470,7 +470,7 @@ git reset --soft HEAD~1
 
 ## Challenge 6: Commits on the wrong branch
 
-- Checkout the `main` branch.
+- Checkout the `main` branch of the `pytest-example` repository.
 - Create a new file using `echo "# How to Contribute to this repo" > CONTRIBUTING.md`
 - Stage and commit the file to the `main` branch of your repository.
 
@@ -485,17 +485,18 @@ to a new branch so you can push them.
 
 ## Solution
 
-You can use the `-d` or `--delete` flag to delete a branch.
+You can reset the HEAD to the previous commit, which removes the `CONTRIBUTING.md` file from the commit history, leaving
+it unstaged, then create a new branch and add it to that.
 
 ``` bash
 git switch main
 echo "# How to Contribute to this repo" > CONTRIBUTING.md
 git add CONTRIBUTING.md
-git commit -m "Adding contributing guideline template"
+git commit -m "docs: Adding contributing guideline template"
 git reset --hard HEAD~1
 git switch -c ns-rse/contributing
 git add CONTRIBUTING.md
-git commit -m "Adding contributing guideline template"
+git commit -m "docs: Adding contributing guideline template"
 ```
 
 :::::::::::::::::::::::::::::::::
@@ -504,17 +505,21 @@ git commit -m "Adding contributing guideline template"
 
 ## Solution
 
-Alternatively you can checkout the previous commit _before_ you added the file by mistake, create the `<github_user>/contributing`
-branch,  and `git cherrypick` the commit from `main` which contains the `CONTRIBUTING.md` file and _then_ remove the
-commit from main.
+Alternatively you can checkout the previous commit _before_ you added the file by mistake, create the
+`<github_user>/contributing` branch,  and `git cherrypick` the commit from `main` which contains the `CONTRIBUTING.md`
+file and _then_ remove the commit from main.
 
 ``` bash
-# TODO get commit hash of last commit
-git checkout HEAD~1
+git switch main
+echo "# How to Contribute to this repo" > CONTRIBUTING.md
+git add CONTRIBUTING.md
+git commit -m "docs: Adding contributing guideline template"
+git log              # Note the commit of the mistaken hash
+git revert HEAD~1   # Checkout the previous commit on the main branch
 git switch -c ns-rse/contributing
 git cherrypick <hash>
-git
-# TODO : Complete solution and add output once sample repository is in place
+git switch main
+git reset --hard HEAD~1
 ```
 
 :::::::::::::::::::::::::::::::::
@@ -539,7 +544,7 @@ git
 # TODO : Complete solution and add output once sample repository is in place
 ```
 
-**NB** You could also copy the file using the older `git checkoug main -- CONTRIBUTING.md`.
+**NB** You could also copy the file using the older `git checkout main -- CONTRIBUTING.md`.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -706,7 +711,7 @@ git commit --allow-empty -m "Initial commit"
 git switch -c branch1
 echo "# Just a test" > README.md
 git add README.md
-git commit -m "Adding README.md"
+git commit -m "docs: Adding README.md"
 ```
 
 #### 3. Switch back to `main`
@@ -890,7 +895,7 @@ git commit --allow-empty -m "Initial commit"
 git switch -c branch1
 echo "# Just a test" > README.md
 git add README.md
-git commit -m "Adding README.md"
+git commit -m "docs: Adding README.md"
 ```
 
 #### 3. Switch back to `main`
@@ -908,7 +913,7 @@ cat README.md   # Note that `README.md` does not currently exist on this branch
 git switch -c branch2
 echo "THIS IS A LICENSE" > LICENSE
 git add LICENSE
-git commit -m "Adding a LICENSE"
+git commit -m "docs: Adding a LICENSE"
 ```
 
 #### 5. Merge `branch1` into `main` (equivalent to making a Pull Request)
@@ -949,8 +954,8 @@ git switch main
 git merge branch2
 glod
 
-* 12f5202 - (HEAD -> main, branch2) Adding a LICENSE (2024-03-01 12:19:12 +0000) <Neil Shephard>
-* 4e8e933 - (branch1) Adding README.md (2024-03-01 12:18:37 +0000) <Neil Shephard>
+* 12f5202 - (HEAD -> main, branch2) docs: Adding a LICENSE (2024-03-01 12:19:12 +0000) <Neil Shephard>
+* 4e8e933 - (branch1) docs: Adding README.md (2024-03-01 12:18:37 +0000) <Neil Shephard>
 * 2459609 - Initial commit (2024-03-01 12:18:37 +0000) <Neil Shephard>
 ```
 
@@ -1054,10 +1059,10 @@ Again we add a `README.md` but this time we make two commits to it, adding an ex
 git switch -c branch1
 echo "# Just a test\n" > README.md
 git add README.md
-git commit -m "Adding README.md"
+git commit -m "docs: Adding README.md"
 echo "\nLets add another line in a separate commit" >> README.md
 git add README.md
-git commit -m "Ooops, missed a line from the README.md"
+git commit -m "docs: Ooops, missed a line from the README.md"
 ```
 
 #### 3. Switch back to `main`
@@ -1486,8 +1491,8 @@ will be over-written if they differ from those on the branch you are switching t
 This means either making a commit or stashing the work to come back to at a later date. Neither of these are
 particularly problematic as you can `git pop` stashed work to restore it or or `git commit --amend`, or `git commit
 --fixup` and squash commits to maintain small atomic commits and avoid cluttering up the commit history with commits
-such as "_Saving work to review another branch_". But, perhaps unsurprisingly, Git has another way of helping your
-workflow in this situation. Rather than having branches you can use "_worktrees_".
+such as "_Saving work to review another branch_" (more on this in the next episode!). But, perhaps unsurprisingly, Git
+has another way of helping your workflow in this situation. Rather than having branches you can use "_worktrees_".
 
 Normally when you've `git clone`'d a repository all configuration files for working with the repository are saved to the
 repository directory under `.git` _and_ all files in their current state on the `main` branch are also copied to the
@@ -1583,6 +1588,8 @@ git stash -m "An example stash"
 git switch main
 git switch -c citation
 echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff
+git add CITATION.cff
+git commit -m "chore: Adding a CITATION.cff"
 ```
 
 When we are ready to return to our `contributing` branch we can switch and `git pop` the work we stashed. By default the
@@ -1594,7 +1601,9 @@ git switch contributing
 git pop
 ```
 
-## Worktrees rather than branches
+This works but its quite a few steps to make stashes and "pop" them once we've finished on the other br
+
+### The Worktree
 
 Worktrees take a different approach to organising branches. They start with a `--bare` clone of the repository which
 implies the `--no-checkout` flag and means that the files that would normally be found under the `<repository>/.git`
