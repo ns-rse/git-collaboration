@@ -13,12 +13,15 @@
         processEscapes: true
       }
     });
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="icon" href="assets/images/UOSSheild_Primary_Violet_RGB.ico" sizes="any"><link rel="icon" href="assets/images/UOSSheild_Primary_Violet_RGB.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest"><link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
     <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav incubator"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
-      <div class="large-logo">
-        <img alt="Carpentries Incubator" src="assets/images/incubator-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+      <div class="large-logo">      
+        <a href="https://www.sheffield.ac.uk" class="external-link">
+          <img alt="University of Sheffield" src="assets/images/UOSLogo_Primary_Violet_RGB.svg"></a>
+        
+        <abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -45,7 +48,7 @@
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="Carpentries Incubator" src="assets/images/incubator-logo-sm.svg"></div>
+      <img class="small-logo" alt="University of Sheffield" src="assets/images/UOSSheild_Primary_Violet_RGB.svg"></div>
     <div class="lesson-title-md">
       Git Collaboration
     </div>
@@ -310,8 +313,7 @@ the bewildering array of options, but this course teaches the Command
 Line Interface (CLI) to Git as it means we have a consistent interface
 to teach the <em>principles</em> that you can take away to your own
 choice of Git client. Below there are instructions for installing Git on
-each of the three most common operating systems as well as links to
-download the Git tool GitKraken which includes Git and a Terminal.</p>
+each of the three most common operating systems.</p>
 <p>Please complete these setup tasks <em>before</em> attending the
 course. If you have any issues getting setup please either contact an
 instructor in advance or arrive early and seek assistance from an
@@ -319,7 +321,8 @@ instructor.</p>
 </section><section id="example-repository"><h2 class="section-heading">Example Repository<a class="anchor" aria-label="anchor" href="#example-repository"></a>
 </h2>
 <hr class="half-width"><p>This course uses a GitHub Template that you will, in small groups,
-create a copy of and collaborate on.</p>
+create a copy of and collaborate on. Using this template and setting it
+up is part of the course, you do not need to set it up in advance.</p>
 </section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
 </h2>
 <hr class="half-width"><div id="discussion1" class="callout discussion">
@@ -336,10 +339,10 @@ already have it installed or it may be integrated into your Integrated
 Development Environment (IDE).</p>
 <p>For consistency across operating systems this course uses the Command
 Line Interface (CLI) to Git and instructions below will guide you
-through installation on different Operating Systems.</p>
-<p>An alternative option is provided using the <a href="https://www.gitkraken.com/" class="external-link">GitKraken</a> client as many of those
-attending the course may already be using this software, but the Command
-Line Interface (Terminal) of that client will be used.</p>
+through installation on different Operating Systems. The principles can
+be applied to any Git Porcelain (client) that you choose, including
+IDEs, although not all will support all of the functions introduced here
+(e.g. the RStudio Git interface is very basic).</p>
 </div>
 </div>
 </div>
@@ -348,7 +351,7 @@ Line Interface (Terminal) of that client will be used.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Windows</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You can use the <a href="https://git-scm.com/download/win" class="external-link">official
 binary</a> but we encourage you to use <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell" class="external-link">Git
@@ -366,7 +369,7 @@ bundled together).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><a href="https://git-scm.com/" class="external-link">Git</a> is not included in the MacOS
 distribution by default. The <a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
@@ -396,7 +399,7 @@ suggests using either <a href="https://brew.sh/" class="external-link">Homebrew<
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Linux</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Most GNU/Linux distributions will have Git installed by default. If
 not you can install it using the package manager for your distribution.
@@ -441,24 +444,6 @@ and remove the <code>sudo</code> prefix from the following commands.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">GitKraken</h4>
-</button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
-<div class="accordion-body">
-<p><a href="https://www.gitkraken.com/" class="external-link">GitKraken</a> is a GUI porcelain
-for using Git, but it comes bundled with its own version of <a href="https://git-scm.com/" class="external-link">Git</a>. Whilst it is not open source it
-uses a Freemium model and the free version contains all of the
-functionality required for this course. It is available across all three
-of the mentioned platforms and once installed you can start a Terminal
-by clicking on the <a href="https://help.gitkraken.com/gitkraken-client/terminal/" class="external-link">Terminal
-button</a> in the toolbar.</p>
-</div>
-</div>
-</div>
-</div>
 </section><section id="github"><h2 class="section-heading">GitHub<a class="anchor" aria-label="anchor" href="#github"></a>
 </h2>
 <hr class="half-width"><div id="discussion2" class="callout discussion">
@@ -474,21 +459,55 @@ please <a href="https://github.com/signup" class="external-link">register</a>, i
 academic email address such as <code>@&lt;institute&gt;.ac.uk</code> or
 <code>@&lt;institute.edu</code> then registering with this address will
 give you access to a few more features.</p>
-<p>You should generate an SSH key and add the public component to your
-GitHub account.</p>
+<p>You should generate an SSH keys <em>and use a secure password when
+creating them</em>, then add the public component to your GitHub
+account.</p>
 </div>
 </div>
 </div>
-<p><strong>TODO</strong> Link to instructions on generating keys under
-different OSs.</p>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">Windows</h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<p>There are <a href="https://www.ssh.com/academy/ssh/putty/windows/puttygen#creating-a-new-key-pair-for-authentication" class="external-link">comprehensive
+instructions</a> on using the Windows SSH client <a href="https://www.ssh.com/ssh/putty/download" class="external-link">PuTTY</a> to generate SSH
+keys.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">Windows</h4>
+  <h4 class="accordion-header" id="headingSolution5">Linux / OSX</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-
+<p>There is a detailed <a href="https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-openssh-on-macos-or-linux" class="external-link">article</a>
+on creating SSH keys under Linux and OSX. It is recommended to use the
+newer <a href="https://blog.g3rt.nl/upgrade-your-ssh-keys.html" class="external-link">ed25519</a>
+algorithm. In a terminal you can do this using the following
+commands.</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-a</span> 100 <span class="at">-t</span> ed25519</span></code></pre>
+</div>
+<p>This creates two files in the <code>~/.ssh/</code> directory the
+private key (<code>~/.ssh/id_ed25519'</code>) and the public key
+(<code>~/.ssh/id_ed25519.pub</code>). These are text files and it is the
+contents of the later that you need to add to GitHub (see next
+solution). You can view the contents of the
+<code>~/.ssh/id_ed25519.pub</code> file that you need to copy to your
+GitHub account with.</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -496,23 +515,17 @@ different OSs.</p>
 <div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6">OSX</h4>
+  <h4 class="accordion-header" id="headingSolution6">Adding Keys to GitHub (All OSs)</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
-
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
-  <h4 class="accordion-header" id="headingSolution7">Linux</h4>
-</button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
-<div class="accordion-body">
-
+<p>Once you have created your SSH key you need to copy it to your
+account, got to <em>Settings &gt; SSh and GPG Keys</em> and click on the
+<em>New SSH key</em> button. Enter a name for your key, set the
+<strong>Key type</strong> to <em>Authenticaion Key</em> and paste your
+public key (the contents of the file ending in <code>.pub</code>) into
+the <strong>Key</strong> box then click the <em>Add SSH key</em>
+button.</p>
 </div>
 </div>
 </div>
@@ -542,12 +555,12 @@ can simply create a fresh virtual environment to use for the course.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution8" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
-  <h4 class="accordion-header" id="headingSolution8">Installing Miniconda</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
+  <h4 class="accordion-header" id="headingSolution7">Installing Miniconda</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>Please follow the instructions at <a href="https://docs.anaconda.com/free/miniconda/miniconda-install/" class="external-link">Installing
 Miniconda</a> for your Operating System.</p>
@@ -555,12 +568,12 @@ Miniconda</a> for your Operating System.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution9" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution8" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
-  <h4 class="accordion-header" id="headingSolution9">Creating A Virtual Environment</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
+  <h4 class="accordion-header" id="headingSolution8">Creating A Virtual Environment</h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>You will have to create a virtual environment to undertake the
 course. If you have installed Miniconda as described above you open a
@@ -568,12 +581,12 @@ terminal (Windows use the Git Bash Shell) and create a Virtual
 Environment called <code>git-collaboation</code>, activate it and
 install the Python Package Manager programme <code>pip</code> using the
 following commands.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> git-collaboration python=3.11</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">conda</span> install pip</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> git-collaboration python=3.11</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="ex">conda</span> install pip</span></code></pre>
 </div>
 </div>
 </div>
@@ -594,23 +607,34 @@ any links that you are not going to use.
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
 
       </div><!--/div.row-->
-      		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
-        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+      		<footer class="row footer mx-md-3"><hr><div class="col-md-2">
+        <a href="https://docs.hpc.shef.ac.uk/en/latest/stanage/index.html" class="external-link">
+          <img alt="Stanage HPC" src="https://docs.hpc.shef.ac.uk/en/latest/_images/Stanage_Black.png" style="width: 100%;"></a>
+        <p><a href="https://sites.google.com/sheffield.ac.uk/research-training/research-training" class="external-link">Research Computing Training Home</a></p>
+			</div>
+			<div class="col-md-5">
+        <p>Lesson developed by <a href="https://rse.shef.ac.uk" class="external-link">RSE</a> &amp; <a href="https://www.sheffield.ac.uk/it-services/research" class="external-link">RIT</a></p>
         <p>
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/index.md" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/ns-rse/git-collaboration/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/ns-rse/git-collaboration/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
         | <a href="https://github.com/ns-rse/git-collaboration/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/ns-rse/git-collaboration/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:n.shephard@sheffield.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
-			</div>
-			<div class="col-md-6">
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+      </div>
+			<div class="col-md-5">
         
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+
+        <!--<p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY 4.0</a> by <a href="https://carpentries.org/">The Carpentries</a></p>-->
+        <!--<p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4">pegboard (0.7.4)</a>, and <a href="https://github.com/RSE-Sheffield/uos-varnish/tree/main">varnish (1.0.1.9000)</a></p>-->
+        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>,
+      and <a href="https://github.com/RSE-Sheffield/uos-varnish/tree/main" class="external-link">varnish (1.0.1.9000) [UoS fork]</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -632,8 +656,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/index.html",
   "identifier": "ns-rse.github.io/git-collaboration/index.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-03-19",
-  "datePublished": "2024-03-19"
+  "dateModified": "2024-03-20",
+  "datePublished": "2024-03-20"
 }
 
   </script><script>
