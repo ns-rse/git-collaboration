@@ -27,15 +27,15 @@ grade tools such as the aforementioned [Linux kernel][linuxGithub], the increasi
 to niche products such as [Snapcast][snapcast] or Android apps for tracking your exercise such as
 [OpenTracks][openTracks].
 
-Git and Forges, online repositories for working with version control, as [GitHub][gh], [[GitLab][gl] and others such as
-[SourceHut][sourcehut], [Codeberg][codeberg] and so forth are known are wonderful tools for, but because of the
-complexities of version controlling software in distributed, collaborative environments the tool itself has become quite
-complex. There are many different tasks that one may wish to undertake and often several different ways of achieving
-these.
+Git and Forges, online repositories for working with Git, as [GitHub][gh], [GitLab][gl] and others such as
+[SourceHut][sourcehut], [Codeberg][codeberg], [ForgeJo][forgejo] and so forth are wonderful tools for, but because of
+the complexities of version controlling software in distributed, collaborative environments the tool itself, Git, has
+become quite complex. There are many different tasks that one may wish to undertake and often several different ways of
+achieving these.
 
 Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
-collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
-yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
+collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you
+(yet!) and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
 Hero!][zeroHero] or the [Software Carpentry : Version Control with Git][swCarpentryGit]. This course aims to show you
 some of the more involved ways to use Git in a collaborative environment.
 
@@ -64,12 +64,15 @@ In order to break the ice and find out something about the other participants on
 situation BVC (**B**efore **V**ersion **C**ontrol) where you might have had a problem that Version Control would have
 prevented. This might be deleting files by mistake, making changes to code that broke your programme. If you are
 participating online please provide an answer in the collaborative notepad, if the course is being run in person please
-describe the situation to the person next to you.
+describe the situation to the person or people sat next to you.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
 Before the start of the course you should setup a new [collaborative pad][carpentryPad] where participants can answer
 questions and collaborate.
+
+When explaining the challenge remember to let participants know that they can use these pages to work through the steps,
+this is particularly important for those who are not overly familiar with Python.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -91,7 +94,7 @@ Introduce yourself to the person you have paired up with. You now need to decide
 roles. There isn't much between them in terms of what you will be doing but one person needs to be the **repository
 owner** and one person needs to be a **collaborator**.
 
-## Repository Owner
+### Repository Owner
 
 The Repository Owner should visit the [Python Maths][pythonMaths] repository on GitHub and click on the "_Use This
 Template_" button to make a copy to their own repository.
@@ -99,14 +102,19 @@ Template_" button to make a copy to their own repository.
 Once you have made a copy you need to invite your collaborator to work on the repository with you. Navigate to
 _Settings > People_ and add you collaborator to the project.
 
-:::::::::::::::::::::::::::::::::
+### Collaborator
 
-:::::::::::::::::::::::: solution
+You should accept the invitation you have received to work on the Template the Repository Owner just sent you.
 
-The pern You should receive an email from GitHub inviting you to collaborate on the repository or had a notification on GitHub
-that you have been invited to collaborate on a repository. Accept this invitation.
+## Clone the repository and install it under the Virtual Environment
 
-:::::::::::::::::::::::::::::::::
+Both individuals should now clone the repository and then, after activating the `git-bollaboration` Virtual Environment
+you created during setup should install the package in editable mode within the environment along with the `tests**
+dependencies.
+
+**NB** - If you are not familiar with working with Python follow the instructions in the Solutions below.
+
+:::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
@@ -153,6 +161,7 @@ pip install -e .[tests]
 [carpentryPad]: https://pad.carpentries.org/
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
 [codeberg]: https://codeberg.org/
+[forgejo]: https://forgejo.org/
 [git]: https://git-scm.com
 [gh]: https://github.com
 [gl]: https://gitlab.com
