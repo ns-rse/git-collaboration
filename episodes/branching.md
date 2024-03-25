@@ -54,7 +54,7 @@ from parent "branches". An intuitive model of this is shown in the figure below.
        commit id: "6-93e787c"
 -->
 
-![Basic GitHub Branches](https://mermaid.ink/img/pako:eNqVkTtrwzAUhf-KuWDcgh30sPVa29KlW7fiRZHkWKS2gitDU-P_XjshJUNKqab7-M65gjOBCdaBgjSdfO-jSqYstq5zmUqyrf5wWZ5kOx-fB31os3U7hKijewhd5-OL3rr3ZRqH0c11n1zeUs9peh5cxD9rc5Im3qqkBlSUnDQY4RpuA7iosMDMst8AUjDOZNOQ5G797_0Vtx10b9qFORe_OdBCmIpY466B1pl9GGPSad_flpWFcIYKqW_J_rpZFYTiqtHofzdZIanjgpsaIIfODQtql_SmFa_hlFwNK2n1sF-954UbD3aJ7Mn6GAZQa1g56DGG12NvLv2ZefR6N-juMjzo_i2E6xbUBJ-gWLXBkmAqCUKIlLLM4QiKSLmhAqFKcsIk54LOOXydDPCmZJRhxEqJkRCC8fkbTTe3dw?type=png)
+![Basic GitHub Branches](https://mermaid.ink/img/pako:eNqVkTtrwzAUhf-KuWDcgh30sPVa29KlW7fiRZHkWKS2gitDU-P_XjshJUNKqab7-M65gjOBCdaBgjSdfO-jSqYstq5zmUqyrf5wWZ5kOx-fB31os3U7hKijewhd5-OL3rr3ZRqH0c11n1zeUs9peh5cxD9rc5Im3qqkBlSUnDQY4RpuA7iosMDMst8AUjDOZNOQ5G797_0Vtx10b9qFORe_OdBCmIpY466B1pl9GGPSad_flpWFcIYKqW_J_rpZFYTiqtHofzdZIanjgpsaIIfODQtql_SmFa_hlFwNK2n1sF-954UbD3aJ7Mn6GAZQa1g56DGG12NvLv2ZefR6N-juMjzo_i2E6xbUBJ-gWLXBkmAqCUKIlLLM4QiKSLmhAqFKcsIk54LOOXydDPCmZJRhxEqJkRCC8fkbTTe3dw?type=png){alt="Basic GitHub Branches with the `main` branch showing five commits and a `branch` forking off at the third commit with two commits of its own"}
 
 The `branch` has two commits on it and stems from the parent `main` at a point referred to as `base`. A branch is _not_
 just the two commits that appear to exist on it (i.e. `3-8c52dce` and `5-2315fa0`) rather it is the full commit history
@@ -335,7 +335,7 @@ commit hashes are also references and so can be used to checkout the state of th
 
 -->
 
-![Git Branch with History to Checkout](https://mermaid.ink/img/pako:eNp1kT1rwzAQhv-KOTBerCDJ1oe1lSa0Q7duxYsiyYlobAdHgabG_71ygguFWpPuuecOjncE01sHCtJ09J0PKhmzcHSty1SS7fXFZXmSHXx4GfT5mM3doQ86uOe-bX1403t3ijQMVzfVXbK8-J_S9AGW4d-2uY8m3qqkBoxKQRuCSQ3_CwQxIgm3fE2giAteNQ1dEwokDaPWuDWhRNKZQlZ6TWCIFoQ1Gq8JHFWFE1KYNUGgvSmLav1MibTExjWyhiTow4xed0_bRYccWje02tsY1TizGu4x1TCrVg-fszpF73q2MZ-d9aEfQM3J5KCvoX-_dWapH87W68OgW1CNPl0iPevuo-__1KBG-AJFRblhFDMuZSk445TlcItYlhuBaYEJpixex6ccvu8b8EYyIbGsGClwbFA6_QAk7q7t?type=png)
+![A linear Git History on the `main` branch showing the position of `HEAD`.](https://mermaid.ink/img/pako:eNp1kT1rwzAQhv-KOTBerCDJ1oe1lSa0Q7duxYsiyYlobAdHgabG_71ygguFWpPuuecOjncE01sHCtJ09J0PKhmzcHSty1SS7fXFZXmSHXx4GfT5mM3doQ86uOe-bX1403t3ijQMVzfVXbK8-J_S9AGW4d-2uY8m3qqkBoxKQRuCSQ3_CwQxIgm3fE2giAteNQ1dEwokDaPWuDWhRNKZQlZ6TWCIFoQ1Gq8JHFWFE1KYNUGgvSmLav1MibTExjWyhiTow4xed0_bRYccWje02tsY1TizGu4x1TCrVg-fszpF73q2MZ-d9aEfQM3J5KCvoX-_dWapH87W68OgW1CNPl0iPevuo-__1KBG-AJFRblhFDMuZSk445TlcItYlhuBaYEJpixex6ccvu8b8EYyIbGsGClwbFA6_QAk7q7t?type=png){alt="A linear Git History on the `main` branch showing the position of `HEAD`."}
 
 Here we have a simply linear history and the `HEAD` of branch is on commit `8-a80cef8` If you want to checkout commit
 `4-8ec389a` then you would `git switch 4-8ec389a` and you will see the following useful and informative warning
@@ -457,7 +457,8 @@ and counting backwards.
        commit id: "8-a80cef8" tag: "HEAD"
 
 -->
-![Relative Refs on a Git Branch](https://mermaid.ink/img/pako:eNp10k1rgzAYB_CvIg8UL6bkxbzobaxlO-y22_CSxtiGVS02hXXiPvtii5uDmVPyf34JJE96MG1pIYfVqneN83nUx_5gaxvnUbzTZxsnUbx3_qnTp0M8VrvWa28f27p2_kXv7DGkvrvYoWiiaYT5sFrdg2nzT9nctkauzKMCMEolrQgmBURe78foSxXwPyaIE0VEKWZYLmGKhBRZVdEZFkuYIWU4LY2dYb6EU6SsYSrTM5wuYY4oI7zSeIbZEhYoY1YqaWaYLmGJdiZl2Z-nI0tYIa2wsZX6xc_bh83EIYHadrV2ZfgK_ZgVcPsGBYy01N37SIfgLqcy9H9bOt92kI-dT0BffPt6bcy0vpuN0_tO15BX-ngO6Uk3b237Zw15Dx-QU5muOcVcKJVKwQXlCVxDrNK1xJRhgikPNxVDAp-3E_BacamwyjhhOBQoHb4BB-fKEQ?type=png)
+![Relative Refs on a Git
+Branch](https://mermaid.ink/img/pako:eNp10k1rgzAYB_CvIg8UL6bkxbzobaxlO-y22_CSxtiGVS02hXXiPvtii5uDmVPyf34JJE96MG1pIYfVqneN83nUx_5gaxvnUbzTZxsnUbx3_qnTp0M8VrvWa28f27p2_kXv7DGkvrvYoWiiaYT5sFrdg2nzT9nctkauzKMCMEolrQgmBURe78foSxXwPyaIE0VEKWZYLmGKhBRZVdEZFkuYIWU4LY2dYb6EU6SsYSrTM5wuYY4oI7zSeIbZEhYoY1YqaWaYLmGJdiZl2Z-nI0tYIa2wsZX6xc_bh83EIYHadrV2ZfgK_ZgVcPsGBYy01N37SIfgLqcy9H9bOt92kI-dT0BffPt6bcy0vpuN0_tO15BX-ngO6Uk3b237Zw15Dx-QU5muOcVcKJVKwQXlCVxDrNK1xJRhgikPNxVDAp-3E_BacamwyjhhOBQoHb4BB-fKEQ?type=png){alt="Relative references on the `main` branch with 9 commits showing the commit hash and the reference relative to the `HEAD`"}
 
 If you want to undo the _last_ commit then you can do this using `git reset --soft HEAD~1`.
 
@@ -609,7 +610,7 @@ has been merged via a Pull Request, but the work to address the Square Root func
 
 -->
 
-![Branch `ns-rse/2-square-root` is behind `main`](https://mermaid.ink/img/pako:eNqtkl1vmzAYhf8KshSxSZjaBn_A3bRW28Xueldx49gmsVpwZky1FvHfZ9Imy6QmqtT6Cp_38XkP0pmActqAGqxWk-1tqJMpDVvTmbRO0rUcTJol6caGH17utuky9S7IYL67rrPhl1ybh6gGP5q56ZPDid_zavUiHB4fx2r_NLG6ThqAYMlJixFuwNsAhhQLzDQ7BxDIOKvaliRflrxfT7i1l73aRqYfoB_MFYbPxjuo7aMdrOsvkAQOv0fpDfTOhdPNW6Pu3Rje4_lfygIKRYlW5qLZ2bWnViUURhWikp-Ri0JSYNpK9PFcDFaF4YKrt6w6afuj2hm_MReivhpyuFZlUS3dSILcLNIjynF-tis_b75dH2YgA3FNXKtjuadFa8C-2A1YUC39_YLOkZNjcLdPvQL10uMMjDsdG35t5cbLDtStfBiO6o22wfkDuZP9nXP_mHgH9QT-gJrwMqcEUSZEyRllhGbgKcqizDkiBcKI0PhrbM7A894B5YJygURFcYHigJD5LybqESw?type=png)
+![Diverging branches in `python-maths` `ns-rse/2-square-root` is now behind the `main` branch which has incorporated the changes from `ns-rse/1-zero-division.`](https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png){alt-text="Diverging branches in `python-maths` `ns-rse/2-square-root` is now behind the `main` branch which has incorporated the changes from `ns-rse/1-zero-division`."}
 
 In this example the `main` branch now includes the commits `3-8c52dce` and `5-2315fa0` from the `ns-rse/1-zero-division`
 branch as well as the commit `7-bc43901` which was made when the `ns-rse/1-zero-division` branch was merged in. The
@@ -657,7 +658,7 @@ There are two approaches to solving this `git merge` (merging) and `git rebase` 
 
 -->
 
-![Merging `main` into `ns-rse/2-square-root`](https://mermaid.ink/img/pako:eNqtk81unDAUhV8FWRrRSpjaBv_ArmqidtGuuqvYeIyZsRLw1JioCeLda5gymUqZUdWEFZz73XOPke8IlK01KMFmM5rO-DIaY7_XrY7LKN7KXsdJFO-M_-zkYR_PVWe99PqTbVvjv8qtvg-qd4Oeqi5an_A-bTZHYW0-ldXSGpm6jCqAYM5JgxGuwMsAhhQLzGp2CSCQcVY0DYnezXnfn3FbJzu1D0zXQ9frDxg-aWdhbR5Mb2x3hSSw_zlIp6Gz1p9P3mt1Zwf_L55_pcygUJTUSl81uzj23CqHQqtMFPItclFIMkwbiV6fi8Ei01xw9ZJVK013UlvtdvpK1D-GHG5VnhXz3Yi83M3SA0pxevGufLn9ePNf51gDLSnX8QJKgZRuxPP4bwt3pI7NIAGhOSh12KFx1iqw7E8F5oZaursZnQInB2-_P3YKlPO6JGA41GGRbozcOdmCspH3_Um9rY23biUPsvth7TMTvkE5gl-gJDxPKUGUCZFzRhmhCXgMsshTjkiGMCI0_EE2JeBpcUCpoFwgUVCcoVAgZPoNELowaQ?type=png)
+![Merging `README.md` into `main` then merging `main` into `LICENSE` to bring it up-to-date](https://mermaid.ink/img/pako:eNqtU01vnDAU_CvI0opWwtQ2-ANuVRO1h_bUW8XFa8yulYC3xkRNEP-9BkK6lbKrqq1PvHkz8wbLbwTK1hqUYLcbTWd8GY2xP-pWx2UU72Wv4ySKD8Z_dPJ0jOeus156_cG2rfGf5V7fB9S7QU9VF20nfE-73Qps4pe2WqSRqcuoAgjmnDQY4Qq8TsCQYoFZzS4RCGScFU1Dojdz3rdnvL2TnToGTtdD1-t3GD5pZ2FtHkxvbHeFSWD_fZBOQ2etP5981OrODv5PPH9LmUGhKKmVvmp2cey5VQ6FVpko5P_IRSHJMG0k-vdcDBaZ5oKr16xaaboXtNXuoK9EfTbkcK_yrJjfRuTlYYYeUIrTi2_l0-37m7_6jy3QknIbL6AUSOlG_Br_ZeGtrFUMEhDEAanDDo0zVoFlfyowC2rp7mbqFHjDqQ6Lc1sbbx0o55VJgBy8_frYqa1eOTdGHpxsN_Aku2_WhrKR9_1ag3IEP0BJeJ5SgigTIueMMkIT8BhgkacckQxhRGi4QDYl4GlxQKmgXCBRUJyh0CBk-gnhvTAe?type=png){alt-text="Merging `README.md` into `main` then merging `main` into `LICENSE` to bring it up-to-date"}
 
 The syntax of `git merge` is
 
@@ -800,25 +801,6 @@ that were made on `branch1` and so a separate commit (`d914fee`) was made to mer
 see from the graph that `README.md` was added from a separate `branch1` and `LICENSE` was added from `branch2`, although
 after deleting the branches they are no longer shown by name in the `git log --graph` output.
 
-<!--
-%%{init: {'theme': 'base', 'gitGraph': {'rotateCommitLabel': true}
-         }
-}%%
-    gitGraph
-       commit id: "1bd6bb8"
-       branch "README"
-       branch "LICENSE"
-       checkout README
-       commit id: "a"
-       checkout main
-       merge "README" id: "7817070"
-       checkout "LICENSE"
-       commit id: "a14a643"
-       merge "main" id: "d914fee (merge)"
-       checkout "main"
-       merge "LICENSE"
--->
-
 ### Rebasing
 
 Rebasing moves the point at which the branch diverged from its original position to another, in this case the `HEAD` of
@@ -851,7 +833,7 @@ the `main` branch. You are changing the `base` commit, hence the name `git rebas
 
 -->
 
-![Git Rebase to bring the diverged branch `ns-rse/2-square-root` upto date with `main`](https://mermaid.ink/img/pako:eNqtkk9v2yAYxr-KhRS5k4wH2Pyxr2u1y07bbfKFAE5Qa5NiXK21_N0HaVNlUhpN2jjB8_54gId3AcppA1qw2Sx2tKHNljzszWDyNsu3cjJ5keU7G756edjnqepdkMF8ccNgwze5NQ9RDX42azdmpxHn62bzKpw2v5fVcWtmdZt1AMGakx4j3IHLAIYUC8w0-wggkHHW9D3JbtJ9P51xWy9HtY_MOEE_mc8YvhjvoLZPdrJuPHfcG3Xv5vBX7PnpFRSKEq3M_zCjkFSY9hJdMhukHd_VwfidueL_ZsjhVtVVk9LNgtwl6QmVuLyQ9lv5u0khXsmQwOlxlt5A71y4-ugPyfMn11AYVYlG_rsVg01luODqBIACxJxibjr295K0Dhx7uwOJ19LfJ3SN3HzQsanvtA3Ogza1cwHkHNyP51Gd1q_MrZU7LwfQ9vJhiupBjj-d-2MN2gX8Ai3hdUkJokyImjPKCC3Ac5RFXXJEKoQRofFv2FqAl6MDKgXlAomG4grFAiHrb-1-Ets?type=png)
+![Git Rebase to bring the diverged branch up-to-date with `main`.](https://mermaid.ink/img/pako:eNqtks1unDAUhV8FWRrRSpjYBv_ANqm66ardVWw8tpmxEvDEmKgJ4t1rZkI0i8koUuIV99zPx_j4TkA5bUANNpvJ9jbUyZSGvelMWifpVg4mzZJ0Z8NPLw_7dOl6F2Qwt67rbPglt-YhqsGPZm76ZF3xe95sTsK6-a2tjlsTq-ukAQiWnLQY4QZcBjCkWGCm2XsAgYyzqm1J8m353-9n3NbLXu0j0w_QD-YGwxfjHdT2yQ7W9eeOe6Pu3Rg-xJ6fXkChKNHKfIUZhaTAtJXoklknbf-mdsbvzBX_V0MOt6osqiXdJMjdIj2hHOcX0n5t_zZLiFcyJHB4HKU30DsXrl76XfL8yiUURhWikp-3YrAqDBdcrQDIQMwp5qbjfE-L1oDjbDdg4bX09ws6R2486DjUP7QNzoN6GecMyDG4P8-9WusTc2flzstuFQ-y_-tcLFv5MJxqUE_gH6gJL3NKEGVClJxRRmgGnqMsypwjUiCMCI1Pw-YMvBwdUC4oF0hUFBcoNgiZ_wPXKhKQ?type=png){alt="Git Rebase to bring the diverged branch up-to-date with `main`."}
 
 `git rebase` takes a different approach to bringing branches up-to-date.
 
