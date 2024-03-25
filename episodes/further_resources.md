@@ -21,7 +21,7 @@ exercises: 2
 
 ## Will I Ever Know it All?
 
-![[xkcd : Git](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png)
+![[xkcd : Git](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png){alt="XKCD Git Cartoon : This is Git. It tracks collaborative work on projects through a beautiful distributed graph theory tree model. Cool. How Do we use it? No idea. Just memorise these shell commands and type them to sync up. If you get errors, save your work elsewhere, delete the project and download a fresh copy."}
 
 Probably not. There is simply too much to Git and associated tools like GitHub/GitLab and Pre-Commit to have any hope of
 knowing everything there is to about all aspects. That shouldn't dishearten you from learning what you need to as you
@@ -93,7 +93,7 @@ Various tutorials and tools that help explain how Git works.
 
 #### Julia Evans (aka b0rk)
 
-[Julia Evans (aka b0rk) Git Posts](https://jvns.ca/#git) writes useful and insightful posts on different aspects of Git
+[Julia Evans (aka b0rk)](https://jvns.ca/#git) writes useful and insightful posts on different aspects of Git
 that help tackle fundamental but often misunderstood concepts.
 
 - [How HEAD works in git](https://jvns.ca/blog/2024/03/08/how-head-works-in-git/)
