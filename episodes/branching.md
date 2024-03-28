@@ -95,6 +95,10 @@ concerned with `restore`ing files.
 
 ## Challenge 1: What is the first and last commit on branch `divide`?
 
+Using the `python-maths` repository you have cloned look up the first and last commit of the `divide` branch.
+
+What are the commit hashes, commit messages, date/time and committers names?
+
 :::::::::::::::::::::::: solution
 
 ## Solution
@@ -102,14 +106,65 @@ concerned with `restore`ing files.
 ``` bash
 git switch divide
 git log --pretty="%h %ad (%cr) %x09 %an : %s"
-# TODO : Complete solution and add output once sample repository is in place
+* 6353fb4 - (HEAD -> divide, origin/divide) bug: Fix tpyo in divide function (2024-03-26 10:28:36 +0000) <Neil Shephard>
+* 7485e56 - chore: Fix merge conflict (2024-03-26 10:28:11 +0000) <Neil Shephard>
+* adfef4d - feat: Divide branch (2024-03-25 15:55:15 +0000) <Neil Shephard>
+* 400896a - Divide branch (2024-03-25 15:55:15 +0000) <Neil Shephard>
+* c1f64b0 - Setting up the repository for git-collaboration (2024-02-02 15:48:50 +0000) <Neil Shephard>
+*   fa76751 - (origin/main, main) Merge pull request #6 from RSE-Sheffield/ns-rse/5-setup-clean-up (2023-10-19 22:46:14 +0100) <Neil Shephard>
+|\
+| * c8f0697 - 5 | Removing comment from setup.cfg (2022-10-04 11:12:23 +0100) <Neil Shephard>
+* |   aff8153 - Merge pull request #7 from RSE-Sheffield/subtract-mistake (2023-01-20 10:07:58 +0000) <bobturneruk>
+|\ \
+| |/
+|/|
+| * a45a8dd - introduce mistake in subtract issue (2023-01-20 09:50:03 +0000) <Robert (Bob) Turner>
+| * 604a397 - introduce delibarate mistake (2022-12-21 10:29:34 +0000) <Robert (Bob) Turner>
+|/
+*   f06c0ab - Merge pull request #4 from RSE-Sheffield/simplify_deliberate_errors (2022-06-07 14:58:27 +0100) <David Wilby>
+|\
+| * f55c0d2 - remove missing colon and no newline deliberate errors (2022-05-06 11:50:24 +0100) <David Wilby>
+|/
+* 5c9ae75 - correct python testing instruction (2021-05-18 16:15:23 +0300) <Anna Krystalli>
+* 86d7633 - add correct details to each issue (2021-05-18 16:01:50 +0300) <Anna Krystalli>
+* a58d6e7 - add all github issue templates (2021-05-17 13:43:57 +0300) <Anna Krystalli>
+* 9429ab4 - complete subtract issue template (2021-05-14 15:53:25 +0300) <Anna Krystalli>
+* bb560b0 - simplify function (2021-05-14 15:53:01 +0300) <Anna Krystalli>
+*   325d038 - Merge pull request #1 from RSE-Sheffield/tests_changes (2021-05-14 14:40:36 +0300) <Anna Krystalli>
+|\
+| * 608ad59 - Restructure so tests pass (2021-05-14 12:24:23 +0100) <Will Furnass>
+|/
+* 8584b0f - correct pull request branch spec (2021-05-14 12:45:21 +0300) <Anna Krystalli>
+* cdc9ea3 - correct push branch specification (2021-05-14 12:40:01 +0300) <Anna Krystalli>
+* c01ff62 - add instructions to README (2021-05-14 12:38:29 +0300) <Anna Krystalli>
+* 585287a - add test and CI (2021-05-14 12:38:09 +0300) <Anna Krystalli>
+* 3f4d54b - rename python_package folder (2021-05-14 12:37:48 +0300) <Anna Krystalli>
+* 4b1707b - use requirements.txt instead of env.yml (2021-05-14 10:04:02 +0100) <davidwilby>
+* 2556966 - remove build specs from conda env (2021-05-14 10:01:28 +0100) <davidwilby>
+* b50e658 - move env.yml to right place.. (2021-05-14 09:54:59 +0100) <davidwilby>
+*   0d2f520 - Merge branch 'main' of github.com:RSE-Sheffield/python-calculator into main (2021-05-14 09:53:44 +0100) <davidwilby>
+|\
+| * b1179a7 - add package name folder (2021-05-14 11:33:06 +0300) <Anna Krystalli>
+* | c883789 - add conda environment yaml (2021-05-14 09:53:06 +0100) <davidwilby>
+|/
+* fdb8716 - draft commit (2021-05-14 11:23:42 +0300) <Anna Krystalli>
+* 328e61b - Add subtraction issue template (2021-05-13 12:23:42 +0300) <Anna Krystalli>
+* 31a4a93 - Initial commit (2021-05-13 12:14:08 +0300) <Anna Krystalli>
 ```
+
+From the `git log` graph we see the first and last commits were.
+
+| Commit | Hash    | Message                          | Date/time           | Committer      |
+|:-------|:--------|:---------------------------------|:--------------------|:---------------|
+| First  | 31a4a93 | Initial commit                   | 2021-05-13 12:14:08 | Anna Krystalli |
+| Last   | 6353fb4 | bug: Fix tpyo in divide function | 2024-03-26 10:28:36 | Neil Shephard  |
 
 :::::::::::::::::::::::::::::::::
 
 ## Challenge 2: What commit did the `multiply` branch diverge from `master`?
 
-Use `git log` to determine the commit that `multiply` diverged from `master`.
+Again using the `python-maths` repository switch to the multiply. Use `git log` what is the commit that `multiply`
+diverged from `master`. How many commits have been made on the `multiply` branch?
 
 :::::::::::::::::::::::: solution
 
@@ -118,8 +173,57 @@ Use `git log` to determine the commit that `multiply` diverged from `master`.
 ``` bash
 git switch multiply
 git log --graph --pretty="%h %ad (%cr) %x09 %an : %s"
-# TODO : Complete solution and add output once sample repository is in place
+* b702501 - (HEAD -> multiply, origin/multiply) bug: multiply instead of add arguments (2024-03-26 10:33:37 +0000) <Neil Shephard>
+* 11e36a3 - feat: Adding multiply function and tests (2024-03-26 10:32:42 +0000) <Neil Shephard>
+* c1f64b0 - Setting up the repository for git-collaboration (2024-02-02 15:48:50 +0000) <Neil Shephard>
+*   fa76751 - (origin/main, main) Merge pull request #6 from RSE-Sheffield/ns-rse/5-setup-clean-up (2023-10-19 22:46:14 +0100) <Neil Shephard>
+|\
+| * c8f0697 - 5 | Removing comment from setup.cfg (2022-10-04 11:12:23 +0100) <Neil Shephard>
+* |   aff8153 - Merge pull request #7 from RSE-Sheffield/subtract-mistake (2023-01-20 10:07:58 +0000) <bobturneruk>
+|\ \
+| |/
+|/|
+| * a45a8dd - introduce mistake in subtract issue (2023-01-20 09:50:03 +0000) <Robert (Bob) Turner>
+| * 604a397 - introduce delibarate mistake (2022-12-21 10:29:34 +0000) <Robert (Bob) Turner>
+|/
+*   f06c0ab - Merge pull request #4 from RSE-Sheffield/simplify_deliberate_errors (2022-06-07 14:58:27 +0100) <David Wilby>
+|\
+| * f55c0d2 - remove missing colon and no newline deliberate errors (2022-05-06 11:50:24 +0100) <David Wilby>
+|/
+* 5c9ae75 - correct python testing instruction (2021-05-18 16:15:23 +0300) <Anna Krystalli>
+* 86d7633 - add correct details to each issue (2021-05-18 16:01:50 +0300) <Anna Krystalli>
+* a58d6e7 - add all github issue templates (2021-05-17 13:43:57 +0300) <Anna Krystalli>
+* 9429ab4 - complete subtract issue template (2021-05-14 15:53:25 +0300) <Anna Krystalli>
+* bb560b0 - simplify function (2021-05-14 15:53:01 +0300) <Anna Krystalli>
+*   325d038 - Merge pull request #1 from RSE-Sheffield/tests_changes (2021-05-14 14:40:36 +0300) <Anna Krystalli>
+|\
+| * 608ad59 - Restructure so tests pass (2021-05-14 12:24:23 +0100) <Will Furnass>
+|/
+* 8584b0f - correct pull request branch spec (2021-05-14 12:45:21 +0300) <Anna Krystalli>
+* cdc9ea3 - correct push branch specification (2021-05-14 12:40:01 +0300) <Anna Krystalli>
+* c01ff62 - add instructions to README (2021-05-14 12:38:29 +0300) <Anna Krystalli>
+* 585287a - add test and CI (2021-05-14 12:38:09 +0300) <Anna Krystalli>
+* 3f4d54b - rename python_package folder (2021-05-14 12:37:48 +0300) <Anna Krystalli>
+* 4b1707b - use requirements.txt instead of env.yml (2021-05-14 10:04:02 +0100) <davidwilby>
+* 2556966 - remove build specs from conda env (2021-05-14 10:01:28 +0100) <davidwilby>
+* b50e658 - move env.yml to right place.. (2021-05-14 09:54:59 +0100) <davidwilby>
+*   0d2f520 - Merge branch 'main' of github.com:RSE-Sheffield/python-calculator into main (2021-05-14 09:53:44 +0100) <davidwilby>
+|\
+| * b1179a7 - add package name folder (2021-05-14 11:33:06 +0300) <Anna Krystalli>
+* | c883789 - add conda environment yaml (2021-05-14 09:53:06 +0100) <davidwilby>
+|/
+* fdb8716 - draft commit (2021-05-14 11:23:42 +0300) <Anna Krystalli>
+* 328e61b - Add subtraction issue template (2021-05-13 12:23:42 +0300) <Anna Krystalli>
+* 31a4a93 - Initial commit (2021-05-13 12:14:08 +0300) <Anna Krystalli>
 ```
+
+This is a little more challenging to interpret but reading the output carefully we have an indicator of where the
+`origin/main` branch is where it reads `(origin/main, main)`. All subsequent commits are on the currently checked out
+branch which is `multiply` and `origin/multiply` (i.e. the local copy of the branch is at the same point as the remote
+on GitHub).
+
+Knowing this we can see that the `multiply` branch diverged from the `fa76751` commit on `main` and that three commits
+have been made on the `multiply` branch.
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -144,7 +248,7 @@ for formatting Git log output (e.g. `glod`).
 
 ## Working with Branches
 
-The `git switch` command is the canonical method for working with branches it allows you to list, create and delete
+The `git switch` command is the canonical method for working with branches. It allows you to list, create and delete
 branches along with a few other tasks.
 
 To list the branches that are available you can just type `git branch` or optionally include the `--list` option. In the
@@ -169,15 +273,16 @@ git switch -c main ns-rse/test
 ::::::::::::::::::::::::::::::::::::: callout
 
 Most of the time when creating branches you should do so from the `main` branch. It is therefore important to make sure
-your local copy of the `main` branch is up-to-date. Before creating a branch you should therefore checkout `main` the
-main branch and ensure it is up-to-date.
+your local copy of the `main` branch is up-to-date. Before creating a branch you should therefore checkout the `main`
+branch and ensure it is up-to-date.
 
 ``` bash
 git switch main
 git pull
 ```
 
-This means you can omit the branch you wish to use as the basis for the new branch when creating.
+This means you can omit the explicit statement of which branch you wish to use as the basis for the new branch,
+typically `main`, when creating it as you will be already be checked out on that branch when `git pull`.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Naming Branches
@@ -192,18 +297,19 @@ short few words which describe the work or issue. For example GitHub user `ns-rs
 might create a branch called `ns-rse/1-fix-typehints` from main.
 
 This structure is informative as it provides other people you collaborate with or who look at the repository an
-indication of who created the branch what issue they are looking on if they wish to find out more about it and a very
-short indication of what it is concerned about.
+indication of who created the branch, what issue they are working on and a very short indication of what it is concerned
+about. With this information it is very easy to look up the relevant Issue.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
 ## Challenge 3: Assign Issues, Create Branches and Complete the Tasks
 
-In pairs assign the `01 Add zero division exception and test` to one person and the `02 Add a square root function and
-test` to the other person.
+In your pairs assign the `01 Add zero division exception and test` to one person and the `02 Add a square root function
+and test` to the other person.
 
 Work through the tasks adding the necessary code, saving, staging and committing your changes then pushing to `origin`
-(GitHub). **NB** only the first issue for zero division should have a Pull Request created.
+(GitHub). **NB** only the first issue for zero division should have a Pull Request created, please do _not_ create a
+pull request or merge the square root task.
 
 Assign the person who worked on the Square root function to review and if everything looks good merge the pull request.
 

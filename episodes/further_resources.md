@@ -48,6 +48,8 @@ finding out more about Git, GitHub and so forth.
 
 - [So You Think You Know Git - Scott Chacon FOSDEM 2024](https://www.youtube.com/watch?v=aolI_Rz0ZqY) an excellent talk
   by one of the co-founders of GitHub.
+- [So You Think You Konw Git (Part 2) - Scott Chacon DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4) another
+  excellent talk.
 
 ### Blogs
 
