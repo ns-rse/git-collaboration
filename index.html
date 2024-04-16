@@ -54,7 +54,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-        <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="Search the All In One page" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -80,8 +80,8 @@
           </ul></li>
       </ul></div>
     <form class="d-flex col-md-2 search-form">
-      <fieldset disabled><input class="form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-success tablet-search-button" type="submit">
-          <i class="search-icon" data-feather="search" role="img" aria-label="search button"></i>
+      <fieldset disabled><input class="form-control me-2 searchbox" type="search" placeholder="" aria-label=""><button class="btn btn-outline-success tablet-search-button" type="submit">
+          <i class="search-icon" data-feather="search" role="img" aria-label="Search the All In One page"></i>
         </button>
       </fieldset></form>
   </div><!--/div.container-fluid -->
@@ -351,7 +351,7 @@ IDEs, although not all will support all of the functions introduced here
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Windows</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You can use the <a href="https://git-scm.com/download/win" class="external-link">official
 binary</a> but we encourage you to use <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell" class="external-link">Git
@@ -369,7 +369,7 @@ bundled together).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><a href="https://git-scm.com/" class="external-link">Git</a> is not included in the MacOS
 distribution by default. The <a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
@@ -399,7 +399,7 @@ suggests using either <a href="https://brew.sh/" class="external-link">Homebrew<
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Linux</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Most GNU/Linux distributions will have Git installed by default. If
 not you can install it using the package manager for your distribution.
@@ -470,7 +470,7 @@ account.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Windows</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>There are <a href="https://www.ssh.com/academy/ssh/putty/windows/puttygen#creating-a-new-key-pair-for-authentication" class="external-link">comprehensive
 instructions</a> on using the Windows SSH client <a href="https://www.ssh.com/ssh/putty/download" class="external-link">PuTTY</a> to generate SSH
@@ -484,7 +484,7 @@ keys.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Linux / OSX</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>There is a detailed <a href="https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-openssh-on-macos-or-linux" class="external-link">article</a>
 on creating SSH keys under Linux and OSX. It is recommended to use the
@@ -517,7 +517,7 @@ GitHub account with.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Adding Keys to GitHub (All OSs)</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Once you have created your SSH key you need to copy it to your
 account, got to <em>Settings &gt; SSh and GPG Keys</em> and click on the
@@ -560,7 +560,7 @@ can simply create a fresh virtual environment to use for the course.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Installing Miniconda</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>Please follow the instructions at <a href="https://docs.anaconda.com/free/miniconda/miniconda-install/" class="external-link">Installing
 Miniconda</a> for your Operating System.</p>
@@ -573,7 +573,7 @@ Miniconda</a> for your Operating System.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Creating A Virtual Environment</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>You will have to create a virtual environment to undertake the
 course. If you have installed Miniconda as described above you open a
@@ -623,7 +623,7 @@ any links that you are not going to use.
         | <a href="https://github.com/ns-rse/git-collaboration/" class="external-link">Source</a>
         </p>
 		<p>
-          <a href="https://github.com/ns-rse/git-collaboration/blob/main/" class="external-link">Cite</a> | <a href="mailto:n.shephard@sheffield.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a> | <a href="CODE_OF_CONDUCT.html">Code of Conduct</a>
+          <a href="https://github.com/ns-rse/git-collaboration/blob/main/CITATION.cff" class="external-link">Cite</a> | <a href="mailto:n.shephard@sheffield.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a> | <a href="CODE_OF_CONDUCT.html">Code of Conduct</a>
         </p>
 		</div>
 		<div class="col-md-5">
@@ -632,10 +632,10 @@ any links that you are not going to use.
         
 
         <!--<p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY 4.0</a> by <a href="https://carpentries.org/">The Carpentries</a></p>-->
-        <!--<p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4">pegboard (0.7.4)</a>, and <a href="https://github.com/RSE-Sheffield/uos-varnish/tree/main">varnish (1.0.2.9000)</a></p>-->
+        <!--<p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.4">sandpaper (0.16.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.5">pegboard (0.7.5)</a>, and <a href="https://github.com/RSE-Sheffield/uos-varnish/tree/main">varnish (1.0.2.9000)</a></p>-->
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.4" class="external-link">sandpaper (0.16.4)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.7.5" class="external-link">pegboard (0.7.5)</a>,
       and <a href="https://github.com/RSE-Sheffield/uos-varnish/tree/main" class="external-link">varnish (1.0.2.9000) [UoS fork]</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -658,8 +658,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/index.html",
   "identifier": "ns-rse.github.io/git-collaboration/index.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-04-09",
-  "datePublished": "2024-04-09"
+  "dateModified": "2024-04-16",
+  "datePublished": "2024-04-16"
 }
 
   </script><script>
