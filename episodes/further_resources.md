@@ -29,8 +29,8 @@ go.
 
 ## How can I keep on learning more about Git?
 
-Practise makes perfect, or so the saying goes, but in the case of computing its quite true, if you don't practise using
-the tools or writing code you will not improve.
+Practise makes perfect, or so the saying goes, but in the case of computing its true, if you don't practise using
+the tools or writing code you will not improve. Whilst you might not reach perfection you will become more proficient.
 
 ## What material would you recommend?
 
