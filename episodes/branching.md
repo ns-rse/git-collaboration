@@ -49,9 +49,9 @@ from parent "branches". An intuitive model of this is shown in the figure below.
        checkout main
        commit id: "4-8ec389a"
        checkout "branch"
-       commit id: "5-2315fa0"
+       commit id: "5-2315fa0 (HEAD)"
        checkout main
-       commit id: "6-93e787c"
+       commit id: "6-93e787c (HEAD)"
 -->
 
 ![Basic GitHub Branches](https://mermaid.ink/img/pako:eNqVkTtrwzAUhf-KuWDcgh30sPVa29KlW7fiRZHkWKS2gitDU-P_XjshJUNKqab7-M65gjOBCdaBgjSdfO-jSqYstq5zmUqyrf5wWZ5kOx-fB31os3U7hKijewhd5-OL3rr3ZRqH0c11n1zeUs9peh5cxD9rc5Im3qqkBlSUnDQY4RpuA7iosMDMst8AUjDOZNOQ5G797_0Vtx10b9qFORe_OdBCmIpY466B1pl9GGPSad_flpWFcIYKqW_J_rpZFYTiqtHofzdZIanjgpsaIIfODQtql_SmFa_hlFwNK2n1sF-954UbD3aJ7Mn6GAZQa1g56DGG12NvLv2ZefR6N-juMjzo_i2E6xbUBJ-gWLXBkmAqCUKIlLLM4QiKSLmhAqFKcsIk54LOOXydDPCmZJRhxEqJkRCC8fkbTTe3dw?type=png){alt="Basic GitHub Branches with the `main` branch showing five commits and a `branch` forking off at the third commit with two commits of its own"}
@@ -71,7 +71,8 @@ The history of _both_ the `main` and the `branch` contain all points from the or
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 In a repository that is version controlled you will typically be checked out on the `HEAD` of a named branch. The `HEAD`
-means the most recent commit in the history of that branch.
+means the most recent commit in the history of that branch which on the `branch` is commit `5-2315fa0` whilst on `main`
+the `HEAD` is `6-93e787c`.
 
 You can change branches by using `git switch <branchname>`.
 
@@ -80,14 +81,14 @@ You can change branches by using `git switch <branchname>`.
 `git switch` was introduced in [Git
 v2.23.0](https://github.blog/2019-08-16-highlights-from-git-2-23/#experimental-alternatives-for-git-checkout) along with
 `git restore` to provide two separate commands for the functionality that was originally available in `git checkout`.
-The main reason was to separate the functionality of `git checkout` which could 'switch' branches, including creating
-branches using the `--branch`/`-b` flag, and change individual files with `git checkout [treeish] -- <filename>` (more
-on this later).
+The main reason was to separate the functionality of `git checkout` which could "switch" branches, including creating
+branches using the `--branch`/`-b` flag, and change ("restore") individual files with `git checkout [treeish] --
+<filename>` (more on this later).
 
-Splitting this functionality means that `git switch` is solely for 'switch'ing branches whilst `git restore` is solely
+Splitting this functionality means that `git switch` is solely for `switch`ing branches whilst `git restore` is solely
 concerned with `restore`ing files.
 
-`git checkout` has not been deprecated and is still available and many people still use it.
+`git checkout` has not been deprecated and is still available and many people still use it as old habits die hard.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -248,28 +249,28 @@ for formatting Git log output (e.g. `glod`).
 
 ## Working with Branches
 
-The `git switch` command is the canonical method for working with branches. It allows you to list, create and delete
+The `git switch` command is the common method for working with branches. It allows you to list, create and delete
 branches along with a few other tasks.
 
 To list the branches that are available you can just type `git branch` or optionally include the `--list` option. In the
 `python-maths` repository you  have cloned you should see a number of branches listed. The branch you are currently
-checked out on is listed first with an asterisk (`*` )at the start.
+checked out on is listed first with an asterisk (`*` )at the start and they are listed alphabetically. Later we will
+change the default order to be more informative.
 
 ``` bash
 git branch
-# TODO : Complete output once sample repositopry is in place
+
+divide
+main
+* multiply
+ns-rse/initial-setup
 ```
 
 ### Creating Branches
 
 You can create a new branch using `git switch -c <new_branch>`. By default it will use the branch you currently have
 checked out as a basis for the new branch. If you wish to use a different branch as a basis you can do so by including
-its name before the name of the new branch. To create a new branch called `ns-rse/test` you can use the following.
-
-``` bash
-git switch -c main ns-rse/test
-```
-
+its name before the name of the new branch.
 ::::::::::::::::::::::::::::::::::::: callout
 
 Most of the time when creating branches you should do so from the `main` branch. It is therefore important to make sure
@@ -285,16 +286,26 @@ This means you can omit the explicit statement of which branch you wish to use a
 typically `main`, when creating it as you will be already be checked out on that branch when `git pull`.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+To create a new branch called `ns-rse/test` you can use the following.
+
+``` bash
+git switch main
+git pull
+git switch -c main ns-rse/test
+```
+
+This tells git to use the current `HEAD` of the `main` branch as a basis for creating the `ns-rse/test` branch.
+
 ### Naming Branches
 
 Branch names can not include spaces, you should use underscores or dashes instead. You can include some special
 characters too but I would avoid using `#` as this is the character used by most shells to indicate a comment and you
 would therefore have to _always_ double quote the branch name at the command line.
 
-A useful convention to use when creating branches is to construct the branch name from your GitHub/GitLab username
-followed by a `/` and because you will typically be working on a particular issue include that number next followed by a
-short few words which describe the work or issue. For example GitHub user `ns-rse` working on issue 1 to fix typehints
-might create a branch called `ns-rse/1-fix-typehints` from main.
+A useful convention when creating branches is to construct the branch name from your GitHub/GitLab username followed by
+a `/` and because you will typically be working on a particular issue include that number next followed by a short few
+words which describe the work or issue. For example GitHub user `ns-rse` working on issue 1 to fix typehints might
+create a branch called `ns-rse/1-fix-typehints` from main.
 
 This structure is informative as it provides other people you collaborate with or who look at the repository an
 indication of who created the branch, what issue they are working on and a very short indication of what it is concerned
@@ -315,31 +326,30 @@ Assign the person who worked on the Square root function to review and if everyt
 
 :::::::::::::::::::::::: solution
 
-## Solution 1
+## Solution - 01 Zero Division Exception
 
 ``` bash
 git switch main
-git pull
-git branch -c ns-rse/0-divide
-git switch ns-rse/0-divide
-# TODO : Complete solution and add output once sample repository is in place
+git switch -c main ns-rse/1-zero-divide-exception
+# MAKE EDITS
+git add -u
+git commit -m "Add Zero division exception and test"
+git push --set-upstream origin ns-rse/1-zero-divide-exception
 ```
 
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
-## Solution 2
-
-When you use `git branch -c` the branch only gets created for you, you then have to switch branch yourself. A shortcut
-to both create and checkout a branch at the same time is provided by `git switch -c <new_branch>` so you could instead
-have used the following.
+## Solution - 02 Square root function
 
 ``` bash
 git switch main
 git pull
-git switch -c ns-rse/0-divide
-# TODO : Complete solution and add output once sample repository is in place
+git switch -c ns-rse/2-square-root
+# MAKE EDITS
+git add -u
+git commit -m "Adds square root function"
 ```
 
 :::::::::::::::::::::::::::::::::
@@ -369,7 +379,7 @@ git switch -c ns-rse/throwaway
 ```
 
 Pretending the branch you just created has been merged into the `main` branch via a Pull Request delete the now
-redundant branch.
+redundant branch (in this example `ns-rse/throwaway`).
 
 :::::::::::::::::::::::: solution
 
@@ -388,8 +398,8 @@ git branch -d ns-rse/throwaway
 
 ## Solution 2
 
-You can use the shortcut `git switch -` to switch to the last branch you were on (this is shortcut that is common to the
-Bash shell when navigating directories `cd -` will change directory to the previous directory you were in).
+You can use the shortcut `git switch -` to switch to the last branch you were on (this is a shortcut that is common to
+the Bash shell when navigating directories too `cd -` will change directory to the previous directory you were in).
 
 ``` bash
 git switch -
@@ -405,12 +415,20 @@ branch and they have not been merged into `main` then Git will warn you of this 
 can be over-ridden with the `--force` flag or the shorthand `-D` which is the same as `--delete --force`.
 
 ``` bash
-git switch main
+git switch -c ns-rse/throwaway
+touch test_file
+git add test_file
+git commit -m "Adding test_file"
+git switch -
+git branch -d ns-rse/throwaway
+error: the branch 'ns-rse/throwaway' is not fully merged
+hint: If you are sure you want to delete it, run 'git branch -D ns-rse/throwaway'
+hint: Disable this message with "git config advice.forceDeleteBranch false"
 git -D ns-rse/0-divide
 ```
 
-Be _very_ careful when forcing deletions, if you have not pushed your changes to the remote `origin` then you will lose
-them.
+Be _very_ careful when forcing deletions, if you have not pushed your changes to the remote `origin` then you _will_
+lose them.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Time Travelling - Losing your `HEAD`
@@ -443,7 +461,7 @@ commit hashes are also references and so can be used to checkout the state of th
 
 ![A linear Git History on the `main` branch showing the position of `HEAD`.](https://mermaid.ink/img/pako:eNp1kT1rwzAQhv-KOTBerCDJ1oe1lSa0Q7duxYsiyYlobAdHgabG_71ygguFWpPuuecOjncE01sHCtJ09J0PKhmzcHSty1SS7fXFZXmSHXx4GfT5mM3doQ86uOe-bX1403t3ijQMVzfVXbK8-J_S9AGW4d-2uY8m3qqkBoxKQRuCSQ3_CwQxIgm3fE2giAteNQ1dEwokDaPWuDWhRNKZQlZ6TWCIFoQ1Gq8JHFWFE1KYNUGgvSmLav1MibTExjWyhiTow4xed0_bRYccWje02tsY1TizGu4x1TCrVg-fszpF73q2MZ-d9aEfQM3J5KCvoX-_dWapH87W68OgW1CNPl0iPevuo-__1KBG-AJFRblhFDMuZSk445TlcItYlhuBaYEJpixex6ccvu8b8EYyIbGsGClwbFA6_QAk7q7t?type=png){alt="A linear Git History on the `main` branch showing the position of `HEAD`."}
 
-Here we have a simply linear history and the `HEAD` of branch is on commit `8-a80cef8` If you want to checkout commit
+Here we have a simple linear history and the `HEAD` of branch is on commit `8-a80cef8` If you want to checkout commit
 `4-8ec389a` then you would `git switch 4-8ec389a` and you will see the following useful and informative warning
 message.
 
@@ -504,7 +522,7 @@ cat: tests/test_add.py: No such file or directory
 The file `tests/test_add.py` has an import statement and defines the `test_add()` function which checks if the
 `add.add()` function returns the value of 4 when given the numbers 1 and 3.
 
-The `tests/test_add.py` file no longer exists on the `HEAD` of the `main** branch!
+The `tests/test_add.py` file no longer exists on the `HEAD` of the `main` branch!
 
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -523,13 +541,24 @@ no longer exists, but imagine you wanted to compare a file between branches or c
 branches and try and hold in your head what the file looked like on one branch whilst you look at the other. That would
 probably be very challenging.
 
-Fortunately Git can help you here with `git diff`.
+Fortunately Git can help you here with `git diff`. This takes one or two arguments, which are commits or references that
+you want to compare. If only one argument is given it compares the currently checked out commit to the supplied
+commit/reference.
+
+Thus to compare the `HEAD` of the `divide` branch you would
+
+``` bash
+git checkout ns-rse/1-zero-divide-exception
+git diff 585287a
+# Equivalent to...
+git diff HEAD 585287a
+```
 
 ## Ooops! I Did It Again
 
 Nothing to do with Brittney Spears but you are at some stage likely to commit changes to the wrong branch. This can
-easily happen when start working on an issue without first creating a new branch to contain the work and you commit the
-changes to either the `main` branch, which is often protected so you won't be able to push your changes or the last
+easily happen when starting to work on an issue without first creating a new branch to contain the work and you commit
+the changes to either the `main` branch, which is often protected so you won't be able to push your changes or the last
 branch you were working on.
 
 ### `git reset`
@@ -569,17 +598,30 @@ Branch](https://mermaid.ink/img/pako:eNp10k1rgzAYB_CvIg8UL6bkxbzobaxlO-y22_CSxti
 If you want to undo the _last_ commit then you can do this using `git reset --soft HEAD~1`.
 
 ``` bash
+touch test_file
+git add test_file
+git commit -m "Adding test_file"
 git reset --soft HEAD~1
 ## TODO : Complete output
 ```
+
+::::::::::::::::::::::::::::::::::::: callout
+
+There are three options to `git reset` that influence how the changes in commits are handled these are `--soft`,
+`--mixed` (the default) and `--hard`.
+
+For a detailed exposition of `git reset` see the excellent [Atlassian | Git reset][atlassian_git_reset] article.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
 ## Challenge 6: Commits on the wrong branch
 
-- Checkout the `main` branch of the `pytest-example` repository.
+- Switch to the `main` branch of the `pytest-maths` repository.
 - Create a new file using `echo "# How to Contribute to this repo" > CONTRIBUTING.md`
-- Stage and commit the file to the `main` branch of your repository.
+- Stage and commit the file to the `main` branch of your repository. **NB** to do this you will have to disable the
+  `pre-commit` checks with the `-n` flag.
 
 Ooops you've just committed to the `main` branch which is protected so you can't push your changes. Now move the commit
 to a new branch so you can push them.
@@ -592,15 +634,15 @@ to a new branch so you can push them.
 
 ## Solution
 
-You can reset the HEAD to the previous commit, which removes the `CONTRIBUTING.md` file from the commit history, leaving
-it unstaged, then create a new branch and add it to that.
+You can `git reset --mixed` to `HEAD~1`, i.e. the previous commit, which removes the `CONTRIBUTING.md` file from the
+commit history, leaving it unstaged, then create a new branch and add it to that.
 
 ``` bash
 git switch main
 echo "# How to Contribute to this repo" > CONTRIBUTING.md
 git add CONTRIBUTING.md
-git commit -m "docs: Adding contributing guideline template"
-git reset --hard HEAD~1
+git commit -n -m "docs: Adding contributing guideline template"
+git reset --mixed HEAD~1
 git switch -c ns-rse/contributing
 git add CONTRIBUTING.md
 git commit -m "docs: Adding contributing guideline template"
@@ -620,9 +662,9 @@ file and _then_ remove the commit from main.
 git switch main
 echo "# How to Contribute to this repo" > CONTRIBUTING.md
 git add CONTRIBUTING.md
-git commit -m "docs: Adding contributing guideline template"
+git commit -n -m "docs: Adding contributing guideline template"
 git log              # Note the commit of the mistaken hash
-git revert HEAD~1   # Checkout the previous commit on the main branch
+git revert HEAD~1    # Checkout the previous commit on the main branch
 git switch -c ns-rse/contributing
 git cherrypick <hash>
 git switch main
@@ -668,15 +710,15 @@ they should be on, and you can then un-stash them (known as `pop`ing) onto the c
 
 `git reset` is destructive, you can lose work using it and it is advisable _not_ to use it when you have more than one
 commit you wish to undo as you lose the intermediary work between commits as you are restored to the commit you reset
-to. Fortunately Git has
+to. Fortunately Git has the `revert` option is a non-destructive approach to undoing changes in your Git
+history. Instead it takes a specified commit and inverts the changes, i.e. goes back to the previous state and rather
+than discarding the changes it makes a new "revert" commit to record the inversion and this new "revert" commit becomes
+the `HEAD` of the branch. `git revert` _has_ to have a reference in order to work, whether that is absolute (i.e. a
+hash) or relative.
 
 ::::::::::::::::::::::::::::::::::::: callout
-The differences between `reset` and `revert` is that one is destructive
-
-``` bash
-git checkout main
-git -D ns-rse/0-divide
-```
+The differences between `reset` and `revert` is that one (`reset`) is destructive and loses changes the other (`revert`)
+undoes the changes and makes a new commit recording these changes.
 
 Be _very_ careful when forcing deletions, if you have not pushed your changes to the remote `origin` then you will lose
 them.
@@ -687,7 +729,7 @@ them.
 As you and your collaborator(s) work on your repository you may find that changes others have made get merged into the
 `main` before you have finished your work. This has in fact just happened, the work to add a Zero Division exception
 has been merged via a Pull Request, but the work to address the Square Root function hasn't and is in effect behind the
-`main` branch.
+`main` branch. The following is a representation of the current state, albeit from a single developer.
 
 <!-- Source for Mermaid diagram :
      https://gist.github.com/ns-rse/08fb86b003a26f7855281eeea88566d0#file-git_graph_branching_diverging_branches-js
@@ -731,7 +773,7 @@ same files as the first branch. Another scenario might be that whilst work was b
 a critical bug was fixed that the new feature depends on and the changes now in `main` need incorporating in the feature
 branch.
 
-There are two approaches to solving this `git merge` (merging) and `git rebase` (rebasing)
+There are two approaches to solving this merging (`git merge`)  and rebasing (`git rebase`).
 
 ### Merging
 
@@ -819,6 +861,7 @@ git switch -c branch1
 echo "# Just a test" > README.md
 git add README.md
 git commit -m "docs: Adding README.md"
+glod
 ```
 
 #### 3. Switch back to `main`
@@ -835,7 +878,7 @@ glod
 
 ``` bash
 git switch -c branch2
-echo "THIS IS A LICENSE" > LICENSE
+echo "YOU CAN DO WHAT YOU WANT WITH THIS CODE" > LICENSE
 git add LICENSE
 git commit -m "Adding a LICENSE"
 ```
@@ -849,6 +892,7 @@ exists on the `main` branch.
 git switch main
 git merge branch1
 cat README.md
+glod
 ```
 
 #### 6. Merge `main`, which now contains `README.md`, into `branch2`
@@ -858,7 +902,7 @@ Switch to `branch2` which has now diverged as it contains changes of its own _an
 
 ``` bash
 git switch branch2
-git merge -ff main # Merge changes merged into main from branch1 into branch2
+git merge --ff main # Merge changes merged into main from branch1 into branch2
 glod
 
 *   d914fee - (HEAD -> branch2) Merge branch 'main' into branch2 (2024-03-01 12:02:08 +0000) <Neil
@@ -893,7 +937,7 @@ As we're done with `branch1` and `branch2` we can delete them.
 ``` bash
 # Delete the two branches
 git branch -d branch{1,2}
-
+glod
 *   d914fee - (HEAD -> main) Merge branch 'main' into branch2 (2024-03-01 12:02:08 +0000) <Neil Shephard>
 |\
 | * 7817070 - Adding a README.md (2024-03-01 11:57:35 +0000) <Neil Shephard>
@@ -903,9 +947,10 @@ git branch -d branch{1,2}
 ```
 
 Having used `git merge` we couldn't perform a simple fast-forward because the history of `main` now contained changes
-that were made on `branch1` and so a separate commit (`d914fee`) was made to merge the `main` branch into `main`. We can
-see from the graph that `README.md` was added from a separate `branch1` and `LICENSE` was added from `branch2`, although
-after deleting the branches they are no longer shown by name in the `git log --graph` output.
+that were made on `branch1` and so a separate commit (`d914fee`) was made to merge the `main` branch into `main`
+(commits are denoted by `*` and so you can see the commits were made on separate branches). We can see from the graph
+that `README.md` was added from a separate `branch1` and `LICENSE` was added from `branch2`, although after deleting the
+branches they are no longer shown by name in the `git log --graph` output.
 
 ### Rebasing
 
@@ -959,11 +1004,11 @@ Again remember to take the time to show the contents of the files and how they "
 particular after having added `README.md` to `branch1` and switching back to `main`.
 
 Also use `glod` alias (or other form of `git log` that shows branches) to show the changes and explain the point at
-which each of the branches is at with reference to the `*` , the branch names and where they sit and
+which each of the branches is at with reference to the `*` which denote commits, the branch names and where they sit and
 the date/time stamps.
 
-It can be useful at the end to open a second terminal and show the history of the two `git-merge-test` test repositories
-to show how they differ in terms of branches.
+It can be useful at the end to open a second terminal and show the history of the two `git-merge-test`  and
+`git-rebase-test` repositories to show how they differ in terms of branches.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -999,7 +1044,7 @@ cat README.md   # Note that `README.md` does not currently exist on this branch
 
 ``` bash
 git switch -c branch2
-echo "THIS IS A LICENSE" > LICENSE
+echo "YOU CAN DO WHAT YOU WANT WITH THIS CODE" > LICENSE
 git add LICENSE
 git commit -m "docs: Adding a LICENSE"
 ```
@@ -1081,8 +1126,14 @@ The first thing to do is make sure `main` is up-to-date and has the changes that
 `zero-division` branch locally.
 
 ``` bash
+cd ~/work/git/hub/ns-rse/python-maths
 git switch main
 git pull
+```
+
+Then you can switch branches to the `square-root` branch and merge the main branch in.
+
+``` bash
 git switch ns-rse/square-root
 git merge main
 ```
@@ -1102,8 +1153,14 @@ The first thing to do is make sure `main` is up-to-date and has the changes that
 `zero-division` branch locally.
 
 ``` bash
+cd ~/work/git/hub/ns-rse/python-maths
 git switch main
 git pull
+```
+
+Then you can switch branches to the `square-root` branch and merge and rebase onto main.
+
+``` bash
 git switch ns-rse/square-root
 git rebase main
 ```
@@ -1119,11 +1176,11 @@ git push --set-upstream origin ns-rse/square-root
 
 ### Oh no I've got a `merge conflict`
 
-Both the `git merge` and `git rebase` in the worked examples and the `python-maths` repositories were fairly painless
-because none of the changes that were made touched the same files. In real-life things are often likely to be a bit more
-messy and when you want to update your diverged branch you will often find that files you have been working on have been
-modified and merged into `main` by others. This results in a "merge conflict" where Git can not determine which lines
-are required and therefore requires manual intervention.
+Both the `git merge` and `git rebase` atrategies in the worked examples and the `python-maths` repositories were fairly
+painless because none of the changes that were made touched the same files. In real-life things are often likely to be a
+bit more messy and when you want to update your diverged branch you will often find that files you have been working on
+have been modified and merged into `main` by others. This results in a "merge conflict" where Git can not determine
+which lines are required and therefore requires manual intervention.
 
 If you have undertaken the [Git & GitHub Through GitKraken - From Zero to Hero!][zerohero] course you will have
 encountered merge conflicts when working through the "_Python Calculator_" exercise and have some idea of how to resolve
@@ -1145,10 +1202,10 @@ Again we add a `README.md` but this time we make two commits to it, adding an ex
 
 ``` bash
 git switch -c branch1
-echo "# Just a test\n" > README.md
+echo "# Just a test\n\n" > README.md
 git add README.md
 git commit -m "docs: Adding README.md"
-echo "\nLets add another line in a separate commit" >> README.md
+echo "Lets add another line in a separate commit" >> README.md
 git add README.md
 git commit -m "docs: Ooops, missed a line from the README.md"
 ```
@@ -1244,10 +1301,10 @@ But we're creating a merge conlict
 >>>>>>> 29b2e32 (This repo needs a README.md)
 ```
 
-Here `HEAD` refers to the branch that is being merged in (`main`) which contains the changes we merged from `branch1`
-which was just a plain header. The text that this refers to  is delimited by `<<<<<<<` and `=======` and is
+Here `HEAD` refers to the branch that is being merged in (`main`) which contains the changes we made on `branch1` and
+merged into `main`. The text that this refers to  is delimited by `<<<<<<<` and `=======` and is
 `# Just a test` and `Lets add another line in a separate commit`. The commit (`fcfe2db`) on `branch2` which added _two_
-lines (although technically its 4 since we also included blank lines) the follows and is delimited by `=======` and
+lines (although technically its 4 since we also included blank lines) then follows and is delimited by `=======` and
 `>>>>>>>` and includes the message.
 
 We are given some useful information as to what we could do and there are three options.
@@ -1257,7 +1314,7 @@ We are given some useful information as to what we could do and there are three 
 2. `You can instead skip this commit: run "git rebase --skip".`
 3. `To abort and get back to the state before "git rebase", run "git rebase --abort".`
 
-These are really useful messages telling us how we can proceed. In this instance we want to take option 1, so we can
+These are really useful messages telling us how we can proceed. In this instance we want to take option 1, so we should
 open the `README.md` and edit it to leave it in the state we want the file to be in.
 
 #### 7. Resolve the conflict
@@ -1272,7 +1329,8 @@ Lets add another line in a separate commit
 But we're creating a merge conflict
 ```
 
-Save the file and return to the command prompt (in `nano` this is `Ctrl+O` then `Ctrl+X`).
+You can use `Ctrl+k` to remove a whole line at once. Save the file and return to the command prompt (in `nano` this is
+`Ctrl+O` then `Ctrl+X`).
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -1369,7 +1427,7 @@ But we're creating a merge conflict
 Lets add another commit to make things messier
 ```
 
-The history/graph we is linear now and shows that `branch2` is two commits ahead of `main`.
+The history/graph is linear now and shows that `branch2` is two commits ahead of `main`.
 
 ``` bash
 glod
@@ -1383,7 +1441,7 @@ glod
 ::::::::::::::::::::::::::::::::::::: callout
 
 You may be wondering why when performing `git rebase` it mentions `git merge`. This is because a rebase will
-sequentially merge all commits from the branch you are rebasing onto, in this case `main` into the `HEAD` of your
+sequentially merge all commits from the branch you are rebasing onto, in this case `main`, into the `HEAD` of your
 current checked out branch (`branch2`).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1399,8 +1457,8 @@ Bringing a diverged branch up-to-date can get _very_ messy and confusing if ther
 best strategy to avoid this complication is two fold.
 
 1. Break work down into small chunks and regularly merge them into `main`.
-2. If this can not be avoided or lots of others are making changes you should `git merge` or `git rebase` onto `main`
-   frequently.
+2. If this can not be avoided or lots of others are making changes you should `git merge` or `git rebase` your feature
+   branch onto `main`  frequently.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1430,6 +1488,8 @@ git config --local rerere.enabled true
 
 You can of course enable globally and disable locally as local configuration variables take precedence over global.
 
+::::::::::::::::::::::::::::::::::::: callout
+
 ### Not Breaking Things
 
 As you rebase your branch you can make sure that you don't break any of your code by running tests at each step. This is
@@ -1438,6 +1498,8 @@ achieved using the `-x` switch which will execute the command that follows.
 ``` bash
 git rebase -x "pytest" <reference>
 ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Switching Branches during Work in Progress
 
@@ -1453,7 +1515,7 @@ git switch branch2
 echo "Please feel free to contribute to this repository" >> CONTRIBUTING.md
 git add CONTRIBUTING.md
 git commit -m "Adding CONTRIBUTING.md"
-echo "\nPlease don't break my repository though" >> CONTRIBUTING.md
+echo "\nPlease don't break my repository though!" >> CONTRIBUTING.md
 git switch main
 
 error: Your local changes to the following files would be overwritten by checkout:
@@ -1473,10 +1535,10 @@ basics are pretty straight-forward. You start by `git stash push` (the `push` is
 a `--message` that explains what the stash contains, you are told if this has worked and on what branch the stash was
 made and can then switch branches, pull down changes, create a new branch and do something different.
 
-#### 1. Stash `CONTRIBUTION.md`
+#### 1. Stash `CONTRIBUTING.md`
 
 ``` bash
-git stash --message "CONTRIBUTION.md WIP"
+git stash --message "CONTRIBUTING.md WIP"
 Saved working directory and index state On branch2: CONTRIBUTION.md WIP
 ```
 
@@ -1484,9 +1546,11 @@ Saved working directory and index state On branch2: CONTRIBUTION.md WIP
 
 ``` bash
 git switch main
-git pull
+# If this weren't a dummy example you might git pull
 git switch -c branch3
 ```
+
+Undertake the work that is required on `branch3`.
 
 #### 3. Return to `branch2`
 
@@ -1523,23 +1587,24 @@ Over time though you may collect multiple stashes.
 
 #### 1. Make two stashes
 
-We stash `CONTRIBUTING.md` the last message is reused, then we stage `ANOTHER.md` and stash it with a different message.
+We stash `CONTRIBUTING.md`, the last message is reused by default, then we add `ANOTHER.md` and stash it with a
+different message.
 
 ``` bash
-git stash
+git stash --message "CONTRIBUTING.md WIP"
 echo "Yet another file" > ANOTHER.md
 git add ANOTHER.md
-git stash --message "Stashing another file"
+git stash --message "Stashing ANOTHER.md file"
 
-stash@{0}: On branch2: Stashing another file
+stash@{0}: On branch2: Stashing ANOTHER.md file
 stash@{1}: WIP on branch2: a8b6f5f Adding CONTRIBUTING.md
 ```
 
 #### 2. Pop the `CONTRIBUTING.md` stash
 
-There are two stashes each with different names.
+There are now two stashes each with different names.
 
-You may not want to restore the work stashed with the commit message `Stashing another file` but rather restore the
+You may not want to restore the work stashed with the commit message `Stashing ANOTHER.md file` but rather restore the
 earlier `Adding CONTRIBUTING.md` work first. You can do this by referring to the number associated with the stash that
 is within the curly braces. For the `Adding CONTRIBUTING.md` this is `1`.
 
@@ -1567,7 +1632,7 @@ Only the `CONTRIBUTING.md` file has been restored and not the `ANOTHER.md`.
 - Use `git stash apply` to `pop` a stash but leave it in the stash list.
 
 There are a lot of useful things `git stash` can be used for. Refer to the help pages (`git stash --help`) for more
-information as well as the Further Resources
+information as well as the Further Resources.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Worktrees instead of Branches
@@ -1576,11 +1641,12 @@ Sometimes you will want to switch between branches that are all in development i
 changes to files that you have not saved and committed Git will tell you that the changes made to your files
 will be over-written if they differ from those on the branch you are switching to and it will refuse to switch branches.
 
-This means either making a commit or stashing the work to come back to at a later date. Neither of these are
-particularly problematic as you can `git pop` stashed work to restore it or or `git commit --amend`, or `git commit
---fixup` and squash commits to maintain small atomic commits and avoid cluttering up the commit history with commits
-such as "_Saving work to review another branch_" (more on this in the next episode!). But, perhaps unsurprisingly, Git
-has another way of helping your workflow in this situation. Rather than having branches you can use "_worktrees_".
+This means either making a commit or as we've just seen stashing the work to come back to at a later date. Neither of
+these are particularly problematic as you can `git pop` stashed work to restore it or `git commit --amend`, or `git
+commit --fixup` and squash commits to maintain small atomic commits and avoid cluttering up the commit history with
+commits such as "_Saving work to review another branch_" (more on this in the next episode!). But, perhaps
+unsurprisingly, Git has another way of helping your workflow in this situation. Rather than having branches you can use
+"_worktrees_".
 
 Normally when you've `git clone`'d a repository all configuration files for working with the repository are saved to the
 repository directory under `.git` _and_ all files in their current state on the `main` branch are also copied to the
@@ -1660,6 +1726,25 @@ tree -afhD -L 2
 21 directories, 43 files
 ```
 
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 8: Stashing
+
+1. Clone the [`pytest-examples`]() repository.
+2. Create a `contributing` branch.
+3. Create a `CONTRIBUTING.md` with `echo "# Contributing\n\nContributions to this repository are welcome via Pull
+   Requests." > CONTRIBUTING.md`.
+4. Do _not_ add and commit, instead `git stash` your changes.
+5. Create a `citation` branch.
+6. Add a basic `CITATION.cff` with `echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff`.
+7. Add and commit this file.
+8. Switch back to the `contributing` branch.
+9. Unstash the `CONTRIBUTING.md` file.
+
+:::::::::::::::::::::::: solution
+
+## Solution : stashing
+
 Lets create the `contributing` branch
 
 ```bash
@@ -1690,6 +1775,9 @@ git pop
 ```
 
 This works but its quite a few steps to make stashes and "pop" them once we've finished on the other br
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### The Worktree
 
@@ -1798,7 +1886,7 @@ Neither branches have had the changes committed so Git will not show any differe
 -qr` to compare the directories.
 
 ```bash
- diff -qr contributing citation
+diff -qr contributing citation
 Only in citation: CITATION.cff
 Only in contributing: CONTRIBUTING.md
 Files contributing/.git and citation/.git differ
@@ -1922,8 +2010,8 @@ git worktree list
 Whilst we have focused on consolidating our understanding of branches in this introductory episode there have been hints
 as to the _true_ nature of branches in Git, have you worked out what this is yet?
 
-Internally Git does not have branches at all! Branches are merely a reference to the most recent commit on a series of
-commits, each of which references the commit prior to it. In fact everything in Git that allows us to look at the
+Internally Git does not have branches at all! Branches are merely a reference to a series of commits and each commit in
+a "branch" references the commit prior to it. In fact everything in Git that allows us to look at the
 different states of the repository and move between them is a reference, whether that is a named branch, or a tag a
 relative reference. They all point to a commit.
 
@@ -1954,6 +2042,7 @@ This was a revelation that came to me as I wrote the material for this Episode a
 - [Getting solid at Git rebase
   vs. merge](https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa)
 
+[atlassian_git_reset]: https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
 [bash]: https://www.gnu.org/software/bash/
 [nano]: https://www.nano-editor.org/
 [ohmyzsh]: https://ohmyz.sh/
