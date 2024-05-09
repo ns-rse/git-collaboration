@@ -1623,6 +1623,60 @@ Dropped refs/stash@{1} (dd538beb8f14590f720e9b9f677ba7381240bd92)
 
 Only the `CONTRIBUTING.md` file has been restored and not the `ANOTHER.md`.
 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 8: Stashing
+
+1. Clone the [`pytest-examples`]() repository.
+2. Create a `contributing` branch.
+3. Create a `CONTRIBUTING.md` with `echo "# Contributing\n\nContributions to this repository are welcome via Pull
+   Requests." > CONTRIBUTING.md`.
+4. Do _not_ add and commit, instead `git stash` your changes.
+5. Create a `citation` branch.
+6. Add a basic `CITATION.cff` with `echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff`.
+7. Add and commit this file.
+8. Switch back to the `contributing` branch.
+9. Unstash the `CONTRIBUTING.md` file.
+
+:::::::::::::::::::::::: solution
+
+## Solution : stashing
+
+Lets create the `contributing` branch
+
+```bash
+git switch -c contributing
+echo "# Contributing\n\nContributions to this repository are welcome via Pull Requests." > CONTRIBUTING.md
+```
+
+If we want to switch branches without making a commit but save our work in progress as we want to add more to the
+`CONTRIBUTING.md` file later we can stash the changes with a message. We then switch to `main` and create a new branch
+(`citation`) for and add a `CITATION.cff` file.
+
+```bash
+git stash -m "An example stash"
+git switch main
+git switch -c citation
+echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff
+git add CITATION.cff
+git commit -m "chore: Adding a CITATION.cff"
+```
+
+When we are ready to return to our `contributing` branch we can switch and `git pop` the work we stashed. By default the
+last stash is popped, but its possible to view all the stashes and select which you wish to pop and restore to the
+current branch.
+
+```bash
+git switch contributing
+git pop
+```
+
+This works but its quite a few steps to make stashes and "pop" them once we've finished on the other branch.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 ## Popping around and applying
@@ -1726,59 +1780,6 @@ tree -afhD -L 2
 21 directories, 43 files
 ```
 
-::::::::::::::::::::::::::::::::::::: challenge
-
-## Challenge 8: Stashing
-
-1. Clone the [`pytest-examples`]() repository.
-2. Create a `contributing` branch.
-3. Create a `CONTRIBUTING.md` with `echo "# Contributing\n\nContributions to this repository are welcome via Pull
-   Requests." > CONTRIBUTING.md`.
-4. Do _not_ add and commit, instead `git stash` your changes.
-5. Create a `citation` branch.
-6. Add a basic `CITATION.cff` with `echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff`.
-7. Add and commit this file.
-8. Switch back to the `contributing` branch.
-9. Unstash the `CONTRIBUTING.md` file.
-
-:::::::::::::::::::::::: solution
-
-## Solution : stashing
-
-Lets create the `contributing` branch
-
-```bash
-git switch -c contributing
-echo "# Contributing\n\nContributions to this repository are welcome via Pull Requests." > CONTRIBUTING.md
-```
-
-If we want to switch branches without making a commit but save our work in progress as we want to add more to the
-`CONTRIBUTING.md` file later we can stash the changes with a message. We then switch to `main` and create a new branch
-(`citation`) for and add a `CITATION.cff` file.
-
-```bash
-git stash -m "An example stash"
-git switch main
-git switch -c citation
-echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff
-git add CITATION.cff
-git commit -m "chore: Adding a CITATION.cff"
-```
-
-When we are ready to return to our `contributing` branch we can switch and `git pop` the work we stashed. By default the
-last stash is popped, but its possible to view all the stashes and select which you wish to pop and restore to the
-current branch.
-
-```bash
-git switch contributing
-git pop
-```
-
-This works but its quite a few steps to make stashes and "pop" them once we've finished on the other br
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ### The Worktree
 
 Worktrees take a different approach to organising branches. They start with a `--bare` clone of the repository which
@@ -1861,12 +1862,18 @@ tree -afhD -L 2 main/
 ```
 
 Each branch can have a worktree added for it and then when you want to switch between them its is simply a case of
-`cd`ing into the worktree (/branch) you wish to work on. You use Git commands within the directory to apply them to that
-branch and Git keeps track of everything in the usual manner.
+`cd`ing into the worktree (/branch) you wish to work on. You use Git commands within the worktree directory to apply
+them to that branch and Git keeps track of everything in the usual manner.
 
-Lets create two worktree's, the `contributing` and `citation` we created above when working with branches.
+###
+Lets create two worktree's, the `contributing` and `citation` we created above when working with branches. If you didn't
+already follow along the above steps do so now.
 
 ```bash
+cd ../
+mv pytest-examples pytest-examples-orig-clone
+git clone --bare git@github.com:ns-rse/pytest-examples.git pytest-examples
+cd pytest-examples
 git worktree add contributing
 git worktree add citation
 ```
@@ -2012,8 +2019,8 @@ as to the _true_ nature of branches in Git, have you worked out what this is yet
 
 Internally Git does not have branches at all! Branches are merely a reference to a series of commits and each commit in
 a "branch" references the commit prior to it. In fact everything in Git that allows us to look at the
-different states of the repository and move between them is a reference, whether that is a named branch, or a tag a
-relative reference. They all point to a commit.
+different states of the repository and move between them is a reference, whether that is a named branch, or a tag which
+is a relative reference. They all point to a commit.
 
 This was a revelation that came to me as I wrote the material for this Episode and thought it worth sharing.
 

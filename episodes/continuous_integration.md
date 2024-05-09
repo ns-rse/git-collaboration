@@ -131,7 +131,7 @@ jobs:
 
 [YAML][yaml] (which stands for _YAML Ain't Markup Language_) is a common format for defining hierarchical data
 structures. It is a super-set of JSON (JavaScript Object Notation) that many find more flexible (in part because of the
-ability to have comments).
+ability to have comments) and is regularly used for configuration files.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -185,14 +185,94 @@ see a list of actions listed.
 
 ### MarketPlace
 
+There are a lot of actions available that can be run in the `steps` section of your custom action. The [GitHub
+Marketplace][gh-actions-market] provides a central place to search for solutions so you don't have to reinvent the
+wheel.
+
 ## Pre-commit.ci
+
+We saw in the [hooks][hooks] section how to use [pre-commit][precommit] hooks to run certain tasks prior to making
+commits to your feature branch. [pre-commit.ci][precommit-ci] extends this and uses the same configured hooks to
+automatically check that code submitted in Pull Requests passes these same checks.
+
+This can be useful to capture instances where `pre-commit` may have been disabled locally or if you receive
+contributions from outside of the core development team and contributor has not enabled `pre-commit` in their local
+workflow as it will run the formatting and linting tests, correct where possible and make commits directly to the branch
+in the Pull Request and inform if there were errors that could not be automatically corrected.
+
+### Setup
+
+To get setup with [pre-commit.ci][precommit-ci] navigate to the page and use the button to _Sign In With GitHub_. Once
+you have logged in select your profile and click on the _Manage repos on GitHub_ link. You may be asked to complete your
+two-factor-authentication (2FA) at this point, but you should be taken to your accounts settings page (you can always
+navigate there using _Settings > Applications_). By default pre-commit.ci requires
+
++ **Read** access to issues, merge queues and metadata.
++ **Read** and **write** access to code, commit statuses, pull requests and workflows.
+
+There are then two potions for _Repository access_ you can either grant access to all repositories that you own, or you
+can select specific repositories. It is generally preferable to only allow access to specific repositories. The dialog
+that appears allows you to search for a repository that you wish to grant access to.
+
+### Configuration
+
+You can configure the behaviour of [pre-commit.ci][precommit-ci] via the `.pre-commit-config.yaml`. The full
+specification is detailed in the [documentation][precommit-ci-docs] and is shown below.
+
+``` yaml
+ci:
+    autofix_commit_msg: |
+        [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+        for more information, see https://pre-commit.ci
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
+```
+
+
+::::::::::::::::::::::::::::::::::::: challenge
+## Challenge 1: Add pre-commit.ci to your `python-maths` repository
+
+In your pairs add an appropriate configuration section the `.pre-commit-config.yaml` on a new branch on the
+`python-maths` repository push the changes to GitHub and make a Pull Request.
+
+Set the `autoupdate_schedule` to `monthly` and customise both `autofix_commit_msage` and `autoupdate_commit_msg` fields.
+
+Finally configure the `pylint` hook to be skipped in pre-commit.ci.
+
+:::::::::::::::::::::::: solution
+
+## `.pre-commit-config.yaml`
+
+``` yaml
+ci:
+    autofix_commit_msg: |
+        [pre-commit.ci] Linting code with pre-commit hooks.
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: '[pre-commit.ci] Automatically updating pre-commit'
+    autoupdate_schedule: monthly
+    skip: [pylint]
+    submodules: false
+```
+
+
+:::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Continuous Integration/Delivery is a useful method of checking code _before_ it enters the `main` branch.
 - GitHub uses Actions that are defined by YAML configuration files under `.github/workflow/`.
 - Actions can be restricted to events/branches/tags.
--
+- [pre-commit.ci][precommit-ci] allows integration of [pre-commit][precommit] hooks in GitHub Actions.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -204,45 +284,8 @@ see a list of actions listed.
 [gl]: https://gitlab.com
 [gl-cicd]: https://docs.gitlab.com/ee/ci/
 [orda]: https://orda.shef.ac.uk/
+[precommit]: https://pre-commit.com/
+[precommit-ci]: https://pre-commit.ci/
+[precommit-ci-docs]: https://pre-commit.ci/#configuration
 [python-maths]: https://github.com/ns-rse/python-maths
 [yaml]: https://yaml.org
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-
-Instructor Template
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: challenge
-
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
-```
-
-:::::::::::::::::::::::: solution
-
-## GitHub
-
-GitHub uses `~/.github/workflows/*.yaml` to define different Actions to run/
-
-:::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::: solution
-
-## GitLab
-
-GitLab uses `.gitlab-cy.yaml` for configuring Continuous Integration
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Runners
-
-::::::::::::::::::::::::::::::::::::: callout
-
-Callout sections can highlight information.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
