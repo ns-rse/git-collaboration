@@ -578,6 +578,65 @@ a list of actions listed.</p>
 <code>steps</code> section of your custom action. The <a href="https://github.com/marketplace?type=actions" class="external-link">GitHub
 Marketplace</a> provides a central place to search for solutions so you
 don’t have to reinvent the wheel.</p>
+<div id="challenge-1-add-the-python-coverage-github-action-to-python-maths" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="challenge-1-add-the-python-coverage-github-action-to-python-maths" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Add the Python Coverage GitHub
+Action to<code>python-maths</code><a class="anchor" aria-label="anchor" href="#challenge-1-add-the-python-coverage-github-action-to-python-maths"></a>
+</h3>
+<div class="callout-content">
+<p>In your pairs add the [Python Coverage][pycov] GitHub Action to the
+<code>python-maths</code> repository.</p>
+<p>One person should make a branch for the work and make the following
+changes…</p>
+<ol style="list-style-type: decimal"><li>Enable <code>pytest</code> to create a coverage report to a file by
+adding <code>--cov-report coverage.xml</code>.</li>
+<li>Run <code>coverage</code> on that file with
+<code>coverage xml coverage.xml</code> in the <code>run: |</code>
+section.</li>
+<li>Add the YAML section for <code>- name: Get Cover</code>
+<em>after</em> the section that runs <code>pytest</code>.</li>
+</ol></div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Adding Python Coverage (WIP)</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<ol style="list-style-type: decimal"><li>Create an issue and assign it to one person.</li>
+<li>Create a branch to make the changes on.</li>
+</ol><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> ns-rse/4-python-coverage</span></code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal"><li>Add the following to
+<code>.github/workflows/test-python-package.yml</code>
+</li>
+</ol><div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Test with pytest</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>          pytest --cov-report coverage.xml</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>          coverage xml coverage.xml</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Get Cover</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">          </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> orgoro/coverage@v3.1</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">          </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">            </span><span class="fu">coverageFile</span><span class="kw">:</span><span class="at"> coverage.xml</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">            </span><span class="fu">token</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section><section id="pre-commit.ci"><h2 class="section-heading">Pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit.ci"></a>
 </h2>
@@ -620,27 +679,27 @@ for a repository that you wish to grant access to.</p>
 <code>.pre-commit-config.yaml</code>. The full specification is detailed
 in the <a href="https://pre-commit.ci/#configuration" class="external-link">documentation</a>
 and is shown below.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>        [pre-commit.ci] auto fixes from pre-commit.com hooks</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>        for more information, see https://pre-commit.ci</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] pre-commit autoupdate'</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> weekly</span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>        [pre-commit.ci] auto fixes from pre-commit.com hooks</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>        for more information, see https://pre-commit.ci</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] pre-commit autoupdate'</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> weekly</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
 </div>
-<div id="challenge-1-add-pre-commit.ci-to-your-python-maths-repository" class="callout challenge">
+<div id="challenge-2-add-pre-commit.ci-to-your-python-maths-repository" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-add-pre-commit.ci-to-your-python-maths-repository" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Add pre-commit.ci to your<code>python-maths</code>repository<a class="anchor" aria-label="anchor" href="#challenge-1-add-pre-commit.ci-to-your-python-maths-repository"></a>
+<div id="challenge-2-add-pre-commit.ci-to-your-python-maths-repository" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Add pre-commit.ci to your<code>python-maths</code>repository<a class="anchor" aria-label="anchor" href="#challenge-2-add-pre-commit.ci-to-your-python-maths-repository"></a>
 </h3>
 <div class="callout-content">
 <p>In your pairs add an appropriate configuration section the
@@ -652,28 +711,30 @@ customise both <code>autofix_commit_msage</code> and
 <code>autoupdate_commit_msg</code> fields.</p>
 <p>Finally configure the <code>pylint</code> hook to be skipped in
 pre-commit.ci.</p>
+<p>You are free to use the <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> documentation to help
+guide you.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">.pre-commit-config.yaml</h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">.pre-commit-config.yaml</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>        [pre-commit.ci] Linting code with pre-commit hooks.</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] Automatically updating pre-commit'</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> monthly</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>        [pre-commit.ci] Linting code with pre-commit hooks.</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] Automatically updating pre-commit'</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> monthly</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
 </div>
 </div>
 </div>
