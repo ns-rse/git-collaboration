@@ -291,7 +291,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Git Hygiene</h1>
-        <p>Last updated on 2024-03-18 |
+        <p>Last updated on 2024-05-09 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/git_hygiene.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -338,11 +338,18 @@
 <section id="git-configuration"><h2 class="section-heading">Git Configuration<a class="anchor" aria-label="anchor" href="#git-configuration"></a>
 </h2>
 <hr class="half-width"><p>Git configuration comes in two forms, “global” and “local” and is
-courtesy of some simple text files. The global configuration file is
+courtesy of some simple text files. The global configuration file lives
+in your home director and on GNU/Linux and OSX systems is
 <code>~/.gitconfig</code> (on Windows it is
 <code>C:\Users\&lt;username&gt;\.gitconfig</code>) and will have been
 setup when you first attempted to use Git and were prompted for your
 name and email address.</p>
+<p>Each repository that is under Git version control has a
+<code>.git/</code> directory where all of the configuration, hooks and
+history live. Within this directory you will find a
+<code>.git/config</code> file which is the “local” configuration for
+that repository. Configuration defined locally over-rides global
+configurations.</p>
 <p>There are two ways of modifying either the global or local
 configuration, using the Command Line
 <code>git config &lt;options&gt;</code> or by editing either the global
@@ -421,7 +428,9 @@ set as the first column of output.</p>
 and this can at times be much quicker.</p>
 <p>For example if we wanted to configure Git so that the order in which
 branches are listed is by the most recent commit we could add the
-following to our <code>~/.gitconfig</code></p>
+following to our <code>~/.gitconfig</code> using <code>nano</code>,
+which will result in branches being listed in reverse chronological
+order when you <code>git branch --list</code>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -479,16 +488,22 @@ directly and add the following lines</p>
 </div>
 </div>
 </div>
+<!-- ### Multiple Configurations -->
+<!-- It may be the case that you have multiple Git accounts and want different configurations for each. This is possible to -->
+<!-- do in your "global" configuration courtesy of the `includeIf` directive and creating secondary `.gitconfig_<account>` -->
+<!-- files. -->
+<!-- Say you have an account on GitHub and one on GitLab and you wish to use different configuration parameters for each. -->
 </div>
 <div class="section level3">
 <h3 id="gitignore"><code>.gitignore</code><a class="anchor" aria-label="anchor" href="#gitignore"></a></h3>
 <p>The <a href="https://git-scm.com/docs/gitignore" class="external-link"><code>.gitignore</code></a>
 file does exactly what you might expect it to, it contains lists of
-files that should be ignored. To save having to write out the path to
-each and every file the format accepts <a href="https://regexr.com/" class="external-link">regular expressions</a>. This file, like many
+directories and files that should be ignored. To save having to write
+out the path to each and every file the format accepts <a href="https://regexr.com/" class="external-link">regular expressions</a>. This file, like many
 others uses <code>#</code> as a comment, to use a <code>#</code> in a
 file name you therefore need to escape it with the <code>\</code> slash.
-As with most regular expressions</p>
+As with most regular expression engines the <code>*</code> is a wild
+card.</p>
 <p>A common set of files you may want to ignore is the
 <code>.DS_Store</code> directory that Mac OSX automatically generates in
 most directories. Just as you can exclude files you can list directories
@@ -526,10 +541,12 @@ would other files in the repository.</p>
 <h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
-<p>Exclude files with the extension <code>.csv</code>, <code>.pkl</code>
-from being added to the <code>python-maths</code> project by adding the
-appropriate pattern to the <code>.gitignore</code> file and merge it
-into the <code>main</code> branch via a pull-request</p>
+<p>In your pairs exclude files with the extension <code>.csv</code>,
+<code>.pkl</code> from being added to the <code>python-maths</code>
+project by adding the appropriate pattern to the <code>.gitignore</code>
+file to a new branch and merge it into the <code>main</code> branch via
+a pull-request, assigning it to the person who didn’t make the branch
+and additions to review.</p>
 </div>
 </div>
 </div>
@@ -575,8 +592,45 @@ merged and referencing the Pull Request number preceeded with a
 <p>When undertaking Pull Requests on GitHub there is the ability to
 toggle between two <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#diff-view-options" class="external-link">[different
 views]</a> of the differences. The standard view shows the changes
-line-by-line and looks like the following.</p>
-<p><strong>TODO</strong> Show basic git diff line by line and</p>
+line-by-line and looks like the following where the old lines are
+started with <code>-</code> signs and may well be in red and the newer
+lines are started with <code>+</code> and may well be in green.</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1861,12</span> +1862,18 @@ tree <span class="at">-afhD</span> <span class="at">-L</span> 2 main/</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a> <span class="ex">Each</span> branch can have a worktree added for it and then when you want to switch between them its is simply a case of</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="ex">-</span><span class="kw">`</span><span class="bu">cd</span><span class="kw">`</span>ing into the worktree <span class="er">(</span><span class="ex">/branch</span><span class="kw">)</span> <span class="ex">you</span> wish to work on. You use Git commands within the directory to apply them to that</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="ex">-branch</span> and Git keeps track of everything in the usual manner.</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="ex">+</span><span class="kw">`</span><span class="bu">cd</span><span class="kw">`</span>ing into the worktree <span class="er">(</span><span class="ex">/branch</span><span class="kw">)</span> <span class="ex">you</span> wish to work on. You use Git commands within the worktree directory to apply</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="ex">+them</span> to that branch and Git keeps track of everything in the usual manner.</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="ex">-Lets</span> create two worktree<span class="st">'s, the `contributing` and `citation` we created above when working with branches.</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="st">+###</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="st">+Lets create two worktree'</span>s, the <span class="kw">`</span><span class="ex">contributing</span><span class="kw">`</span> and <span class="kw">`</span><span class="ex">citation</span><span class="kw">`</span> we created above when working with branches. If you didn<span class="st">'t</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="st">+already follow along the above steps do so now.</span></span></code></pre>
+</div>
+<p>Its a matter of personal preference but it can sometimes be easier to
+look at differences in the split view that <code>difftastic</code>
+provides, the same changes above using the split view are shown
+below.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">1862</span>                                                                            1863</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">1863</span> Each branch can have a worktree added for it and then when you want to swi 1864 Each branch can have a worktree added for it and then when you want to swi</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="ex">....</span> tch between them its is simply a case of                                   .... tch between them its is simply a case of</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="ex">1864</span> <span class="kw">`</span><span class="bu">cd</span><span class="kw">`</span>ing into the worktree <span class="er">(</span><span class="ex">/branch</span><span class="kw">)</span> <span class="ex">you</span> wish to work on. You use Git comma 1865 <span class="kw">`</span><span class="bu">cd</span><span class="kw">`</span>ing into the worktree <span class="er">(</span><span class="ex">/branch</span><span class="kw">)</span> <span class="ex">you</span> wish to work on. You use Git comma</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="ex">....</span> nds within the directory to apply them to that                             .... nds within the worktree directory to apply</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="ex">1865</span> branch and Git keeps track of everything in the usual manner.              1866 them to that branch and Git keeps track of everything in the usual manner.</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="ex">1866</span>                                                                            1867</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="ex">....</span>                                                                            1868 <span class="co">###</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="ex">1867</span> Lets create two worktree<span class="st">'s, the `contributing` and `citation` we created a 1869 Lets create two worktree'</span>s, the <span class="kw">`</span><span class="ex">contributing</span><span class="kw">`</span> and <span class="kw">`</span><span class="ex">citation</span><span class="kw">`</span> we created a</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="ex">....</span> bove when working with branches.                                           .... bove when working with branches. If you didn<span class="st">'t</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="st">....                                                                            1870 already follow along the above</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="st">steps do so now.</span></span></code></pre>
+</div>
 
 <div id="challenge-3" class="callout challenge">
 <div class="callout-square">
@@ -630,22 +684,22 @@ commits focused on one issue, all the changes are typically in a small
 subset of files, e.g. only the a particular module and its associated
 test file. But you may have learnt to make lots of small commits
 frequently and so you’re history may look like.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="ex">0d2f520</span> Correct spelling</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="ex">325d038</span> Document function xyz</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="ex">86d7633</span> Add docstring to function xyz</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="ex">a58d6e7</span> Fix function xyz to pass tests</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="ex">9429ab4</span> Add test for function xyz</span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="ex">bb560b0</span> Add function xyz</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="ex">0d2f520</span> Correct spelling</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="ex">325d038</span> Document function xyz</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="ex">86d7633</span> Add docstring to function xyz</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="ex">a58d6e7</span> Fix function xyz to pass tests</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="ex">9429ab4</span> Add test for function xyz</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="ex">bb560b0</span> Add function xyz</span></code></pre>
 </div>
 <p>Here six commits have been made for adding the <code>xyz</code>
 function, writing tests that pass, adding docstrings to the function and
 correcting some spelling mistakes. But all of these pertain to one issue
 that will have been written up on the projects issues and as the work is
-self-contained and we’ve not added to any other files so they could be a
+self-contained and we’ve not added to any other files they could be a
 single commit.</p>
 <p>Git has a few functions to help here and we’ll go through those now,
 the first is amending commits.</p>
@@ -655,28 +709,28 @@ the first is amending commits.</p>
 an example for this work but you can do this in any repository you have
 going. We’ll clone the repository and make a new branch called
 <code>amend-fixup-tutorial</code>.</p>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:ns-rse/pytest-examples.git</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="bu">cd</span> pytest-examples</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> amend-fixup-tutorial</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="ex">Switched</span> to a new branch <span class="st">'amend-fixup-tutorial'</span></span></code></pre>
-</div>
-<p>Lets add a simple <code>CONTRIBUTING.md</code> file to the
-repository.</p>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"# Contributing\n\nContributions via pull requests are welcome."</span> <span class="op">&gt;</span> CONTRIBUTING.md</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">git</span> add CONTRIBUTING.md</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Adding CONTRIBUTING.md"</span></span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="ex">01191a2</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Adding</span> CONTRIBUTING.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:ns-rse/pytest-examples.git</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="bu">cd</span> pytest-examples</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> amend-fixup-tutorial</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="ex">Switched</span> to a new branch <span class="st">'amend-fixup-tutorial'</span></span></code></pre>
+</div>
+<p>Lets add a simple <code>CONTRIBUTING.md</code> file to the
+repository.</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"# Contributing\n\nContributions via pull requests are welcome."</span> <span class="op">&gt;</span> CONTRIBUTING.md</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">git</span> add CONTRIBUTING.md</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Adding CONTRIBUTING.md"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="ex">01191a2</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Adding</span> CONTRIBUTING.md</span></code></pre>
 </div>
 <p>This should be familiar to users of <a href="https://git-scm.com" class="external-link">Git</a> whether you use the command line
 interface (CLI), <a href="https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html" class="external-link">Emacs’</a>
@@ -692,30 +746,29 @@ to add more to it or perhaps you forgot to run your test suite and find
 that on running it your tests fail so you need to make a correction. In
 this example we want to be more explicit about how to make contributions
 and let people know they should fork the branch.</p>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"\n Please make a fork of this repository, make your changes and open a Pull Request."</span> <span class="op">&gt;&gt;</span> CONTRIBUTING.md</span></code></pre>
-</div>
-<p>Now you could make a second commit…</p>
-<div class="codewrapper sourceCode" id="cb17">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ask for PRs via fork in CONTRIBUTING.md"</span></span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">9f0655b</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Ask</span> for PRs via fork in CONTRIBUTING.md</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="ex">01191a2</span> Adding CONTRIBUTING.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"\nPlease make a fork of this repository, make your changes and open a Pull Request."</span> <span class="op">&gt;&gt;</span> CONTRIBUTING.md</span></code></pre>
+</div>
+<p>Now you could make a second commit…</p>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ask for PRs via fork in CONTRIBUTING.md"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="ex">9f0655b</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Ask</span> for PRs via fork in CONTRIBUTING.md</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="ex">01191a2</span> Adding CONTRIBUTING.md</span></code></pre>
 </div>
 <p>…and there is nothing wrong with that. However, Git history can get
 long and complicated when there are lots of small commits, because these
 two changes to <code>CONTRIBUTING.md</code> are essentially the same
-piece of work and if we’d been thinking clearly we would have written
-about making forks in the first place and made a single commit.</p>
+piece of work. If we’d been thinking clearly we would have written about
+making forks in the first place and made a single commit.</p>
 <p>Fortunately Git can help here as there is the
 <code>git commit --amend</code> option which adds the staged changes to
 the last commit and allows you to edit the last commit message (if
@@ -723,24 +776,24 @@ nothing is currently staged then you will be prompted to edit the last
 commit message). We can undo the last commit using
 <code>git reset HEAD~1</code> and instead amend the first commit that
 added the <code>CONTRIBUTING.md</code></p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">git</span> reset HEAD~1</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="ex">4fda15f</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Adding</span> CONTRIBUTING.md</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">cat</span> CONTRIBUTING.md</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co"># Contributing</span></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="ex">Contributions</span> via pull requests are welcome.</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="ex">Please</span> make a fork of this repository, make your changes and open a Pull Request.</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="ex">4fda15f</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Adding</span> CONTRIBUTING.md</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">cat</span> CONTRIBUTING.md</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co"># Contributing</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="ex">Contributions</span> via pull requests are welcome.</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="ex">Please</span> make a fork of this repository, make your changes and open a Pull Request.</span></code></pre>
 </div>
 <p>We now have one commit which contains the new
 <code>CONTRIBUTING.md</code> file that contains all the changes we
@@ -752,31 +805,31 @@ slightly more compact.</p>
 <p>Amending commits is great providing the commit you want to change is
 the last commit you made (i.e. <code>HEAD</code>). But sometimes you
 might wish to correct a commit further back in your history and
-<code>git commit --amend</code> is of no use here. Git can however help
-here with the <code>git commit --fixup</code> command which allows you
-to mark a commit as being a “fix up” of an older commit. These can then
-be autosquashed via an interactive Git rebase.</p>
+<code>git commit --amend</code> is of no use here. Git has a solution
+though in the form of <code>git commit --fixup</code> command which
+allows you to mark a commit as being a “fix up” of an older commit.
+These can then be autosquashed via an interactive Git rebase.</p>
 <p>Let’s add a few empty commits to our
 <code>amend-fixup-tutorial</code> branch to so we can do this.</p>
-<div class="codewrapper sourceCode" id="cb21">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Empty commit for demonstration purposes"</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Another empty commit for demonstration purposes"</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb22">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="ex">8061221</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Another</span> empty commit for demonstration purposes</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span></code></pre>
-</div>
-<p>And let’s expand our <code>CONTRIBUTING.md</code> file further.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"\nPlease note this repository uses [pre-commit](https://pre-commit.com) to lint the Python code and Markdown files."</span> <span class="op">&gt;&gt;</span> CONTRIBUTING.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Empty commit for demonstration purposes"</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Another empty commit for demonstration purposes"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="ex">8061221</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Another</span> empty commit for demonstration purposes</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span></code></pre>
+</div>
+<p>And let’s expand our <code>CONTRIBUTING.md</code> file further.</p>
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"\nPlease note this repository uses [pre-commit](https://pre-commit.com) to lint the Python code and Markdown files."</span> <span class="op">&gt;&gt;</span> CONTRIBUTING.md</span></code></pre>
 </div>
 <p>We want to merge this commit with the first one we made in this
 tutorial using <code>git commit --fixup</code>. To do this we need to
@@ -789,32 +842,32 @@ indexing in computing starts at <code>0</code> rather than
 <code>git commit --fixup</code> commands (adjusting the hash to yours if
 you are using that option, you can find this using
 <code>git log --oneline</code>).</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--fixup</span> 4fda15f</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--fixup</span> HEAD~2</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--fixup</span> 4fda15f</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--fixup</span> HEAD~2</span></code></pre>
 </div>
 <p>We see the commit we have just made starts with <code>fixup!</code>
 and is then followed by the commit message that it is fixing.</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="ex">97711a4</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">fixup!</span> Adding CONTRIBUTING.md</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="ex">8061221</span> Another empty commit for demonstration purposes</span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="ex">97711a4</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">fixup!</span> Adding CONTRIBUTING.md</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="ex">8061221</span> Another empty commit for demonstration purposes</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span></code></pre>
 </div>
 <p>The final step is to perform the automatic squashing via an
 interactive rebase, again you can either use the hash or the relative
 reference.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> <span class="at">--autosquash</span> 4fda15f</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> <span class="at">--autosquash</span> HEAD~2</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> <span class="at">--autosquash</span> 4fda15f</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> <span class="at">--autosquash</span> HEAD~2</span></code></pre>
 </div>
 <p>This will open the default editor and because the
 <code>--autosquash</code> option has been used it will already have
@@ -827,31 +880,31 @@ look at the contents of the file.</p>
 instructions on how you can mark commits for different actions, in this
 case you can replace <code>pick</code> with either <code>f</code> or
 <code>fixup</code>. Save and exit and the commits are squashed.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="ex">0fda21e</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Another</span> empty commit for demonstration purposes</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">cat</span> CONTRIBUTING.md</span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>  <span class="co"># Contributing</span></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>  <span class="ex">Contributions</span> via pull requests are welcome.</span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>  <span class="ex">Please</span> make a fork of this repository, make your changes and open a Pull Request.</span>
-<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a>  <span class="ex">Please</span> note this repository uses <span class="pp">[</span><span class="ss">pre</span><span class="pp">-</span><span class="ss">commit</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://pre-commit.com</span><span class="kw">)</span> <span class="ex">to</span> lint the Python code and Markdown files.</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="ex">0fda21e</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> amend-fixup-tutorial<span class="kw">)</span> <span class="ex">Another</span> empty commit for demonstration purposes</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  <span class="ex">65587ce</span> Empty commit for demonstration purposes</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>  <span class="ex">4fda15f</span> Adding CONTRIBUTING.md</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="fu">cat</span> CONTRIBUTING.md</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>  <span class="co"># Contributing</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>  <span class="ex">Contributions</span> via pull requests are welcome.</span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>  <span class="ex">Please</span> make a fork of this repository, make your changes and open a Pull Request.</span>
+<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a>  <span class="ex">Please</span> note this repository uses <span class="pp">[</span><span class="ss">pre</span><span class="pp">-</span><span class="ss">commit</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://pre-commit.com</span><span class="kw">)</span> <span class="ex">to</span> lint the Python code and Markdown files.</span></code></pre>
 </div>
 <p>And you’re all done! If you were doing this for real on a repository
 you could now <code>git push</code> or continue your work. As this was
 just an example we can switch branches back to <code>main</code> and
 force deletion of the branch we created.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-D</span> amend-fixup-tutorial</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-D</span> amend-fixup-tutorial</span></code></pre>
 </div>
 <div id="challenge-4" class="callout challenge">
 <div class="callout-square">
@@ -880,72 +933,72 @@ each step are provided but try not to use them instead you can use your
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<p>The <code>main</code> branch of your <code>python-maths</code>
-repository the <code>divide</code> in
+<p>On the <code>main</code> branch of your <code>python-maths</code>
+repository the <code>divide</code> function in
 <code>pythonmaths/arithmetic.py</code> should look like the following
 with four examples.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="kw">def</span> divide(x: <span class="bu">int</span> <span class="op">|</span> <span class="bu">float</span>, y: <span class="bu">int</span> <span class="op">|</span> <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="co">    Divide x by y.</span></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a><span class="co">    x : int | float</span></span>
-<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a><span class="co">        Numerator for division.</span></span>
-<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a><span class="co">    y : int | float</span></span>
-<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a><span class="co">        Denominator for division.</span></span>
-<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb29-13"><a href="#cb29-13" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb29-14"><a href="#cb29-14" tabindex="-1"></a><span class="co">    float</span></span>
-<span id="cb29-15"><a href="#cb29-15" tabindex="-1"></a><span class="co">        The result of dividing `x` by `y`.</span></span>
-<span id="cb29-16"><a href="#cb29-16" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" tabindex="-1"></a><span class="co">    Examples</span></span>
-<span id="cb29-18"><a href="#cb29-18" tabindex="-1"></a><span class="co">    --------</span></span>
-<span id="cb29-19"><a href="#cb29-19" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; from python_math import arithmetic</span></span>
-<span id="cb29-20"><a href="#cb29-20" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(10, 2)</span></span>
-<span id="cb29-21"><a href="#cb29-21" tabindex="-1"></a><span class="co">        5.0</span></span>
-<span id="cb29-22"><a href="#cb29-22" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(5, 2)</span></span>
-<span id="cb29-23"><a href="#cb29-23" tabindex="-1"></a><span class="co">        2.5</span></span>
-<span id="cb29-24"><a href="#cb29-24" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(3, 0)</span></span>
-<span id="cb29-25"><a href="#cb29-25" tabindex="-1"></a><span class="co">        You can not divide by 0, please choose another value for 'y'.</span></span>
-<span id="cb29-26"><a href="#cb29-26" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(1, 0.1)</span></span>
-<span id="cb29-27"><a href="#cb29-27" tabindex="-1"></a><span class="co">        10</span></span>
-<span id="cb29-28"><a href="#cb29-28" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb29-29"><a href="#cb29-29" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">/</span> y</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="kw">def</span> divide(x: <span class="bu">int</span> <span class="op">|</span> <span class="bu">float</span>, y: <span class="bu">int</span> <span class="op">|</span> <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="co">    Divide x by y.</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a><span class="co">    x : int | float</span></span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="co">        Numerator for division.</span></span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a><span class="co">    y : int | float</span></span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a><span class="co">        Denominator for division.</span></span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="co">    float</span></span>
+<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a><span class="co">        The result of dividing `x` by `y`.</span></span>
+<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a><span class="co">    Examples</span></span>
+<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; from python_math import arithmetic</span></span>
+<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(10, 2)</span></span>
+<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a><span class="co">        5.0</span></span>
+<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(5, 2)</span></span>
+<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a><span class="co">        2.5</span></span>
+<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(3, 0)</span></span>
+<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a><span class="co">        You can not divide by 0, please choose another value for 'y'.</span></span>
+<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.divide(1, 0.1)</span></span>
+<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a><span class="co">        10</span></span>
+<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">/</span> y</span></code></pre>
 </div>
 <p>The <code>square_root</code> function should look like the
 following.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="kw">def</span> square_root(x):</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>    <span class="co">"""Return the square root of a number.</span></span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="co">    ==========</span></span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="co">    x : int | float</span></span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co">        The number for which you wish to find the square root.</span></span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="co">    =======</span></span>
-<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a><span class="co">    float</span></span>
-<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a><span class="co">        The square root of x.</span></span>
-<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a></span>
-<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a><span class="co">    Examples</span></span>
-<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a><span class="co">    ========</span></span>
-<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; from python_math import arithmetic</span></span>
-<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.square_root(4)</span></span>
-<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a><span class="co">        2.0</span></span>
-<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.square_root(169)</span></span>
-<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a><span class="co">        13.0</span></span>
-<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb30-24"><a href="#cb30-24" tabindex="-1"></a>    <span class="cf">except</span>:</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="kw">def</span> square_root(x):</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>    <span class="co">"""Return the square root of a number.</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="co">    ==========</span></span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="co">    x : int | float</span></span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a><span class="co">        The number for which you wish to find the square root.</span></span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a><span class="co">    =======</span></span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="co">    float</span></span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a><span class="co">        The square root of x.</span></span>
+<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a><span class="co">    Examples</span></span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a><span class="co">    ========</span></span>
+<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; from python_math import arithmetic</span></span>
+<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.square_root(4)</span></span>
+<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="co">        2.0</span></span>
+<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; arithmetic.square_root(169)</span></span>
+<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a><span class="co">        13.0</span></span>
+<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb32-24"><a href="#cb32-24" tabindex="-1"></a>    <span class="cf">except</span>:</span></code></pre>
 </div>
 </div>
 </div>
@@ -961,11 +1014,11 @@ that works out what commits changes to each file being fixed up need
 rebasing and with the <code>--and-rebase</code> flag it will
 automatically perform the squashing rebase.</p>
 <p>The steps involved then become much shorter with.</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">git</span> absorb <span class="at">--and-rebase</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-u</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">git</span> absorb <span class="at">--and-rebase</span></span></code></pre>
 </div>
 <p>By default <code>git absorb</code> will search the last 10 commits
 but this can be configured at runtime using the <code>--base</code> flag
@@ -988,38 +1041,37 @@ may still have several commits on a branch but be at the stage where you
 can combine all information into a single informative commit that is
 ready for merging into the <code>main</code> branch.</p>
 <p>Returning to the <code>pytest-examples</code> repository we cloned
-earlier in this repository we will make a series of empty commits to the
-repository and then undertake an interactive rebase to squash them.</p>
-<div class="codewrapper sourceCode" id="cb32">
+earlier we will make a series of empty commits to the repository and
+then undertake an interactive rebase to squash them.</p>
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="bu">cd</span> ~/work/git/hub/ns-rse/pytest-examples</span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 1"</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 2"</span></span>
-<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 3"</span></span>
-<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 4"</span></span>
-<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 5"</span></span>
-<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a><span class="ex">gl</span>     <span class="co"># If you set the alias earlier if not git log --oneline</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="bu">cd</span> ~/work/git/hub/ns-rse/pytest-examples</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 1"</span></span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 2"</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 3"</span></span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 4"</span></span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Commit 5"</span></span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a><span class="ex">gl</span>     <span class="co"># If you set the alias earlier if not git log --oneline</span></span></code></pre>
 </div>
 <p>To squash these commits we need to know the hash or relative
 reference to the first commit we wish to interact with which the
 <code>git log</code> command does (if you set the <code>gl</code> alias
 earlier you can use that)</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--one-line</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="ex">c33ab51</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">Commit</span> 5</span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="ex">f7bb1c9</span> Commit 4</span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="ex">d47d914</span> Commit 3</span>
-<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a><span class="ex">e859738</span> Commit 2</span>
-<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a><span class="ex">c437414</span> Commit 1</span>
-<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="ex">2f7c382</span> <span class="er">(</span><span class="ex">origin/main</span><span class="kw">)</span> <span class="ex">Merge</span> pull request <span class="co">#6 from ns-rse/ns-rse/tidy-print</span></span>
-<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a><span class="ex">a1101c7</span> <span class="pp">[</span><span class="ss">pre</span><span class="pp">-</span><span class="ss">commit.ci</span><span class="pp">]</span> Fixing issues with pre-commit</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--one-line</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="ex">c33ab51</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">Commit</span> 5</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="ex">f7bb1c9</span> Commit 4</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="ex">d47d914</span> Commit 3</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="ex">e859738</span> Commit 2</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="ex">c437414</span> Commit 1</span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="ex">2f7c382</span> <span class="er">(</span><span class="ex">origin/main</span><span class="kw">)</span> <span class="ex">Merge</span> pull request <span class="co">#6 from ns-rse/ns-rse/tidy-print</span></span>
+<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a><span class="ex">a1101c7</span> <span class="pp">[</span><span class="ss">pre</span><span class="pp">-</span><span class="ss">commit.ci</span><span class="pp">]</span> Fixing issues with pre-commit</span></code></pre>
 </div>
 <p>The hash we want is the one <em>before</em> <code>Commit 1</code>
-<code>c437414</code> or <code>HEAD~4</code> (remembering indexing begins
-at zero and we are counting backwards). We start a rebase with
+(<code>c437414</code> or <code>HEAD~4</code>). We start a rebase with
 <code>git rebase -i c437414^</code> which will open our default editor,
 hopefully <code>nano</code> and show the following.</p>
 <div id="callout2" class="callout">
@@ -1037,45 +1089,45 @@ omitted the caret with the same effect.</p>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="ex">pick</span> c437414 Commit 1 <span class="co"># empty</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="ex">pick</span> e859738 Commit 2 <span class="co"># empty</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="ex">pick</span> d47d914 Commit 3 <span class="co"># empty</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="ex">pick</span> f7bb1c9 Commit 4 <span class="co"># empty</span></span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="ex">pick</span> c33ab51 Commit 5 <span class="co"># empty</span></span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a><span class="co"># Rebase c437414..c33ab51 onto c437414 (4 commands)</span></span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="co"># Commands:</span></span>
-<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="co"># p, pick &lt;commit&gt; = use commit</span></span>
-<span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a><span class="co"># r, reword &lt;commit&gt; = use commit, but edit the commit message</span></span>
-<span id="cb34-12"><a href="#cb34-12" tabindex="-1"></a><span class="co"># e, edit &lt;commit&gt; = use commit, but stop for amending</span></span>
-<span id="cb34-13"><a href="#cb34-13" tabindex="-1"></a><span class="co"># s, squash &lt;commit&gt; = use commit, but meld into previous commit</span></span>
-<span id="cb34-14"><a href="#cb34-14" tabindex="-1"></a><span class="co"># f, fixup [-C | -c] &lt;commit&gt; = like "squash" but keep only the previous</span></span>
-<span id="cb34-15"><a href="#cb34-15" tabindex="-1"></a><span class="co">#                    commit's log message, unless -C is used, in which case</span></span>
-<span id="cb34-16"><a href="#cb34-16" tabindex="-1"></a><span class="co">#                    keep only this commit's message; -c is same as -C but</span></span>
-<span id="cb34-17"><a href="#cb34-17" tabindex="-1"></a><span class="co">#                    opens the editor</span></span>
-<span id="cb34-18"><a href="#cb34-18" tabindex="-1"></a><span class="co"># x, exec &lt;command&gt; = run command (the rest of the line) using shell</span></span>
-<span id="cb34-19"><a href="#cb34-19" tabindex="-1"></a><span class="co"># b, break = stop here (continue rebase later with 'git rebase --continue')</span></span>
-<span id="cb34-20"><a href="#cb34-20" tabindex="-1"></a><span class="co"># d, drop &lt;commit&gt; = remove commit</span></span>
-<span id="cb34-21"><a href="#cb34-21" tabindex="-1"></a><span class="co"># l, label &lt;label&gt; = label current HEAD with a name</span></span>
-<span id="cb34-22"><a href="#cb34-22" tabindex="-1"></a><span class="co"># t, reset &lt;label&gt; = reset HEAD to a label</span></span>
-<span id="cb34-23"><a href="#cb34-23" tabindex="-1"></a><span class="co"># m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span></span>
-<span id="cb34-24"><a href="#cb34-24" tabindex="-1"></a><span class="co">#         create a merge commit using the original merge commit's</span></span>
-<span id="cb34-25"><a href="#cb34-25" tabindex="-1"></a><span class="co">#         message (or the oneline, if no original merge commit was</span></span>
-<span id="cb34-26"><a href="#cb34-26" tabindex="-1"></a><span class="co">#         specified); use -c &lt;commit&gt; to reword the commit message</span></span>
-<span id="cb34-27"><a href="#cb34-27" tabindex="-1"></a><span class="co"># u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated</span></span>
-<span id="cb34-28"><a href="#cb34-28" tabindex="-1"></a><span class="co">#                       to this position in the new commits. The &lt;ref&gt; is</span></span>
-<span id="cb34-29"><a href="#cb34-29" tabindex="-1"></a><span class="co">#                       updated at the end of the rebase</span></span>
-<span id="cb34-30"><a href="#cb34-30" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb34-31"><a href="#cb34-31" tabindex="-1"></a><span class="co"># These lines can be re-ordered; they are executed from top to bottom.</span></span>
-<span id="cb34-32"><a href="#cb34-32" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb34-33"><a href="#cb34-33" tabindex="-1"></a><span class="co"># If you remove a line here THAT COMMIT WILL BE LOST.</span></span>
-<span id="cb34-34"><a href="#cb34-34" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb34-35"><a href="#cb34-35" tabindex="-1"></a><span class="co"># However, if you remove everything, the rebase will be aborted.</span></span>
-<span id="cb34-36"><a href="#cb34-36" tabindex="-1"></a><span class="co">#</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">pick</span> c437414 Commit 1 <span class="co"># empty</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="ex">pick</span> e859738 Commit 2 <span class="co"># empty</span></span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="ex">pick</span> d47d914 Commit 3 <span class="co"># empty</span></span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="ex">pick</span> f7bb1c9 Commit 4 <span class="co"># empty</span></span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="ex">pick</span> c33ab51 Commit 5 <span class="co"># empty</span></span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a><span class="co"># Rebase c437414..c33ab51 onto c437414 (4 commands)</span></span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a><span class="co"># Commands:</span></span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="co"># p, pick &lt;commit&gt; = use commit</span></span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a><span class="co"># r, reword &lt;commit&gt; = use commit, but edit the commit message</span></span>
+<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a><span class="co"># e, edit &lt;commit&gt; = use commit, but stop for amending</span></span>
+<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a><span class="co"># s, squash &lt;commit&gt; = use commit, but meld into previous commit</span></span>
+<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a><span class="co"># f, fixup [-C | -c] &lt;commit&gt; = like "squash" but keep only the previous</span></span>
+<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a><span class="co">#                    commit's log message, unless -C is used, in which case</span></span>
+<span id="cb36-16"><a href="#cb36-16" tabindex="-1"></a><span class="co">#                    keep only this commit's message; -c is same as -C but</span></span>
+<span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a><span class="co">#                    opens the editor</span></span>
+<span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a><span class="co"># x, exec &lt;command&gt; = run command (the rest of the line) using shell</span></span>
+<span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a><span class="co"># b, break = stop here (continue rebase later with 'git rebase --continue')</span></span>
+<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a><span class="co"># d, drop &lt;commit&gt; = remove commit</span></span>
+<span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a><span class="co"># l, label &lt;label&gt; = label current HEAD with a name</span></span>
+<span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a><span class="co"># t, reset &lt;label&gt; = reset HEAD to a label</span></span>
+<span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a><span class="co"># m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span></span>
+<span id="cb36-24"><a href="#cb36-24" tabindex="-1"></a><span class="co">#         create a merge commit using the original merge commit's</span></span>
+<span id="cb36-25"><a href="#cb36-25" tabindex="-1"></a><span class="co">#         message (or the oneline, if no original merge commit was</span></span>
+<span id="cb36-26"><a href="#cb36-26" tabindex="-1"></a><span class="co">#         specified); use -c &lt;commit&gt; to reword the commit message</span></span>
+<span id="cb36-27"><a href="#cb36-27" tabindex="-1"></a><span class="co"># u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated</span></span>
+<span id="cb36-28"><a href="#cb36-28" tabindex="-1"></a><span class="co">#                       to this position in the new commits. The &lt;ref&gt; is</span></span>
+<span id="cb36-29"><a href="#cb36-29" tabindex="-1"></a><span class="co">#                       updated at the end of the rebase</span></span>
+<span id="cb36-30"><a href="#cb36-30" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb36-31"><a href="#cb36-31" tabindex="-1"></a><span class="co"># These lines can be re-ordered; they are executed from top to bottom.</span></span>
+<span id="cb36-32"><a href="#cb36-32" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb36-33"><a href="#cb36-33" tabindex="-1"></a><span class="co"># If you remove a line here THAT COMMIT WILL BE LOST.</span></span>
+<span id="cb36-34"><a href="#cb36-34" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb36-35"><a href="#cb36-35" tabindex="-1"></a><span class="co"># However, if you remove everything, the rebase will be aborted.</span></span>
+<span id="cb36-36"><a href="#cb36-36" tabindex="-1"></a><span class="co">#</span></span></code></pre>
 </div>
 <p>The instructions here are really useful and tell us how to edit the
 rebase. The first line tells us that we are rebasing the range of
@@ -1093,14 +1145,14 @@ to find (<code>pick</code>) and what you want to replace it with
 instance or all. We can safely change all as it doesn’t matter if the
 instances in the comments section are replaced. The first four rows of
 the file should now read like the following.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">pick</span>   c437414 Commit 1 <span class="co"># empty</span></span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="ex">squash</span> e859738 Commit 2 <span class="co"># empty</span></span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="ex">squash</span> d47d914 Commit 3 <span class="co"># empty</span></span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="ex">squash</span> f7bb1c9 Commit 4 <span class="co"># empty</span></span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="ex">squash</span> c33ab51 Commit 5 <span class="co"># empty</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">pick</span>   c437414 Commit 1 <span class="co"># empty</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="ex">squash</span> e859738 Commit 2 <span class="co"># empty</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="ex">squash</span> d47d914 Commit 3 <span class="co"># empty</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="ex">squash</span> f7bb1c9 Commit 4 <span class="co"># empty</span></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="ex">squash</span> c33ab51 Commit 5 <span class="co"># empty</span></span></code></pre>
 </div>
 <p>Save this file and exit (in <code>nano</code> use
 <code>Ctrl + o</code> then <code>Ctrl + x</code>), the editor will exit
@@ -1111,94 +1163,94 @@ the notes show. Any lines starting with a <code>#</code> are comments
 and will be ignored but this is very useful as it saves you having to
 re-write all the text across the commits and you can instead edit
 them.</p>
-<div class="codewrapper sourceCode" id="cb36">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># This is a combination of 5 commits.</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="co"># This is the 1st commit message:</span></span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="ex">Commit</span> 1</span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="co"># This is the commit message #2:</span></span>
-<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a><span class="ex">Commit</span> 2</span>
-<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="co"># This is the commit message #3:</span></span>
-<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a></span>
-<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a><span class="ex">Commit</span> 3</span>
-<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a></span>
-<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a><span class="co"># This is the commit message #4:</span></span>
-<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" tabindex="-1"></a><span class="ex">Commit</span> 4</span>
-<span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a></span>
-<span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a><span class="co"># This is the commit message #5:</span></span>
-<span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a></span>
-<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a><span class="ex">Commit</span> 5</span>
-<span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a><span class="co"># Please enter the commit message for your changes. Lines starting</span></span>
-<span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a><span class="co"># with '#' will be ignored, and an empty message aborts the commit.</span></span>
-<span id="cb36-24"><a href="#cb36-24" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb36-25"><a href="#cb36-25" tabindex="-1"></a><span class="co"># Date:      Fri Mar 8 14:39:47 2024 +0000</span></span>
-<span id="cb36-26"><a href="#cb36-26" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb36-27"><a href="#cb36-27" tabindex="-1"></a><span class="co"># interactive rebase in progress; onto 2f7c382</span></span>
-<span id="cb36-28"><a href="#cb36-28" tabindex="-1"></a><span class="co"># Last commands done (5 commands done):</span></span>
-<span id="cb36-29"><a href="#cb36-29" tabindex="-1"></a><span class="co">#    squash f7bb1c9 Commit 4 # empty</span></span>
-<span id="cb36-30"><a href="#cb36-30" tabindex="-1"></a><span class="co">#    squash c33ab51 Commit 5 # empty</span></span>
-<span id="cb36-31"><a href="#cb36-31" tabindex="-1"></a><span class="co"># No commands remaining.</span></span>
-<span id="cb36-32"><a href="#cb36-32" tabindex="-1"></a><span class="co"># You are currently rebasing branch 'main' on '2f7c382'.</span></span>
-<span id="cb36-33"><a href="#cb36-33" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb36-34"><a href="#cb36-34" tabindex="-1"></a><span class="co"># No changes</span></span></code></pre>
-</div>
-<p>Edit the file to read how you want it to, here I’ve gone with the
-following to make it clearly</p>
-<div class="codewrapper sourceCode" id="cb37">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">Squash</span> of empty commits 1-5</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="ex">This</span> is an example of how to squash commits and combines the original commits...</span>
-<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="ex">+</span> Commit 1</span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="ex">+</span> Commit 2</span>
-<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a><span class="ex">+</span> Commit 3</span>
-<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a><span class="ex">+</span> Commit 4</span>
-<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a><span class="ex">+</span> Commit 5</span></code></pre>
-</div>
-<p>When done save and exit (in <code>nano</code> use
-<code>Ctrl + o</code> then <code>Ctrl + x</code>). You should be
-informed the rebase was successful and if you look at the plain
-<code>git log</code> your commit message will be there at the top in all
-its glory.</p>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> 2f7c382</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="ex">[detached</span> HEAD 2a0c155] Squash of empty commits 1-5</span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a> <span class="ex">Date:</span> Fri Mar 8 14:39:47 2024 +0000</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a><span class="ex">Successfully</span> rebased and updated refs/heads/main.</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="co"># This is a combination of 5 commits.</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="co"># This is the 1st commit message:</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a><span class="ex">Commit</span> 1</span>
 <span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="co"># This is the commit message #2:</span></span>
 <span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a><span class="ex">commit</span> 2a0c1551039f8fd43af74656a6150e71254c6669 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
-<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a><span class="ex">Author:</span> Neil Shephard <span class="op">&lt;</span>n.shephard@sheffield.ac.uk<span class="op">&gt;</span></span>
-<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a><span class="ex">Date:</span>   2024-03-08 14:39:47 +0000</span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a><span class="ex">Commit</span> 2</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a><span class="co"># This is the commit message #3:</span></span>
 <span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a>    <span class="ex">Squash</span> of empty commits 1-5</span>
+<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a><span class="ex">Commit</span> 3</span>
 <span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a></span>
-<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a>    <span class="ex">This</span> is an example of how to squash commits and combines the original commits...</span>
+<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a><span class="co"># This is the commit message #4:</span></span>
 <span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a></span>
-<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a>    <span class="ex">+</span> Commit 1</span>
-<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a>    <span class="ex">+</span> Commit 2</span>
-<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a>    <span class="ex">+</span> Commit 3</span>
-<span id="cb38-19"><a href="#cb38-19" tabindex="-1"></a>    <span class="ex">+</span> Commit 4</span>
-<span id="cb38-20"><a href="#cb38-20" tabindex="-1"></a>    <span class="ex">+</span> Commit 5</span>
+<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a><span class="ex">Commit</span> 4</span>
+<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a><span class="co"># This is the commit message #5:</span></span>
+<span id="cb38-19"><a href="#cb38-19" tabindex="-1"></a></span>
+<span id="cb38-20"><a href="#cb38-20" tabindex="-1"></a><span class="ex">Commit</span> 5</span>
 <span id="cb38-21"><a href="#cb38-21" tabindex="-1"></a></span>
-<span id="cb38-22"><a href="#cb38-22" tabindex="-1"></a><span class="ex">commit</span> 2f7c3826b310269b06dd86cca930bdd767ad9fbf <span class="er">(</span><span class="ex">origin/main</span><span class="kw">)</span></span>
-<span id="cb38-23"><a href="#cb38-23" tabindex="-1"></a><span class="ex">Merge:</span> feee987 a1101c7</span>
-<span id="cb38-24"><a href="#cb38-24" tabindex="-1"></a><span class="ex">Author:</span> Neil Shephard <span class="op">&lt;</span>n.shephard@sheffield.ac.uk<span class="op">&gt;</span></span>
-<span id="cb38-25"><a href="#cb38-25" tabindex="-1"></a><span class="ex">Date:</span>   2024-03-07 16:07:06 +0000</span>
-<span id="cb38-26"><a href="#cb38-26" tabindex="-1"></a></span>
-<span id="cb38-27"><a href="#cb38-27" tabindex="-1"></a>    <span class="ex">Merge</span> pull request <span class="co">#6 from ns-rse/ns-rse/tidy-print</span></span></code></pre>
+<span id="cb38-22"><a href="#cb38-22" tabindex="-1"></a><span class="co"># Please enter the commit message for your changes. Lines starting</span></span>
+<span id="cb38-23"><a href="#cb38-23" tabindex="-1"></a><span class="co"># with '#' will be ignored, and an empty message aborts the commit.</span></span>
+<span id="cb38-24"><a href="#cb38-24" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb38-25"><a href="#cb38-25" tabindex="-1"></a><span class="co"># Date:      Fri Mar 8 14:39:47 2024 +0000</span></span>
+<span id="cb38-26"><a href="#cb38-26" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb38-27"><a href="#cb38-27" tabindex="-1"></a><span class="co"># interactive rebase in progress; onto 2f7c382</span></span>
+<span id="cb38-28"><a href="#cb38-28" tabindex="-1"></a><span class="co"># Last commands done (5 commands done):</span></span>
+<span id="cb38-29"><a href="#cb38-29" tabindex="-1"></a><span class="co">#    squash f7bb1c9 Commit 4 # empty</span></span>
+<span id="cb38-30"><a href="#cb38-30" tabindex="-1"></a><span class="co">#    squash c33ab51 Commit 5 # empty</span></span>
+<span id="cb38-31"><a href="#cb38-31" tabindex="-1"></a><span class="co"># No commands remaining.</span></span>
+<span id="cb38-32"><a href="#cb38-32" tabindex="-1"></a><span class="co"># You are currently rebasing branch 'main' on '2f7c382'.</span></span>
+<span id="cb38-33"><a href="#cb38-33" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb38-34"><a href="#cb38-34" tabindex="-1"></a><span class="co"># No changes</span></span></code></pre>
+</div>
+<p>Edit the file to read how you want it to, here I’ve gone with the
+following to make it clearly</p>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="ex">Squash</span> of empty commits 1-5</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="ex">This</span> is an example of how to squash commits and combines the original commits...</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="ex">+</span> Commit 1</span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="ex">+</span> Commit 2</span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a><span class="ex">+</span> Commit 3</span>
+<span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a><span class="ex">+</span> Commit 4</span>
+<span id="cb39-9"><a href="#cb39-9" tabindex="-1"></a><span class="ex">+</span> Commit 5</span></code></pre>
+</div>
+<p>When done save and exit (in <code>nano</code> use
+<code>Ctrl + O</code> then <code>Ctrl + X</code>). You should be
+informed the rebase was successful and if you look at the plain
+<code>git log</code> your commit message will be there at the top in all
+its glory.</p>
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> 2f7c382</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="ex">[detached</span> HEAD 2a0c155] Squash of empty commits 1-5</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a> <span class="ex">Date:</span> Fri Mar 8 14:39:47 2024 +0000</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="ex">Successfully</span> rebased and updated refs/heads/main.</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="ex">commit</span> 2a0c1551039f8fd43af74656a6150e71254c6669 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="ex">Author:</span> Neil Shephard <span class="op">&lt;</span>n.shephard@sheffield.ac.uk<span class="op">&gt;</span></span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a><span class="ex">Date:</span>   2024-03-08 14:39:47 +0000</span>
+<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" tabindex="-1"></a>    <span class="ex">Squash</span> of empty commits 1-5</span>
+<span id="cb40-13"><a href="#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" tabindex="-1"></a>    <span class="ex">This</span> is an example of how to squash commits and combines the original commits...</span>
+<span id="cb40-15"><a href="#cb40-15" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" tabindex="-1"></a>    <span class="ex">+</span> Commit 1</span>
+<span id="cb40-17"><a href="#cb40-17" tabindex="-1"></a>    <span class="ex">+</span> Commit 2</span>
+<span id="cb40-18"><a href="#cb40-18" tabindex="-1"></a>    <span class="ex">+</span> Commit 3</span>
+<span id="cb40-19"><a href="#cb40-19" tabindex="-1"></a>    <span class="ex">+</span> Commit 4</span>
+<span id="cb40-20"><a href="#cb40-20" tabindex="-1"></a>    <span class="ex">+</span> Commit 5</span>
+<span id="cb40-21"><a href="#cb40-21" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" tabindex="-1"></a><span class="ex">commit</span> 2f7c3826b310269b06dd86cca930bdd767ad9fbf <span class="er">(</span><span class="ex">origin/main</span><span class="kw">)</span></span>
+<span id="cb40-23"><a href="#cb40-23" tabindex="-1"></a><span class="ex">Merge:</span> feee987 a1101c7</span>
+<span id="cb40-24"><a href="#cb40-24" tabindex="-1"></a><span class="ex">Author:</span> Neil Shephard <span class="op">&lt;</span>n.shephard@sheffield.ac.uk<span class="op">&gt;</span></span>
+<span id="cb40-25"><a href="#cb40-25" tabindex="-1"></a><span class="ex">Date:</span>   2024-03-07 16:07:06 +0000</span>
+<span id="cb40-26"><a href="#cb40-26" tabindex="-1"></a></span>
+<span id="cb40-27"><a href="#cb40-27" tabindex="-1"></a>    <span class="ex">Merge</span> pull request <span class="co">#6 from ns-rse/ns-rse/tidy-print</span></span></code></pre>
 </div>
 <div id="callout3" class="callout">
 <div class="callout-square">
@@ -1257,22 +1309,22 @@ new set of commits.</p>
 <div class="section level3">
 <h3 id="maintenance">Maintenance<a class="anchor" aria-label="anchor" href="#maintenance"></a></h3>
 <p><a href="https://git-scm.com/docs/git-maintenance" class="external-link"><code>git maintenance</code></a>
-is a <em>really</em> useful command that “<em>Run tasks to optimize Git
-repository data, speeding up other Git commands and reducing storage
+is a <em>really</em> useful command that will “<em>Run tasks to optimize
+Git repository data, speeding up other Git commands and reducing storage
 requirements for the repository.</em>”. The details of what this does
 are beyond the scope of this tutorial (refer to the <a href="https://git-scm.com/docs/git-maintenance" class="external-link">help page</a> if
 interested). Providing you have setup your GitHub account with SSH keys
 and they are available via something such as keychain locally then you
 can bring a repository under <code>git maintenance</code> and forget
 about it.</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">git</span> mainetenance register</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">git</span> mainetenance register</span></code></pre>
 </div>
-<p>Adds entries to your global configuration (<code>~.gitconfig</code>)
-to ensure the repository will have these tasks run at the scheduled
-point (default is hourly).</p>
+<p>This adds entries to your global configuration
+(<code>~/.gitconfig</code>) to ensure the repository will have these
+tasks run at the scheduled point (default is hourly).</p>
 
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -1295,6 +1347,8 @@ better still make life easier using <code>git absorb</code>.</li>
 <li>
 <code>git rebase --interactive</code> can be used to squash
 commits.</li>
+<li>Keeping the commit history atomic and clean makes it easier to
+understand what work has been undertaken.</li>
 <li>Git periodically tidies things up for you with
 <code>git gc</code>.</li>
 <li>You can and should enable further automated cleaning by enabling
@@ -1390,7 +1444,7 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/git_hygiene.html",
   "identifier": "ns-rse.github.io/git-collaboration/git_hygiene.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-03-18",
+  "dateModified": "2024-05-09",
   "datePublished": "2024-05-09"
 }
 

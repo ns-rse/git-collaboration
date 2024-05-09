@@ -199,7 +199,6 @@
         <ul><li><a href="#continuous-what">Continuous What?</a></li>
 <li><a href="#github-actions">GitHub Actions</a></li>
 <li><a href="#pre-commit.ci">Pre-commit.ci</a></li>
-<li><a href="#runners">Runners</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
         
@@ -291,7 +290,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Continuous Integration</h1>
-        <p>Last updated on 2024-03-18 |
+        <p>Last updated on 2024-05-09 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/continuous_integration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -480,7 +479,7 @@ concatenate the file and see its contents.</p>
 Markup Language</em>) is a common format for defining hierarchical data
 structures. It is a super-set of JSON (JavaScript Object Notation) that
 many find more flexible (in part because of the ability to have
-comments).</p>
+comments) and is regularly used for configuration files.</p>
 </div>
 </div>
 </div>
@@ -591,10 +590,112 @@ a list of actions listed.</p>
 </div>
 <div class="section level3">
 <h3 id="marketplace">MarketPlace<a class="anchor" aria-label="anchor" href="#marketplace"></a></h3>
+<p>There are a lot of actions available that can be run in the
+<code>steps</code> section of your custom action. The <a href="https://github.com/marketplace?type=actions" class="external-link">GitHub
+Marketplace</a> provides a central place to search for solutions so you
+don’t have to reinvent the wheel.</p>
 </div>
 </section><section id="pre-commit.ci"><h2 class="section-heading">Pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit.ci"></a>
 </h2>
-<hr class="half-width"><div id="keypoints1" class="callout keypoints">
+<hr class="half-width"><p>We saw in the [hooks][hooks] section how to use <a href="https://pre-commit.com/" class="external-link">pre-commit</a> hooks to run certain tasks
+prior to making commits to your feature branch. <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> extends this and uses
+the same configured hooks to automatically check that code submitted in
+Pull Requests passes these same checks.</p>
+<p>This can be useful to capture instances where <code>pre-commit</code>
+may have been disabled locally or if you receive contributions from
+outside of the core development team and contributor has not enabled
+<code>pre-commit</code> in their local workflow as it will run the
+formatting and linting tests, correct where possible and make commits
+directly to the branch in the Pull Request and inform if there were
+errors that could not be automatically corrected.</p>
+<div class="section level3">
+<h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a></h3>
+<p>To get setup with <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a>
+navigate to the page and use the button to <em>Sign In With GitHub</em>.
+Once you have logged in select your profile and click on the <em>Manage
+repos on GitHub</em> link. You may be asked to complete your
+two-factor-authentication (2FA) at this point, but you should be taken
+to your accounts settings page (you can always navigate there using
+<em>Settings &gt; Applications</em>). By default pre-commit.ci
+requires</p>
+<ul><li>
+<strong>Read</strong> access to issues, merge queues and
+metadata.</li>
+<li>
+<strong>Read</strong> and <strong>write</strong> access to code,
+commit statuses, pull requests and workflows.</li>
+</ul><p>There are then two potions for <em>Repository access</em> you can
+either grant access to all repositories that you own, or you can select
+specific repositories. It is generally preferable to only allow access
+to specific repositories. The dialog that appears allows you to search
+for a repository that you wish to grant access to.</p>
+</div>
+<div class="section level3">
+<h3 id="configuration-1">Configuration<a class="anchor" aria-label="anchor" href="#configuration-1"></a></h3>
+<p>You can configure the behaviour of <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> via the
+<code>.pre-commit-config.yaml</code>. The full specification is detailed
+in the <a href="https://pre-commit.ci/#configuration" class="external-link">documentation</a>
+and is shown below.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>        [pre-commit.ci] auto fixes from pre-commit.com hooks</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>        for more information, see https://pre-commit.ci</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] pre-commit autoupdate'</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> weekly</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
+</div>
+<div id="challenge-1-add-pre-commit.ci-to-your-python-maths-repository" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="challenge-1-add-pre-commit.ci-to-your-python-maths-repository" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Add pre-commit.ci to your<code>python-maths</code>repository<a class="anchor" aria-label="anchor" href="#challenge-1-add-pre-commit.ci-to-your-python-maths-repository"></a>
+</h3>
+<div class="callout-content">
+<p>In your pairs add an appropriate configuration section the
+<code>.pre-commit-config.yaml</code> on a new branch on the
+<code>python-maths</code> repository push the changes to GitHub and make
+a Pull Request.</p>
+<p>Set the <code>autoupdate_schedule</code> to <code>monthly</code> and
+customise both <code>autofix_commit_msage</code> and
+<code>autoupdate_commit_msg</code> fields.</p>
+<p>Finally configure the <code>pylint</code> hook to be skipped in
+pre-commit.ci.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">.pre-commit-config.yaml</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">ci</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">    autofix_commit_msg</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>        [pre-commit.ci] Linting code with pre-commit hooks.</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="at">    </span><span class="fu">autofix_prs</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_branch</span><span class="kw">:</span><span class="at"> </span><span class="st">''</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_commit_msg</span><span class="kw">:</span><span class="at"> </span><span class="st">'[pre-commit.ci] Automatically updating pre-commit'</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">    </span><span class="fu">autoupdate_schedule</span><span class="kw">:</span><span class="at"> monthly</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">    </span><span class="fu">skip</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pylint</span><span class="kw">]</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">    </span><span class="fu">submodules</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -602,91 +703,22 @@ a list of actions listed.</p>
 <h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Continuous Integration/Delivery is a useful method of checking code
-<em>before</em> it enters the <code>main</code> branch.</li>
-<li>GitHub uses Actions that are defined by YAML configuration files
-under <code>.github/workflow/</code>.</li>
-<li>Actions can be restricted to events/branches/tags.</li>
-<li>
-</li>
+<ul><li><p>Continuous Integration/Delivery is a useful method of checking
+code <em>before</em> it enters the <code>main</code> branch.</p></li>
+<li><p>GitHub uses Actions that are defined by YAML configuration files
+under <code>.github/workflow/</code>.</p></li>
+<li><p>Actions can be restricted to events/branches/tags.</p></li>
+<li><p><a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> allows
+integration of <a href="https://pre-commit.com/" class="external-link">pre-commit</a> hooks in
+GitHub Actions.</p></li>
 </ul></div>
-</div>
-</div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
-</button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
-<div class="accordion-body">
-<p>Instructor Template</p>
-</div>
-</div>
-</div>
-</div>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
-</h3>
-<div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">GitHub</h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<p>GitHub uses <code>~/.github/workflows/*.yaml</code> to define
-different Actions to run/</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">GitLab</h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
-<p>GitLab uses <code>.gitlab-cy.yaml</code> for configuring Continuous
-Integration</p>
-</div>
-</div>
-</div>
-</div>
-</section><section id="runners"><h2 class="section-heading">Runners<a class="anchor" aria-label="anchor" href="#runners"></a>
-</h2>
-<hr class="half-width"><div id="callout4" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout4"></a>
-</h3>
-<div class="callout-content">
-<p>Callout sections can highlight information.</p>
-</div>
 </div>
 </div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/hooks.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -758,7 +790,7 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/continuous_integration.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/continuous_integration.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-03-18",
+  "dateModified": "2024-05-09",
   "datePublished": "2024-05-09"
 }
 

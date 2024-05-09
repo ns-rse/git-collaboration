@@ -370,6 +370,8 @@ better still make life easier using <code>git absorb</code>.</li>
 <li>
 <code>git rebase --interactive</code> can be used to squash
 commits.</li>
+<li>Keeping the commit history atomic and clean makes it easier to
+understand what work has been undertaken.</li>
 <li>Git periodically tidies things up for you with
 <code>git gc</code>.</li>
 <li>You can and should enable further automated cleaning by enabling
@@ -393,13 +395,14 @@ time.</li>
 </ul></section><section id="continuous_integration"><h2 class="section-heading"><a href="continuous_integration.html">Continuous Integration</a></h2>
 <hr class="half-width">
 <ul>
-<li>Continuous Integration/Delivery is a useful method of checking code
-<em>before</em> it enters the <code>main</code> branch.</li>
-<li>GitHub uses Actions that are defined by YAML configuration files
-under <code>.github/workflow/</code>.</li>
-<li>Actions can be restricted to events/branches/tags.</li>
-<li>
-</li>
+<li><p>Continuous Integration/Delivery is a useful method of checking
+code <em>before</em> it enters the <code>main</code> branch.</p></li>
+<li><p>GitHub uses Actions that are defined by YAML configuration files
+under <code>.github/workflow/</code>.</p></li>
+<li><p>Actions can be restricted to events/branches/tags.</p></li>
+<li><p><a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> allows
+integration of <a href="https://pre-commit.com/" class="external-link">pre-commit</a> hooks in
+GitHub Actions.</p></li>
 </ul></section><section id="reviewing"><h2 class="section-heading"><a href="reviewing.html">Reviewing</a></h2>
 <hr class="half-width">
 <ul>
