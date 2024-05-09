@@ -207,8 +207,8 @@ you have logged in select your profile and click on the _Manage repos on GitHub_
 two-factor-authentication (2FA) at this point, but you should be taken to your accounts settings page (you can always
 navigate there using _Settings > Applications_). By default pre-commit.ci requires
 
-+ **Read** access to issues, merge queues and metadata.
-+ **Read** and **write** access to code, commit statuses, pull requests and workflows.
+- **Read** access to issues, merge queues and metadata.
+- **Read** and **write** access to code, commit statuses, pull requests and workflows.
 
 There are then two potions for _Repository access_ you can either grant access to all repositories that you own, or you
 can select specific repositories. It is generally preferable to only allow access to specific repositories. The dialog
@@ -234,7 +234,7 @@ ci:
 ```
 
 
-::::::::::::::::::::::::::::::::::::: challenge
+
 ## Challenge 1: Add pre-commit.ci to your `python-maths` repository
 
 In your pairs add an appropriate configuration section the `.pre-commit-config.yaml` on a new branch on the
@@ -261,15 +261,9 @@ ci:
 ```
 
 
-:::::::::::::::::::::::::::::::::
-
 :::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 ::::::::::::::::::::::::::::::::::::: keypoints
-
-- Continuous Integration/Delivery is a useful method of checking code _before_ it enters the `main` branch.
 - GitHub uses Actions that are defined by YAML configuration files under `.github/workflow/`.
 - Actions can be restricted to events/branches/tags.
 - [pre-commit.ci][precommit-ci] allows integration of [pre-commit][precommit] hooks in GitHub Actions.

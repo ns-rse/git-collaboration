@@ -1624,8 +1624,6 @@ Dropped refs/stash@{1} (dd538beb8f14590f720e9b9f677ba7381240bd92)
 Only the `CONTRIBUTING.md` file has been restored and not the `ANOTHER.md`.
 
 
-::::::::::::::::::::::::::::::::::::: challenge
-
 ## Challenge 8: Stashing
 
 1. Clone the [`pytest-examples`]() repository.
@@ -1866,6 +1864,8 @@ Each branch can have a worktree added for it and then when you want to switch be
 them to that branch and Git keeps track of everything in the usual manner.
 
 ###
+
+
 Lets create two worktree's, the `contributing` and `citation` we created above when working with branches. If you didn't
 already follow along the above steps do so now.
 
