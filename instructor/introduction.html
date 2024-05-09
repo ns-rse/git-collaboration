@@ -341,12 +341,12 @@ from enterprise grade tools such as the aforementioned <a href="https://github.c
 increasingly popular <a href="https://github.com/rust-lang/rust" class="external-link">Rust</a> through to niche
 products such as <a href="https://mjaggard.github.io/snapcast/" class="external-link">Snapcast</a> or Android apps
 for tracking your exercise such as <a href="https://github.com/OpenTracksApp/OpenTracks" class="external-link">OpenTracks</a>.</p>
-<p>Git and Forges, online repositories for working with Git, as <a href="https://github.com" class="external-link">GitHub</a>, <a href="https://gitlab.com" class="external-link">GitLab</a> and others such as <a href="https://sourcehut.org/" class="external-link">SourceHut</a>, <a href="https://codeberg.org/" class="external-link">Codeberg</a>, <a href="https://forgejo.org/" class="external-link">ForgeJo</a> and so forth are wonderful tools
-for. However, because of the complexities of version controlling
-software in distributed, collaborative environments the tool itself,
-Git, has become quite complex. There are many different tasks that one
-may wish to undertake and often several different ways of achieving
-these.</p>
+<p>Git and Forges, online repositories for working with Git, such as <a href="https://github.com" class="external-link">GitHub</a>, <a href="https://gitlab.com" class="external-link">GitLab</a> <a href="https://sourcehut.org/" class="external-link">SourceHut</a>, <a href="https://codeberg.org/" class="external-link">Codeberg</a>, and <a href="https://forgejo.org/" class="external-link">ForgeJo</a> and so forth are wonderful tools
+for collaboration. However, because of the complexities of version
+controlling software in distributed, collaborative environments the tool
+itself, Git, has become quite complex. There are many different tasks
+that one may wish to undertake and often several different ways of
+achieving these.</p>
 <p>Its relatively easy to get the <em>basics</em> of working with <a href="https://git-scm.com" class="external-link">Git</a> on your own or with small groups to
 work collaboratively on code development. If you aren’t already familiar
 with these basics then this course isn’t for you (yet!) and you would
@@ -408,7 +408,7 @@ being unable to undo them.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">In-Person</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>If the course is being run in person please describe the situation to
 the person or people sat next to you. Write your answer in the
@@ -422,7 +422,7 @@ collaborative pad under a heading with your name.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Online</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>If you are participating online please write down your names of pairs
 and provide an answer in the collaborative notepad.</p>
@@ -436,7 +436,7 @@ and provide an answer in the collaborative notepad.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Before the start of the course you should setup a new <a href="https://pad.carpentries.org/" class="external-link">collaborative pad</a> where
 participants can answer questions and collaborate.</p>
@@ -478,9 +478,10 @@ the repository locally
 (<code>git clone    git@github.com:ns-rse/python-maths.git</code>).</li>
 <li>On GitHub create an empty repository called
 <code>python-maths</code>, do <em>not</em> add a license or
-<code>.gitignore</code> the repository should be completely empty.</li>
-<li>In the cloned <code>python-maths</code> directory you have cloned
-open the <code>.git/config</code> file and edit the line 7 that reads
+<code>.gitignore</code> to the repository, it should be completely
+empty.</li>
+<li>In the locally cloned <code>python-maths</code> directory open the
+<code>.git/config</code> file and edit the line 7 that reads
 <code>url = git@github.com:ns-rse/python-maths.git</code> and replace
 <code>ns-rse</code> with <em>your</em> GitHub user name. E.g. if your
 GitHub username is <code>alice_and_bob</code> it should read
@@ -490,10 +491,9 @@ these changes.</li>
 </ol><p>This edit changes the <code>origin</code> to be the empty repository
 you created under <em>your</em> account called <code>python-maths</code>
 and pushes the cloned repository there.</p>
-<p>Once you have made completed this you need to invite your
-collaborator to work on the repository with you. Navigate to
-<em>Settings &gt; People</em> and add invite you collaborator to the
-project.</p>
+<p>Once you have completed this you need to invite your collaborator to
+work on the repository with you. Navigate to <em>Settings &gt;
+People</em> and add invite you collaborator to the project.</p>
 </div>
 <div class="section level3">
 <h3 id="collaborator">Collaborator<a class="anchor" aria-label="anchor" href="#collaborator"></a></h3>
@@ -506,13 +506,12 @@ the <code>python-maths</code> repository.</p>
 <p>Both individuals should now have local copies of the repository.
 After activating the <code>git-collaboration</code> Virtual Environment
 you created during setup should install the package in editable mode
-within the environment along with the <code>test</code>
-dependencies.</p>
-<p>Once cloned you may have to explicitly fetch the
-<code>multiply</code> and <code>divide</code> branches, instructions are
-in the solution.</p>
-<p><strong>NB</strong> - If you are not familiar with working with
-Python follow the instructions in the Solutions below.</p>
+within the environment along with the <code>test</code> dependencies. If
+you are not familiar with working with Python follow the instructions in
+the Solutions below.</p>
+<p><strong>NB</strong> - Once cloned you may have to explicitly fetch
+the <code>multiply</code> and <code>divide</code> branches, instructions
+are in the solution.</p>
 </div>
 </div>
 </div>
@@ -522,7 +521,7 @@ Python follow the instructions in the Solutions below.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Clone the repository</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Both the repository owner and collaborator should now clone the
 repository <em>from the repository owners copy <strong>not</strong> the
@@ -583,7 +582,7 @@ clone with the following command.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Protect the Main Branch</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>On the <code>python-maths</code> repository you both now have access
 to protect the <code>main</code> branch to require approvals.</p>
@@ -601,7 +600,7 @@ to protect the <code>main</code> branch to require approvals.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Install the Package</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>If you have not already done so activate the
 <code>git-collaboration</code> environment you created as described in

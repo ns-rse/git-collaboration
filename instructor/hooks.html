@@ -348,13 +348,13 @@ runs.</li>
 </h2>
 <hr class="half-width"><p>Hooks are actions, typically one or more scripts, that are run in
 response to a particular event. Git has a number of stages at which
-hooks can be run, events such as <code>commit</code>, <code>push</code>,
-<code>pull</code> all have hooks that can run <code>pre</code> (before)
-or <code>post</code> (after) the action and these are <em>really</em>
-useful for helping automate your workflow as they can capture problems
-with linting and tests much earlier in the development cycle than for
-example Continuous Integration failing after pull requests have been
-made.</p>
+hooks can be run and events such as <code>commit</code>,
+<code>push</code>, <code>pull</code> all have hooks that can run
+<code>pre</code> (before) or <code>post</code> (after) the action and
+these are <em>really</em> useful for helping automate your workflow as
+they can capture problems with linting and tests much earlier in the
+development cycle than for example Continuous Integration failing after
+pull requests have been made.</p>
 <p>In a Git repository hooks live in the <code>.git/hooks</code>
 directory and are short <a href="https://www.gnu.org/software/bash/" class="external-link">Bash</a> scripts that are
 executed at the relevant stage. We can list the contents of this
@@ -407,12 +407,13 @@ drwxr-xr-x neil neil 4.0 KB Fri Feb 23 10:40:46 2024 ..
 locally these samples are created on your system. They are <em>not</em>
 part of the repository itself as files under the <code>.git</code>
 directory are not part of the repository.</p>
-<div id="checking-out-sample-hooks" class="callout challenge">
+<div id="challenge-1-checking-out-and-enable-sample-hooks" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="checking-out-sample-hooks" class="callout-inner">
-<h3 class="callout-title">Checking out sample hooks<a class="anchor" aria-label="anchor" href="#checking-out-sample-hooks"></a>
+<div id="challenge-1-checking-out-and-enable-sample-hooks" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Checking out and enable sample
+hooks<a class="anchor" aria-label="anchor" href="#challenge-1-checking-out-and-enable-sample-hooks"></a>
 </h3>
 <div class="callout-content">
 <p>Lets take a look at the hooks in the <a href="https://github.com/ns-rse/python-maths" class="external-link"><code>python-maths</code></a>
@@ -429,7 +430,7 @@ repository you have cloned for this course.</p>
 <div class="accordion-body">
 <p>Git will have populated the <code>.git/hooks</code> directory
 automatically when you cloned the <a href="https://github.com/ns-rse/python-maths" class="external-link"><code>python-maths</code></a>.</p>
-<ol style="list-style-type: decimal"><li>Change directory to the clone <code>python-maths</code>
+<ol style="list-style-type: decimal"><li>Change directory to the cloned <code>python-maths</code>
 directory.</li>
 <li>Look at the file <code>.git/hooks/pre-push.sample</code>.</li>
 </ol><div class="codewrapper sourceCode" id="cb2">
@@ -581,7 +582,7 @@ message in the future.</p>
 useful to the extent that they require special discussion and will be
 the focus of the remainder of this episode.</p>
 <p>There is a framework for <code>pre-commit</code> hooks called,
-unsurprisingly <a href="https://pre-commit.com" class="external-link">pre-commit</a> that
+unsurprisingly, <a href="https://pre-commit.com" class="external-link">pre-commit</a> that
 makes it incredibly easy to add (and configure) some really useful
 <code>pre-commit</code> hooks to your workflow.</p>
 <div id="callout2" class="callout">
@@ -836,8 +837,8 @@ were told was installed.</p>
 </div>
 <p>We see that near the end a message is <code>echo</code> that prints
 what follows to the terminal so if we get to that point the sentence
-“<code>pre-commit</code> not found. Did you forget to activate your
-virtualenv?” will be printed.</p>
+“<em><code>pre-commit</code> not found. Did you forget to activate your
+virtualenv?</em>” will be printed.</p>
 </div>
 </div>
 </div>
@@ -1154,7 +1155,8 @@ repository</p>
 </div>
 <p>If there are problems identified with any of the files
 <code>pre-commit</code> will report them and you will have to fix them
-and include the changes in the staging before committing them.</p>
+and include the changes, staging before committing them (remember not to
+commit to the wrong branch such as <code>main</code>).</p>
 </section><section id="adding-hooks"><h2 class="section-heading">Adding Hooks<a class="anchor" aria-label="anchor" href="#adding-hooks"></a>
 </h2>
 <hr class="half-width"><p>Which hooks you use will depend largely on the language you are using

@@ -181,6 +181,7 @@
         <ul><li><a href="#git-configuration">Git Configuration</a></li>
 <li><a href="#atomic-commits">Atomic Commits</a></li>
 <li><a href="#keep-things-tidy">Keep things tidy</a></li>
+<li><a href="#conventional-commits">Conventional Commits</a></li>
 <li><a href="#links">Links</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -392,10 +393,10 @@ or <code>[core]</code>. Fields then have key and value pairs e.g. the
 <code>email</code> address is <code>a.n.other@sheffield.ac.uk</code> and
 the <code>editor</code> is set to <code>nano</code> and so forth.</p>
 <p>To modify values you need to know the section and the key you want to
-change, these are combined to give the third option
-<code>user.email</code> and you then provide the value you want it to
-be. For example to change the email address in the global configuration
-you would.</p>
+change, these are combined to give the third argument
+<code>user.email</code> and you then provide the value you want it to be
+as the fourth argument. For example to change the email address in the
+global configuration you would.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -409,7 +410,7 @@ you would.</p>
 <h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>You can always lookup the location of configuration files using the
+<p>You can always lookup the location of configuration options using the
 following command which shows the file in which each configuration is
 set as the first column of output.</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -423,9 +424,9 @@ set as the first column of output.</p>
 </div>
 <div class="section level3">
 <h3 id="editing-config-files">Editing config files<a class="anchor" aria-label="anchor" href="#editing-config-files"></a></h3>
-<p>You can also edit both the local (<code>git/config</code>) and global
-(<code>~/.gitconfig</code>) files directly to set configuration options
-and this can at times be much quicker.</p>
+<p>You can also edit both the local (<code>.git/config</code>) and
+global (<code>~/.gitconfig</code>) files directly to set configuration
+options and this can at times be much quicker.</p>
 <p>For example if we wanted to configure Git so that the order in which
 branches are listed is by the most recent commit we could add the
 following to our <code>~/.gitconfig</code> using <code>nano</code>,
@@ -541,12 +542,11 @@ would other files in the repository.</p>
 <h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
-<p>In your pairs exclude files with the extension <code>.csv</code>,
+<p>In your pairs exclude files with the extension <code>.csv</code> and
 <code>.pkl</code> from being added to the <code>python-maths</code>
 project by adding the appropriate pattern to the <code>.gitignore</code>
 file to a new branch and merge it into the <code>main</code> branch via
-a pull-request, assigning it to the person who didn’t make the branch
-and additions to review.</p>
+a pull-request, assigning it to the other person for review.</p>
 </div>
 </div>
 </div>
@@ -572,7 +572,7 @@ no matter what comes before the extension is ignored.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ignoring .csv and .pkl files"</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"chore: Ignoring .csv and .pkl files"</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre>
 </div>
 <p>Pull requests are created on GitHub and as you are both working on
@@ -1326,6 +1326,34 @@ about it.</p>
 (<code>~/.gitconfig</code>) to ensure the repository will have these
 tasks run at the scheduled point (default is hourly).</p>
 
+</div>
+</section><section id="conventional-commits"><h2 class="section-heading">Conventional Commits<a class="anchor" aria-label="anchor" href="#conventional-commits"></a>
+</h2>
+<hr class="half-width"><p>You may have noticed in many of the commit messages used so far a
+keyword is used to start the commit followed by a colon. This is an
+example of <a href="https://www.conventionalcommits.org/en/v1.0.0/" class="external-link">Conventional
+Commits</a> which are a standardised way of writing commit messages
+that, as with the branch naming convention suggested earlier, include
+metadata about what the commit relates to.</p>
+<p>There are keywords to start your commit message with that are
+self-explanatory</p>
+<ul><li><code>fix:</code></li>
+<li>
+<code>feat:</code>ure</li>
+<li><code>build:</code></li>
+<li><code>chore:</code></li>
+<li><code>ci:</code></li>
+<li><code>docs:</code></li>
+<li><code>style:</code></li>
+<li><code>refactor:</code></li>
+<li>
+<code>perf:</code>ormance</li>
+<li><code>test:</code></li>
+</ul><p>If changes relate to a specific component or “scope” of a repository
+that can be included in parentheses afterwards. For example the Zero
+Division issue in <code>python-maths</code> relates to the
+<code>artihmatic</code> module so might be started with
+<code>fix(arithmatic)</code>.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1354,7 +1382,6 @@ understand what work has been undertaken.</li>
 <li>You can and should enable further automated cleaning by enabling
 <code>git mainenance</code> on a repository.</li>
 </ul></div>
-</div>
 </div>
 </div>
 </section><section id="links"><h2 class="section-heading">Links<a class="anchor" aria-label="anchor" href="#links"></a>
