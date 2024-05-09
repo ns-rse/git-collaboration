@@ -233,10 +233,6 @@ ci:
     submodules: false
 ```
 
-
-
-## Challenge 1: Add pre-commit.ci to your `python-maths` repository
-
 In your pairs add an appropriate configuration section the `.pre-commit-config.yaml` on a new branch on the
 `python-maths` repository push the changes to GitHub and make a Pull Request.
 
@@ -260,12 +256,12 @@ ci:
     submodules: false
 ```
 
-
 :::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: keypoints
+
 - GitHub uses Actions that are defined by YAML configuration files under `.github/workflow/`.
 - Actions can be restricted to events/branches/tags.
+
 - [pre-commit.ci][precommit-ci] allows integration of [pre-commit][precommit] hooks in GitHub Actions.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
