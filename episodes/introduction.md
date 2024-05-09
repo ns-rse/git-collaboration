@@ -27,17 +27,20 @@ grade tools such as the aforementioned [Linux kernel][linuxGithub], the increasi
 to niche products such as [Snapcast][snapcast] or Android apps for tracking your exercise such as
 [OpenTracks][openTracks].
 
-Git and Forges, online repositories for working with version control, as [GitHub][gh], [[GitLab][gl] and others such as
-[SourceHut][sourcehut], [Codeberg][codeberg] and so forth are known are wonderful tools for, but because of the
-complexities of version controlling software in distributed, collaborative environments the tool itself has become quite
-complex. There are many different tasks that one may wish to undertake and often several different ways of achieving
-these.
+Git and Forges, online repositories for working with Git, as [GitHub][gh], [GitLab][gl] and others such as
+[SourceHut][sourcehut], [Codeberg][codeberg], [ForgeJo][forgejo] and so forth are wonderful tools for. However, because
+of the complexities of version controlling software in distributed, collaborative environments the tool itself, Git, has
+become quite complex. There are many different tasks that one may wish to undertake and often several different ways of
+achieving these.
 
 Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
-collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you,
-yet, and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
+collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you
+(yet!) and you would benefit from an introductory course such as [Git, GitHub through GitKraken : From Zero to
 Hero!][zeroHero] or the [Software Carpentry : Version Control with Git][swCarpentryGit]. This course aims to show you
 some of the more involved ways to use Git in a collaborative environment.
+
+Most of the ways in which collaboration can be eased is through a better understanding of how Git works and by
+maintaining clean and focused commits which make the task of reviewing work easier for those you are collaborating with.
 
 ## Code of Conduct
 
@@ -58,21 +61,6 @@ Committee by completing [this form](https://goo.gl/forms/KoUfO53Za3apOuOK2).
 
 ::: challenge
 
-### Getting to Know Each Other
-
-In order to break the ice and find out something about the other participants on this course , please think about a
-situation BVC (**B**efore **V**ersion **C**ontrol) where you might have had a problem that Version Control would have
-prevented. This might be deleting files by mistake, making changes to code that broke your programme. If you are
-participating online please provide an answer in the collaborative notepad, if the course is being run in person please
-describe the situation to the person next to you.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-
-Before the start of the course you should setup a new [collaborative pad][carpentryPad] where participants can answer
-questions and collaborate.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Collaboration
 
 Since this course is all about collaboration we would like you now to pair up with another participant in order to
@@ -81,32 +69,93 @@ course or if the course is online one of the instructors will pair you up at ran
 
 Once paired up please add details to the Etherpad along with your GitHub usernames.
 
-Between you please choose one person who will be the repository owner and one who will be a collaborator.
+## Getting to Know Each Other
 
-::::::::::::::::::::::::::::::::::::: challenge
+In order to break the ice and find out something about the other participants on this course, please think about a
+situation BVC (**B**efore **V**ersion **C**ontrol) where you might have had a problem that Version Control would have
+prevented. This might be deleting files by mistake or making changes to code that broke your programme and not being
+unable to undo them.
 
-## Choose Roles, Copy Template Repository and Clone
+::::::::::::::::::::::::::::::::::::::::::::::::
 
-Introduce yourself to the person you have paired up with. You now need to decide who is to take on each of the two
-roles. There isn't much between them in terms of what you will be doing but one person needs to be the **repository
-owner** and one person needs to be a **collaborator**.
+:::::::::::::::::::::::: solution
 
-## Repository Owner
+## In-Person
 
-The Repository Owner should visit the [Python Maths][pythonMaths] repository on GitHub and click on the "_Use This
-Template_" button to make a copy to their own repository.
-
-Once you have made a copy you need to invite your collaborator to work on the repository with you. Navigate to
-_Settings > People_ and add you collaborator to the project.
+If the course is being run in person please describe the situation to the person or people sat next to you. Write your
+answer in the collaborative pad under a heading with your name.
 
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
-The pern You should receive an email from GitHub inviting you to collaborate on the repository or had a notification on GitHub
-that you have been invited to collaborate on a repository. Accept this invitation.
+## Online
+
+If you are participating online please write down your names of pairs and provide an answer in the collaborative notepad.
 
 :::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+Before the start of the course you should setup a new [collaborative pad][carpentryPad] where participants can answer
+questions and collaborate.
+
+If running the course online you should have a list of participants and have paired them off at random.
+
+When explaining the challenge remember to let participants know that they can use these pages to work through the steps,
+this is particularly important for those who are not overly familiar with Python.
+
+Once people have completed the task ask for volunteers to describe their experiences BVC.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Cloning Repositories
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Choose Roles, Clone Repository and
+
+Introduce yourself to the person you have paired up with. You now need to decide who is to take on each of the two
+roles. There isn't much between them in terms of what you will be doing but one person needs to be the **repository
+owner** and one person needs to be a **collaborator**.
+
+### Repository Owner
+
+The Repository Owner should visit the [Python Maths][pythonMaths] repository on GitHub. To avoid the default base branch
+being this repository we do _not_ use templates. Instead the Repository owner should follow these steps to get a copy of
+the repository under their account.
+
+1. Use the `Code` button of the [Python Maths][pythonMaths] to clone the repository locally (`git clone
+   git@github.com:ns-rse/python-maths.git`).
+2. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` the repository
+   should be completely empty.
+3. In the cloned `python-maths` directory you have cloned open the `.git/config` file and edit the line 7 that reads
+   `url = git@github.com:ns-rse/python-maths.git` and replace `ns-rse` with _your_ GitHub user name. E.g. if your GitHub
+   username is `alice_and_bob` it should read `url = git@github.com:alice_and_bob/python-maths.git`. Save these changes.
+4. Force push the changes with `git push --force`.
+
+This edit changes the `origin` to be the empty repository you created under _your_ account called `python-maths` and
+pushes the cloned repository there.
+
+Once you have made completed this you need to invite your collaborator to work on the repository with you. Navigate to
+_Settings > People_ and add invite you collaborator to the project.
+
+### Collaborator
+
+You should accept the invitation you have received to work on the Template the Repository Owner just sent you and clone
+their version of the `python-maths` repository.
+
+## Install `python-maths` under the Virtual Environment
+
+Both individuals should now have local copies of the repository. After activating the `git-collaboration` Virtual
+Environment you created during setup should install the package in editable mode within the environment along with the
+`test` dependencies.
+
+Once cloned you may have to explicitly fetch the `multiply` and `divide` branches, instructions are in the solution.
+
+**NB** - If you are not familiar with working with Python follow the instructions in the Solutions below.
+
+:::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
@@ -124,15 +173,55 @@ git clone git@github.com:<owners_id>/python-maths
 cd python-maths
 ```
 
-:::::::::::::::::::::::::::::::::
+### Repository Owners
 
-After completing these steps you should both have a copy of the `python-maths` repository on your local computer.
+Just the repository owner should now edit the `.git/config` and modify line 7 where the `url` of the origin is defined
+replacing `ns-rse` with their GitHub username. For example if the repository owner uses the `alice_and_bob` username on
+GitHub it should read.
+
+``` bash
+ [remote "origin"]
+     url = git@github.com:alice_and_bob/python-maths.git
+     fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+The Repository Owner should create a new, empty, but public repository on GitHub called `python-maths`, there is no need
+to include a license nor `.gitignore` file.
+
+The Repository Owner can push the cloned repository to their account with.
+
+``` bash
+git push --force
+```
+
+### Collaborator
+
+Once the Repository Owner has cloned and pushed a copy of the repository to their account the Collaborator can clone
+that. If the Repository Owner has username `alice_and_bob` then you can clone with the following command.
+
+``` bash
+git clone git@github.com:alice_and_bob/python-maths.git
+```
+
+:::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::: solution
+
+## Protect the Main Branch
+
+On the `python-maths` repository you both now have access to protect the `main` branch to require approvals.
+
+1. _Settings > Branches > Add branch protection rule_
+2. Enter `main` under _Branch name pattern_
+3. Check the box _Require a pull request before merging_
+
+:::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
 
 ## Install the Package
 
-If you have not already done so activate the `git-collaboration` environment you created as described in the
+If you have not already done so activate the `git-collaboration` environment you created as described in the setup
+instructions.
 
 ``` bash
 conda activate git-collaboration
@@ -143,16 +232,54 @@ changes you make will instantly be available. Make sure you are in the `python-m
 you are and `cd` to change directory).
 
 ``` bash
-pip install -e .[tests]
+pip install -e .[tests,dev]
+```
+
+You can optionally check everything is installed and runs by running the tests via [pytest][pytest]
+
+``` bash
+pytest
+========================================== test session starts ==========================================
+platform linux -- Python 3.11.8, pytest-8.1.1, pluggy-1.4.0
+Matplotlib: 3.8.4
+Freetype: 2.6.1
+rootdir: /home/neil/work/teaching/git_collaboration/2024-04-19/python-maths
+configfile: pyproject.toml
+testpaths: tests
+plugins: regtest-2.1.1, pylint-0.21.0, github-actions-annotate-failures-0.2.0, xdist-3.5.0, cov-5.0.0, anyio-4.3.0, mock-3.14.0, mpl-0.17.0
+collected 26 items
+
+tests/test_arithmetic.py ......................                                                   [ 84%]
+tests/test_trig.py ....                                                                           [100%]
+
+----------------------------------------- pytest-regtest report -----------------------------------------
+total number of failed regression tests: 0
+
+---------- coverage: platform linux, python 3.11.8-final-0 -----------
+Name                        Stmts   Miss  Cover
+-----------------------------------------------
+pythonmaths/arithmetic.py       8      0   100%
+pythonmaths/trig.py             4      0   100%
+-----------------------------------------------
+TOTAL                          12      0   100%
+
+========================================== 26 passed in 0.28s ===========================================
 ```
 
 :::::::::::::::::::::::::::::::::
 
+After completing these steps you should both have a copy of the `python-maths` repository on your local computer.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+If desired you can between you update the Metadata in `pyproject.toml` by creating a branch and updating lines 12 and 13
+with your names and email addresses. Push the changes, create a pull request and merge the changes.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 [carpentryPad]: https://pad.carpentries.org/
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
 [codeberg]: https://codeberg.org/
+[forgejo]: https://forgejo.org/
 [git]: https://git-scm.com
 [gh]: https://github.com
 [gl]: https://gitlab.com
@@ -160,6 +287,7 @@ pip install -e .[tests]
 [linuxGithub]: https://github.com/torvalds/linux
 [openTracks]: https://github.com/OpenTracksApp/OpenTracks
 [pythonMaths]: https://github.com/ns-rse/python-maths
+[pytest]: https://docs.pytest.org/
 [rustGithub]: https://github.com/rust-lang/rust
 [snapcast]: https://mjaggard.github.io/snapcast/
 [sourcehut]: https://sourcehut.org/

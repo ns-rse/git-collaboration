@@ -29,8 +29,13 @@ exercises: 2
 ## Git Configuration
 
 Git configuration comes in two forms, "global" and "local" and is courtesy of some simple text files. The global
-configuration file is `~/.gitconfig` (on Windows it is `C:\Users\<username>\.gitconfig`) and will have been setup when
-you first attempted to use Git and were prompted for your name and email address.
+configuration file lives in your home director and on GNU/Linux and OSX systems is `~/.gitconfig` (on Windows it is
+`C:\Users\<username>\.gitconfig`) and will have been setup when you first attempted to use Git and were prompted for
+your name and email address.
+
+Each repository that is under Git version control has a `.git/` directory where all of the configuration, hooks and
+history live. Within this directory you will find a `.git/config` file which is the "local" configuration for that
+repository. Configuration defined locally over-rides global configurations.
 
 There are two ways of modifying either the global or local configuration, using the Command Line `git config <options>`
 or by editing either the global (`~/.gitconfig`) or local (`git/config`) files.
@@ -92,7 +97,8 @@ You can also edit both the local (`git/config`) and global (`~/.gitconfig`) file
 and this can at times be much quicker.
 
 For example if we wanted to configure Git so that the order in which branches are listed is by the most recent commit we
-could add the following to our `~/.gitconfig`
+could add the following to our `~/.gitconfig` using `nano`, which will result in branches being listed in reverse
+chronological order when you `git branch --list`.
 
 ``` bash
 [branch]
@@ -131,12 +137,21 @@ You could alternatively edit the `~/.gitconfig` file directly and add the follow
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+<!-- ### Multiple Configurations -->
+
+<!-- It may be the case that you have multiple Git accounts and want different configurations for each. This is possible to -->
+<!-- do in your "global" configuration courtesy of the `includeIf` directive and creating secondary `.gitconfig_<account>` -->
+<!-- files. -->
+
+<!-- Say you have an account on GitHub and one on GitLab and you wish to use different configuration parameters for each. -->
+
 ### `.gitignore`
 
-The [`.gitignore`][gitignore] file does exactly what you might expect it to, it contains lists of files that should be
-ignored. To save having to write out the path to each and every file the format accepts [regular
+The [`.gitignore`][gitignore] file does exactly what you might expect it to, it contains lists of directories and files
+that should be ignored. To save having to write out the path to each and every file the format accepts [regular
 expressions][regex]. This file, like many others uses `#` as a comment, to
-use a `#` in a file name you therefore need to escape it with the `\` slash. As with most regular expressions
+use a `#` in a file name you therefore need to escape it with the `\` slash. As with most regular expression engines the
+`*` is a wild card.
 
 A common set of files you may want to ignore is the `.DS_Store` directory that Mac OSX automatically generates in
 most directories. Just as you can exclude files you can list directories so add that to the `.gitignore` in the
@@ -171,8 +186,9 @@ repository.
 
 ## Challenge 2
 
-Exclude files with the extension `.csv`, `.pkl` from being added to the `python-maths` project by adding the appropriate
-pattern to the `.gitignore` file and merge it into the `main` branch via a pull-request
+In your pairs exclude files with the extension `.csv`, `.pkl` from being added to the `python-maths` project by adding
+the appropriate pattern to the `.gitignore` file to a new branch and merge it into the `main` branch via a pull-request,
+assigning it to the person who didn't make the branch and additions to review.
 
 :::::::::::::::::::::::: solution
 
@@ -206,9 +222,41 @@ referencing the Pull Request number preceeded with a `#` so it is linked.
 ### `difftastic`
 
 When undertaking Pull Requests on GitHub there is the ability to toggle between two [[different views]][githubdiff] of the
-differences. The standard view shows the changes line-by-line and looks like the following.
+differences. The standard view shows the changes line-by-line and looks like the following where the old lines are
+started with `-` signs and may well be in red and the newer lines are started with `+` and may well be in green.
 
-**TODO** Show basic git diff line by line and
+``` bash
+@@ -1861,12 +1862,18 @@ tree -afhD -L 2 main/
+
+ Each branch can have a worktree added for it and then when you want to switch between them its is simply a case of
+-`cd`ing into the worktree (/branch) you wish to work on. You use Git commands within the directory to apply them to that
+-branch and Git keeps track of everything in the usual manner.
++`cd`ing into the worktree (/branch) you wish to work on. You use Git commands within the worktree directory to apply
++them to that branch and Git keeps track of everything in the usual manner.
+
+-Lets create two worktree's, the `contributing` and `citation` we created above when working with branches.
++###
++Lets create two worktree's, the `contributing` and `citation` we created above when working with branches. If you didn't
++already follow along the above steps do so now.
+```
+
+Its a matter of personal preference but it can sometimes be easier to look at differences in the split view that
+`difftastic` provides, the same changes above using the split view are shown below.
+
+``` bash
+1862                                                                            1863
+1863 Each branch can have a worktree added for it and then when you want to swi 1864 Each branch can have a worktree added for it and then when you want to swi
+.... tch between them its is simply a case of                                   .... tch between them its is simply a case of
+1864 `cd`ing into the worktree (/branch) you wish to work on. You use Git comma 1865 `cd`ing into the worktree (/branch) you wish to work on. You use Git comma
+.... nds within the directory to apply them to that                             .... nds within the worktree directory to apply
+1865 branch and Git keeps track of everything in the usual manner.              1866 them to that branch and Git keeps track of everything in the usual manner.
+1866                                                                            1867
+....                                                                            1868 ###
+1867 Lets create two worktree's, the `contributing` and `citation` we created a 1869 Lets create two worktree's, the `contributing` and `citation` we created a
+.... bove when working with branches.                                           .... bove when working with branches. If you didn't
+....                                                                            1870 already follow along the above
+steps do so now.
+```
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -275,7 +323,7 @@ git log --oneline
 
 Here six commits have been made for adding the `xyz` function, writing tests that pass, adding docstrings to the
 function and correcting some spelling mistakes. But all of these pertain to one issue that will have been written up on
-the projects issues and as the work is self-contained and we've not added to any other files so they could be a single
+the projects issues and as the work is self-contained and we've not added to any other files they could be a single
 commit.
 
 Git has a few functions to help here and we'll go through those now, the first is amending commits.
@@ -316,14 +364,13 @@ test suite and find that on running it your tests fail so you need to make a cor
 more explicit about how to make contributions and let people know they should fork the branch.
 
 ``` bash
-echo "\n Please make a fork of this repository, make your changes and open a Pull Request." >> CONTRIBUTING.md
+echo "\nPlease make a fork of this repository, make your changes and open a Pull Request." >> CONTRIBUTING.md
 ```
 
 Now you could make a second commit...
 
 ``` bash
-git add -u
-git commit -m "Ask for PRs via fork in CONTRIBUTING.md"
+git add -u && git commit -m "Ask for PRs via fork in CONTRIBUTING.md"
 ```
 
 ``` bash
@@ -333,7 +380,7 @@ git log --oneline
 ```
 
 ...and there is nothing wrong with that. However, Git history can get long and complicated when there are lots of small
-commits, because these two changes to `CONTRIBUTING.md` are essentially the same piece of work and if we'd been thinking
+commits, because these two changes to `CONTRIBUTING.md` are essentially the same piece of work. If we'd been thinking
 clearly we would have written about making forks in the first place and made a single commit.
 
 Fortunately Git can help here as there is the `git commit --amend` option which adds the staged changes to the last
@@ -365,8 +412,8 @@ in the file in the first place and our Git history is slightly more compact.
 
 Amending commits is great providing the commit you want to change is the last commit you made (i.e. `HEAD`). But
 sometimes you might wish to correct a commit further back in your history and `git commit --amend` is of no use
-here. Git can however help here with the `git commit --fixup` command which allows you to mark a commit as being a "fix
-up" of an older commit. These can then be autosquashed via an interactive Git rebase.
+here. Git has a solution though in the form of `git commit --fixup` command which allows you to mark a commit as being a
+"fix up" of an older commit. These can then be autosquashed via an interactive Git rebase.
 
 Let's add a few empty commits to our `amend-fixup-tutorial` branch to so we can do this.
 
@@ -466,8 +513,8 @@ provided but try not to use them instead you can use your `history` to check wha
 
 ## Main branch with improved docstrings
 
-The `main` branch of your `python-maths` repository the `divide` in `pythonmaths/arithmetic.py` should look like the
-following with four examples.
+On the `main` branch of your `python-maths` repository the `divide` function in `pythonmaths/arithmetic.py` should look
+like the following with four examples.
 
 ```python
 def divide(x: int | float, y: int | float) -> float:
@@ -563,8 +610,8 @@ that you will merge into `main` atomic since even if you've been using `git comm
 commits you may still have several commits on a branch but be at the stage where you can combine all information into a
 single informative commit that is ready for merging into the `main` branch.
 
-Returning to the `pytest-examples` repository we cloned earlier in this repository we will make a series of empty
-commits to the repository and then undertake an interactive rebase to squash them.
+Returning to the `pytest-examples` repository we cloned earlier we will make a series of empty commits to the repository
+and then undertake an interactive rebase to squash them.
 
 ``` bash
 cd ~/work/git/hub/ns-rse/pytest-examples
@@ -590,9 +637,8 @@ c437414 Commit 1
 a1101c7 [pre-commit.ci] Fixing issues with pre-commit
 ```
 
-The hash we want is the one _before_ `Commit 1` `c437414` or `HEAD~4` (remembering indexing begins at zero and we are
-counting backwards). We start a rebase with `git rebase -i c437414^` which will open our default editor, hopefully
-`nano` and show the following.
+The hash we want is the one _before_ `Commit 1` (`c437414` or `HEAD~4`). We start a rebase with `git rebase -i c437414^`
+which will open our default editor, hopefully `nano` and show the following.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -716,7 +762,7 @@ This is an example of how to squash commits and combines the original commits...
 + Commit 5
 ```
 
-When done save and exit (in `nano` use `Ctrl + o` then `Ctrl + x`). You should be informed the rebase was successful and
+When done save and exit (in `nano` use `Ctrl + O` then `Ctrl + X`). You should be informed the rebase was successful and
 if you look at the plain `git log` your commit message will be there at the top in all its glory.
 
 ``` bash
@@ -782,7 +828,7 @@ then made a new set of commits.
 
 ### Maintenance
 
-[`git maintenance`][gitmaintenance] is a _really_ useful command that "_Run tasks to optimize Git repository data,
+[`git maintenance`][gitmaintenance] is a _really_ useful command that will "_Run tasks to optimize Git repository data,
 speeding up other Git commands and reducing storage requirements for the repository._". The details of what this does
 are beyond the scope of this tutorial (refer to the [help page][gitmaintenance] if interested). Providing you have setup
 your GitHub account with SSH keys and they are available via something such as keychain locally then you can bring a
@@ -792,8 +838,8 @@ repository under `git maintenance` and forget about it.
 git mainetenance register
 ```
 
-Adds entries to your global configuration (`~.gitconfig`) to ensure the repository will have these tasks run at the
-scheduled point (default is hourly).
+This adds entries to your global configuration (`~/.gitconfig`) to ensure the repository will have these tasks run at
+the scheduled point (default is hourly).
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -811,8 +857,10 @@ try to use the SSH key.
 - Make commits atomic, i.e. small and focused using `git commit --amend` and `git commit --fixup`, better still make
   life easier using `git absorb`.
 - `git rebase --interactive` can be used to squash commits.
+- Keeping the commit history atomic and clean makes it easier to understand what work has been undertaken.
 - Git periodically tidies things up for you with `git gc`.
 - You can and should enable further automated cleaning by enabling `git mainenance` on a repository.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Links
