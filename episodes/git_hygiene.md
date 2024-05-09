@@ -861,6 +861,9 @@ try to use the SSH key.
 - Git periodically tidies things up for you with `git gc`.
 - You can and should enable further automated cleaning by enabling `git mainenance` on a repository.
 
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Links
 
 - [Atomic commits will help you git legit. – Pauline Vos](https://www.pauline-vos.nl/atomic-commits/) the [video of her
   talk](https://www.youtube.com/watch?v=_e5oq4JT4_8) is well worth watching.

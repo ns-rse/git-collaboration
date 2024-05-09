@@ -1623,8 +1623,11 @@ Dropped refs/stash@{1} (dd538beb8f14590f720e9b9f677ba7381240bd92)
 
 Only the `CONTRIBUTING.md` file has been restored and not the `ANOTHER.md`.
 
+::::::::::::::::::::::::::::::::::::: challenge
 
-1. Clone the [`pytest-examples`]() repository.
+## Challenge 8: Stashing
+
+1. Clone the [`pytest-examples`](https://github.com/ns-rse/pytest-examples) repository.
 2. Create a `contributing` branch.
 3. Create a `CONTRIBUTING.md` with `echo "# Contributing\n\nContributions to this repository are welcome via Pull
    Requests." > CONTRIBUTING.md`.
@@ -1860,8 +1863,6 @@ tree -afhD -L 2 main/
 Each branch can have a worktree added for it and then when you want to switch between them its is simply a case of
 `cd`ing into the worktree (/branch) you wish to work on. You use Git commands within the worktree directory to apply
 them to that branch and Git keeps track of everything in the usual manner.
-
-###
 
 Lets create two worktree's, the `contributing` and `citation` we created above when working with branches. If you didn't
 
