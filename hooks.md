@@ -9,7 +9,8 @@ exercises: 2
 - What the hell are hooks?
 - How can hooks improve my development workflow?
 - What is `pre-commit` and how does it relate to the `pre-commit` hook?
-- Ho
+- What `pre-commit` hooks are available?
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
@@ -24,7 +25,7 @@ exercises: 2
 
 ## What are hooks?
 
-Hooks are actions, typically a one or more scripts, that are run in response to a particular event. Git has a number of
+Hooks are actions, typically one or more scripts, that are run in response to a particular event. Git has a number of
 stages at which hooks can be run, events such as `commit`, `push`, `pull` all have hooks that can run `pre` (before) or
 `post` (after) the action and these are _really_ useful for helping automate your workflow as they can capture problems
 with linting and tests much earlier in the development cycle than for example Continuous Integration failing after pull
@@ -166,11 +167,8 @@ the habit of starting commit messages with "WIP".
 ❱ git switch -c ns-rse/test-hook
 ❱ git commit --allow-empty -m "WIP - testing the pre-push hook"
 ❱ git push
-ERROR: Permission to ns-rse/python-maths.git denied to slackline.
-fatal: Could not read from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
+Found WIP commit in refs/heads/ns-rse/test-hook, not pushing
+error: failed to push some refs to 'github.com:slackline/python-maths.git'
 ❱ git switch main
 ❱ git branch -D ns-rse/test-hook
 ```
@@ -200,6 +198,14 @@ the local branch and you are advised to `git pull` before attempting to `git pus
 
 A simple addition you can add to the `.git/hooks/pre-push` script is to have it `git pull` before attempting to make a
 `git push` which will mean you are unlikely to see the above message in the future.
+
+``` bash
+#!/bin/sh
+#
+# A hook script to pull before pushing
+
+exec git pull
+```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -399,8 +405,7 @@ We have just installed `pre-commit` locally in the `python-maths` repository let
 
 ## Challenge 3: What will the message say if `pre-commit` can not be found by the `pre-commit` hook?
 
-We can look at the `.git/hooks/pre-commit` file that we were told was installed and see that near the end a message is
-`echo` that reads "_`pre-commit`_ not found. Did you forget to activate your virtualenv?".
+We can look at the `.git/hooks/pre-commit` file that we were told was installed.
 
 ``` bash
 ❱ cat .git/hooks/pre-commit
@@ -426,6 +431,8 @@ else
 fi
 ```
 
+We see that near the end a message is `echo` that prints what follows to the terminal so if we get to that point the
+sentence  "`pre-commit` not found. Did you forget to activate your virtualenv?" will be printed.
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -476,7 +483,7 @@ repos:
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.1.9
+    rev: v0.4.2
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix, --show-fixes]
@@ -526,13 +533,6 @@ repos:
         language: system
         files: \.py$
 
-ci:
-  autofix_prs: true
-  autofix_commit_msg: "[pre-commit.ci] Fixing issues with pre-commit"
-  autoupdate_schedule: monthly
-  autoupdate_commit_msg: "[pre-commit.ci] pre-commit-autoupdate"
-  skip: [pylint] # Optionally list ids of hooks to skip on CI
-
 ```
 
 This [YAML][yaml] file might look quite complex and intimidating if you are not familiar with the format so we'll go
@@ -541,13 +541,24 @@ through it in sections.
 ### `repos:`
 
 The top-level section `repos:` defines a list of the repositories that are included and each of these is a specific
-`pre-commit` hook that will be used in the repository and run when commits are made. In YAML list entries start with a
-dash (`-`).
+`pre-commit` hook that will be used and run when commits are made. In YAML list entries start with a dash (`-`).
 
 ### `- repo: https://github.com/<USER_OR_ORG>/<REPOSITORY>`
 
 Each `repo` is then defined, the first line states where the repository is hosted and these are typically, although not
-always on [GitHub][gh]. The first one is for `pre-commit-hooks` that come from the developers of `pre-commit` itself.
+always on [GitHub][gh]. The first one is for `pre-commit-hooks` that come from the developers of `pre-commit`
+itself. Other configured repositories are
+
+- `markdownlint-cli2`
+- `pyupgrade`
+- `mypy`
+- `ruff`
+- `black`
+- `black-jupyter`
+- `blacken-docs`
+- `codespell`
+- `prettier`
+- `local` - which runs `pylint` locally.
 
 ### `rev:`
 

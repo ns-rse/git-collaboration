@@ -22,8 +22,8 @@ template and setting it up is part of the course, you do not need to set it up i
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 As this is a course about using [Git][git] you will need to have it installed on your computer. If you're already using
-Git the chances are you already have it installed or it may be integrated into your Integrated Development Environment
-(IDE).
+Git then the chances are high you already have it installed or it may be integrated into your Integrated Development
+Environment (IDE).
 
 For consistency across operating systems this course uses the Command Line Interface (CLI) to Git and instructions below
 will guide you through installation on different Operating Systems. The principles can be applied to any Git Porcelain
@@ -133,7 +133,7 @@ There is a detailed [article][ssh-keygen] on creating SSH keys under Linux and O
 ssh-keygen -a 100 -t ed25519
 ```
 
-This creates two files in the `~/.ssh/` directory the private key (`~/.ssh/id_ed25519'`) and the public key
+This creates two files in the `~/.ssh/` directory, the private key (`~/.ssh/id_ed25519'`) and the public key
 (`~/.ssh/id_ed25519.pub`). These are text files and it is the contents of the later that you need to add to GitHub (see
 next solution). You can view the contents of the `~/.ssh/id_ed25519.pub` file that you need to copy to your GitHub
 account with.
