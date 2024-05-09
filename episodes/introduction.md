@@ -27,11 +27,11 @@ grade tools such as the aforementioned [Linux kernel][linuxGithub], the increasi
 to niche products such as [Snapcast][snapcast] or Android apps for tracking your exercise such as
 [OpenTracks][openTracks].
 
-Git and Forges, online repositories for working with Git, as [GitHub][gh], [GitLab][gl] and others such as
-[SourceHut][sourcehut], [Codeberg][codeberg], [ForgeJo][forgejo] and so forth are wonderful tools for. However, because
-of the complexities of version controlling software in distributed, collaborative environments the tool itself, Git, has
-become quite complex. There are many different tasks that one may wish to undertake and often several different ways of
-achieving these.
+Git and Forges, online repositories for working with Git, such as [GitHub][gh], [GitLab][gl]
+[SourceHut][sourcehut], [Codeberg][codeberg], and [ForgeJo][forgejo] and so forth are wonderful tools for
+collaboration. However, because of the complexities of version controlling software in distributed, collaborative
+environments the tool itself, Git, has become quite complex. There are many different tasks that one may wish to
+undertake and often several different ways of achieving these.
 
 Its relatively easy to get the _basics_ of working with [Git][git] on your own or with small groups to work
 collaboratively on code development. If you aren't already familiar with these basics then this course isn't for you
@@ -127,9 +127,9 @@ the repository under their account.
 
 1. Use the `Code` button of the [Python Maths][pythonMaths] to clone the repository locally (`git clone
    git@github.com:ns-rse/python-maths.git`).
-2. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` the repository
-   should be completely empty.
-3. In the cloned `python-maths` directory you have cloned open the `.git/config` file and edit the line 7 that reads
+2. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` to the repository,
+   it should be completely empty.
+3. In the locally cloned `python-maths` directory open the `.git/config` file and edit the line 7 that reads
    `url = git@github.com:ns-rse/python-maths.git` and replace `ns-rse` with _your_ GitHub user name. E.g. if your GitHub
    username is `alice_and_bob` it should read `url = git@github.com:alice_and_bob/python-maths.git`. Save these changes.
 4. Force push the changes with `git push --force`.
@@ -137,7 +137,7 @@ the repository under their account.
 This edit changes the `origin` to be the empty repository you created under _your_ account called `python-maths` and
 pushes the cloned repository there.
 
-Once you have made completed this you need to invite your collaborator to work on the repository with you. Navigate to
+Once you have completed this you need to invite your collaborator to work on the repository with you. Navigate to
 _Settings > People_ and add invite you collaborator to the project.
 
 ### Collaborator
@@ -149,11 +149,10 @@ their version of the `python-maths` repository.
 
 Both individuals should now have local copies of the repository. After activating the `git-collaboration` Virtual
 Environment you created during setup should install the package in editable mode within the environment along with the
-`test` dependencies.
+`test` dependencies. If you are not familiar with working with Python follow the instructions in the Solutions below.
 
-Once cloned you may have to explicitly fetch the `multiply` and `divide` branches, instructions are in the solution.
-
-**NB** - If you are not familiar with working with Python follow the instructions in the Solutions below.
+**NB** -  Once cloned you may have to explicitly fetch the `multiply` and `divide` branches, instructions are in the
+solution.
 
 :::::::::::::::::::::::::::::::::::::
 

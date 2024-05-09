@@ -86,7 +86,7 @@ branches using the `--branch`/`-b` flag, and change ("restore") individual files
 <filename>` (more on this later).
 
 Splitting this functionality means that `git switch` is solely for `switch`ing branches whilst `git restore` is solely
-concerned with `restore`ing files.
+concerned with `restore`ing files but is destructive and we will cover later the `git revert` command as an alternative.
 
 `git checkout` has not been deprecated and is still available and many people still use it as old habits die hard.
 
@@ -271,11 +271,12 @@ ns-rse/initial-setup
 You can create a new branch using `git switch -c <new_branch>`. By default it will use the branch you currently have
 checked out as a basis for the new branch. If you wish to use a different branch as a basis you can do so by including
 its name before the name of the new branch.
+
 ::::::::::::::::::::::::::::::::::::: callout
 
 Most of the time when creating branches you should do so from the `main` branch. It is therefore important to make sure
-your local copy of the `main` branch is up-to-date. Before creating a branch you should therefore checkout the `main`
-branch and ensure it is up-to-date.
+your local copy of the `main` branch is up-to-date. Before creating a branch you should checkout the `main`branch and
+ensure it is up-to-date.
 
 ``` bash
 git switch main
@@ -284,6 +285,7 @@ git pull
 
 This means you can omit the explicit statement of which branch you wish to use as the basis for the new branch,
 typically `main`, when creating it as you will be already be checked out on that branch when `git pull`.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 To create a new branch called `ns-rse/test` you can use the following.
@@ -294,7 +296,7 @@ git pull
 git switch -c main ns-rse/test
 ```
 
-This tells git to use the current `HEAD` of the `main` branch as a basis for creating the `ns-rse/test` branch.
+Git will use the current `HEAD` of the `main` branch as a basis for creating the `ns-rse/test` branch.
 
 ### Naming Branches
 
@@ -302,10 +304,11 @@ Branch names can not include spaces, you should use underscores or dashes instea
 characters too but I would avoid using `#` as this is the character used by most shells to indicate a comment and you
 would therefore have to _always_ double quote the branch name at the command line.
 
-A useful convention when creating branches is to construct the branch name from your GitHub/GitLab username followed by
-a `/` and because you will typically be working on a particular issue include that number next followed by a short few
-words which describe the work or issue. For example GitHub user `ns-rse` working on issue 1 to fix typehints might
-create a branch called `ns-rse/1-fix-typehints` from main.
+A useful convention when creating branches is to include some meta data about who owns the branch and what it is for and
+to construct the branch name from your GitHub/GitLab username followed by a `/` and because you will typically be
+working on a particular issue include the issue number followed by a short few words which describe the work or
+issue. For example GitHub user `ns-rse` working on issue 1 to fix typehints might create a branch called
+`ns-rse/1-fix-typehints` from main.
 
 This structure is informative as it provides other people you collaborate with or who look at the repository an
 indication of who created the branch, what issue they are working on and a very short indication of what it is concerned
@@ -315,14 +318,17 @@ about. With this information it is very easy to look up the relevant Issue.
 
 ## Challenge 3: Assign Issues, Create Branches and Complete the Tasks
 
+In the `python-maths` repository you have cloned and setup on GitHub there are issue templates.
+
 In your pairs assign the `01 Add zero division exception and test` to one person and the `02 Add a square root function
 and test` to the other person.
 
 Work through the tasks adding the necessary code, saving, staging and committing your changes then pushing to `origin`
 (GitHub). **NB** only the first issue for zero division should have a Pull Request created, please do _not_ create a
-pull request or merge the square root task.
+pull request or merge the Square Root work.
 
-Assign the person who worked on the Square root function to review and if everything looks good merge the pull request.
+Assign the person who worked on the Square root function to review the Zero Division exception and if everything looks
+good merge the pull request.
 
 :::::::::::::::::::::::: solution
 
@@ -358,12 +364,13 @@ git commit -m "Adds square root function"
 ### Deleting branches
 
 Branches are typically short lived as they are created to address small focused pieces of work such as fixing a bug or
-implementing a new feature before being merged into the `main` branch. Over time you will therefore accrue a number of
-redundant, out-dated branches and it is therefore good practice to delete unwanted branches after they have been merged.
+implementing a new feature before being merged into the `main` branch. Over time you will accrue a number of redundant,
+out-dated branches and it is therefore good practice to delete unwanted branches after they have been merged.
 
 You can not delete a branch you currently have checked out so you must first checkout an alternative branch. Typically
 this would be the `main` branch after your Pull Request has been merged and the changes you were working on have been
-incorporated.
+incorporated. You should `git pull` the `main` branch after merging changes so your locally copy is aware of any recent
+merges from branches you are about to delete.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -399,7 +406,7 @@ git branch -d ns-rse/throwaway
 ## Solution 2
 
 You can use the shortcut `git switch -` to switch to the last branch you were on (this is a shortcut that is common to
-the Bash shell when navigating directories too `cd -` will change directory to the previous directory you were in).
+the Bash shell when navigating directories too, `cd -` will change directory to the previous directory you were in).
 
 ``` bash
 git switch -
@@ -410,6 +417,7 @@ git branch -d ns-rse/throwaway
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: callout
+
 You were able to delete the branch you created because you hadn't made any changes to it. If you have made changes on a
 branch and they have not been merged into `main` then Git will warn you of this and refuse to delete the branch. This
 can be over-ridden with the `--force` flag or the shorthand `-D` which is the same as `--delete --force`.
@@ -429,6 +437,7 @@ git -D ns-rse/0-divide
 
 Be _very_ careful when forcing deletions, if you have not pushed your changes to the remote `origin` then you _will_
 lose them.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Time Travelling - Losing your `HEAD`
@@ -490,7 +499,7 @@ HEAD is now at 4-8ec389a complete subtract issue template
 Have you lost your head because it is now `detached`? No, `HEAD` is just a special reference that points to a specific
 commit, tags are the same, they are short hand ways of referring to commits, what has happened is that Git has moved the
 commit it points to from `8-a40cef8` to `4-8ec389a`. If you make changes to this branch they will be lost when you
-switch back the commit `HEAD` points to and you are told you can do this with `git switch -`. If you want to make
+switch back to the commit `HEAD` points to and you are told you can do this with `git switch -`. If you want to make
 changes and save them you are advised to create a new branch to do so.
 
 ::::::::::::::::::::::::::::::::::::: challenge
@@ -602,7 +611,6 @@ touch test_file
 git add test_file
 git commit -m "Adding test_file"
 git reset --soft HEAD~1
-## TODO : Complete output
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -1176,7 +1184,7 @@ git push --set-upstream origin ns-rse/square-root
 
 ### Oh no I've got a `merge conflict`
 
-Both the `git merge` and `git rebase` atrategies in the worked examples and the `python-maths` repositories were fairly
+Both the `git merge` and `git rebase` strategies in the worked examples and the `python-maths` repositories were fairly
 painless because none of the changes that were made touched the same files. In real-life things are often likely to be a
 bit more messy and when you want to update your diverged branch you will often find that files you have been working on
 have been modified and merged into `main` by others. This results in a "merge conflict" where Git can not determine
