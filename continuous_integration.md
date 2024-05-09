@@ -189,6 +189,49 @@ There are a lot of actions available that can be run in the `steps` section of y
 Marketplace][gh-actions-market] provides a central place to search for solutions so you don't have to reinvent the
 wheel.
 
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1: Add the Python Coverage GitHub Action to `python-maths`
+
+In your pairs add the [Python Coverage][pycov] GitHub Action to the `python-maths` repository.
+
+One person should make a branch for the work and make the following changes...
+
+1. Enable `pytest` to create a coverage report to a file by adding `--cov-report coverage.xml`.
+2. Run `coverage` on that file with `coverage xml coverage.xml` in the `run: |` section.
+3. Add the YAML section for `- name: Get Cover` _after_ the section that runs `pytest`.
+
+:::::::::::::::::::::::: solution
+
+## Adding Python Coverage (WIP)
+
+1. Create an issue and assign it to one person.
+2. Create a branch to make the changes on.
+
+``` bash
+git switch main
+git pull
+git switch -c ns-rse/4-python-coverage
+```
+
+3. Add the following to `.github/workflows/test-python-package.yml`
+
+``` yaml
+      - name: Test with pytest
+        run: |
+          pytest --cov-report coverage.xml
+          coverage xml coverage.xml
+      - name: Get Cover
+          uses: orgoro/coverage@v3.1
+          with:
+            coverageFile: coverage.xml
+            token: ${{ secrets.GITHUB_TOKEN }}
+
+```
+
+:::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Pre-commit.ci
 
 We saw in the [hooks][hooks] section how to use [pre-commit][precommit] hooks to run certain tasks prior to making
@@ -235,7 +278,7 @@ ci:
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 1: Add pre-commit.ci to your `python-maths` repository
+## Challenge 2: Add pre-commit.ci to your `python-maths` repository
 
 In your pairs add an appropriate configuration section the `.pre-commit-config.yaml` on a new branch on the
 `python-maths` repository push the changes to GitHub and make a Pull Request.
@@ -243,6 +286,8 @@ In your pairs add an appropriate configuration section the `.pre-commit-config.y
 Set the `autoupdate_schedule` to `monthly` and customise both `autofix_commit_msage` and `autoupdate_commit_msg` fields.
 
 Finally configure the `pylint` hook to be skipped in pre-commit.ci.
+
+You are free to use the [pre-commit.ci][precommit-ci] documentation to help guide you.
 
 :::::::::::::::::::::::: solution
 
