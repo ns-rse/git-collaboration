@@ -26,10 +26,10 @@ exercises: 2
 ## What are hooks?
 
 Hooks are actions, typically one or more scripts, that are run in response to a particular event. Git has a number of
-stages at which hooks can be run, events such as `commit`, `push`, `pull` all have hooks that can run `pre` (before) or
-`post` (after) the action and these are _really_ useful for helping automate your workflow as they can capture problems
-with linting and tests much earlier in the development cycle than for example Continuous Integration failing after pull
-requests have been made.
+stages at which hooks can be run and events such as `commit`, `push`, `pull` all have hooks that can run `pre` (before)
+or `post` (after) the action and these are _really_ useful for helping automate your workflow as they can capture
+problems with linting and tests much earlier in the development cycle than for example Continuous Integration failing
+after pull requests have been made.
 
 In a Git repository hooks live in the `.git/hooks` directory and are short [Bash][bash] scripts that are executed at the
 relevant stage. We can list the contents of this directory with `ls -lha .git/hooks` and you will see there are a number
@@ -73,7 +73,7 @@ the repository.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Checking out sample hooks
+## Challenge 1: Checking out and enable sample hooks
 
 Lets take a look at the hooks in the [`python-maths`][pm] repository you have cloned for this course.
 
@@ -83,7 +83,7 @@ Lets take a look at the hooks in the [`python-maths`][pm] repository you have cl
 
 Git will have populated the `.git/hooks` directory automatically when you cloned the [`python-maths`][pm].
 
-1. Change directory to the clone `python-maths` directory.
+1. Change directory to the cloned `python-maths` directory.
 2. Look at the file `.git/hooks/pre-push.sample`.
 
 ``` bash
@@ -214,7 +214,7 @@ exec git pull
 Pre-commit hooks that run before commits are made are _really_ useful to the extent that they require special discussion
 and will be the focus of the remainder of this episode.
 
-There is a framework for `pre-commit` hooks called, unsurprisingly [pre-commit][pc] that makes it incredibly
+There is a framework for `pre-commit` hooks called, unsurprisingly, [pre-commit][pc] that makes it incredibly
 easy to add (and configure) some really useful `pre-commit` hooks to your workflow.
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -432,7 +432,7 @@ fi
 ```
 
 We see that near the end a message is `echo` that prints what follows to the terminal so if we get to that point the
-sentence  "`pre-commit` not found. Did you forget to activate your virtualenv?" will be printed.
+sentence  "_`pre-commit` not found. Did you forget to activate your virtualenv?_" will be printed.
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -690,7 +690,7 @@ Whilst configured as a hook to run before commits `pre-commit` can be run at any
 ```
 
 If there are problems identified with any of the files `pre-commit` will report them and you will have to fix them and
-include the changes in the staging before committing them.
+include the changes, staging before committing them (remember not to commit to the wrong branch such as `main`).
 
 ## Adding Hooks
 

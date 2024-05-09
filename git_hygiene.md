@@ -72,8 +72,8 @@ Sections are in square brackets with names, e.g. `[user]` or `[core]`. Fields th
 and so forth.
 
 To modify values you need to know the section and the key you want to change, these are combined to give the third
-option `user.email` and you then provide the value you want it to be. For example to change the email address in the
-global configuration you would.
+argument `user.email` and you then provide the value you want it to be as the fourth argument. For example to change the
+email address in the global configuration you would.
 
 ``` bash
 git config --global user.email a.other@sheffield.ac.uk
@@ -81,7 +81,7 @@ git config --global user.email a.other@sheffield.ac.uk
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-You can always lookup the location of configuration files using the following command which shows the file in which each
+You can always lookup the location of configuration options using the following command which shows the file in which each
 configuration is set as the first column of output.
 
 ``` bash
@@ -93,7 +93,7 @@ git config --list --show-origin --show-scope
 
 ### Editing config files
 
-You can also edit both the local (`git/config`) and global (`~/.gitconfig`) files directly to set configuration options
+You can also edit both the local (`.git/config`) and global (`~/.gitconfig`) files directly to set configuration options
 and this can at times be much quicker.
 
 For example if we wanted to configure Git so that the order in which branches are listed is by the most recent commit we
@@ -186,9 +186,9 @@ repository.
 
 ## Challenge 2
 
-In your pairs exclude files with the extension `.csv`, `.pkl` from being added to the `python-maths` project by adding
-the appropriate pattern to the `.gitignore` file to a new branch and merge it into the `main` branch via a pull-request,
-assigning it to the person who didn't make the branch and additions to review.
+In your pairs exclude files with the extension `.csv` and `.pkl` from being added to the `python-maths` project by
+adding the appropriate pattern to the `.gitignore` file to a new branch and merge it into the `main` branch via a
+pull-request, assigning it to the other person for review.
 
 :::::::::::::::::::::::: solution
 
@@ -206,7 +206,7 @@ Staging and committing, then pushing to GitHub
 
 ``` bash
 git add .gitignore
-git commit -m "Ignoring .csv and .pkl files"
+git commit -m "chore: Ignoring .csv and .pkl files"
 git push
 ```
 
@@ -848,6 +848,29 @@ try to use the SSH key.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Conventional Commits
+
+You may have noticed in many of the commit messages used so far a keyword is used to start the commit followed by a
+colon. This is an example of [Conventional Commits][concommit] which are a standardised way of writing commit messages
+that, as with the branch naming convention suggested earlier, include metadata about what the commit relates to.
+
+There are keywords to start your commit message with that are self-explanatory
+
+- `fix:`
+- `feat:`ure
+- `build:`
+- `chore:`
+- `ci:`
+- `docs:`
+- `style:`
+- `refactor:`
+- `perf:`ormance
+- `test:`
+
+If changes relate to a specific component or "scope" of a repository that can be included in parentheses afterwards. For
+example the Zero Division issue in `python-maths` relates to the `artihmatic` module so might be started with
+`fix(arithmatic)`.
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Global configuration is via `.gitconfig`
@@ -872,6 +895,7 @@ founders of GitHub and co-author of [Pro Git][progit] book on useful tips for us
 - [Atlassian | Advanced Git Tutorials][advanced]
 
 [advanced]: https://www.atlassian.com/git/tutorials/advanced-overview
+[concommit]: https://www.conventionalcommits.org/en/v1.0.0/
 [difftastic]: https://difftastic.wilfred.me.uk/
 [emacs]: https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html
 [git]: https://git-scm.com
