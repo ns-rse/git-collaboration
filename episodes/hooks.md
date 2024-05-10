@@ -196,7 +196,7 @@ the local branch and you are advised to `git pull` before attempting to `git pus
 > 'Note about fast-forwards' section of 'git push --help' for details.
 ```
 
-A simple addition you can add to the `.git/hooks/pre-push` script is to have it `git pull` before attempting to make a
+A simple addition you can add to the `.git/hooks/pre-push` script is to have it `git fetch` before attempting to make a
 `git push` which will mean you are unlikely to see the above message in the future.
 
 ``` bash
@@ -204,7 +204,7 @@ A simple addition you can add to the `.git/hooks/pre-push` script is to have it 
 #
 # A hook script to pull before pushing
 
-exec git pull
+exec git fetch
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
