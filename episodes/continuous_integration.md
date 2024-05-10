@@ -207,8 +207,6 @@ following changes...
 ## Adding Python Coverage (WIP)
 
 
-After creating an issue and assigning it you can create a new branch with the following.
-
 ``` bash
 git switch main
 git pull
