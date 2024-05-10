@@ -204,8 +204,9 @@ following changes...
 
 :::::::::::::::::::::::: solution
 
-## Adding Python Coverage (WIP)
+## Adding Python Coverage
 
+After creating an issue and assigning it you can create a new branch with the following.
 
 ``` bash
 git switch main

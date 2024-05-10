@@ -183,14 +183,6 @@ You can set the alias `logp` to the above `git log` options by editing `~/.gitco
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-<!-- ### Multiple Configurations -->
-
-<!-- It may be the case that you have multiple Git accounts and want different configurations for each. This is possible to -->
-<!-- do in your "global" configuration courtesy of the `includeIf` directive and creating secondary `.gitconfig_<account>` -->
-<!-- files. -->
-
-<!-- Say you have an account on GitHub and one on GitLab and you wish to use different configuration parameters for each. -->
-
 ### `.gitignore`
 
 The [`.gitignore`][gitignore] file does exactly what you might expect it to, it contains lists of directories and files
