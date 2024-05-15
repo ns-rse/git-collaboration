@@ -760,6 +760,24 @@ you don't want to lose your work.
 The solution here is to use `git stash` to temporarily store the unstaged changes, switch branches to the target branch
 they should be on, and you can then un-stash them (known as `pop`ing) onto the correct branch.
 
+::::::::::::::::::::::::::::::::::::: callout
+
+You can set an alias to undo the last commit with
+
+``` bash
+git config --global alias.undo 'reset HEAD~'
+```
+
+This adds the following line to the `alias` section of your `~/.gitconfig`
+
+``` bash
+[alias]
+    ...
+    undo = reset HEAD~
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ### `git revert`
 
 `git reset` is destructive, you can lose work using it and it is advisable _not_ to use it when you have more than one
