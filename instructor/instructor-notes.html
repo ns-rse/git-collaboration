@@ -199,7 +199,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Branching</a>
+        <a href="git_hygiene.html">2. Git Hygiene</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -211,7 +211,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Git Hygiene</a>
+        <a href="branching.html">3. Branching</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -223,7 +223,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="hooks.html">4. Hooks</a>
+        <a href="diverging_branches.html">4. Diverging Branches</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -235,7 +235,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="continuous_integration.html">5. Continuous Integration</a>
+        <a href="hooks.html">5. Hooks</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -247,7 +247,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="reviewing.html">6. Reviewing</a>
+        <a href="continuous_integration.html">6. Continuous Integration</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -259,7 +259,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="project_management.html">7. Project Management</a>
+        <a href="reviewing.html">7. Reviewing</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -271,7 +271,31 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="further_resources.html">8. Further Resources</a>
+        <a href="project_management.html">8. Project Management</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="additional_topics.html">9. Additional Topics</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="further_resources.html">10. Further Resources</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -358,47 +382,25 @@ important for those who are not overly familiar with Python.</p>
 <p>Once people have completed the task ask for volunteers to describe
 their experiences BVC.</p>
 <hr>
-<br></section><section id="branching"><h2 class="section-heading"><a href="branching.html">Branching</a></h2>
-<hr class="half-width">
-<h3 id="branching-headingInstructor1">
-<a href="branching.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#branching-headingInstructor1"></a>
+<br><h3 id="introduction-headingInstructor2">
+<a href="introduction.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor2"></a>
 </h3>
-<p>Take the time to make sure everyone understands what the graphic
-represents, explaining that each tag is a commit and that the
-<code>branch</code> forks at a given point but doesn’t have a commit
-associated with it.</p>
-<p>The history of <em>both</em> the <code>main</code> and the
-<code>branch</code> contain all points from the origin but</p>
-<hr>
-<br><h3 id="branching-headingInstructor2">
-<a href="branching.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#branching-headingInstructor2"></a>
+<p>If anyone has multiple GitHub accounts it is possible that permission
+may be denied which force pushing if the wrong SSH key is used. It is
+simple to work around this by adding the following to the
+<code>.git/config</code> of the user and ensuring it points to the
+correct private SSH key that is associated with the account they wish to
+use.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<p>Remember to take the time to show the contents of the files and how
-they “disappear” when switching branches, in particular after having
-added <code>README.md</code> to <code>branch1</code> and switching back
-to <code>main</code>.</p>
-<p>Also use <code>glod</code> alias (or other form of
-<code>git log</code> that shows branches) to show the changes and
-explain the point at which each of the branches is at with reference to
-the <code>*</code> indicating commits, the branch names and where they
-sit and the date/time stamps.</p>
-<hr>
-<br><h3 id="branching-headingInstructor3">
-<a href="branching.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#branching-headingInstructor3"></a>
-</h3>
-<p>Again remember to take the time to show the contents of the files and
-how they “disappear” when switching branches, in particular after having
-added <code>README.md</code> to <code>branch1</code> and switching back
-to <code>main</code>.</p>
-<p>Also use <code>glod</code> alias (or other form of
-<code>git log</code> that shows branches) to show the changes and
-explain the point at which each of the branches is at with reference to
-the <code>*</code> which denote commits, the branch names and where they
-sit and the date/time stamps.</p>
-<p>It can be useful at the end to open a second terminal and show the
-history of the two <code>git-merge-test</code> and
-<code>git-rebase-test</code> repositories to show how they differ in
-terms of branches.</p>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">[core]</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="ex">...</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="ex">sshCommand</span> = ssh <span class="at">-i</span> ~/.ssh/id_ed25519 <span class="at">-F</span> /dev/null</span></code></pre>
+</div>
+<p>The important part is that it points to the correct SSH key, in the
+above this is <code>~/.ssh/id_ed25519</code> which will need modifying
+to reflect the users key for the account they wish to use.</p>
 <hr>
 <br></section><section id="git_hygiene"><h2 class="section-heading"><a href="git_hygiene.html">Git Hygiene</a></h2>
 <hr class="half-width">
@@ -424,6 +426,50 @@ live.</p>
 <p>Be prepared to explain how SSH keys can be unlocked on login so that
 the passwords don’t need entering every time you try to use the SSH
 key.</p>
+<hr>
+<br></section><section id="branching"><h2 class="section-heading"><a href="branching.html">Branching</a></h2>
+<hr class="half-width">
+<h3 id="branching-headingInstructor1">
+<a href="branching.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#branching-headingInstructor1"></a>
+</h3>
+<p>Take the time to make sure everyone understands what the graphic
+represents, explaining that each tag is a commit and that the
+<code>branch</code> forks at a given point but doesn’t have a commit
+associated with it.</p>
+<p>The history of <em>both</em> the <code>main</code> and the
+<code>branch</code> contain all points from the origin but</p>
+<hr>
+<br></section><section id="diverging_branches"><h2 class="section-heading"><a href="diverging_branches.html">Diverging Branches</a></h2>
+<hr class="half-width">
+<h3 id="diverging_branches-headingInstructor1">
+<a href="diverging_branches.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#diverging_branches-headingInstructor1"></a>
+</h3>
+<p>Remember to take the time to show the contents of the files and how
+they “disappear” when switching branches, in particular after having
+added <code>README.md</code> to <code>branch1</code> and switching back
+to <code>main</code>.</p>
+<p>Also use <code>git logp</code> alias (or other form of
+<code>git log</code> that shows branches) to show the changes and
+explain the point at which each of the branches is at with reference to
+the <code>*</code> indicating commits, the branch names and where they
+sit and the date/time stamps.</p>
+<hr>
+<br><h3 id="diverging_branches-headingInstructor2">
+<a href="diverging_branches.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#diverging_branches-headingInstructor2"></a>
+</h3>
+<p>Again remember to take the time to show the contents of the files and
+how they “disappear” when switching branches, in particular after having
+added <code>README.md</code> to <code>branch1</code> and switching back
+to <code>main</code>.</p>
+<p>Also use <code>git logp</code> alias (or other form of
+<code>git log</code> that shows branches) to show the changes and
+explain the point at which each of the branches is at with reference to
+the <code>*</code> which denote commits, the branch names and where they
+sit and the date/time stamps.</p>
+<p>It can be useful at the end to open a second terminal and show the
+history of the two <code>git-merge-test</code> and
+<code>git-rebase-test</code> repositories to show how they differ in
+terms of branches.</p>
 <hr>
 <br></section><section id="hooks"><h2 class="section-heading"><a href="hooks.html">Hooks</a></h2>
 <hr class="half-width">
@@ -464,6 +510,7 @@ challenges associated with the lessons. They appear in the “Instructor
 View”</p>
 <hr>
 <br></section><section id="project_management"><h2 class="section-heading"><a href="project_management.html">Project Management</a></h2>
+<hr class="half-width"></section><section id="additional_topics"><h2 class="section-heading"><a href="additional_topics.html">Additional Topics</a></h2>
 <hr class="half-width"></section><section id="further_resources"><h2 class="section-heading"><a href="further_resources.html">Further Resources</a></h2>
 <hr class="half-width"></section></section>
 </div>
@@ -526,8 +573,8 @@ View”</p>
   "url": "ns-rse.github.io/git-collaboration/instructor/instructor-notes.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/instructor-notes.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-21",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-23",
+  "datePublished": "2024-05-23"
 }
 
   </script><script>

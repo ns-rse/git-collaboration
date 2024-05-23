@@ -153,7 +153,7 @@
       <div class="accordion-body">
         <ul><li><a href="#setup">Setup</a></li>
 <li><a href="#example-repository">Example Repository</a></li>
-<li><a href="#software-setup">Software Setup</a></li>
+<li><a href="#install-git">Install Git</a></li>
 <li><a href="#github">GitHub</a></li>
 <li><a href="#conda-environments">Conda Environments</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -174,7 +174,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Branching</a>
+        <a href="git_hygiene.html">2. Git Hygiene</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -183,7 +183,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Git Hygiene</a>
+        <a href="branching.html">3. Branching</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -192,7 +192,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="hooks.html">4. Hooks</a>
+        <a href="diverging_branches.html">4. Diverging Branches</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -201,7 +201,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="continuous_integration.html">5. Continuous Integration</a>
+        <a href="hooks.html">5. Hooks</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -210,7 +210,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="reviewing.html">6. Reviewing</a>
+        <a href="continuous_integration.html">6. Continuous Integration</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -219,7 +219,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="project_management.html">7. Project Management</a>
+        <a href="reviewing.html">7. Reviewing</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -228,7 +228,25 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="further_resources.html">8. Further Resources</a>
+        <a href="project_management.html">8. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="additional_topics.html">9. Additional Topics</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="further_resources.html">10. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -328,7 +346,7 @@ instructor.</p>
 <hr class="half-width"><p>This course uses a GitHub Template that you will, in small groups,
 create a copy of and collaborate on. Using this template and setting it
 up is part of the course, you do not need to set it up in advance.</p>
-</section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
+</section><section id="install-git"><h2 class="section-heading">Install Git<a class="anchor" aria-label="anchor" href="#install-git"></a>
 </h2>
 <hr class="half-width"><div id="discussion1" class="callout discussion">
 <div class="callout-square">
@@ -356,7 +374,7 @@ IDEs, although not all will support all of the functions introduced here
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Windows</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You can use the <a href="https://git-scm.com/download/win" class="external-link">official
 binary</a> but we encourage you to use <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell" class="external-link">Git
@@ -374,7 +392,7 @@ bundled together).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><a href="https://git-scm.com/" class="external-link">Git</a> is not included in the MacOS
 distribution by default. The <a href="https://git-scm.com/download/mac" class="external-link">official instructions</a>
@@ -404,7 +422,7 @@ suggests using either <a href="https://brew.sh/" class="external-link">Homebrew<
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Linux</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Most GNU/Linux distributions will have Git installed by default. If
 not you can install it using the package manager for your distribution.
@@ -475,7 +493,7 @@ account.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Windows</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>There are <a href="https://www.ssh.com/academy/ssh/putty/windows/puttygen#creating-a-new-key-pair-for-authentication" class="external-link">comprehensive
 instructions</a> on using the Windows SSH client <a href="https://www.ssh.com/ssh/putty/download" class="external-link">PuTTY</a> to generate SSH
@@ -489,7 +507,7 @@ keys.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Linux / OSX</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>There is a detailed <a href="https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-openssh-on-macos-or-linux" class="external-link">article</a>
 on creating SSH keys under Linux and OSX. It is recommended to use the
@@ -522,7 +540,7 @@ GitHub account with.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Adding Keys to GitHub (All OSs)</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Once you have created your SSH key you need to copy it to your
 account, got to <em>Settings &gt; SSh and GPG Keys</em> and click on the
@@ -565,7 +583,7 @@ can simply create a fresh virtual environment to use for the course.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Installing Miniconda</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Please follow the instructions at <a href="https://docs.anaconda.com/free/miniconda/miniconda-install/" class="external-link">Installing
 Miniconda</a> for your Operating System.</p>
@@ -578,20 +596,17 @@ Miniconda</a> for your Operating System.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Creating A Virtual Environment</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>You will have to create a virtual environment to undertake the
 course. If you have installed Miniconda as described above you open a
 terminal (Windows use the Git Bash Shell) and create a Virtual
-Environment called <code>git-collaboation</code>, activate it and
-install the Python Package Manager programme <code>pip</code> using the
-following commands.</p>
+Environment called <code>git-collaboation</code>.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> git-collaboration python=3.11</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="ex">conda</span> install pip</span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span></code></pre>
 </div>
 </div>
 </div>
@@ -663,8 +678,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/index.html",
   "identifier": "ns-rse.github.io/git-collaboration/index.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-21",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-23",
+  "datePublished": "2024-05-23"
 }
 
   </script><script>

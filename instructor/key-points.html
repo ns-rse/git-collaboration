@@ -199,7 +199,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Branching</a>
+        <a href="git_hygiene.html">2. Git Hygiene</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -211,7 +211,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Git Hygiene</a>
+        <a href="branching.html">3. Branching</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -223,7 +223,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="hooks.html">4. Hooks</a>
+        <a href="diverging_branches.html">4. Diverging Branches</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -235,7 +235,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="continuous_integration.html">5. Continuous Integration</a>
+        <a href="hooks.html">5. Hooks</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -247,7 +247,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="reviewing.html">6. Reviewing</a>
+        <a href="continuous_integration.html">6. Continuous Integration</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -259,7 +259,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="project_management.html">7. Project Management</a>
+        <a href="reviewing.html">7. Reviewing</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -271,7 +271,31 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="further_resources.html">8. Further Resources</a>
+        <a href="project_management.html">8. Project Management</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="additional_topics.html">9. Additional Topics</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="further_resources.html">10. Further Resources</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -336,25 +360,7 @@
         
         
 <section id="introduction"><h2 class="section-heading"><a href="introduction.html">Introduction</a></h2>
-<hr class="half-width"></section><section id="branching"><h2 class="section-heading"><a href="branching.html">Branching</a></h2>
-<hr class="half-width">
-<ul>
-<li>Branches and how they relate to each other are fundamental to
-collaborating using Git.</li>
-<li>The history of a branch is a series of commits and extends all the
-way back to the very first commit and <em>not</em> the point at which it
-forked from its parents.</li>
-<li>Branches can be easily created, merged and deleted.</li>
-<li>Commits all have references and Git can move you between these
-references using <code>git commit</code> or compare them using
-<code>git diff</code>.</li>
-<li>Branches can become outdated as work progresses, they can be brought
-up-to-date with either <code>git merge</code> or
-<code>git rebase</code>.</li>
-<li>Worktrees can help alleviate some of the problems encountered when
-working with multiple branches.</li>
-<li>It is possible to track multiple origins.</li>
-</ul></section><section id="git_hygiene"><h2 class="section-heading"><a href="git_hygiene.html">Git Hygiene</a></h2>
+<hr class="half-width"></section><section id="git_hygiene"><h2 class="section-heading"><a href="git_hygiene.html">Git Hygiene</a></h2>
 <hr class="half-width">
 <ul>
 <li>Global configuration is via <code>.gitconfig</code>
@@ -376,6 +382,24 @@ understand what work has been undertaken.</li>
 <code>git gc</code>.</li>
 <li>You can and should enable further automated cleaning by enabling
 <code>git mainenance</code> on a repository.</li>
+</ul></section><section id="branching"><h2 class="section-heading"><a href="branching.html">Branching</a></h2>
+<hr class="half-width">
+<ul>
+<li>Branches and how they relate to each other are fundamental to
+collaborating using Git.</li>
+<li>The history of a branch is a series of commits and extends all the
+way back to the very first commit and <em>not</em> the point at which it
+forked from its parents.</li>
+<li>Branches can be easily created, merged and deleted.</li>
+<li>Commits all have references and Git can move you between these
+references using <code>git commit</code> or compare them using
+<code>git diff</code>.</li>
+</ul></section><section id="diverging_branches"><h2 class="section-heading"><a href="diverging_branches.html">Diverging Branches</a></h2>
+<hr class="half-width">
+<ul>
+<li>Branches can become outdated as work progresses</li>
+<li>Branches can be brought up-to-date with either
+<code>git merge</code> or <code>git rebase</code>.</li>
 </ul></section><section id="hooks"><h2 class="section-heading"><a href="hooks.html">Hooks</a></h2>
 <hr class="half-width">
 <ul>
@@ -425,7 +449,8 @@ output</li>
 with your lesson</li>
 <li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
 locally</li>
-</ul></section><section id="further_resources"><h2 class="section-heading"><a href="further_resources.html">Further Resources</a></h2>
+</ul></section><section id="additional_topics"><h2 class="section-heading"><a href="additional_topics.html">Additional Topics</a></h2>
+<hr class="half-width"></section><section id="further_resources"><h2 class="section-heading"><a href="further_resources.html">Further Resources</a></h2>
 <hr class="half-width"></section>
 </div>
     </main>
@@ -487,8 +512,8 @@ locally</li>
   "url": "ns-rse.github.io/git-collaboration/instructor/key-points.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/key-points.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-21",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-23",
+  "datePublished": "2024-05-23"
 }
 
   </script><script>

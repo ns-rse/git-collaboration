@@ -172,7 +172,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Branching</a>
+        <a href="git_hygiene.html">2. Git Hygiene</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -181,7 +181,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Git Hygiene</a>
+        <a href="branching.html">3. Branching</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -190,7 +190,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="hooks.html">4. Hooks</a>
+        <a href="diverging_branches.html">4. Diverging Branches</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -199,7 +199,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="continuous_integration.html">5. Continuous Integration</a>
+        <a href="hooks.html">5. Hooks</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -208,7 +208,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="reviewing.html">6. Reviewing</a>
+        <a href="continuous_integration.html">6. Continuous Integration</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -217,7 +217,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="project_management.html">7. Project Management</a>
+        <a href="reviewing.html">7. Reviewing</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -226,7 +226,25 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="further_resources.html">8. Further Resources</a>
+        <a href="project_management.html">8. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="additional_topics.html">9. Additional Topics</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="further_resources.html">10. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -275,7 +293,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="branching.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="git_hygiene.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -283,14 +301,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Home
         </a>
-        <a class="chapter-link float-end" href="branching.html" rel="next">
-          Next: Branching... 
+        <a class="chapter-link float-end" href="git_hygiene.html" rel="next">
+          Next: Git Hygiene... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p>Last updated on 2024-05-09 |
+        <p>Last updated on 2024-05-23 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -388,6 +406,26 @@ if this is an in-person course or if the course is online one of the
 instructors will pair you up at random.</p>
 <p>Once paired up please add details to the Etherpad along with your
 GitHub usernames.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
+</h3>
+<div class="callout-content">
+<p>The aim of pairing up is <em>not</em> to divide the tasks between
+people. There are a few exceptions but for most tasks you should work
+with your partner to solve each of the challenges, but with one person
+at the “driving seat” making the changes to the code as required.</p>
+<p>You should discuss what you think the solution should be as you work
+through the challenge.</p>
+<p>This is software development technique known as <a href="https://en.wikipedia.org/wiki/Pair_programming" class="external-link">Pair
+Programming</a> and by discussing the solutions you will hopefully come
+away with a better understanding of the material.</p>
+</div>
+</div>
+</div>
 <div class="section level2">
 <h2 id="getting-to-know-each-other">Getting to Know Each Other<a class="anchor" aria-label="anchor" href="#getting-to-know-each-other"></a></h2>
 <p>In order to break the ice and find out something about the other
@@ -429,6 +467,7 @@ and provide an answer in the collaborative notepad.</p>
 </div>
 </div>
 
+
 </section><section id="cloning-repositories"><h2 class="section-heading">Cloning Repositories<a class="anchor" aria-label="anchor" href="#cloning-repositories"></a>
 </h2>
 <hr class="half-width"><div id="choose-roles-clone-repository-and" class="callout discussion">
@@ -454,6 +493,8 @@ their account.</p>
 <ol style="list-style-type: decimal"><li>Use the <code>Code</code> button of the <a href="https://github.com/ns-rse/python-maths" class="external-link">Python Maths</a> to clone
 the repository locally
 (<code>git clone    git@github.com:ns-rse/python-maths.git</code>).</li>
+<li>Fetch additional branches with
+<code>git fetch origin {divide,multiply,ns-rse/merge-conflict}</code>.</li>
 <li>On GitHub create an empty repository called
 <code>python-maths</code>, do <em>not</em> add a license or
 <code>.gitignore</code> to the repository, it should be completely
@@ -465,7 +506,7 @@ empty.</li>
 GitHub username is <code>alice_and_bob</code> it should read
 <code>url = git@github.com:alice_and_bob/python-maths.git</code>. Save
 these changes.</li>
-<li>Force push the changes with <code>git push --force</code>.</li>
+<li>Force push with <code>git push --force</code>.</li>
 </ol><p>This edit changes the <code>origin</code> to be the empty repository
 you created under <em>your</em> account called <code>python-maths</code>
 and pushes the cloned repository there.</p>
@@ -507,12 +548,12 @@ original template</em>.</p>
 <p>Click on the <em>Code</em> button and then the <em>SSH</em> tab. Copy
 the URL. If you want to clone the work to <code>~/work/git/</code> then
 in a terminal</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> ~/work/git</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>owners_id<span class="op">&gt;</span>/python-maths</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">cd</span> python-maths</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">cd</span> ~/work/git</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>owners_id<span class="op">&gt;</span>/python-maths</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="bu">cd</span> python-maths</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="repository-owners">Repository Owners<a class="anchor" aria-label="anchor" href="#repository-owners"></a></h3>
@@ -521,22 +562,22 @@ in a terminal</p>
 the origin is defined replacing <code>ns-rse</code> with their GitHub
 username. For example if the repository owner uses the
 <code>alice_and_bob</code> username on GitHub it should read.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a> <span class="ex">[remote</span> <span class="st">"origin"</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>     <span class="ex">url</span> = git@github.com:alice_and_bob/python-maths.git</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>     <span class="ex">fetch</span> = +refs/heads/<span class="pp">*</span>:refs/remotes/origin/<span class="pp">*</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a> <span class="ex">[remote</span> <span class="st">"origin"</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>     <span class="ex">url</span> = git@github.com:alice_and_bob/python-maths.git</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>     <span class="ex">fetch</span> = +refs/heads/<span class="pp">*</span>:refs/remotes/origin/<span class="pp">*</span></span></code></pre>
 </div>
 <p>The Repository Owner should create a new, empty, but public
 repository on GitHub called <code>python-maths</code>, there is no need
 to include a license nor <code>.gitignore</code> file.</p>
 <p>The Repository Owner can push the cloned repository to their account
 with.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--force</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--force</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -545,10 +586,10 @@ with.</p>
 repository to their account the Collaborator can clone that. If the
 Repository Owner has username <code>alice_and_bob</code> then you can
 clone with the following command.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:alice_and_bob/python-maths.git</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:alice_and_bob/python-maths.git</span></code></pre>
 </div>
 </div>
 </div>
@@ -569,6 +610,8 @@ to protect the <code>main</code> branch to require approvals.</p>
 </li>
 <li>Check the box <em>Require a pull request before merging</em>
 </li>
+<li>Prevent the repository owner from bypassing the rules by checking
+<em>Do not allow bypassing the above settings</em>.</li>
 </ol></div>
 </div>
 </div>
@@ -583,52 +626,52 @@ to protect the <code>main</code> branch to require approvals.</p>
 <p>If you have not already done so activate the
 <code>git-collaboration</code> environment you created as described in
 the setup instructions.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">conda</span> activate git-collaboration</span></code></pre>
 </div>
 <p>You can now install the package and its test dependencies in an
 editable format so that as you work on the package the changes you make
 will instantly be available. Make sure you are in the
 <code>python-maths</code> directory (use <code>pwd</code> to show where
 you are and <code>cd</code> to change directory).</p>
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .<span class="pp">[</span><span class="ss">tests,dev</span><span class="pp">]</span></span></code></pre>
-</div>
-<p>You can optionally check everything is installed and runs by running
-the tests via <a href="https://docs.pytest.org/" class="external-link">pytest</a></p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">pytest</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">==========================================</span> test session starts ==========================================</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.11.8, pytest-8.1.1, pluggy-1.4.0</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">Matplotlib:</span> 3.8.4</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="ex">Freetype:</span> 2.6.1</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="ex">rootdir:</span> /home/neil/work/teaching/git_collaboration/2024-04-19/python-maths</span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="ex">testpaths:</span> tests</span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="ex">plugins:</span> regtest-2.1.1, pylint-0.21.0, github-actions-annotate-failures-0.2.0, xdist-3.5.0, cov-5.0.0, anyio-4.3.0, mock-3.14.0, mpl-0.17.0</span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="ex">collected</span> 26 items</span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="ex">tests/test_arithmetic.py</span> ......................                                                   [ 84%]</span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="ex">tests/test_trig.py</span> ....                                                                           <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="ex">-----------------------------------------</span> pytest-regtest report <span class="at">-----------------------------------------</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="ex">total</span> number of failed regression tests: 0</span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="ex">----------</span> coverage: platform linux, python 3.11.8-final-0 <span class="at">-----------</span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="ex">Name</span>                        Stmts   Miss  Cover</span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="ex">-----------------------------------------------</span></span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="ex">pythonmaths/arithmetic.py</span>       8      0   100%</span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="ex">pythonmaths/trig.py</span>             4      0   100%</span>
-<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="ex">-----------------------------------------------</span></span>
-<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="ex">TOTAL</span>                          12      0   100%</span>
-<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="ex">==========================================</span> 26 passed in 0.28s ===========================================</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .<span class="pp">[</span><span class="ss">tests,dev</span><span class="pp">]</span></span></code></pre>
+</div>
+<p>You can optionally check everything is installed and runs by running
+the tests via <a href="https://docs.pytest.org/" class="external-link">pytest</a></p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">pytest</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">==========================================</span> test session starts ==========================================</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.11.8, pytest-8.1.1, pluggy-1.4.0</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="ex">Matplotlib:</span> 3.8.4</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="ex">Freetype:</span> 2.6.1</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="ex">rootdir:</span> /home/neil/work/teaching/git_collaboration/2024-04-19/python-maths</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="ex">testpaths:</span> tests</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="ex">plugins:</span> regtest-2.1.1, pylint-0.21.0, github-actions-annotate-failures-0.2.0, xdist-3.5.0, cov-5.0.0, anyio-4.3.0, mock-3.14.0, mpl-0.17.0</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="ex">collected</span> 26 items</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="ex">tests/test_arithmetic.py</span> ......................                                                   [ 84%]</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="ex">tests/test_trig.py</span> ....                                                                           <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="ex">-----------------------------------------</span> pytest-regtest report <span class="at">-----------------------------------------</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="ex">total</span> number of failed regression tests: 0</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="ex">----------</span> coverage: platform linux, python 3.11.8-final-0 <span class="at">-----------</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="ex">Name</span>                        Stmts   Miss  Cover</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="ex">-----------------------------------------------</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="ex">pythonmaths/arithmetic.py</span>       8      0   100%</span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="ex">pythonmaths/trig.py</span>             4      0   100%</span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="ex">-----------------------------------------------</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="ex">TOTAL</span>                          12      0   100%</span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="ex">==========================================</span> 26 passed in 0.28s ===========================================</span></code></pre>
 </div>
 </div>
 </div>
@@ -636,12 +679,12 @@ the tests via <a href="https://docs.pytest.org/" class="external-link">pytest</a
 </div>
 <p>After completing these steps you should both have a copy of the
 <code>python-maths</code> repository on your local computer.</p>
-<div id="callout1" class="callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
 <p>If desired you can between you update the Metadata in
@@ -658,7 +701,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="branching.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="git_hygiene.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -666,8 +709,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Home
         </a>
-        <a class="chapter-link float-end" href="branching.html" rel="next">
-          Next: Branching... 
+        <a class="chapter-link float-end" href="git_hygiene.html" rel="next">
+          Next: Git Hygiene... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -726,8 +769,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/introduction.html",
   "identifier": "ns-rse.github.io/git-collaboration/introduction.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-09",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-23",
+  "datePublished": "2024-05-23"
 }
 
   </script><script>

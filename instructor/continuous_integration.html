@@ -159,7 +159,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="branching.html">2. Branching</a>
+        <a href="git_hygiene.html">2. Git Hygiene</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -168,7 +168,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="git_hygiene.html">3. Git Hygiene</a>
+        <a href="branching.html">3. Branching</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -177,7 +177,16 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="hooks.html">4. Hooks</a>
+        <a href="diverging_branches.html">4. Diverging Branches</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="hooks.html">5. Hooks</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -189,7 +198,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        5. Continuous Integration
+        6. Continuous Integration
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -205,19 +214,10 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush7">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading7">
-        <a href="reviewing.html">6. Reviewing</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="project_management.html">7. Project Management</a>
+        <a href="reviewing.html">7. Reviewing</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -226,7 +226,25 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="further_resources.html">8. Further Resources</a>
+        <a href="project_management.html">8. Project Management</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="additional_topics.html">9. Additional Topics</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="further_resources.html">10. Further Resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -290,7 +308,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Continuous Integration</h1>
-        <p>Last updated on 2024-05-09 |
+        <p>Last updated on 2024-05-23 |
         
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/continuous_integration.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -408,7 +426,7 @@ referring to the directory.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Make sure to ask the class who is familiar with YAML so you can gauge
 the level of experience in the room. If no one has come across it before
@@ -603,9 +621,11 @@ don’t have to reinvent the wheel.</p>
 Action to<code>python-maths</code><a class="anchor" aria-label="anchor" href="#challenge-1-add-the-python-coverage-github-action-to-python-maths"></a>
 </h3>
 <div class="callout-content">
-<p>In your pairs add the [Python Coverage][pycov] GitHub Action to the
-<code>python-maths</code> repository.</p>
-<p>One person should make a branch for the work and make the following
+<p>In your pairs add the <a href="https://github.com/marketplace/actions/python-coverage" class="external-link">Python
+Coverage</a> GitHub Action to the <code>python-maths</code>
+repository.</p>
+<p>Work together on the solution. Create GitHub issues and assign them
+and undertake the work on a new branch and make the following
 changes…</p>
 <ol style="list-style-type: decimal"><li>Enable <code>pytest</code> to create a coverage report to a file by
 adding <code>--cov-report coverage.xml</code>.</li>
@@ -620,23 +640,23 @@ section.</li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Adding Python Coverage (WIP)</h4>
+  <h4 class="accordion-header" id="headingSolution1">Adding Python Coverage</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>Create an issue and assign it to one person.</li>
-<li>Create a branch to make the changes on.</li>
-</ol><div class="codewrapper sourceCode" id="cb3">
+<p>After creating an issue and assigning it you can create a new branch
+with the following.</p>
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">git</span> switch main</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">git</span> pull</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> ns-rse/4-python-coverage</span></code></pre>
 </div>
-<ol start="3" style="list-style-type: decimal"><li>Add the following to
-<code>.github/workflows/test-python-package.yml</code>
-</li>
-</ol><div class="codewrapper sourceCode" id="cb4">
+<p>The configuration you need to add changes the call to
+<code>pytest</code> to summarise coverage and output to a file and then
+calls the <code>coverage</code> action using that file.</p>
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Test with pytest</span></span>
@@ -656,7 +676,7 @@ section.</li>
 </div>
 </section><section id="pre-commit.ci"><h2 class="section-heading">Pre-commit.ci<a class="anchor" aria-label="anchor" href="#pre-commit.ci"></a>
 </h2>
-<hr class="half-width"><p>We saw in the [hooks][hooks] section how to use <a href="https://pre-commit.com/" class="external-link">pre-commit</a> hooks to run certain tasks
+<hr class="half-width"><p>We saw in the <em>Hooks</em> episode how to use <a href="https://pre-commit.com/" class="external-link">pre-commit</a> hooks to run certain tasks
 prior to making commits to your feature branch. <a href="https://pre-commit.ci/" class="external-link">pre-commit.ci</a> extends this and uses
 the same configured hooks to automatically check that code submitted in
 Pull Requests passes these same checks.</p>
@@ -737,7 +757,7 @@ guide you.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">.pre-commit-config.yaml</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -851,8 +871,8 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/instructor/continuous_integration.html",
   "identifier": "ns-rse.github.io/git-collaboration/instructor/continuous_integration.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-09",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-23",
+  "datePublished": "2024-05-23"
 }
 
   </script><script>
