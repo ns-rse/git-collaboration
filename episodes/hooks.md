@@ -77,9 +77,13 @@ the repository.
 
 Lets take a look at the hooks in the [`python-maths`][pm] repository you have cloned for this course.
 
+1. What does `.git/hooks/pre-push.sample` do?
+2. Enable the `.git/hooks/pre-push` using the `.git/hooks/pre-push.sample`.
+3. Test the enabled hook by making an empty commit that will trigger the hook (**hint** it is case-sensitive).
+
 :::::::::::::::::::::::: solution
 
-## Challenge 1: What does `.git/hooks/pre-push.sample` do?
+## Solution 1: What does `.git/hooks/pre-push.sample` do?
 
 Git will have populated the `.git/hooks` directory automatically when you cloned the [`python-maths`][pm].
 
@@ -150,7 +154,7 @@ When enabled this hook will "_prevent push of commits where the log message star
 
 :::::::::::::::::::::::: solution
 
-## Challenge 2: Enable the `pre-push` hook and test it
+## Solution 2: Enable the `pre-push` hook and test it
 
 This sounds like a good idea as it, notionally, prevents people from pushing work that is in progress, if they are in
 the habit of starting commit messages with "WIP".
@@ -164,6 +168,17 @@ the habit of starting commit messages with "WIP".
 ``` bash
 ❱ cd python-maths
 ❱ cp .git/hooks/pre-push.sample .git/hooks/pre-push
+
+```
+
+:::::::::::::::::::::::: solution
+
+## Solution 3: Test the hook
+
+We can test the hook by making a throw-away branch and adding an empty commit that starts with `WIP` and then trying to
+`git push` the commit. After it fails we can force delete this test branch.
+
+``` bash
 ❱ git switch -c ns-rse/test-hook
 ❱ git commit --allow-empty -m "WIP - testing the pre-push hook"
 ❱ git push
@@ -176,8 +191,6 @@ error: failed to push some refs to 'github.com:slackline/python-maths.git'
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Pull before push
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -197,7 +210,7 @@ the local branch and you are advised to `git pull` before attempting to `git pus
 ```
 
 A simple addition you can add to the `.git/hooks/pre-push` script is to have it `git fetch` before attempting to make a
-`git push` which will mean you are unlikely to see the above message in the future.
+`git push` which retrieve details, but not pull them, of changes that have been made to the branch on `origin`.
 
 ``` bash
 #!/bin/sh
@@ -212,7 +225,14 @@ exec git fetch
 ## Pre-Commit
 
 Pre-commit hooks that run before commits are made are _really_ useful to the extent that they require special discussion
-and will be the focus of the remainder of this episode.
+and will be the focus of the remainder of this episode. Why are they so useful? It's because they shorten the feedback
+loop of changes that need to be made when checking and linting code. It may seem mundane and unnecessary to apply such
+standards to your code, particularly if it is just exploratory code development, but over time if you employ these tools
+the way in which you write code will change so that it becomes natural to write code that is formatted and linted and
+should you then decide that code is ready to be used beyond exploratory stage it will not need refactoring in order to
+get it in shape. In essence this encourages adoption of good coding practices from the outset, taking
+responsibility/ownership of the code you write so that it is to the highest standards it can be. In the long run t is
+better to form good habits than bad ones and hooks help you do so.
 
 There is a framework for `pre-commit` hooks called, unsurprisingly, [pre-commit][pc] that makes it incredibly
 easy to add (and configure) some really useful `pre-commit` hooks to your workflow.
@@ -245,78 +265,25 @@ However, for this course the setup instructions asked you to install [Miniconda]
 3. Install `pre-commit` in the `python-maths` repository.
 
 ``` bash
-❱ conda create -n python-maths python=3.11
+❱ conda create -n python-maths python=3.11 pre-commit
 Retrieving notices: ...working... done
 Collecting package metadata (current_repodata.json): done
 Solving environment: done
 
-## Package Plan ##
 
-  environment location: /home/neil/miniconda3/envs/python-maths
+==> WARNING: A newer version of conda exists. <==
+  current version: 24.4.0
+  latest version: 24.5.0
 
-  added / updated specs:
-    - python=3.11
+Please update conda by running
 
+    $ conda update -n base -c defaults conda
 
-The following packages will be downloaded:
+Or to minimize the number of packages updated during conda update use
 
-    package                    |            build
-    ---------------------------|-----------------
-    openssl-3.0.13             |       h7f8727e_0         5.2 MB
-    pip-23.3.1                 |  py311h06a4308_0         3.3 MB
-    python-3.11.7              |       h955ad1f_0        32.8 MB
-    setuptools-68.2.2          |  py311h06a4308_0         1.2 MB
-    tzdata-2023d               |       h04d1e81_0         117 KB
-    ------------------------------------------------------------
-                                           Total:        42.7 MB
-
-The following NEW packages will be INSTALLED:
-
-  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
-  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
-  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h7b6447c_0
-  ca-certificates    pkgs/main/linux-64::ca-certificates-2023.12.12-h06a4308_0
-  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
-  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_0
-  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
-  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
-  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
-  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
-  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
-  openssl            pkgs/main/linux-64::openssl-3.0.13-h7f8727e_0
-  pip                pkgs/main/linux-64::pip-23.3.1-py311h06a4308_0
-  python             pkgs/main/linux-64::python-3.11.7-h955ad1f_0
-  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
-  setuptools         pkgs/main/linux-64::setuptools-68.2.2-py311h06a4308_0
-  sqlite             pkgs/main/linux-64::sqlite-3.41.2-h5eee18b_0
-  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
-  tzdata             pkgs/main/noarch::tzdata-2023d-h04d1e81_0
-  wheel              pkgs/main/linux-64::wheel-0.41.2-py311h06a4308_0
-  xz                 pkgs/main/linux-64::xz-5.4.5-h5eee18b_0
-  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_0
+     conda install conda=24.5.0
 
 
-Proceed ([y]/n)? y
-
-
-Downloading and Extracting Packages:
-
-Preparing transaction: done
-Verifying transaction: done
-Executing transaction: done
-#
-# To activate this environment, use
-#
-#     $ conda activate python-maths
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-
-❱ conda activate python-maths
-(python-maths) ❱ conda install pre-commit
-Collecting package metadata (current_repodata.json): done
-Solving environment: done
 
 ## Package Plan ##
 
@@ -324,52 +291,65 @@ Solving environment: done
 
   added / updated specs:
     - pre-commit
+    - python=3.11
 
 
 The following packages will be downloaded:
 
     package                    |            build
     ---------------------------|-----------------
-    cffi-1.16.0                |  py311h5eee18b_0         314 KB
-    cfgv-3.4.0                 |  py311h06a4308_0          20 KB
-    distlib-0.3.6              |  py311h06a4308_0         456 KB
-    filelock-3.13.1            |  py311h06a4308_0          24 KB
-    identify-2.5.5             |  py311h06a4308_0          89 KB
-    nodeenv-1.7.0              |  py311h06a4308_0          53 KB
-    platformdirs-2.5.2         |  py311h06a4308_0          27 KB
-    pre-commit-3.4.0           |  py311h06a4308_1         288 KB
-    pyyaml-6.0.1               |  py311h5eee18b_0         210 KB
-    virtualenv-20.17.1         |  py311h06a4308_0         6.2 MB
-    yaml-0.2.5                 |       h7b6447c_0          75 KB
+    cffi-1.16.0                |  py311h5eee18b_1         313 KB
+    distlib-0.3.8              |  py311h06a4308_0         456 KB
+    openssl-3.0.13             |       h7f8727e_2         5.2 MB
+    platformdirs-3.10.0        |  py311h06a4308_0          37 KB
+    virtualenv-20.26.1         |  py311h06a4308_0         3.5 MB
     ------------------------------------------------------------
-                                           Total:         7.7 MB
+                                           Total:         9.5 MB
 
 The following NEW packages will be INSTALLED:
 
-  cffi               pkgs/main/linux-64::cffi-1.16.0-py311h5eee18b_0
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.3.11-h06a4308_0
+  cffi               pkgs/main/linux-64::cffi-1.16.0-py311h5eee18b_1
   cfgv               pkgs/main/linux-64::cfgv-3.4.0-py311h06a4308_0
-  distlib            pkgs/main/linux-64::distlib-0.3.6-py311h06a4308_0
+  distlib            pkgs/main/linux-64::distlib-0.3.8-py311h06a4308_0
   filelock           pkgs/main/linux-64::filelock-3.13.1-py311h06a4308_0
   identify           pkgs/main/linux-64::identify-2.5.5-py311h06a4308_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
   nodeenv            pkgs/main/linux-64::nodeenv-1.7.0-py311h06a4308_0
-  platformdirs       pkgs/main/linux-64::platformdirs-2.5.2-py311h06a4308_0
+  openssl            pkgs/main/linux-64::openssl-3.0.13-h7f8727e_2
+  pip                pkgs/main/linux-64::pip-24.0-py311h06a4308_0
+  platformdirs       pkgs/main/linux-64::platformdirs-3.10.0-py311h06a4308_0
   pre-commit         pkgs/main/linux-64::pre-commit-3.4.0-py311h06a4308_1
   pycparser          pkgs/main/noarch::pycparser-2.21-pyhd3eb1b0_0
+  python             pkgs/main/linux-64::python-3.11.9-h955ad1f_0
   pyyaml             pkgs/main/linux-64::pyyaml-6.0.1-py311h5eee18b_0
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
+  setuptools         pkgs/main/linux-64::setuptools-69.5.1-py311h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.45.3-h5eee18b_0
+  tk                 pkgs/main/linux-64::tk-8.6.14-h39e8969_0
+  tzdata             pkgs/main/noarch::tzdata-2024a-h04d1e81_0
   ukkonen            pkgs/main/linux-64::ukkonen-1.0.1-py311hdb19cb5_0
-  virtualenv         pkgs/main/linux-64::virtualenv-20.17.1-py311h06a4308_0
+  virtualenv         pkgs/main/linux-64::virtualenv-20.26.1-py311h06a4308_0
+  wheel              pkgs/main/linux-64::wheel-0.43.0-py311h06a4308_0
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_1
   yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_1
 
 
-Proceed ([y]/n)? y
+Proceed ([y]/n)?
 
+...
 
-
-Downloading and Extracting Packages:
-
-Preparing transaction: done
-Verifying transaction: done
-Executing transaction: done
+❱ conda activate python-maths
 (python-maths) ❱ pre-commit install
 pre-commit installed at .git/hooks/pre-commit
 ```
@@ -397,13 +377,16 @@ activate a virtual environment.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Checking out the installed `pre-commit` hook
+## Challenge 3 - Checking out the installed `pre-commit` hook
 
 We have just installed `pre-commit` locally in the `python-maths` repository lets see what it has done.
 
+- What will the message say if `pre-commit` can not be found by the `pre-commit` hook? (**Hint** - look for the line that
+  starts with `echo`)
+
 :::::::::::::::::::::::: solution
 
-## Challenge 3: What will the message say if `pre-commit` can not be found by the `pre-commit` hook?
+## Solution
 
 We can look at the `.git/hooks/pre-commit` file that we were told was installed.
 
@@ -765,9 +748,11 @@ changes (**NB** make sure youre are)
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
+## Challenge 7: Add the `forbid-new-submodules` hook id to the `pre-commit-hooks` configuration
+
 :::::::::::::::::::::::: solution
 
-## Challenge 7: Add the `forbid-new-submodules` hook id to the `pre-commit-hooks` configuration
+## Solution
 
 The following line should be added under the `hooks:` section of the `- repo:
 https://github.com/pre-commit/pre-commit-hooks` repository configuration.
@@ -941,21 +926,6 @@ large so are less of a problem.
 Cached virtual environments can grow to be quite large though, but they can be easily tidied up using the `pre-commit
 gc` command (`gc` stands for Garbage Collection.
 
-::::::::::::::::::::::::::::::::::::: callout
-
-Under Linux operating systems you can schedule this job to run periodically (e.g. monthly) using
-[cron](https://en.wikipedia.org/wiki/Cron). To do this monthly you could `fcrontab -e` and add the following line to run
-`pre-commit gc` at mid-day on the first day of every month.
-
-``` bash
-0 12 1 * * /usr/bin/pre-commit gc
-```
-
-Ideally you will have installed `pre-commit` at the system level otherwise you will have to activate the Conda
-environment first.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Going further
 
 Despite the name `pre-commit` actually supports hooks at many different stages
@@ -972,13 +942,13 @@ apply across all configured repositories.
 There is one section of the configuration which we haven't covered yet, the `ci:` section defined at the bottom. This
 controls how `pre-commit` runs and is used in Continuous Integration which is the topic of our next chapter.
 
-We've seen how hooks and in particular the [pre-commit][pc] suite can be used to automate
-many tasks such as running linting checks on your code base prior to commits. A short coming of this approach is that
-whilst the configuration file (`.pre-commit-config.yaml`) may live in your repository it means that every person
-contributing to the code has to install the hooks and ensure they run locally.
+We've seen how hooks and in particular the [pre-commit][pc] suite can be used to automate many tasks such as running
+linting checks on your code base prior to commits. A short coming of this approach is that whilst the configuration file
+(`.pre-commit-config.yaml`) may live in your repository it means that every person contributing to the code has to
+install the hooks and ensure they run locally.
 
-This won't always be the case but this is where [pre-commit.ci][pc-ci] comes in handy as it runs the Pre-commit hooks as
-part of the Continuous Integration on GitHub which is the focus of the next episode.
+Not everyone who contributes to your code will do this that is where [pre-commit.ci][pc-ci] comes in handy as it runs
+the Pre-commit hooks as part of the Continuous Integration on GitHub which is the focus of the next episode.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 

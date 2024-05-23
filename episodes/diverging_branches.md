@@ -799,7 +799,7 @@ of resolving merge conflicts the branch `origin/ns-rse/merge-conflict` exists wi
 In your pairs work through the tasks of resolving these conflicts.
 
 1. Create a new branch `resolve-merge-conflict`.
-2. Merge the `origin/ns-rse/merge-conflict` branch.
+2. Merge the `origin/ns-rse/merge-conflict` branch into `resolve-merge-conflict`.
 3. Look at the file you are told there are conflicts with and resolve them, you should remove the conflict delimiters
    (`<<<<<<< HEAD` / `=======` / `>>>>>>> origin/ns-rse/merge-conflict`) and select just one of the changes to retain.
 
@@ -870,10 +870,11 @@ Arguments rage online between experienced users as to whether you should `git me
 matter of preference and you should agree within your team which strategy to use and stick with it.
 
 However it is worth noting that if you `git merge` your changes from the `main` branch into your feature branch when you
-come to make merge your branch into `main` via a Pull Request then the `git diff` will show all changes for commits that
+come to merge your feature branch into `main` via a Pull Request then the `git diff` will show all changes for commits that
 have been merged into `main` since your feature branch was made and not just the changes you have made in your feature
-branch. This can make reviewing pull requests considerably harder and is a good case for using `git rebase` to keep your
-feature branches up-to-date when you know they have diverged.
+branch (i.e. the commits that have already been merged into `main` also appear in your pull request). This can make
+reviewing pull requests considerably harder and is a good case for using `git rebase` to keep your feature branches
+up-to-date when you know they have diverged.
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints

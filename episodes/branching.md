@@ -229,24 +229,6 @@ have been made on the `multiply` branch.
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: callout
-
-There are a _lot_ of options for formatting the output of `git log` that allow you to restrict output to just the
-information you are interested in and change the display. For this course we use `--graph` and the basic
-`--pretty="%h %ad (%cr) %x09 %an : %s`.
-
-For convenience you can save this as an alias using the following.
-
-``` bash
-alias gl='git log --graph --pretty="%h %ad (%cr) %x09 %an : %s"'
-```
-
-You can persist this between sessions by adding the above line to `~/.bashrc` or `~/.bash_aliases` if you use the
-[Bash][bash] shell. If you use the [ZSH][zsh] shell the framework [Oh My Zsh][ohmyzsh] includes a number of aliases
-for formatting Git log output (e.g. `git logp`).
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Working with Branches
 
 The `git switch` command is the common method for working with branches. It allows you to list, create and delete
@@ -922,17 +904,17 @@ Only the `CONTRIBUTING.md` file has been restored and not the `ANOTHER.md`.
 
 ## Challenge 7: Stashing
 
-Working as a pair on the `python-maths` repository...
+Working in your pairs on the `python-maths` repository...
 
 1. Create a `contributing` branch.
 2. Create a `CONTRIBUTING.md` with `echo "# Contributing\n\nContributions to this repository are welcome via Pull
    Requests." > CONTRIBUTING.md`.
 3. Do _not_ add and commit, instead `git stash` your changes.
-4. Create a `citation` branch.
+4. Switch to the `main` branch and create a `citation` branch.
 5. Add a basic `CITATION.cff` with `echo "cff-version: 1.2.0\ntitle: Pytest Examples\ntype: software" > CITATION.cff`.
 6. Add and commit this file.
 7. Unstash the `CONTRIBUTING.md` file on the `citation` branch.
-8. Stage and `git commit --amend`.
+8. Amend the previous commit to include `CONTRIBUTING.md` (**Hint** - you need to `add` and `commit` the file).
 9. Push the changes to GitHub, create a merge request and merge the changes.
 10. Delete the branches locally (try and avoid any messages telling you there are unmerged changes).
 
@@ -1022,6 +1004,3 @@ This was a revelation that came to me as I wrote the material for this Episode a
 - [git branches: intuition & reality](https://jvns.ca/blog/2023/11/23/branches-intuition-reality/)
 
 [atlassian_git_reset]: https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
-[bash]: https://www.gnu.org/software/bash/
-[ohmyzsh]: https://ohmyz.sh/
-[zsh]: https://zsh.sourceforge.io/
