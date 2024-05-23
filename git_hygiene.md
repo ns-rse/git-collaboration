@@ -29,13 +29,13 @@ exercises: 2
 ## Git Configuration
 
 Git configuration comes in two forms, "global" and "local" and is courtesy of some simple text files. The global
-configuration file lives in your home director and on GNU/Linux and OSX systems is `~/.gitconfig` (on Windows it is
+configuration file lives in your home directory and on GNU/Linux and OSX systems is `~/.gitconfig` (on Windows it is
 `C:\Users\<username>\.gitconfig`) and will have been setup when you first attempted to use Git and were prompted for
 your name and email address.
 
 Each repository that is under Git version control has a `.git/` directory where all of the configuration, hooks and
 history live. Within this directory you will find a `.git/config` file which is the "local" configuration for that
-repository. Configuration defined locally over-rides global configurations.
+repository. Configuration options defined locally over-ride global configuration options.
 
 There are two ways of modifying either the global or local configuration, using the Command Line `git config <options>`
 or by editing either the global (`~/.gitconfig`) or local (`git/config`) files.
@@ -137,21 +137,70 @@ You could alternatively edit the `~/.gitconfig` file directly and add the follow
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-<!-- ### Multiple Configurations -->
+### Alias'
 
-<!-- It may be the case that you have multiple Git accounts and want different configurations for each. This is possible to -->
-<!-- do in your "global" configuration courtesy of the `includeIf` directive and creating secondary `.gitconfig_<account>` -->
-<!-- files. -->
+A very useful configuration option available is the ability to set [aliases][gitaliases] for Git. This means you can
+create short cuts to complex commands. Aliases live under the `[alias]` section of the global (`.gitconfig`) or local
+(`.git/config`) configuration files. They can be set at the command line with `git config --[global|local]
+alias.<shortcut> <command>` .
 
-<!-- Say you have an account on GitHub and one on GitLab and you wish to use different configuration parameters for each. -->
+If you wanted to save a few key strokes and set `sw` as an alias for `switch` globally you would.
+
+``` bash
+git config --global alias.sw switch
+```
+
+Or if you want to unstage files that are currently staged you can set an `unstage` alias using the following where the
+command you wish to add is put in quotes so the shell doesn't think they are arguments to the command and treats them as
+a string.
+
+As with other configuration options you can also edit the configuration files directly to add the commands.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 2 - Set a &nbsp; `git log` alias
+
+`git log` shows the history of commits on the current branch, but its default is quite verbose. Fortunately there are a
+_lot_ of options to modify the output adding colour, shortening dates and including a graph. You can see all the options
+in the manual ([`git log --help`][gitlog]). For this exercise add the following set of log options to an alias of your
+choice (this course uses `logp` but you are free to set it to whatever you want, e.g. `lp`)
+
+``` bash
+log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+```
+
+:::::::::::::::::::::::: solution
+
+## Solution 1 - Edit &nbsp; `~/.gitconfig`
+
+You can set the alias `logp` to the above `git log` options by editing `~/.gitconfig` and adding the following
+
+``` bash
+[alias]
+    logp = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+```
+
+:::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::: solution
+
+## Solution 2 - Use &nbsp; `git config`
+
+You could also set this alias at the command line
+
+``` bash
+git config --global alias.logp 'log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph'
+```
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### `.gitignore`
 
 The [`.gitignore`][gitignore] file does exactly what you might expect it to, it contains lists of directories and files
-that should be ignored. To save having to write out the path to each and every file the format accepts [regular
-expressions][regex]. This file, like many others uses `#` as a comment, to
-use a `#` in a file name you therefore need to escape it with the `\` slash. As with most regular expression engines the
-`*` is a wild card.
+that should be ignored. To save having to write out the path to each and every file the format accepts
+[patterns][gitignorepatterns]. This file, like many others uses `#` as a comment, to use a `#` in a file name you
+therefore need to escape it with the `\` slash. A `*` matches anything but slashes and leading/trailing `**` match
+all directories (leading) or everything within a directory (trailing). For more details
 
 A common set of files you may want to ignore is the `.DS_Store` directory that Mac OSX automatically generates in
 most directories. Just as you can exclude files you can list directories so add that to the `.gitignore` in the
@@ -184,10 +233,10 @@ repository.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 2
+## Challenge 3
 
 In your pairs exclude files with the extension `.csv` and `.pkl` from being added to the `python-maths` project by
-adding the appropriate pattern to the `.gitignore` file to a new branch and merge it into the `main` branch via a
+adding the appropriate pattern to the `.gitignore` file on a new branch and merge it into the `main` branch via a
 pull-request, assigning it to the other person for review.
 
 :::::::::::::::::::::::: solution
@@ -205,15 +254,15 @@ is required to ensure _any_ file, no matter what comes before the extension is i
 Staging and committing, then pushing to GitHub
 
 ``` bash
+git switch main
+git pull
+git switch -c ns-rse/ignore-csv-pkl
 git add .gitignore
 git commit -m "chore: Ignoring .csv and .pkl files"
 git push
 ```
 
-Pull requests are created on GitHub and as you are both working on the same repository you will have both made Pull
-Requests. Make sure to review the changes are as expected and merge one of the pull requests. The second one will have a
-conflict, but you can safely close the request, perhaps adding a comment to say the changes have already been merged and
-referencing the Pull Request number preceeded with a `#` so it is linked.
+Pull requests are created on GitHub.
 
 :::::::::::::::::::::::::::::::::
 
@@ -221,9 +270,10 @@ referencing the Pull Request number preceeded with a `#` so it is linked.
 
 ### `difftastic`
 
-When undertaking Pull Requests on GitHub there is the ability to toggle between two [[different views]][githubdiff] of the
-differences. The standard view shows the changes line-by-line and looks like the following where the old lines are
-started with `-` signs and may well be in red and the newer lines are started with `+` and may well be in green.
+When undertaking Pull Requests on GitHub there is the ability to toggle between two [different views][githubdiff] of the
+differences. The standard view shows the changes line-by-line and looks like the following where the deleted lines are
+started with `-` signs and may well be in red and the added lines are started with `+` and may well be in green. Changes
+within a line are reflected as a deletion _and_ addition.
 
 ``` bash
 @@ -1861,12 +1862,18 @@ tree -afhD -L 2 main/
@@ -270,7 +320,7 @@ terminal live.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 3
+## Challenge 4
 
 Install [difftastic][difftastic] on your computer and configure Git globally to use it.
 
@@ -326,36 +376,28 @@ function and correcting some spelling mistakes. But all of these pertain to one 
 the projects issues and as the work is self-contained and we've not added to any other files they could be a single
 commit.
 
-Git has a few functions to help here and we'll go through those now, the first is amending commits.
+Git has a few functions to help here and we'll go through those.
 
-### `git commit --ammend`
-
-We'll use [pytest-examples](https://github.com/ns-rse/pytest-examples) as an example for this work but you can do
-this in any repository you have going. We'll clone the repository and make a new branch called `amend-fixup-tutorial`.
+We'll use the `python-maths` repository as an example and will make a new branch to add a `CONTRIBUTING.md` file to.
 
 ``` bash
-git clone git@github.com:ns-rse/pytest-examples.git
-cd pytest-examples
+cd pytest-maths
 git switch -c amend-fixup-tutorial
   Switched to a new branch 'amend-fixup-tutorial'
 ```
 
-Lets add a simple `CONTRIBUTING.md` file to the repository.
+We now add a simple `CONTRIBUTING.md` file to the repository.
 
 ``` bash
 echo "# Contributing\n\nContributions via pull requests are welcome." > CONTRIBUTING.md
 git add CONTRIBUTING.md
-git commit -m "Adding CONTRIBUTING.md"
+git commit -m "docs: Adding CONTRIBUTING.md"
 ```
 
 ``` bash
-git log --oneline
+git logp
   01191a2 (HEAD -> amend-fixup-tutorial) Adding CONTRIBUTING.md
 ```
-
-This should be familiar to users of [Git][git] whether you use the command line interface (CLI), [Emacs'][emacs] amazing
-Git porcelain [magit][magit] or any other tool such as [GitKraken][gitkraken] or the support in you IDE such as
-[RStudio][rstudio] or VSCode.
 
 ### Making Amends
 
@@ -370,23 +412,23 @@ echo "\nPlease make a fork of this repository, make your changes and open a Pull
 Now you could make a second commit...
 
 ``` bash
-git add -u && git commit -m "Ask for PRs via fork in CONTRIBUTING.md"
+git add -u && git commit -m "docs: Ask for PRs via fork in CONTRIBUTING.md"
 ```
 
 ``` bash
-git log --oneline
+git logp
 9f0655b (HEAD -> amend-fixup-tutorial) Ask for PRs via fork in CONTRIBUTING.md
 01191a2 Adding CONTRIBUTING.md
 ```
 
 ...and there is nothing wrong with that. However, Git history can get long and complicated when there are lots of small
-commits, because these two changes to `CONTRIBUTING.md` are essentially the same piece of work. If we'd been thinking
-clearly we would have written about making forks in the first place and made a single commit.
+commits, because these two changes to `CONTRIBUTING.md` are essentially the same piece of work then If we'd been
+thinking clearly we would have written about making forks in the first place and made a single commit.
 
 Fortunately Git can help here as there is the `git commit --amend` option which adds the staged changes to the last
 commit and allows you to edit the last commit message (if nothing is currently staged then you will be prompted to edit
-the last commit message). We can undo the last commit using `git reset HEAD~1` and instead amend the first commit that
-added the `CONTRIBUTING.md`
+the last commit message). We can undo the last commit using `git reset HEAD~1` (more on resetting later) and instead
+amend the first commit that added the `CONTRIBUTING.md`
 
 ``` bash
 git reset HEAD~1
@@ -395,7 +437,7 @@ git commit --amend
 ```
 
 ``` bash
-git log --oneline
+git logp
   4fda15f (HEAD -> amend-fixup-tutorial) Adding CONTRIBUTING.md
 cat CONTRIBUTING.md
 # Contributing
@@ -405,8 +447,8 @@ Contributions via pull requests are welcome.
 Please make a fork of this repository, make your changes and open a Pull Request.
 ```
 
-We now have one commit which contains the new `CONTRIBUTING.md` file that contains all the changes we wished to have
-in the file in the first place and our Git history is slightly more compact.
+We now have one commit which contains the new `CONTRIBUTING.md` file with all the changes we wished to have in the file
+in the first place and our Git history is slightly more compact.
 
 ### `git commit --fixup`
 
@@ -423,10 +465,11 @@ git commit --allow-empty -m "Another empty commit for demonstration purposes"
 ```
 
 ```bash
-git log --oneline
+git logp
   8061221 (HEAD -> amend-fixup-tutorial) Another empty commit for demonstration purposes
   65587ce Empty commit for demonstration purposes
   4fda15f Adding CONTRIBUTING.md
+  35aa48c Previous commit before adding CONTRIBUTING.md
 ```
 
 And let's expand our `CONTRIBUTING.md` file further.
@@ -436,18 +479,16 @@ echo "\nPlease note this repository uses [pre-commit](https://pre-commit.com) to
 ```
 
 We want to merge this commit with the first one we made in this tutorial using `git commit --fixup`. To do this we need
-to know the hash (`4fda15f` see output from above `git log`) or the relative reference of the commit we want which in
-this case is `HEAD~2` as it is three commits back from the current `HEAD` (which is commit `0`, most indexing in
-computing starts at `0` rather than `1`). Use _one_ for the following `git commit --fixup` commands (adjusting the hash
-to yours if you are using that option, you can find this using `git log --oneline`).
+to know the hash (`4fda15f` see output from above `git logp`). You then use `git commit --fixup <hash>` to commit your
+changes as a "fixup" of the earlier commit.
 
 ``` bash
 git add -u
 git commit --fixup 4fda15f
-git commit --fixup HEAD~2
 ```
 
-We see the commit we have just made starts with `fixup!` and is then followed by the commit message that it is fixing.
+We see the commit we have just made starts with `fixup!` and is then followed by the commit message that it is fixing,
+but it hasn't yet been combined into that commit.
 
 ```bash
 git log --oneline
@@ -455,29 +496,31 @@ git log --oneline
   8061221 Another empty commit for demonstration purposes
   65587ce Empty commit for demonstration purposes
   4fda15f Adding CONTRIBUTING.md
+  35aa48c Previous commit before adding CONTRIBUTING.md
 ```
 
-The final step is to perform the automatic squashing via an interactive rebase, again you can either use the hash or the
-relative reference.
+The final step is to perform the automatic squashing via an interactive rebase. You need to supply the hash of the
+commit _before_ the one you are fixing up, in this case `35aa48c` (check the output of `git logp` if you haven't made a
+note of this).
 
 ``` bash
 git rebase -i --autosquash 4fda15f
-git rebase -i --autosquash HEAD~2
 ```
 
-This will open the default editor and because the `--autosquash` option has been used it will already have marked the
+This will open the default editor and because the `--autosquash` option has been used it should have marked the
 commits that need combining with `fixup`. All you have to do is save the file and exit and we can check the history and
 look at the contents of the file.
 
-**NB** If you find that the necessary commit _isn't_ already marked navigate to that line and delete `pick`. The lines
-below the file you have open give instructions on how you can mark commits for different actions, in this case you can
-replace `pick` with either `f` or `fixup`. Save and exit and the commits are squashed.
+**NB** If you find that the necessary commit _isn't_ already marked navigate then you are likely to have supplied the
+wrong hash (most probably the hash of the commit your wish to fixup rather than the commit before it).
 
 ```bash
-git log --oneline
+git logp
   0fda21e (HEAD -> amend-fixup-tutorial) Another empty commit for demonstration purposes
   65587ce Empty commit for demonstration purposes
   4fda15f Adding CONTRIBUTING.md
+  35aa48c Previous commit before adding CONTRIBUTING.md
+
 cat CONTRIBUTING.md
   # Contributing
 
@@ -488,7 +531,7 @@ cat CONTRIBUTING.md
   Please note this repository uses [pre-commit](https://pre-commit.com) to lint the Python code and Markdown files.
 ```
 
-And you're all done! If you were doing this for real on a repository you could now `git push` or continue your work. As
+And you're all done! If you were doing this for real on a repository you would now `git push` or continue your work. As
 this was just an example we can switch branches back to `main` and force deletion of the branch we created.
 
 ``` bash
@@ -512,6 +555,8 @@ provided but try not to use them instead you can use your `history` to check wha
 :::::::::::::::::::::::: solution
 
 ## Main branch with improved docstrings
+
+The instructions should have guided you through.
 
 On the `main` branch of your `python-maths` repository the `divide` function in `pythonmaths/arithmetic.py` should look
 like the following with four examples.
@@ -573,9 +618,9 @@ def square_root(x):
     >>> arithmetic.square_root(169)
         13.0
     """
-    try:
-        return x ** (1 / 2)
-    except:
+    if x < 0:
+        print("WARNING : you have supplied a negative number, the square root is complex.")
+    return (x) ** (1 / 2)
 
 ```
 
@@ -584,7 +629,7 @@ def square_root(x):
 
 ### `git absorb`
 
-Rather than having to look up what commit hashes or how many commits back you need to go to pass as an argument to
+Rather than having to look up commit hashes or work out how many commits back you need to go to pass as an argument to
 `--fixup` you can instead use the [git-absorb][gitabsorb] extension that works out what commits changes to each file
 being fixed up need rebasing and with the `--and-rebase` flag it will automatically perform the squashing rebase.
 
@@ -606,29 +651,29 @@ branches up-to-date but its a very flexible and powerful component of Git and it
 the same branch.
 
 We will now make a few commits to our branch and then squash them via an interactive rebase. This helps keep commits
-that you will merge into `main` atomic since even if you've been using `git commit --ammend` to sequentially update a
-commits you may still have several commits on a branch but be at the stage where you can combine all information into a
-single informative commit that is ready for merging into the `main` branch.
+that you will merge into `main` atomic since even if you've been using `git commit --amend` to sequentially update a
+commit you may still have several commits on a branch which can be combined into a single informative commit that is
+ready for merging into the `main` branch.
 
-Returning to the `pytest-examples` repository we cloned earlier we will make a series of empty commits to the repository
-and then undertake an interactive rebase to squash them.
+Returning to the `python-maths` repository we will make a series of empty commits on a new branch and then undertake an
+interactive rebase to squash them.
 
 ``` bash
-cd ~/work/git/hub/ns-rse/pytest-examples
+git switch -c test-rebase
 git commit --allow-empty -m "Commit 1"
 git commit --allow-empty -m "Commit 2"
 git commit --allow-empty -m "Commit 3"
 git commit --allow-empty -m "Commit 4"
 git commit --allow-empty -m "Commit 5"
-gl     # If you set the alias earlier if not git log --oneline
+git logp
 ```
 
 To squash these commits we need to know the hash or relative reference to the first commit we wish to interact with
 which the `git log` command does (if you set the `gl` alias earlier you can use that)
 
 ``` bash
-git log --one-line
-c33ab51 (HEAD -> main) Commit 5
+git logp
+c33ab51 (HEAD -> test-rebase) Commit 5
 f7bb1c9 Commit 4
 d47d914 Commit 3
 e859738 Commit 2
@@ -637,15 +682,7 @@ c437414 Commit 1
 a1101c7 [pre-commit.ci] Fixing issues with pre-commit
 ```
 
-The hash we want is the one _before_ `Commit 1` (`c437414` or `HEAD~4`). We start a rebase with `git rebase -i c437414^`
-which will open our default editor, hopefully `nano` and show the following.
-
-::::::::::::::::::::::::::::::::::::: callout
-
-The caret (`^`) is important here as you need to rebase back to the commit _before_ the one you wish to include in the
-squash. You could have specified `git rebase -i 2f7c382` and omitted the caret with the same effect.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
+The hash of the first commit we want to squash is `c437414` or `HEAD~5`) but you need to include it. We start a rebase with `git rebase -i c437414` which will open our default editor.
 
 ``` bash
 pick c437414 Commit 1 # empty
@@ -802,29 +839,41 @@ prefixed with `pick` will remain in the Git history.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+### Re-writing History - With Great Power
+
+...comes great scope for messing things up!
+
+The `--amend`, `--fixup` and `rebase -i` commands we have worked through are powerful tools, in effect they are
+re-writing the Git history that is shown in the `git log`. You may have noticed that the commit hashes change when using
+these commands.
+
+If you have pushed your work to GitHub and then use any of these commands to change the history of your branch locally
+the two will differ and Git will complain and tell you that you need to `git pull` first. If you know you want to push
+the changes you can force them to be pushed using `git push --force-with-lease`, however you should be _very_ careful
+doing so in some situations.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+If anyone else has `git pull` the branch or if the changes have been merged into `main` (or another branch) using these
+commands then `git push --force` will cause a lot of headaches so make sure no one else is working on your branches and
+don't force push to branches that have already been merged.
+
+`--force-with-lease` offers some protection against the problems that can arise and `--force-if-includes` help catch if
+you haven't `git pull` any changes that may be on the `origin`.
+
+The following resources are highly recommended reading on this topic.
+
+- [-force considered harmful; understanding git's -force-with-lease - Atlassian Developer
+  Blog](https://blog.developer.atlassian.com/force-with-lease/)
+- [Git: Force push safely with --force-with-lease and --force-if-includes - Adam
+  Johnson](https://adamj.eu/tech/2023/10/31/git-force-push-safely/)
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Keep things tidy
 
 Overtime the information about branches and commits can become bloated. We've seen how to delete branches already but
 there are a few other simple steps we can take to help keep the repository clean.
-
-### Taking out the Garbage
-
-Many repositories on GitHub and GitLab are configured to delete branches once they have been merged to `main`, if you're
-not diligent you can end up with a lot of old, stale local branches or orphaned commits. Git has a useful tool to help
-with this called `git gc`, the `gc` stands for Garbage Collection.
-
-Understanding how `git gc` works and what it is doing is an [advanced topic][advanced] and not covered in this tutorial,
-however it is worth being aware of as it calls a number of other commands such as `git prune` and `git repack`.
-Fortunately Git has been designed to run `git gc` automatically at various stages (e.g. after `git pull`, `git merge`,
-`git rebase` and `git commit`) so you shouldn't need to run it manually very often but can do so if required.
-
-::::::::::::::::::::::::::::::::::::: callout
-
-Orphaned commits are those that are not referenced by any other commits and don't form part of a branch. This can happen
-if you use `git reset` to move the `HEAD` of a branch to an earlier commit before you started making some changes and
-then made a new set of commits.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Maintenance
 
@@ -857,19 +906,19 @@ that, as with the branch naming convention suggested earlier, include metadata a
 There are keywords to start your commit message with that are self-explanatory
 
 - `fix:`
-- `feat:`ure
+- `feat:` - short for _future_
 - `build:`
 - `chore:`
 - `ci:`
 - `docs:`
 - `style:`
 - `refactor:`
-- `perf:`ormance
+- `perf:` - short for _performance_
 - `test:`
 
 If changes relate to a specific component or "scope" of a repository that can be included in parentheses afterwards. For
 example the Zero Division issue in `python-maths` relates to the `artihmatic` module so might be started with
-`fix(arithmatic)`.
+`fix(arithmetic)`.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -897,17 +946,14 @@ founders of GitHub and co-author of [Pro Git][progit] book on useful tips for us
 [advanced]: https://www.atlassian.com/git/tutorials/advanced-overview
 [concommit]: https://www.conventionalcommits.org/en/v1.0.0/
 [difftastic]: https://difftastic.wilfred.me.uk/
-[emacs]: https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html
-[git]: https://git-scm.com
 [gitabsorb]: https://github.com/tummychow/git-absorb
+[gitaliases]: https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
 [githubdiff]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#diff-view-options
 [gitignore]: https://git-scm.com/docs/gitignore
-[gitkraken]: https://www.gitkraken.com/
+[gitignorepatterns]: https://git-scm.com/docs/gitignore#_pattern_format
+[gitlog]: https://git-scm.com/docs/git-log
 [gitmaintenance]: https://git-scm.com/docs/git-maintenance
 [ignoregenerator]: https://www.toptal.com/developers/gitignore
-[magit]: https://magit.vc/
 [nano]: https://www.nano-editor.org/dist/latest/cheatsheet.html
 [progit]: https://git-scm.com/book/en/v2
 [r]: https://www.r-project.org
-[regex]: https://regexr.com/
-[rstudio]: https://posit.co/products/open-source/rstudio/
