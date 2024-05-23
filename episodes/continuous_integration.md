@@ -195,7 +195,8 @@ wheel.
 
 In your pairs add the [Python Coverage][pycov] GitHub Action to the `python-maths` repository.
 
-One person should make a branch for the work and make the following changes...
+Work together on the solution. Create GitHub issues and assign them and undertake the work on a new branch and make the
+following changes...
 
 1. Enable `pytest` to create a coverage report to a file by adding `--cov-report coverage.xml`.
 2. Run `coverage` on that file with `coverage xml coverage.xml` in the `run: |` section.
@@ -203,10 +204,9 @@ One person should make a branch for the work and make the following changes...
 
 :::::::::::::::::::::::: solution
 
-## Adding Python Coverage (WIP)
+## Adding Python Coverage
 
-1. Create an issue and assign it to one person.
-2. Create a branch to make the changes on.
+After creating an issue and assigning it you can create a new branch with the following.
 
 ``` bash
 git switch main
@@ -214,7 +214,8 @@ git pull
 git switch -c ns-rse/4-python-coverage
 ```
 
-3. Add the following to `.github/workflows/test-python-package.yml`
+The configuration you need to add changes the call to `pytest` to summarise coverage and output to a file and then calls
+the `coverage` action using that file.
 
 ``` yaml
       - name: Test with pytest
@@ -234,7 +235,7 @@ git switch -c ns-rse/4-python-coverage
 
 ## Pre-commit.ci
 
-We saw in the [hooks][hooks] section how to use [pre-commit][precommit] hooks to run certain tasks prior to making
+We saw in the _Hooks_ episode how to use [pre-commit][precommit] hooks to run certain tasks prior to making
 commits to your feature branch. [pre-commit.ci][precommit-ci] extends this and uses the same configured hooks to
 automatically check that code submitted in Pull Requests passes these same checks.
 
@@ -329,5 +330,6 @@ ci:
 [precommit]: https://pre-commit.com/
 [precommit-ci]: https://pre-commit.ci/
 [precommit-ci-docs]: https://pre-commit.ci/#configuration
+[pycov]: https://github.com/marketplace/actions/python-coverage
 [python-maths]: https://github.com/ns-rse/python-maths
 [yaml]: https://yaml.org

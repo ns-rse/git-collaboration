@@ -69,6 +69,19 @@ course or if the course is online one of the instructors will pair you up at ran
 
 Once paired up please add details to the Etherpad along with your GitHub usernames.
 
+::::::::::::::::::::::::::::::::::::: callout
+
+The aim of pairing up is _not_ to divide the tasks between people. There are a few exceptions but for most tasks you
+should work with your partner to solve each of the challenges, but with one person at the "driving seat" making the
+changes to the code as required.
+
+You should discuss what you think the solution should be as you work through the challenge.
+
+This is software development technique known as [Pair Programming][pairprogramming] and by discussing the solutions you
+will hopefully come away with a better understanding of the material.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Getting to Know Each Other
 
 In order to break the ice and find out something about the other participants on this course, please think about a
@@ -109,6 +122,23 @@ Once people have completed the task ask for volunteers to describe their experie
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+If anyone has multiple GitHub accounts it is possible that permission may be denied which force pushing if the wrong SSH
+key is used. It is simple to work around this by adding the following to the `.git/config` of the user and ensuring it
+points to the correct private SSH key that is associated with the account they wish to use.
+
+``` bash
+[core]
+    ...
+    sshCommand = ssh -i ~/.ssh/id_ed25519 -F /dev/null
+```
+
+The important part is that it points to the correct SSH key, in the above this is `~/.ssh/id_ed25519` which will
+need modifying to reflect the users key for the account they wish to use.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Cloning Repositories
 
 ::::::::::::::::::::::::::::::::::::: challenge
@@ -127,12 +157,13 @@ the repository under their account.
 
 1. Use the `Code` button of the [Python Maths][pythonMaths] to clone the repository locally (`git clone
    git@github.com:ns-rse/python-maths.git`).
-2. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` to the repository,
+2. Fetch additional branches with `git fetch origin {divide,multiply,ns-rse/merge-conflict}`.
+3. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` to the repository,
    it should be completely empty.
-3. In the locally cloned `python-maths` directory open the `.git/config` file and edit the line 7 that reads
+4. In the locally cloned `python-maths` directory open the `.git/config` file and edit the line 7 that reads
    `url = git@github.com:ns-rse/python-maths.git` and replace `ns-rse` with _your_ GitHub user name. E.g. if your GitHub
    username is `alice_and_bob` it should read `url = git@github.com:alice_and_bob/python-maths.git`. Save these changes.
-4. Force push the changes with `git push --force`.
+5. Force push with `git push --force`.
 
 This edit changes the `origin` to be the empty repository you created under _your_ account called `python-maths` and
 pushes the cloned repository there.
@@ -212,6 +243,7 @@ On the `python-maths` repository you both now have access to protect the `main` 
 1. _Settings > Branches > Add branch protection rule_
 2. Enter `main` under _Branch name pattern_
 3. Check the box _Require a pull request before merging_
+4. Prevent the repository owner from bypassing the rules by checking _Do not allow bypassing the above settings_.
 
 :::::::::::::::::::::::::::::::::
 
@@ -285,6 +317,7 @@ with your names and email addresses. Push the changes, create a pull request and
 [linux]: https://www.kernel.org
 [linuxGithub]: https://github.com/torvalds/linux
 [openTracks]: https://github.com/OpenTracksApp/OpenTracks
+[pairprogramming]: https://en.wikipedia.org/wiki/Pair_programming
 [pythonMaths]: https://github.com/ns-rse/python-maths
 [pytest]: https://docs.pytest.org/
 [rustGithub]: https://github.com/rust-lang/rust

@@ -17,7 +17,7 @@ contact an instructor in advance or arrive early and seek assistance from an ins
 This course uses a GitHub Template that you will, in small groups, create a copy of and collaborate on. Using this
 template and setting it up is part of the course, you do not need to set it up in advance.
 
-## Software Setup
+## Install Git
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
@@ -185,13 +185,11 @@ for your Operating System.
 ### Creating A Virtual Environment
 
 You will have to create a virtual environment to undertake the course. If you have installed Miniconda as described
-above you open a terminal (Windows use the Git Bash Shell) and create a Virtual Environment called `git-collaboation`,
-activate it and install the Python Package Manager programme `pip` using the following commands.
+above you open a terminal (Windows use the Git Bash Shell) and create a Virtual Environment called `git-collaboation`.
 
 ``` bash
 conda create --name git-collaboration python=3.11
 conda activate git-collaboration
-conda install pip
 ```
 
 :::::::::::::::::::::::::

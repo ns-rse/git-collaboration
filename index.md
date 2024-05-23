@@ -5,8 +5,9 @@ site: sandpaper::sandpaper_site
 
 Welcome to the _Git Collaboration_ course material.
 
-This course aims to help you develop a deeper understanding of how Git works to facilitate collaboration. It builds on foundational Git courses such as [Software Carpentry: Git Novice][swCarpentryGit] and
-[Git and GitHub through GitKraken : From Zero to Hero!][zeroHero].
+This course aims to help you develop a deeper understanding of how Git works to facilitate collaboration. It builds on
+foundational Git courses such as [Software Carpentry: Git Novice][swCarpentryGit] and [Git and GitHub through
+GitKraken : From Zero to Hero!][zeroHero].
 
 The core idea around the course is that by improving your understanding of working with branches and how to make your
 commits tidier and neater it makes it easier to understand pull requests and Git history which in turn makes it easier
