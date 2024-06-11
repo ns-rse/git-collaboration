@@ -1,11 +1,12 @@
 ---
-title: "Reviewing"
+title: "Pull Requests and Reviewing"
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
+- How can I make Pull Requests easier to review?
 - How can I make useful and constructive Pull Request reviews?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -16,7 +17,7 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Branches
+## Making Pull/Merge Requests
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -84,3 +85,4 @@ Cool, right?
 - Run `sandpaper::build_lesson()` to preview your lesson locally
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
