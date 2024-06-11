@@ -939,6 +939,7 @@ example the Zero Division issue in `python-maths` relates to the `artihmatic` mo
 
 - [Atomic commits will help you git legit. – Pauline Vos](https://www.pauline-vos.nl/atomic-commits/) the [video of her
   talk](https://www.youtube.com/watch?v=_e5oq4JT4_8) is well worth watching.
+- [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
 - [So You Think You Know Git](https://www.youtube.com/watch?v=aolI_Rz0ZqY) an excellent talk by Scot Chacon, one of the
 founders of GitHub and co-author of [Pro Git][progit] book on useful tips for using Git.
 - [Atlassian | Advanced Git Tutorials][advanced]
