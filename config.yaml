@@ -65,8 +65,8 @@ episodes:
 - diverging_branches.md
 - hooks.md
 - continuous_integration.md
-- reviewing.md
-- project_management.md
+# - reviewing.md
+# - project_management.md
 - additional_topics.md
 - further_resources.md
 

@@ -179,6 +179,7 @@ the habit of starting commit messages with "WIP".
 
 We can test the hook by making a throw-away branch and adding an empty commit that starts with `WIP` and then trying to
 `git push` the commit. After it fails we can force delete this test branch.
+
 ``` bash
 ❱ git switch -c ns-rse/test-hook
 ❱ git commit --allow-empty -m "WIP - testing the pre-push hook"

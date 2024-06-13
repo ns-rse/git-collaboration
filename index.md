@@ -13,11 +13,13 @@ The core idea around the course is that by improving your understanding of worki
 commits tidier and neater it makes it easier to understand pull requests and Git history which in turn makes it easier
 to collaborate and work on code with others (including your future self!).
 
-The course is and is structured in two halves. The first solidifies the concepts around branches, how to use Git in a
-structured manner, termed "git hygiene", and how to use Git hooks effectively to make sure your work is "clean" which
-increases your productivity and reduces some of the friction that can arise when working collaboratively. These concepts
-serve as a basis for the second half of the course which covers Continuous Integration, effective reviewing and project
-management.
+The course is split into six episodes. The first introduces how to customise the configuration of your Git repository
+and how to make informative and atomic commits which makes the history easier to read and understand. Once the concepts
+of clean history are complete the material moves onto discuss branches, how switch between branches, moving around the
+history of a branch, correcting commits made to the wrong branch and stashing work in progress. This foundation of how
+branches work is the basis the next episode which shows how to deal with diverging branches. The concept of Git hooks
+are then introduced along with the Pre-Commit framework. Finally examples of how to leverage Continuous Integration in
+your workflow are introduced.
 
 [swCarpentryGit]: https://swcarpentry.github.io/git-novice/
 [zeroHero]: https://srse-git-github-zero2hero.netlify.app
