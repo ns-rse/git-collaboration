@@ -682,7 +682,8 @@ c437414 Commit 1
 a1101c7 [pre-commit.ci] Fixing issues with pre-commit
 ```
 
-The hash of the first commit we want to squash is `c437414` or `HEAD~5`) but you need to include it. We start a rebase with `git rebase -i c437414` which will open our default editor.
+The hash of the first commit we want to squash is `c437414` or `HEAD~5`) but you need to include it. We start a rebase
+with `git rebase -i c437414` which will open our default editor.
 
 ``` bash
 pick c437414 Commit 1 # empty

@@ -24,6 +24,7 @@ ignores:
 
 - "site/**/*.md"
 - ".github/**/*.md"
+- "renv/**/*.md"
 
 # Fix any fixable errors
 
