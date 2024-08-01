@@ -46,10 +46,20 @@ finding out more about Git, GitHub and so forth.
 
 ### Videos
 
+Former founder of GitHub and co-author of the excellent book [Pro Git](https://git-scm.com/book/en/v2) Scott Chacon is
+big on Git advocacy. His book and articles are well worth reading and his videos are worth watching too.
+
 - [So You Think You Know Git - Scott Chacon FOSDEM 2024](https://www.youtube.com/watch?v=aolI_Rz0ZqY) an excellent talk
   by one of the co-founders of GitHub.
-- [So You Think You Konw Git (Part 2) - Scott Chacon DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4) another
+- [So You Think You Know Git (Part 2) - Scott Chacon DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4) another
   excellent talk.
+
+These are summarised in the following series of blog posts.
+
+- [Git Tips 1: Oldies but Goodies](https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/)
+- [Git Tips 2: Some Subtle New Things](https://blog.gitbutler.com/git-tips-2-new-stuff-in-git/)
+- [Git Tips 3: Really Large Repositories and
+  Monorepos](https://blog.gitbutler.com/git-tips-3-really-large-repositories/)
 
 ### Blogs
 
@@ -88,7 +98,7 @@ Various tutorials and tools that help explain how Git works.
 - [Git & GitHub through GitKraken Client - From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/)
 - [git-sim : visually simulate Git operations in your own repos](https://initialcommit.com/blog/git-sim)
 - [Git from the inside out](https://maryrosecook.com/blog/post/git-from-the-inside-out)
-- [Git School](http://git-school.github.io/visualizing-git/) a visual sandbox/playground.
+- [Git School](https://git-school.github.io/visualizing-git/) a visual sandbox/playground.
 
 #### Git Configuration
 
