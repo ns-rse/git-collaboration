@@ -84,11 +84,13 @@ Various tutorials and tools that help explain how Git works.
 - [Oh My Git!](https://ohmygit.org/) - a game for learning Git.
 - [Explain Git with D3](https://onlywei.github.io/explain-git-with-d3/#clean)
 - [Learn Git Branching](https://learngitbranching.js.org/)
+- [The Version Control Book](https://lennartwittkuhn.com/version-control-book/)
 - [Git & GitHub through GitKraken Client - From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/)
 - [git-sim : visually simulate Git operations in your own repos](https://initialcommit.com/blog/git-sim)
 - [Git from the inside out](https://maryrosecook.com/blog/post/git-from-the-inside-out)
+- [Git School](http://git-school.github.io/visualizing-git/) a visual sandbox/playground.
 
-#### Useful Articles
+#### Git Configuration
 
 - [Organizing multiple Git identities | Garrit's
   Notes](https://garrit.xyz/posts/2023-10-13-organizing-multiple-git-identities)
@@ -112,22 +114,36 @@ that help tackle fundamental but often misunderstood concepts.
 - [In a git repository, where do your files
   live?](https://jvns.ca/blog/2023/09/14/in-a-git-repository--where-do-your-files-live-/)
 
+#### Scott Chacon
+
+Former founder of GitHub and co-author of the excellent book [Pro Git](https://git-scm.com/book/en/v2) is big on Git
+advocacy. His videos and articles are well worth reading (as is his book).
+
+- [Pro Git](https://git-scm.com/book/en/v2)
+- [So You Think You Know Git (Part 1) - FOSDEM 2024](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
+- [So You Think You Know Git (Part 2) - DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4)
+- [Git Tips 1: Oldies but Goodies](https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/)
+- [Git Tips 2: Some Subtle New Things](https://blog.gitbutler.com/git-tips-2-new-stuff-in-git/)
+- [Git Tips 3: Really Large Repositories and
+  Monorepos](https://blog.gitbutler.com/git-tips-3-really-large-repositories/)
+
 #### General
 
 - [Little Things I Like to Do with Git – CSS Wizardry – Web Performance
   Optimisation](https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/#praise-people)
 - [Modern Git Commands and Features You Should Be Using](https://martinheinz.dev/blog/109)
 - [Advanced Git Features You Didn’t Know You Needed](https://martinheinz.dev/blog/43)
-- [Git Tips and Tricks](https://blog.gitbutler.com/git-tips-and-tricks/) blog post/talk from Scott Chacon (one of the
-  founders of GitHub)
 - [unixorn/git-extra-commands: A collection of git utilities, useful extra git scripts, tutorials and other useful
   articles.](https://github.com/unixorn/git-extra-commands)
+- [Git as debugging tool - Lucas Seiki Oshiro](https://lucasoshiro.github.io/posts-en/2023-02-13-git-debug/)
 
 #### Commits
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) how to structure commit messages to be
   informative.
 - [Git Commit Patterns](https://dev.to/hornet_daemon/git-commit-patterns-5dm7)
+- [Write Better Commits, Build Better Projects - The GitHub
+  Blog](https://github.blog/developer-skills/github/write-better-commits-build-better-projects/)
 
 #### Rebasing
 
@@ -141,6 +157,7 @@ that help tackle fundamental but often misunderstood concepts.
 
 #### Reviewing
 
+- [Code-Review.org](https://code-review.org/) - an online tutorial for code review.
 - [GitHub Pull Request Pitfalls](https://davidism.com/github-pull-request-pitfalls/)
 - [Tidyteam code review principles](https://code-review.tidyverse.org/) (derived from [How to do a Code
   Review](https://google.github.io/eng-practices/review/reviewer/)).
@@ -160,6 +177,10 @@ that help tackle fundamental but often misunderstood concepts.
 
 - [The GitHub Blog](https://github.blog/) updates, ideas, and inspiration from GitHub.
 - [GitLab Blogs](https://about.gitlab.com/blog/) various categories of blogs from GitLab.
+
+#### History
+
+- [A Git story: Not so fun this time | Brachiosoft Blog](https://blog.brachiosoft.com/en/posts/git/)
 
 ### Mastodon
 
