@@ -192,6 +192,23 @@ advocacy. His videos and articles are well worth reading (as is his book).
 
 - [A Git story: Not so fun this time | Brachiosoft Blog](https://blog.brachiosoft.com/en/posts/git/)
 
+### StackOverflow
+
+You will likely have already come across [StackOverflow][so] already. Its a popular forum for asking and answering
+questions about almost any aspect of computing (with many subject specific sub-forums in [StackExchange][se]). It is
+worth creating an account here even if you never intend to ask questions as it is possible to bookmark questions and
+answers for future reference. Bookmarks can be organised into lists to make it easier to find specific topics.
+
+When searching use the `[<tag>]` notation to search for posts with specific tags, for example to search for posts tagged
+with `git` you would include `[git]` in your search terms, for `github` you would include `[github]` and so on.
+
+If you do ask questions try and provide as much information as possible in your question as to what you have tried (in
+terms of code and/or commands), the _exact_ output (copy and paste) and format your post using Markdown to make it
+easier for people to read.
+
+Also consider creating a [minimal reproducible example][reprex] to demonstrate your problem to others so they can
+recreate the problem, investigate where things have gone wrong and provide useful answers.
+
 ### Mastodon
 
 There are a lot of technical users who post their articles, ask questions and help each other out about all sorts
@@ -202,3 +219,7 @@ others struggle with and how they can be solved.
 useful to use the [Advanced Web
 Interface](https://fedi.tips/how-to-activate-mastodons-tweetdeck-style-advanced-web-interface/) and add a column for the
 `#git` tag. A good Android client is [Fedilab](https://fedilab.app/).
+
+[reprex]: https://stackoverflow.com/help/minimal-reproducible-example
+[se]: https://stackexchange.com/sites
+[so]: https://stackoverflow.com/
