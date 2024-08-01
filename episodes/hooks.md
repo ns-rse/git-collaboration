@@ -170,7 +170,6 @@ the habit of starting commit messages with "WIP".
 ❱ cp .git/hooks/pre-push.sample .git/hooks/pre-push
 ```
 
-
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
