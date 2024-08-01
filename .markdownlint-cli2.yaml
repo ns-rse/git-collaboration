@@ -1,5 +1,3 @@
-# Configuration
-
 config:
 
   line_length:
@@ -11,21 +9,15 @@ config:
       - div
   no-duplicate-heading: false
 
-# Globs
-
 globs:
 
 - "**/*.md"
 - "*.md"
-
-# Ignores
 
 ignores:
 
 - "site/**/*.md"
 - ".github/**/*.md"
 - "renv/**/*.md"
-
-# Fix any fixable errors
 
 fix: true

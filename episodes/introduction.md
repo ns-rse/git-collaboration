@@ -158,8 +158,8 @@ the repository under their account.
 1. Use the `Code` button of the [Python Maths][pythonMaths] to clone the repository locally (`git clone
    git@github.com:ns-rse/python-maths.git`).
 2. Fetch additional branches with `git fetch origin {divide,multiply,ns-rse/merge-conflict}`.
-3. On GitHub create an empty repository called `python-maths`, do _not_ add a license or `.gitignore` to the repository,
-   it should be completely empty.
+3. On GitHub create an empty repository called `python-maths` using the [new repo][gh_newrepo], do _not_ add a license
+   or `.gitignore` to the repository, it should be completely empty.
 4. In the locally cloned `python-maths` directory open the `.git/config` file and edit the line 7 that reads
    `url = git@github.com:ns-rse/python-maths.git` and replace `ns-rse` with _your_ GitHub user name. E.g. if your GitHub
    username is `alice_and_bob` it should read `url = git@github.com:alice_and_bob/python-maths.git`. Save these changes.
@@ -206,7 +206,7 @@ cd python-maths
 ### Repository Owners
 
 Just the repository owner should now edit the `.git/config` and modify line 7 where the `url` of the origin is defined
-replacing `ns-rse` with their GitHub username. For example if the repository owner uses the `alice_and_bob` username on
+replace `ns-rse` with their GitHub username. For example if the repository owner uses the `alice_and_bob` username on
 GitHub it should read.
 
 ``` bash
@@ -215,10 +215,17 @@ GitHub it should read.
      fetch = +refs/heads/*:refs/remotes/origin/*
 ```
 
+Alternatively you can do this at the command line with...
+
+``` bash
+git remote set-url origin git@github.com:alice_and_bob/python-maths.git
+```
+
 The Repository Owner should create a new, empty, but public repository on GitHub called `python-maths`, there is no need
 to include a license nor `.gitignore` file.
 
-The Repository Owner can push the cloned repository to their account with.
+The Repository Owner can push the cloned repository to their account with, the `--force` is optional and shouldn't be
+required unless you have inadvertently initialised the repository with additional files.
 
 ``` bash
 git push --force
@@ -244,6 +251,7 @@ On the `python-maths` repository you both now have access to protect the `main` 
 2. Enter `main` under _Branch name pattern_
 3. Check the box _Require a pull request before merging_
 4. Prevent the repository owner from bypassing the rules by checking _Do not allow bypassing the above settings_.
+5. Save the changes using the button at the bottom of the page.
 
 :::::::::::::::::::::::::::::::::
 
@@ -303,8 +311,12 @@ After completing these steps you should both have a copy of the `python-maths` r
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-If desired you can between you update the Metadata in `pyproject.toml` by creating a branch and updating lines 12 and 13
-with your names and email addresses. Push the changes, create a pull request and merge the changes.
+If desired you can between you update the Metadata in `pyproject.toml` it is important to have accurate Metadata in this
+file because if you ever publish your package to [Python Package Index (PyPI)][pypi] it will be used.
+
+To update the metadata create a branch and update lines 12 and 13 with your names and email addresses. Push the changes,
+create a pull request and merge the changes.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 [carpentryPad]: https://pad.carpentries.org/
@@ -313,11 +325,13 @@ with your names and email addresses. Push the changes, create a pull request and
 [forgejo]: https://forgejo.org/
 [git]: https://git-scm.com
 [gh]: https://github.com
+[gh_newrepo]: https://github.com/new
 [gl]: https://gitlab.com
 [linux]: https://www.kernel.org
 [linuxGithub]: https://github.com/torvalds/linux
 [openTracks]: https://github.com/OpenTracksApp/OpenTracks
 [pairprogramming]: https://en.wikipedia.org/wiki/Pair_programming
+[pypi]: https://pypi.org/
 [pythonMaths]: https://github.com/ns-rse/python-maths
 [pytest]: https://docs.pytest.org/
 [rustGithub]: https://github.com/rust-lang/rust
