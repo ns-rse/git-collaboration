@@ -46,10 +46,20 @@ finding out more about Git, GitHub and so forth.
 
 ### Videos
 
+Former founder of GitHub and co-author of the excellent book [Pro Git](https://git-scm.com/book/en/v2) Scott Chacon is
+big on Git advocacy. His book and articles are well worth reading and his videos are worth watching too.
+
 - [So You Think You Know Git - Scott Chacon FOSDEM 2024](https://www.youtube.com/watch?v=aolI_Rz0ZqY) an excellent talk
   by one of the co-founders of GitHub.
-- [So You Think You Konw Git (Part 2) - Scott Chacon DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4) another
+- [So You Think You Know Git (Part 2) - Scott Chacon DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4) another
   excellent talk.
+
+These are summarised in the following series of blog posts.
+
+- [Git Tips 1: Oldies but Goodies](https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/)
+- [Git Tips 2: Some Subtle New Things](https://blog.gitbutler.com/git-tips-2-new-stuff-in-git/)
+- [Git Tips 3: Really Large Repositories and
+  Monorepos](https://blog.gitbutler.com/git-tips-3-really-large-repositories/)
 
 ### Blogs
 
@@ -84,11 +94,13 @@ Various tutorials and tools that help explain how Git works.
 - [Oh My Git!](https://ohmygit.org/) - a game for learning Git.
 - [Explain Git with D3](https://onlywei.github.io/explain-git-with-d3/#clean)
 - [Learn Git Branching](https://learngitbranching.js.org/)
+- [The Version Control Book](https://lennartwittkuhn.com/version-control-book/)
 - [Git & GitHub through GitKraken Client - From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/)
 - [git-sim : visually simulate Git operations in your own repos](https://initialcommit.com/blog/git-sim)
 - [Git from the inside out](https://maryrosecook.com/blog/post/git-from-the-inside-out)
+- [Git School](https://git-school.github.io/visualizing-git/) a visual sandbox/playground.
 
-#### Useful Articles
+#### Git Configuration
 
 - [Organizing multiple Git identities | Garrit's
   Notes](https://garrit.xyz/posts/2023-10-13-organizing-multiple-git-identities)
@@ -112,22 +124,36 @@ that help tackle fundamental but often misunderstood concepts.
 - [In a git repository, where do your files
   live?](https://jvns.ca/blog/2023/09/14/in-a-git-repository--where-do-your-files-live-/)
 
+#### Scott Chacon
+
+Former founder of GitHub and co-author of the excellent book [Pro Git](https://git-scm.com/book/en/v2) is big on Git
+advocacy. His videos and articles are well worth reading (as is his book).
+
+- [Pro Git](https://git-scm.com/book/en/v2)
+- [So You Think You Know Git (Part 1) - FOSDEM 2024](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
+- [So You Think You Know Git (Part 2) - DevWorld 2024](https://www.youtube.com/watch?v=Md44rcw13k4)
+- [Git Tips 1: Oldies but Goodies](https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/)
+- [Git Tips 2: Some Subtle New Things](https://blog.gitbutler.com/git-tips-2-new-stuff-in-git/)
+- [Git Tips 3: Really Large Repositories and
+  Monorepos](https://blog.gitbutler.com/git-tips-3-really-large-repositories/)
+
 #### General
 
 - [Little Things I Like to Do with Git – CSS Wizardry – Web Performance
   Optimisation](https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/#praise-people)
 - [Modern Git Commands and Features You Should Be Using](https://martinheinz.dev/blog/109)
 - [Advanced Git Features You Didn’t Know You Needed](https://martinheinz.dev/blog/43)
-- [Git Tips and Tricks](https://blog.gitbutler.com/git-tips-and-tricks/) blog post/talk from Scott Chacon (one of the
-  founders of GitHub)
 - [unixorn/git-extra-commands: A collection of git utilities, useful extra git scripts, tutorials and other useful
   articles.](https://github.com/unixorn/git-extra-commands)
+- [Git as debugging tool - Lucas Seiki Oshiro](https://lucasoshiro.github.io/posts-en/2023-02-13-git-debug/)
 
 #### Commits
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) how to structure commit messages to be
   informative.
 - [Git Commit Patterns](https://dev.to/hornet_daemon/git-commit-patterns-5dm7)
+- [Write Better Commits, Build Better Projects - The GitHub
+  Blog](https://github.blog/developer-skills/github/write-better-commits-build-better-projects/)
 
 #### Rebasing
 
@@ -141,6 +167,7 @@ that help tackle fundamental but often misunderstood concepts.
 
 #### Reviewing
 
+- [Code-Review.org](https://code-review.org/) - an online tutorial for code review.
 - [GitHub Pull Request Pitfalls](https://davidism.com/github-pull-request-pitfalls/)
 - [Tidyteam code review principles](https://code-review.tidyverse.org/) (derived from [How to do a Code
   Review](https://google.github.io/eng-practices/review/reviewer/)).
@@ -161,6 +188,27 @@ that help tackle fundamental but often misunderstood concepts.
 - [The GitHub Blog](https://github.blog/) updates, ideas, and inspiration from GitHub.
 - [GitLab Blogs](https://about.gitlab.com/blog/) various categories of blogs from GitLab.
 
+#### History
+
+- [A Git story: Not so fun this time | Brachiosoft Blog](https://blog.brachiosoft.com/en/posts/git/)
+
+### StackOverflow
+
+You will likely have already come across [StackOverflow][so] already. Its a popular forum for asking and answering
+questions about almost any aspect of computing (with many subject specific sub-forums in [StackExchange][se]). It is
+worth creating an account here even if you never intend to ask questions as it is possible to bookmark questions and
+answers for future reference. Bookmarks can be organised into lists to make it easier to find specific topics.
+
+When searching use the `[<tag>]` notation to search for posts with specific tags, for example to search for posts tagged
+with `git` you would include `[git]` in your search terms, for `github` you would include `[github]` and so on.
+
+If you do ask questions try and provide as much information as possible in your question as to what you have tried (in
+terms of code and/or commands), the _exact_ output (copy and paste) and format your post using Markdown to make it
+easier for people to read.
+
+Also consider creating a [minimal reproducible example][reprex] to demonstrate your problem to others so they can
+recreate the problem, investigate where things have gone wrong and provide useful answers.
+
 ### Mastodon
 
 There are a lot of technical users who post their articles, ask questions and help each other out about all sorts
@@ -171,3 +219,7 @@ others struggle with and how they can be solved.
 useful to use the [Advanced Web
 Interface](https://fedi.tips/how-to-activate-mastodons-tweetdeck-style-advanced-web-interface/) and add a column for the
 `#git` tag. A good Android client is [Fedilab](https://fedilab.app/).
+
+[reprex]: https://stackoverflow.com/help/minimal-reproducible-example
+[se]: https://stackexchange.com/sites
+[so]: https://stackoverflow.com/

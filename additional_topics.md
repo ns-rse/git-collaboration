@@ -4,6 +4,8 @@ teaching: 10
 exercises: 2
 ---
 
+Some additional topics that extend working with branches and the process of reviewing.
+
 ## Worktrees instead of Branches
 
 Sometimes you will want to switch between branches that are all in development in the middle of work. If you've made
@@ -332,3 +334,32 @@ step of the `git rebase` and if tests fail you can fix them.
 ``` bash
 git rebase -x "pytest" <reference>
 ```
+
+## Constructive Reviewing
+
+Working collaboratively invariably involves reviewing pull/merge requests made by others. This is not something you
+should be afraid or anxious about undertaking as its a good opportunity to learn. Whether your work is being reviewed or
+you are reviewing others reading other people's code is an excellent way of learning.
+
+### Code Review Tutorial
+
+[Code-Review.org](https://code-review.org/) is an online tutorial to help you learn and improve how to undertake code
+reviews. It is an interactive self-paced learning resource that you can work through with the goals of...
+
+- Becoming a better reviewer and consider your method of communication, constructive and actionable criticism.
+- Be more comfortable having your code reviewed, share early and often.
+- Use code review as a collaboration tool for sharing knowledge so that everyone understands what changes are being
+  made.
+- Read more code! You will be encouraged to read the source code of the software and tools you regularly use, its a
+  great way of learning.
+- Enable more open source contributions and reviews.
+
+### Code Review Principles
+
+There are a number of useful guides out there to help you improve how you undertake code review. Two that stand out are
+listed below and it is recommended that you take the time to read through these.
+
+- [Tidyteam code review principles](https://code-review.tidyverse.org/) (derived from [How to do a Code
+  Review](https://google.github.io/eng-practices/review/reviewer/)).
+- [pyOpenSci Software Peer Review Guidebook! — Software Peer Review
+  Guide](https://www.pyopensci.org/software-peer-review/)

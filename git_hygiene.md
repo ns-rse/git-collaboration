@@ -682,7 +682,8 @@ c437414 Commit 1
 a1101c7 [pre-commit.ci] Fixing issues with pre-commit
 ```
 
-The hash of the first commit we want to squash is `c437414` or `HEAD~5`) but you need to include it. We start a rebase with `git rebase -i c437414` which will open our default editor.
+The hash of the first commit we want to squash is `c437414` or `HEAD~5`) but you need to include it. We start a rebase
+with `git rebase -i c437414` which will open our default editor.
 
 ``` bash
 pick c437414 Commit 1 # empty
@@ -939,8 +940,12 @@ example the Zero Division issue in `python-maths` relates to the `artihmatic` mo
 
 - [Atomic commits will help you git legit. – Pauline Vos](https://www.pauline-vos.nl/atomic-commits/) the [video of her
   talk](https://www.youtube.com/watch?v=_e5oq4JT4_8) is well worth watching.
+- [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
+- [Why you need small, informative Git commits](https://masalmon.eu/2024/06/03/small-commits/)
+- [Hack your way to a good Git history · Maëlle's R Blog](https://masalmon.eu/2024/06/11/rewrite-git-history/)
 - [So You Think You Know Git](https://www.youtube.com/watch?v=aolI_Rz0ZqY) an excellent talk by Scot Chacon, one of the
 founders of GitHub and co-author of [Pro Git][progit] book on useful tips for using Git.
+- [So You Think You Know Git Part 2](https://www.youtube.com/watch?v=Md44rcw13k4) follow-on from previous video.
 - [Atlassian | Advanced Git Tutorials][advanced]
 
 [advanced]: https://www.atlassian.com/git/tutorials/advanced-overview

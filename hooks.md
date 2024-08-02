@@ -170,7 +170,6 @@ the habit of starting commit messages with "WIP".
 ❱ cp .git/hooks/pre-push.sample .git/hooks/pre-push
 ```
 
-
 :::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::: solution
@@ -179,6 +178,7 @@ the habit of starting commit messages with "WIP".
 
 We can test the hook by making a throw-away branch and adding an empty commit that starts with `WIP` and then trying to
 `git push` the commit. After it fails we can force delete this test branch.
+
 ``` bash
 ❱ git switch -c ns-rse/test-hook
 ❱ git commit --allow-empty -m "WIP - testing the pre-push hook"
@@ -378,7 +378,7 @@ activate a virtual environment.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 3 - Checking out the installed `pre-commit` hook
+## Challenge 2 - Checking out the installed `pre-commit` hook
 
 We have just installed `pre-commit` locally in the `python-maths` repository lets see what it has done.
 
@@ -595,7 +595,7 @@ of the others that are defined.
 
 :::::::::::::::::::::::: solution
 
-## Challenge 4: What version of the `numpydoc` repo is configured
+## Challenge 3: What version of the `numpydoc` repo is configured
 
 Using [grep][grep] to search for the `numpydoc` string in the `.pre-commit-config.yaml` we can hone in on the `repo` and
 its associated `rev`.
@@ -612,7 +612,7 @@ We see that it is `v1.6.0` that is currently configured for `numpydoc`.
 
 :::::::::::::::::::::::: solution
 
-## Challenge 5: What hook(s) is/are enabled from the `black-pre-commit-mirror` repo?
+## Challenge 4: What hook(s) is/are enabled from the `black-pre-commit-mirror` repo?
 
 Searching for the `black-pre-commit-mirror` in the configuration and then looking for the `id` shows us what hooks are
 configured for this `repi`.
@@ -630,7 +630,7 @@ Jupyter Notebooks.
 
 :::::::::::::::::::::::: solution
 
-## Challenge 6: What arguments are listed for the `ruff` hook?
+## Challenge 5: What arguments are listed for the `ruff` hook?
 
 Finally searching for `ruff` in `.pre-commit-config.yaml` and then looking for the `args` field we can find out what
 arguments are passed to the [ruff][ruff] linter.
@@ -749,7 +749,7 @@ changes (**NB** make sure youre are)
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 7: Add the `forbid-new-submodules` hook id to the `pre-commit-hooks` configuration
+## Challenge 6: Add the `forbid-new-submodules` hook id to the `pre-commit-hooks` configuration
 
 :::::::::::::::::::::::: solution
 
@@ -780,13 +780,15 @@ GitHub repository and most contain in their `README.md` instructions on how to u
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
+## Challenge 7: Add the `numpydoc` repo, exclude the `tests/` and `doc/` directories and run it against the code base
+
 The [numpydoc](https://github.com/numpy/numpydoc) repo defines hooks that check the Python docstrings conform to the
 [Numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). Following the instructions add the repo
 to the `.pre-commit-config.yaml` (on a new branch)
 
 :::::::::::::::::::::::: solution
 
-## Challenge 8: Add the `numpydoc` repo, exclude the `tests/` and `doc/` directories and run it against the code base
+## Solution
 
 Create a branch to undertake the work on.
 
@@ -864,13 +866,15 @@ The `.pylintrc` file is a configuration file for `pylint` that defines what chec
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
+## Challenge 9: Define local `pre-commit` repo to run a `pytest` hook
+
 The `python-maths` repository has a suite of tests that can be run to ensure the code works as expected.
 
 Pytest is run simply with `pytest`.
 
 :::::::::::::::::::::::: solution
 
-## Challenge 9: Define local `pre-commit` repo to run a `pytest` hook
+## Solution
 
 Create a branch to undertake the work on.
 
