@@ -21,16 +21,18 @@ exercises: 2
 
 ## Will I Ever Know it All?
 
-![[xkcd : Git](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png){alt="XKCD Git Cartoon : This is Git. It tracks collaborative work on projects through a beautiful distributed graph theory tree model. Cool. How Do we use it? No idea. Just memorise these shell commands and type them to sync up. If you get errors, save your work elsewhere, delete the project and download a fresh copy."}
+![[xkcd : Git](https://xkcd.com/1597/)](https://imgs.xkcd.com/comics/git.png)
 
-Probably not. There is simply too much to Git and associated tools like GitHub/GitLab and Pre-Commit to have any hope of
-knowing everything there is to about all aspects. That shouldn't dishearten you from learning what you need to as you
+Probably not. There is simply too much to [Git][git] and associated tools like [GitHub][gh]/[GitLab][gl] and
+[Pre-Commit][precommit] to have any hope of knowing everything there is to about all aspects, and besides the tools,
+just like programming languages,  evolve over time. That shouldn't dishearten you from learning what you need to as you
 go.
 
 ## How can I keep on learning more about Git?
 
-Practise makes perfect, or so the saying goes, but in the case of computing its true, if you don't practise using
-the tools or writing code you will not improve. Whilst you might not reach perfection you will become more proficient.
+Practise makes perfect, or so the saying goes, but in the case of computing it really is true, if you don't practise
+using the tools or writing code you will not improve. Whilst you might not reach perfection you will become more
+proficient.
 
 ## What material would you recommend?
 
@@ -220,6 +222,10 @@ useful to use the [Advanced Web
 Interface](https://fedi.tips/how-to-activate-mastodons-tweetdeck-style-advanced-web-interface/) and add a column for the
 `#git` tag. A good Android client is [Fedilab](https://fedilab.app/).
 
+[git]: https://git-scm.com
+[gh]: https://github.com
+[gl]: https://gitlab.com
+[precommit]: https://pre-commit.com
 [reprex]: https://stackoverflow.com/help/minimal-reproducible-example
 [se]: https://stackexchange.com/sites
 [so]: https://stackoverflow.com/
