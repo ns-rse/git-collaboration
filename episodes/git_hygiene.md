@@ -921,6 +921,11 @@ If changes relate to a specific component or "scope" of a repository that can be
 example the Zero Division issue in `python-maths` relates to the `artihmatic` module so might be started with
 `fix(arithmetic)`.
 
+You don't have to use [Conventional Commits][concommit] but do try and use informative titles and add more detail if
+needs be to your commit messages. You don't want your history to look like this...
+
+![[XKCD Git Commit](https://xkcd.com/1296/)](https://imgs.xkcd.com/comics/git_commit_2x.png)
+
 ::::::::::::::::::::::::::::::::::::: keypoints
 
 - Global configuration is via `.gitconfig`
