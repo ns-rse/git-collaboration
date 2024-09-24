@@ -156,6 +156,17 @@ public key (the contents of the file ending in `.pub`) into the **Key** box then
 
 ## Conda Environments
 
+::::::::::::::::::::::::::::::::::::: callout
+
+## Anaconda Licensing
+
+It is important to fully understand and adhere to the [Anaconda Licensing][anacondalicense] which permits
+the use of their software (including Miniconda) in educational and research environments _only_ if there is no
+commercial benefit. If the work you undertake involves commercial collaboration you should seek alternative solutions
+for virtual environments (e.g. [virtualenvwrapper][virtualenvwrapper]).
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 In order to teach this course we need some code that is version controlled and some tasks to complete. [Python][python]
@@ -168,11 +179,6 @@ attending the course.
 
 If you are already familiar with Python and Virtual Environments you can simply create a fresh virtual environment to
 use for the course.
-
-**IMPORTANT** It is important to fully understand and adhere to the [Anaconda Licensing][anacondalicense] which permits
-the use of their software (including Miniconda) in educational and research environments _only_ if there is no
-commercial benefit. If the work you undertake involves commercial collaboration you should seek alternative solutions
-for virtual environments (e.g. [virtualenvwrapper][virtualenvwrapper]).
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
