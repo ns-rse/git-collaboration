@@ -169,6 +169,11 @@ attending the course.
 If you are already familiar with Python and Virtual Environments you can simply create a fresh virtual environment to
 use for the course.
 
+**IMPORTANT** It is important to fully understand and adhere to the [Anaconda Licensing][anacondalicense] which permits
+the use of their software (including Miniconda) in educational and research environments _only_ if there is no
+commercial benefit. If the work you undertake involves commercial collaboration you should seek alternative solutions
+for virtual environments (e.g. [virtualenvwrapper][virtualenvwrapper]).
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::: solution
@@ -194,6 +199,7 @@ conda activate git-collaboration
 
 :::::::::::::::::::::::::
 
+[anacondalicense]: https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research
 [gh]: https://github.com
 [git]: https://git-scm.com/
 [gitMac]: https://git-scm.com/download/mac
@@ -205,3 +211,4 @@ conda activate git-collaboration
 [python]: https://python.org
 [ssh-ed25519]: https://blog.g3rt.nl/upgrade-your-ssh-keys.html
 [ssh-keygen]: https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-openssh-on-macos-or-linux
+[virtualenvwrapper]: https://rse.shef.ac.uk/blog/2024-08-13-python-virtualenvwrapper/
