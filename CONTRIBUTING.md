@@ -1,4 +1,4 @@
-## Contributing
+## Contributing <!-- markdownlint-disable-line MD041 -->
 
 We welcome contributions to this open educational resource: fixes to
 existing material, bug reports, and reviews of proposed changes are all
