@@ -348,7 +348,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Diverging Branches</h1>
-        <p>Last updated on 2024-05-23 |
+        <p>Last updated on 2024-09-24 |
 
         <a href="https://github.com/ns-rse/git-collaboration/edit/main/episodes/diverging_branches.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -426,6 +426,7 @@ representation of the current state, albeit from a single developer.</p>
        commit id: "HEAD"
 
 -->
+<!-- markdownlint-disable-next-line MD013 -->
 <figure><img src="https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png" alt-text="Diverging branches in `python-maths` `ns-rse/2-square-root` is now behind the `main` branch which has incorporated the changes from `ns-rse/1-zero-division`." alt="Diverging branches in python-maths ns-rse/2-square-root is now behind the main branch which has incorporated the changes from ns-rse/1-zero-division." class="figure mx-auto d-block"><div class="figcaption">Diverging branches in <code>python-maths</code>
 <code>ns-rse/2-square-root</code> is now behind the <code>main</code>
 branch which has incorporated the changes from
@@ -453,6 +454,7 @@ incorporating in the feature branch.</p>
 (<code>git merge</code>) and rebasing (<code>git rebase</code>).</p>
 <div class="section level3">
 <h3 id="merging">Merging<a class="anchor" aria-label="anchor" href="#merging"></a></h3>
+<!-- markdownlint-disable-next-line MD013 -->
 <figure><img src="https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png" alt-text="**Before** - diverged branches in `python-maths` `ns-rse/2-square-root` is now behind the `main` branch which has incorporated the changes from `ns-rse/1-zero-division`." alt="Before - diverged branches in python-maths ns-rse/2-square-root is now behind the main branch which has incorporated the changes from ns-rse/1-zero-division." class="figure mx-auto d-block"><div class="figcaption">
 <strong>Before</strong> - diverged branches in
 <code>python-maths</code> <code>ns-rse/2-square-root</code> is now
@@ -489,7 +491,7 @@ from <code>ns-rse/1-zero-division.</code>
        checkout "main"
        merge "ns-rse/2-square-root" id: "11-a8c9932" tag: "v0.1.2"
 
---><figure><img src="https://mermaid.ink/img/pako:eNqtk8GOmzAQhl8FWYpoJUxtA8bmVnVX7aE99VZxMcYk1i44NWbVXcS715CyTaIkqtpywuN_vvk9mhmBNLUCBdhsRt1pVwRj6HaqVWERhJXoVRgF4Va7j1bsd-F8a40TTn0wbavdZ1GpRx91dlBT2QXr5_-nzeYQWJNfr-WSGui6CEqAYJqTBiNcgssCDDPMMK3pNQGBNKe8aUjwZvb79khXWdHJndd0PbS9eofhi7IG1vpJ99p0N5QE9t8HYRW0xrjjyjslH8zg_oR54jKBTGakluom7GrZY1QKmZIJ4-J_-MogSXDWCPTvvijkicpZLi-hWqG712ir7FbdsPoLmMNKpgmfZyNwYjuHnlCM46uz8un-_d1fvWM1tLhcyzMoGJKqYb_Lf1l0B9VlCxzKiiX8tJ8n84wgFipLZXLZ6Rn8rFVnD1iZ2FuVnCfkrFNkJoEIeIrn1n7Nx5lcgmXFSzALa2EfZtnkdcO-9rt9X2tnLCjmrY6AGJz5-tzJ9XzQ3GmxtaIFRSMeex_di-6bMSdnUIzgBygwyWOcEoSTDHHMEU8i8AwKwmjMckwYyThllLIpAi8LAcUMYR9KEfU5Wcbx9BO0WV5-?type=png" alt-text="**After** - merging `ns-rse/1-zero-division` into `main` then `main` into `ns-rse/2-square-root`. Development is completed on`ns-rse/2-square-root` and the feature merged into `main`" alt="After - merging ns-rse/1-zero-division into main then main into ns-rse/2-square-root. Development is completed on ns-rse/2-square-root and the feature merged into main" class="figure mx-auto d-block"><div class="figcaption">
+--><!-- markdownlint-disable-next-line MD013 --><figure><img src="https://mermaid.ink/img/pako:eNqtk8GOmzAQhl8FWYpoJUxtA8bmVnVX7aE99VZxMcYk1i44NWbVXcS715CyTaIkqtpywuN_vvk9mhmBNLUCBdhsRt1pVwRj6HaqVWERhJXoVRgF4Va7j1bsd-F8a40TTn0wbavdZ1GpRx91dlBT2QXr5_-nzeYQWJNfr-WSGui6CEqAYJqTBiNcgssCDDPMMK3pNQGBNKe8aUjwZvb79khXWdHJndd0PbS9eofhi7IG1vpJ99p0N5QE9t8HYRW0xrjjyjslH8zg_oR54jKBTGakluom7GrZY1QKmZIJ4-J_-MogSXDWCPTvvijkicpZLi-hWqG712ir7FbdsPoLmMNKpgmfZyNwYjuHnlCM46uz8un-_d1fvWM1tLhcyzMoGJKqYb_Lf1l0B9VlCxzKiiX8tJ8n84wgFipLZXLZ6Rn8rFVnD1iZ2FuVnCfkrFNkJoEIeIrn1n7Nx5lcgmXFSzALa2EfZtnkdcO-9rt9X2tnLCjmrY6AGJz5-tzJ9XzQ3GmxtaIFRSMeex_di-6bMSdnUIzgBygwyWOcEoSTDHHMEU8i8AwKwmjMckwYyThllLIpAi8LAcUMYR9KEfU5Wcbx9BO0WV5-?type=png" alt-text="**After** - merging `ns-rse/1-zero-division` into `main` then `main` into `ns-rse/2-square-root`. Development is completed on`ns-rse/2-square-root` and the feature merged into `main`" alt="After - merging ns-rse/1-zero-division into main then main into ns-rse/2-square-root. Development is completed on ns-rse/2-square-root and the feature merged into main" class="figure mx-auto d-block"><div class="figcaption">
 <strong>After</strong> - merging
 <code>ns-rse/1-zero-division</code> into <code>main</code> then
 <code>main</code> into <code>ns-rse/2-square-root</code>. Development is
@@ -659,6 +661,7 @@ longer shown by name in the <code>git log --graph</code> output.</p>
 original position to another, in this case the <code>HEAD</code> of the
 <code>main</code> branch. You are changing the <code>base</code> commit,
 hence the name <code>git rebase</code>.</p>
+<!-- markdownlint-disable-next-line MD013 -->
 <figure><img src="https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png" alt-text="**Before** - diverged branches in `python-maths` `ns-rse/2-square-root` is now behind the `main` branch which has incorporated the changes from `ns-rse/1-zero-division`." alt="Before - diverged branches in python-maths ns-rse/2-square-root is now behind the main branch which has incorporated the changes from ns-rse/1-zero-division." class="figure mx-auto d-block"><div class="figcaption">
 <strong>Before</strong> - diverged branches in
 <code>python-maths</code> <code>ns-rse/2-square-root</code> is now
@@ -693,7 +696,7 @@ from <code>ns-rse/1-zero-division.</code>
        checkout "main"
        merge "ns-rse/2-square-root" id: "9-ba93020" tag: "v0.1.2"
 
---><figure><img src="https://mermaid.ink/img/pako:eNqtk02PmzAQhv8KshTRSjH1Bxiba1v10lN7q7gYYxJrF5was-ou4r_XziYrdpVEK7Wc8DvvPB7PaGagbKtBBTab2QzGV8mc-r3udVolaSNHnW6TdGf8NycP-zRGnfXS68-2743_Lht9H1TvJr3UQ3L-wv-y2TwL5-SXsDqmJqatkhogmJekwwjX4LIBwwJzzFp2zUAgK5noOpJ8iPV-XPkaJwe1D55hhG7UnzB80s7C1jyY0dhhTdxrdWcn_y7v-nYKuSpIq_T_gBWQUFx0El2C9dIML2qv3U7f4J-AJWxUTkXsbuLlLkoPKMPZhW6fwj90bOKNHhI4_p6k09BZ628--qpz_eQccq0oF_LfUQwKqkteqmuGEqqGU_G6vWsDh1jqIlf0cjHHCYBrM3hT4wkpYCMFRQS9mQCJoHoAWxAwAdyGFZwjugbH9atBtLbS3UXjEnzToQ1797U13jpQxY3bAjl5-_NxUOfzs-eLkTsne1B18n4M6kEOv6x9dQbVDP6ACpMywzlBmBZIYIEE3YJHUBHOMl5iwkkhGGeML1vwdCSgjCMcpByxkFMUAi9_ARUBQVQ?type=png" alt-text="**After** - rebase to bring the diverged branch up-to-date with `main` which includes `ns-rse/1-zero-division`. Two more commits are made and `ns-rse/2-square-root` is then merged into `main`." alt="After - rebase to bring the diverged branch up-to-date with main which includes ns-rse/1-zero-division. Two more commits are made and ns-rse/2-square-root is then merged into main." class="figure mx-auto d-block"><div class="figcaption">
+--><!-- markdownlint-disable-next-line MD013 --><figure><img src="https://mermaid.ink/img/pako:eNqtk02PmzAQhv8KshTRSjH1Bxiba1v10lN7q7gYYxJrF5was-ou4r_XziYrdpVEK7Wc8DvvPB7PaGagbKtBBTab2QzGV8mc-r3udVolaSNHnW6TdGf8NycP-zRGnfXS68-2743_Lht9H1TvJr3UQ3L-wv-y2TwL5-SXsDqmJqatkhogmJekwwjX4LIBwwJzzFp2zUAgK5noOpJ8iPV-XPkaJwe1D55hhG7UnzB80s7C1jyY0dhhTdxrdWcn_y7v-nYKuSpIq_T_gBWQUFx0El2C9dIML2qv3U7f4J-AJWxUTkXsbuLlLkoPKMPZhW6fwj90bOKNHhI4_p6k09BZ628--qpz_eQccq0oF_LfUQwKqkteqmuGEqqGU_G6vWsDh1jqIlf0cjHHCYBrM3hT4wkpYCMFRQS9mQCJoHoAWxAwAdyGFZwjugbH9atBtLbS3UXjEnzToQ1797U13jpQxY3bAjl5-_NxUOfzs-eLkTsne1B18n4M6kEOv6x9dQbVDP6ACpMywzlBmBZIYIEE3YJHUBHOMl5iwkkhGGeML1vwdCSgjCMcpByxkFMUAi9_ARUBQVQ?type=png" alt-text="**After** - rebase to bring the diverged branch up-to-date with `main` which includes `ns-rse/1-zero-division`. Two more commits are made and `ns-rse/2-square-root` is then merged into `main`." alt="After - rebase to bring the diverged branch up-to-date with main which includes ns-rse/1-zero-division. Two more commits are made and ns-rse/2-square-root is then merged into main." class="figure mx-auto d-block"><div class="figcaption">
 <strong>After</strong> - rebase to bring the
 diverged branch up-to-date with <code>main</code> which includes
 <code>ns-rse/1-zero-division</code>. Two more commits are made and
@@ -839,10 +842,9 @@ Request to merge the updated <code>square-root</code> changes into
 issue/branch will be at the helm for this, but work together to come up
 with a solution. You can use either of the two strategies
 <code>git merge</code> or <code>git rebase</code> to do this.</p>
-<figure><img src="https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png" alt-text="Diverged branches" alt="Diverged branches" class="figure mx-auto d-block"><div class="figcaption">Diverged branches</div>
-</figure><figure><img src="https://mermaid.ink/img/pako:eNqtk8GOmzAQhl8FWYpoJUxtA8bmVnVX7aE99VZxMcYk1i44NWbVXcS715CyTaIkqtpywuN_vvk9mhmBNLUCBdhsRt1pVwRj6HaqVWERhJXoVRgF4Va7j1bsd-F8a40TTn0wbavdZ1GpRx91dlBT2QXr5_-nzeYQWJNfr-WSGui6CEqAYJqTBiNcgssCDDPMMK3pNQGBNKe8aUjwZvb79khXWdHJndd0PbS9eofhi7IG1vpJ99p0N5QE9t8HYRW0xrjjyjslH8zg_oR54jKBTGakluom7GrZY1QKmZIJ4-J_-MogSXDWCPTvvijkicpZLi-hWqG712ir7FbdsPoLmMNKpgmfZyNwYjuHnlCM46uz8un-_d1fvWM1tLhcyzMoGJKqYb_Lf1l0B9VlCxzKiiX8tJ8n84wgFipLZXLZ6Rn8rFVnD1iZ2FuVnCfkrFNkJoEIeIrn1n7Nx5lcgmXFSzALa2EfZtnkdcO-9rt9X2tnLCjmrY6AGJz5-tzJ9XzQ3GmxtaIFRSMeex_di-6bMSdnUIzgBygwyWOcEoSTDHHMEU8i8AwKwmjMckwYyThllLIpAi8LAcUMYR9KEfU5Wcbx9BO0WV5-?type=png" alt-text="Merge" alt="Merge" class="figure mx-auto d-block"><div class="figcaption">Merge</div>
-</figure><figure><img src="https://mermaid.ink/img/pako:eNqtk02PmzAQhv8KshTRSjH1Bxiba1v10lN7q7gYYxJrF5was-ou4r_XziYrdpVEK7Wc8DvvPB7PaGagbKtBBTab2QzGV8mc-r3udVolaSNHnW6TdGf8NycP-zRGnfXS68-2743_Lht9H1TvJr3UQ3L-wv-y2TwL5-SXsDqmJqatkhogmJekwwjX4LIBwwJzzFp2zUAgK5noOpJ8iPV-XPkaJwe1D55hhG7UnzB80s7C1jyY0dhhTdxrdWcn_y7v-nYKuSpIq_T_gBWQUFx0El2C9dIML2qv3U7f4J-AJWxUTkXsbuLlLkoPKMPZhW6fwj90bOKNHhI4_p6k09BZ628--qpz_eQccq0oF_LfUQwKqkteqmuGEqqGU_G6vWsDh1jqIlf0cjHHCYBrM3hT4wkpYCMFRQS9mQCJoHoAWxAwAdyGFZwjugbH9atBtLbS3UXjEnzToQ1797U13jpQxY3bAjl5-_NxUOfzs-eLkTsne1B18n4M6kEOv6x9dQbVDP6ACpMywzlBmBZIYIEE3YJHUBHOMl5iwkkhGGeML1vwdCSgjCMcpByxkFMUAi9_ARUBQVQ?type=png" alt-text="Rebase" alt="Rebase" class="figure mx-auto d-block"><div class="figcaption">Rebase</div>
-</figure></div>
+<!-- markdownlint-disable-next-line MD013 -->
+<p><img src="https://mermaid.ink/img/pako:eNqtklFv2yAUhf8KQoq8SSYDbDD4bVqr9WF72tvkF4JxglqbDOOpreX_PkiaKpXadNJmP9j38N1zD9KdoXatgTVcrWY72FCDOQs705usBtlGjSbLQba14atX-12WTr0LKpgvru9t-KY25i6qwU9maQZweuL_slodhVPz87E-tALb1qCBGJUV7QgmDXwdIIgRQXjL3wIo4hWXXUfBh5T34xm38WrQu8gMI_Kj-UTQo_EOtfa3Ha0bLpAUjb8m5Q3yzoXzyTujb90U_sbzRcoCCc1oq81FszfHnluVSBhdCKn-Ry6GaEFYp_C_5-JIFqYSlX7Nqld2eFZ747fmQtQnwwptdFnItBsgqG2Svh86Ew7eu9nN9eerBsIcxmlxeht3fE5kAw_73cAEtcrfJoMlctO-jYt93drgPKzTSudQTcH9eBj0qT4yV1ZtvepP4l4NP52LZafuxmMN6xnewxqVAq8lq-KLZcmpECyHD7DmeM0xZfFqRMr4kUsOHw8WdI1piQvBSMEKLmW1_AHrjxWc?type=png" alt-text="Diverged branches" alt="Diverged branches" class="figure"><!-- markdownlint-disable-next-line MD013 --><img src="https://mermaid.ink/img/pako:eNqtk8GOmzAQhl8FWYpoJUxtA8bmVnVX7aE99VZxMcYk1i44NWbVXcS715CyTaIkqtpywuN_vvk9mhmBNLUCBdhsRt1pVwRj6HaqVWERhJXoVRgF4Va7j1bsd-F8a40TTn0wbavdZ1GpRx91dlBT2QXr5_-nzeYQWJNfr-WSGui6CEqAYJqTBiNcgssCDDPMMK3pNQGBNKe8aUjwZvb79khXWdHJndd0PbS9eofhi7IG1vpJ99p0N5QE9t8HYRW0xrjjyjslH8zg_oR54jKBTGakluom7GrZY1QKmZIJ4-J_-MogSXDWCPTvvijkicpZLi-hWqG712ir7FbdsPoLmMNKpgmfZyNwYjuHnlCM46uz8un-_d1fvWM1tLhcyzMoGJKqYb_Lf1l0B9VlCxzKiiX8tJ8n84wgFipLZXLZ6Rn8rFVnD1iZ2FuVnCfkrFNkJoEIeIrn1n7Nx5lcgmXFSzALa2EfZtnkdcO-9rt9X2tnLCjmrY6AGJz5-tzJ9XzQ3GmxtaIFRSMeex_di-6bMSdnUIzgBygwyWOcEoSTDHHMEU8i8AwKwmjMckwYyThllLIpAi8LAcUMYR9KEfU5Wcbx9BO0WV5-?type=png" alt-text="Merge" alt="Merge" class="figure"><!-- markdownlint-disable-next-line MD013 --><img src="https://mermaid.ink/img/pako:eNqtk02PmzAQhv8KshTRSjH1Bxiba1v10lN7q7gYYxJrF5was-ou4r_XziYrdpVEK7Wc8DvvPB7PaGagbKtBBTab2QzGV8mc-r3udVolaSNHnW6TdGf8NycP-zRGnfXS68-2743_Lht9H1TvJr3UQ3L-wv-y2TwL5-SXsDqmJqatkhogmJekwwjX4LIBwwJzzFp2zUAgK5noOpJ8iPV-XPkaJwe1D55hhG7UnzB80s7C1jyY0dhhTdxrdWcn_y7v-nYKuSpIq_T_gBWQUFx0El2C9dIML2qv3U7f4J-AJWxUTkXsbuLlLkoPKMPZhW6fwj90bOKNHhI4_p6k09BZ628--qpz_eQccq0oF_LfUQwKqkteqmuGEqqGU_G6vWsDh1jqIlf0cjHHCYBrM3hT4wkpYCMFRQS9mQCJoHoAWxAwAdyGFZwjugbH9atBtLbS3UXjEnzToQ1797U13jpQxY3bAjl5-_NxUOfzs-eLkTsne1B18n4M6kEOv6x9dQbVDP6ACpMywzlBmBZIYIEE3YJHUBHOMl5iwkkhGGeML1vwdCSgjCMcpByxkFMUAi9_ARUBQVQ?type=png" alt-text="Rebase" alt="Rebase" class="figure"></p>
+</div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -850,7 +852,7 @@ with a solution. You can use either of the two strategies
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solution : git merge </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The first thing to do is make sure <code>main</code> is up-to-date
 and has the changes that have been merged from the
@@ -886,7 +888,7 @@ branch to GitHub and make a Pull Request for approval</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution : git rebase </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The first thing to do is make sure <code>main</code> is up-to-date
 and has the changes that have been merged from the
@@ -1340,7 +1342,7 @@ and select just one of the changes to retain.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution : git merge </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The first thing to do is make sure <code>main</code> is up-to-date
 and has the changes that have been merged from the
@@ -1524,7 +1526,7 @@ any links that you are not going to use.
   "url": "ns-rse.github.io/git-collaboration/diverging_branches.html",
   "identifier": "ns-rse.github.io/git-collaboration/diverging_branches.html",
   "dateCreated": "2023-10-09",
-  "dateModified": "2024-05-23",
+  "dateModified": "2024-09-24",
   "datePublished": "2024-09-24"
 }
 
