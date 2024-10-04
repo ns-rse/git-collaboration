@@ -101,6 +101,8 @@ Various tutorials and tools that help explain how Git works.
 - [git-sim : visually simulate Git operations in your own repos](https://initialcommit.com/blog/git-sim)
 - [Git from the inside out](https://maryrosecook.com/blog/post/git-from-the-inside-out)
 - [Git School](https://git-school.github.io/visualizing-git/) a visual sandbox/playground.
+- [Flight rules for git](https://github.com/k88hudson/git-flight-rules) an excellent clear set of resources of how to
+  solve different problems/scenarios.
 
 #### Git Configuration
 
@@ -125,6 +127,9 @@ that help tackle fundamental but often misunderstood concepts.
 - [Some miscellaneous git facts](https://jvns.ca/blog/2023/10/20/some-miscellaneous-git-facts/)
 - [In a git repository, where do your files
   live?](https://jvns.ca/blog/2023/09/14/in-a-git-repository--where-do-your-files-live-/)
+
+These have been compiled into two zines [Oh shit, git!](https://wizardzines.com/zines/oh-shit-git/) and [How Git
+Works](https://wizardzines.com/zines/git/).
 
 #### Scott Chacon
 
