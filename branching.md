@@ -18,7 +18,6 @@ exercises: 2
 - How branches can be used to fix bugs or develop features in isolation.
 - Switching branches, stashing and restoring.
 - How to keep a development branch up-to-date.
-- Differences between and when to use merge and rebase.
 - Git worktrees instead of branches.
 - Tracking multiple origins
 
