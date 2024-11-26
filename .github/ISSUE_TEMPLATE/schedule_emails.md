@@ -12,8 +12,10 @@ Emails need to be scheduled ahead of each session.
 
 ## Emails
 
-The following table details the emails that need scheduling. There are parameterised `.Rmd` templates in the `emails/`
+The following table details the emails that need scheduling. There are parameterised `.Rmd` templates in the `.emails/`
 directory which should be used to generate the contents of these emails in HTML which can then be copy and pasted.
+
+**NB** directory name is prefixed with `.` to prevent it being built as part of the website.
 
 | Schedule        | File                        | Description                                                                                                    |
 |:----------------|:----------------------------|:---------------------------------------------------------------------------------------------------------------|
