@@ -1,0 +1,45 @@
+---
+title: ""
+author: ""
+date: ""
+output: html_document
+params:
+    course_title: "Git Collaboration"
+    day1:
+        label: "Input dataset1:"
+        value: "2025-02-17"
+        input: date
+        venue:
+    day2:
+        label: "Input dataset2:"
+        value: "2025-02-18"
+        input: date
+    event_day1_start: "09:30"
+    event_day1_finish: "13:00"
+    venue_day1: "Computer Room 4.02, Information Commons"
+    event_day2_start: "09:30"
+    event_day2_finish: "13:00"
+    venue_day2: "Computer Room 4.02, Information Commons"
+    lead_instructor: "Neil Shephard"
+    lead_instructor_title: "Research Software Engineer"
+---
+
+
+<!--- Send this email the morning(s) of the event --->
+
+We're looking forward to welcoming you to the RSE Sheffield training session on **`r params$course_title`** shortly!
+
+
+Today's session (`r format(strptime(params$day1, format = "%Y-%m-%d"), "%a %b %d %Y")`) starts at
+**`r params$event_day1_start`** in **`r params$venue_day1`**. Tomorrow's session
+(`r format(strptime(params$day2, format = "%Y-%m-%d"), "%a %b %d %Y")`) will begin at
+**`r params$event_day2_start`**  in **`r params$venue_day2`**.
+
+See you all soon!
+
+`r params$lead_instructor`
+
+`r params$lead_instructor_role`
+
+
+University of Sheffield
