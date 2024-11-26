@@ -47,10 +47,14 @@ body:
     validations:
       required: true
   - type: textarea
-    id: venue
+    id: mydevelopment
     attributes:
       label: myDevelopment.
       description: |
         Please paste the myDevelopment link below (you can optionally use Markdown).
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+        - [ ] Schedule emails.
