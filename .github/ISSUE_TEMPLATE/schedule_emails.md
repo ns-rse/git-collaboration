@@ -19,7 +19,7 @@ directory which should be used to generate the contents of these emails in HTML 
 
 | Schedule        | File                        | Description                                                                                                    |
 |:----------------|:----------------------------|:---------------------------------------------------------------------------------------------------------------|
-| 2 Week Reminder | `setup_email.Rmd`           | Setup instructions for registered attendees as well as information about the session (venue, dates and times). |
+| 1 Week Reminder | `setup_email.Rmd`           | Setup instructions for registered attendees as well as information about the session (venue, dates and times). |
 | 4 Day Reminder  | `setup_email.Rmd`           | A reminder of the setup instructions as well as information about the session (venue, dates and times).        |
 | On the Morning  | `joining_email.Rmd`         | A reminder of the course starting that day, to be scheduled one hour before the course starts.                 |
 | Day After       | `feedback_survey_email.Rmd` | A request to complete the feedback survey.                                                                     |
@@ -74,8 +74,8 @@ schedule the emails to be sent on the appropriate days/times.
 
 Complete the following checklist on scheduling each email.
 
-- [ ] 2 Week Reminder
-- [ ] 4 Day Reminder
+- [ ] 1 Week Setup Instructions
+- [ ] 4 Day Setup Instructions
 - [ ] Morning Reminder
 - [ ] Feedback Form
 
