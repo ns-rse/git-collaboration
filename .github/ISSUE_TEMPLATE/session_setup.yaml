@@ -54,3 +54,7 @@ body:
         Please paste the myDevelopment link below (you can optionally use Markdown).
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+        - [ ] Schedule emails.
