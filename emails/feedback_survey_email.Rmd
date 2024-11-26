@@ -1,0 +1,50 @@
+---
+title: ""
+author: ""
+date: ""
+output: html_document
+params:
+    course_title: "Git Collaboration"
+    prefilled_survey_link: "https://forms.gle/NRz63kULPikoWrNz7"
+    event_date: "2025-02-17"
+    lead_instructor: "Neil Shephard"
+    lead_instructor_title: "Research Software Engineer"
+---
+
+<!--- Send this email 1 day after event --->
+
+
+Thank you for attending our **`r params$course_title`**. We  hope you enjoyed it and found it useful!
+
+We are always looking to improve our course in order to meet our participants' needs so your feedback would be very
+ helpful. We would be grateful if you could take a few minutes to complete our short survey.
+
+<br>
+
+## [Complete Course Survey](`r paste0(params$prefilled_survey_link, params$event_date)`)
+
+Thank you for taking the time to provide feedback!
+
+<br>
+
+Please visit [rse.shef.ac.uk][rse]  or subscribe to our [mailing list][rse-group] for information on future training
+sessions. The [FAIR^2 for Research Software][rse-fair2] course which covers open and reproducible software development.
+
+## Further materials
+
+For more resources to help you discover and learn more about Git please see the [Further Resources][further-resources]
+section of the coures material.
+
+<br>
+
+`r params$lead_instructor`
+
+`r params$lead_instructor_title`
+
+
+University of Sheffield
+
+[further-resources]: https://blog.nshephard.dev/git-collaboration/further_resources.html
+[rse-fair2]: https://rse.shef.ac.uk/training/fair4rs/
+[rse]: https://rse.shef.ac.uk
+[rse-group]: https://groups.google.com/a/sheffield.ac.uk/g/rse-group

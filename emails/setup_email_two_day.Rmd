@@ -1,0 +1,71 @@
+---
+title: ""
+author: ""
+date: ""
+output: html_document
+params:
+    course_title: "Git Collaboration"
+    day1:
+        label: "Input dataset1:"
+        value: "2025-02-17"
+        input: date
+        venue:
+    day2:
+        label: "Input dataset2:"
+        value: "2025-02-18"
+        input: date
+    event_day1_start: "09:30"
+    event_day1_finish: "13:00"
+    venue_day1: "Computer Room 4.02, Information Commons"
+    event_day2_start: "09:30"
+    event_day2_finish: "13:00"
+    venue_day2: "Computer Room 4.02, Information Commons"
+    lead_instructor: "Neil Shephard"
+    lead_instructor_title: "Research Software Engineer"
+---
+
+<!--- Send this email around 2 week and  prior to event --->
+
+We're looking forward to welcoming you to the RSE Sheffield training session on **`r params$course_title`**
+
+
+### SETUP
+
+Prior to attending, you need to **install the software we are going to use and create an account on GitHub. <span
+style="color: #d1410c;">Please ensure you have completed setup before the course begins.</span>**
+
+Instructions on how to create the account as well as install all the software required can be found on the [**Setup
+Section**](https://blog.nshephard.dev/git-collaboration/#setup) of the course materials. If you have any problems with
+your setup, please get in touch with us for assistance *before* the course begins.
+
+
+### SCHEDULE
+
+We’ll **kick off at `r params$event_day1_start` on
+(`r format(strptime(params$day1, format = "%Y-%m-%d"), "%a %b %d %Y")`)** in **`r params$venue_day1`**
+and aim to have a few breaks throughout the morning, finishing at `r params$event_day1_finish`. The second session
+will follow **at `r params$event_day2_start` on (`r format(strptime(params$day2, format = "%Y-%m-%d"), "%a %b %d
+%Y")`)** in **`r params$venue_day2`** and follow the same format finishing at `r params$event_day2_finish`.
+
+There will be some time at the end of each day for questions and discussions.
+
+
+### ATTENDANCE
+
+**In the event that you can no longer make it, we please ask that you cancel your ticket so we can offer it to someone on the waiting list**.
+
+<!-- **NB** Please note we will _not_ be in the same venue on the second day. -->
+
+<br>
+
+See you next week!
+
+Please don’t hesitate to reach out to me with any questions.
+
+<br>
+
+`r params$lead_instructor`
+
+`r params$lead_instructor_title`
+
+University of Sheffield
