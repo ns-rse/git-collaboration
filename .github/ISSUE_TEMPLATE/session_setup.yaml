@@ -46,3 +46,16 @@ body:
         Please enter the room(s) that have been booked for holding the session.
     validations:
       required: true
+  - type: textarea
+    id: venue
+    attributes:
+      label: myDevelopment.
+      description: |
+        Please paste the myDevelopment link below (you can optionally use Markdown).
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      label: Checklist
+      value: |
+        - [ ] Schedule emails.
