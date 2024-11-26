@@ -1,0 +1,48 @@
+name: Session Setup
+description: Session Setup tasks for Git Collaboration course
+title: "[setup] : "
+labels: "session"
+assignees:
+  - ""
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when scheduling and setting up a new session of the course. It is recommended that you have a confirmed room booking prior to completing this form as these are required fields. You should also create an issue to [schedule emails](https://github.com/ns-rse/git-collaboration/issues/new?assignees=&labels=session-setup&projects=&template=schedule_emails.md&title=Schedule+emails+for+session+on+%5BDATE-OR-SESSION-DESCRIPTION%5D+for+%5BINSTRUCTOR-NAME%5D)
+  - type: dropdown
+    id: lead-instructor
+    attributes:
+      label: Lead Instructor
+      description: |
+        Please enter who the lead instructor will be.
+      options:
+        - Neil Shephard (@ns-rse)
+        - Tamora James (@tdjames1)
+        - Rob Chisholm (@Robadob)
+        - Twin Karmakharm (@twinkarma)
+        - Dan Brady (@ubdbra001)
+        - Edwin Brown (@EdwinB12)
+        - Romain Thomas (@Romain-Thomas-Shef)
+        - Martin Dyer (@martinjohndyer)
+        - Michael Foster (@jmafoster1)
+        - Matthew Leach (@MlLeach)
+        - Peter Heywood (@ptheywood)
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: date-time
+    attributes:
+      label: Date/time
+      description: |
+        Please enter the date and times the session will run.
+    validations:
+      required: true
+  - type: textarea
+    id: venue
+    attributes:
+      label: Venue.
+      description: |
+        Please enter the room(s) that have been booked for holding the session.
+    validations:
+      required: true
