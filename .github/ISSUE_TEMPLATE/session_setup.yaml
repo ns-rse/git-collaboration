@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form when scheduling and setting up a new session of the course. It is recommended that you have a confirmed room booking prior to completing this form as these are required fields. You should also create an issue to [schedule emails](https://github.com/ns-rse/git-collaboration/issues/new?assignees=&labels=session-setup&projects=&template=schedule_emails.md&title=Schedule+emails+for+session+on+%5BDATE-OR-SESSION-DESCRIPTION%5D+for+%5BINSTRUCTOR-NAME%5D)
+        Use this form when scheduling and setting up a new session of the course. It is recommended that you have a confirmed room booking prior to completing this form as these are required fields. You should also create an issue to [schedule emails](https://github.com/ns-rse/git-collaboration/issues/new?assignees=&labels=session-setup&projects=&template=schedule_emails.md&title=Schedule+emails+for+session+on+%5BDATE-OR-SESSION-DESCRIPTION%5D+for+%5BINSTRUCTOR-NAME%5D). You will also have to schedule emails (see separate template which includes instructions).
   - type: dropdown
     id: lead-instructor
     attributes:
@@ -56,6 +56,5 @@ body:
       required: true
   - type: markdown
     attributes:
-      label: Checklist
       value: |
         - [ ] Schedule emails.
